@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="./plugins/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/styles/ui.css">
+    <link rel="stylesheet" href="./assets/styles/bootstrap.override.css">
+    <link rel="stylesheet" href="./assets/styles/ui.responsive.css">
+    
+    <script src="./plugins/jquery/jquery-3.3.1.min.js" type="application/javascript"></script>
+    <script src="./plugins/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./plugins/d3/d3.v4.min.js" type="application/javascript"></script>
+
+    <title>Contact</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./generator.html">Generator</a></li>
+                <!-- <li><a href="dep_wheel.html">Dependency Wheel</a> </li>-->
+                <li class="active"><a href="./contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid"  style="height: 100vh">
+    <div class="row content">
+        <div class="col-md-2" id="content-left">
+        </div>
+        <div class="col-md-8" id="content-middle">
+            <div id="contact" class="container-fluid" style="margin-top: 30px">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p>Contact us and we'll get back to you within a week.</p>
+                        <p><span class="glyphicon glyphicon-map-marker"></span> Zurich, CH</p>
+                        <p><span class="glyphicon glyphicon-envelope"></span> florian.wandl@uzh.ch</p>
+                        <p><span class="glyphicon glyphicon-envelope"></span> lucaelio.salini@uzh.ch</p>
+                    </div>
+                    <div class="col-sm-7 slideanim">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                            </div>
+                        </div>
+                        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button class="btn btn-default pull-right" type="submit">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2" id="content-right">
+        </div>
+    </div>
+</div>
+<script src="./App.js" type="application/javascript"></script>
+</body>
+</html>

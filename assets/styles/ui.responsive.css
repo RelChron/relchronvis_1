@@ -1,0 +1,18 @@
+@media screen and (max-width: 767px) {
+    .row.content {height:auto;}
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+        color: #837f0d;
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #f3f894;
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #f3f894;
+        background-color: #c0782b;
+    }
+
+}
