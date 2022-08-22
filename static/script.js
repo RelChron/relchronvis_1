@@ -71,13 +71,33 @@ d3.json("/sound_changes").then(function(data) {
 
   // Highlight single node and its arcs on mouseover
   nodes
-  .on("mouseover", function(event, node){
+  .on("mouseover", function(event, m_node){
     nodes.classed("highlighted", false)
-    d3.select(this).classed("highlighted", true)
-    arcs
+    // d3.select(this).classed("highlighted", true)
+    let m_arcs = arcs
       // If function returns false, element is filtered out of selection
-      .filter(arc => arc.source === node.id || arc.target === node.id)
+      .filter(arc => arc.source === m_node.id || arc.target === m_node.id)
       .classed("highlighted", true)
+      .data()
+    
+    // Get ids to be highlighted from arc data
+    let highlight_ids = new Set(m_arcs.map(arc => [arc.source, arc.target]).flat())
+    
+    // Pass to nodes
+    nodes
+      .filter(node => highlight_ids.has(node.id))
+      .classed("highlighted", true)
+
+    // Sort, to draw highlighted arcs on top (z-index doesn't work inside svg)
+    // From https://stackoverflow.com/a/13794019
+    arcs
+      .sort(arc => {
+        if (arc.source === m_node.id || arc.target === m_node.id) {
+          return 1;   // Bring to top
+        } else {
+          return -1;  // Send to bottom
+        }
+      })
   })
   .on("mouseout", function(event,d){
     nodes.classed("highlighted", true)
