@@ -66,7 +66,7 @@ d3.json("/sound_changes").then(function(data) {
       // I think the node variable holds a node object for each mynode element
       .attr("cx", sc => xScale(sc.id))
       .attr("cy", height-30)
-      .attr("r", 8)
+      .attr("r", 6)
       .attr("class", "highlighted")
 
   // Highlight single node and its arcs on mouseover
