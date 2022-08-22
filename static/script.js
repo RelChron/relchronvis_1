@@ -121,6 +121,10 @@ d3.json("/sound_changes").then(function(data) {
   }
 
   // These lines are necessary for zoom to work
-  let zoom = d3.zoom().on('zoom', handleZoom);
+  let zoom = d3.zoom()
+    .scaleExtent([1, 10])
+    // Allow pan only inside diagram bounds
+    .translateExtent([[0, 0], [curDiagWidth, curDiagHeight]])
+    .on('zoom', handleZoom);
   d3.select('svg').call(zoom);
 })
