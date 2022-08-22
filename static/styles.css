@@ -1,0 +1,17 @@
+circle {
+    fill: #b8b8b8;
+}
+
+circle.highlighted {
+    fill: #69b3b2;
+}
+
+path {
+    stroke: #b8b8b8;
+    fill: none;
+}
+
+path.highlighted {
+    stroke: #69b3b2;
+    stroke-width: 4;
+}
