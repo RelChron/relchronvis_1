@@ -15,3 +15,9 @@ path.highlighted {
     stroke: #69b3b2;
     stroke-width: 4;
 }
+
+.label {
+    fill: #69b3b2;
+    text-anchor: start;
+    writing-mode: vertical-rl;
+}

@@ -1,14 +1,24 @@
 // Draw interactable and zoomable arc diagram
 // Based on https://d3-graph-gallery.com/graph/arc_highlight.html
+const CIRCLE_RADIUS = 6
 
 // Get current diagram (div) width and size chart and margins accordingly
 let curDiagWidth = document
   .getElementById("arc_diagram")
-  .getBoundingClientRect().width
+  .getBoundingClientRect()
+  .width
 let curDiagHeight = curDiagWidth / 2
-const margin = {top: 20, right: 30, bottom: 20, left: 30}
+// Add 1/4th of self for labels
+let labelAreaHeight = curDiagHeight / 4
+curDiagHeight = curDiagHeight + labelAreaHeight
+
+const margin = {top: 20, right: CIRCLE_RADIUS, bottom: 20, left: CIRCLE_RADIUS}
 const width = curDiagWidth - margin.left - margin.right
 const height = curDiagHeight - margin.top - margin.bottom
+
+// Offset level of nodes by the space needed for labels
+const GRAPH_BOTTOM_Y = height - labelAreaHeight - 30
+
 
 // Append the svg object to the body of the page
 const svg = d3.select("#arc_diagram")
@@ -31,7 +41,7 @@ d3.json("/sound_changes").then(function(data) {
     .data(data.relations)
     .enter()
     .append("path")
-    .attr("d", function (relation) {
+      .attr("d", function (relation) {
       // X position of start node on the X axis
       start = xScale(relation.source)
       // X position of end node
@@ -39,7 +49,7 @@ d3.json("/sound_changes").then(function(data) {
       // The arc starts at the coordinate 
       // x=start, y=height-30 (where the starting node is)
       // This means we're gonna build an elliptical arc
-      return ["M", start, height-30,
+      return ["M", start, GRAPH_BOTTOM_Y,
         "A",
         // Next 2 lines are the coordinates of the inflexion point.
         // Height of this point is proportional with start - end distance
@@ -47,7 +57,7 @@ d3.json("/sound_changes").then(function(data) {
         (start - end)/2, 0, 0, ",",
         // We always want the arc on top. So if end is before start, 
         // putting 0 here turn the arc upside down.
-        start < end ? 1 : 0, end, ",", height-30]
+        start < end ? 1 : 0, end, ",", GRAPH_BOTTOM_Y]
         .join(' ');
     })
 
@@ -65,9 +75,24 @@ d3.json("/sound_changes").then(function(data) {
       // Get cx by passing sc.id into the scale function pointScale()
       // I think the node variable holds a node object for each mynode element
       .attr("cx", sc => xScale(sc.id))
-      .attr("cy", height-30)
-      .attr("r", 6)
+      .attr("cy", GRAPH_BOTTOM_Y)
+      .attr("r", CIRCLE_RADIUS)
       .attr("class", "highlighted")
+
+  let labels = svg
+      .selectAll("mylabels")
+      .data(data.changes)
+      .enter()
+      .append("text")
+        .attr("x", sc => xScale(sc.id))
+        // It starts drawing in the middle of the circle
+        .attr("y", GRAPH_BOTTOM_Y + CIRCLE_RADIUS + 2)
+        .text(sc => sc.name)
+        .attr("class", "label")
+        // .attr("transform", "translate(10, 60) rotate(30)")
+        // .style("text-anchor", "middle")
+        // .style("fill", "#69b3b2")
+        // .style("text-anchor", "middle")
 
   // Highlight single node and its arcs on mouseover
   nodes
@@ -126,7 +151,7 @@ d3.json("/sound_changes").then(function(data) {
         return [
           "M",                    // MoveTo 
           start,                  // Starting x
-          height-30,              // Starting y
+          GRAPH_BOTTOM_Y,         // Starting y
           "A",                    // Elliptical Arc Curve
           (start - end)/2, ",",   // rx
           ry,                     // ry
@@ -134,7 +159,7 @@ d3.json("/sound_changes").then(function(data) {
           0, ",",                 // large-arc-flag
           start < end ? 1 : 0,    // sweep-flag
           end, ",",               // Finishing x
-          height-30               // Finishing y
+          GRAPH_BOTTOM_Y          // Finishing y
         ]       
         .join(' ');             
       })

@@ -8,10 +8,6 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/dummy_data', methods=['GET'])
-def give_dummy_data():
-    return send_file("data/dummy_data.json")
-
 @app.route('/sound_changes', methods=['GET'])
 def give_sc_data():
     return send_file("data/sound_changes.json")
@@ -19,7 +15,7 @@ def give_sc_data():
 
 # Accept a TSV (.txt) file (former excel sheet) and save it as json
 # Formatting see documentation (TODO)
-def import_sound_changes(infile_path, outfile_path, n_of_sound_changes):
+def import_tsv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
     with open(infile_path, encoding="utf-8") as infile:
         csv_reader = csv.DictReader(infile, dialect="excel",
             # Makes first col "0", and the rest "1", "2", ..., "71" 
@@ -66,7 +62,7 @@ def import_sound_changes(infile_path, outfile_path, n_of_sound_changes):
       
 
 if __name__ == "__main__":
-    import_sound_changes(
+    import_tsv_sound_changes(
         infile_path="data/sound_changes.csv", 
         outfile_path="data/sound_changes.json", 
         n_of_sound_changes=71
