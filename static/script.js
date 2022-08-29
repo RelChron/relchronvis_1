@@ -124,14 +124,12 @@ d3.json("/sound_changes").then(function(data) {
     
     // Get ids to be highlighted from arc data
     let highlight_ids = new Set(m_arcs.map(arc => [arc.source, arc.target]).flat())
-    console.log("highlight_ids:", highlight_ids)
     
-    // Pass to nodes
+    // Pass to nodes and labels
     nodes
       .filter(node => highlight_ids.has(node.id))
       .classed("highlighted", true)
 
-    // Pass to node labels
     labels
       .filter(function(d, i) {
         return highlight_ids.has(i+1)
