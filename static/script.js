@@ -9,15 +9,20 @@ let curDiagWidth = document
   .width
 let curDiagHeight = curDiagWidth / 2
 // Add 1/4th of self for labels
-let labelAreaHeight = curDiagHeight / 4
+let labelAreaHeight = curDiagHeight / 3
 curDiagHeight = curDiagHeight + labelAreaHeight
 
-const margin = {top: 20, right: CIRCLE_RADIUS, bottom: 20, left: CIRCLE_RADIUS}
+const margin = {top: 0, right: CIRCLE_RADIUS, bottom: 0, left: CIRCLE_RADIUS}
 const width = curDiagWidth - margin.left - margin.right
 const height = curDiagHeight - margin.top - margin.bottom
 
 // Offset level of nodes by the space needed for labels
-const GRAPH_BOTTOM_Y = height - labelAreaHeight - 30
+const GRAPH_BOTTOM_Y = height - labelAreaHeight
+
+// Debug
+console.log("curDiagWidth:", curDiagWidth)
+console.log("curDiagHeight:", curDiagHeight)
+console.log("labelAreaHeight:", labelAreaHeight)
 
 
 // Append the svg object to the body of the page
@@ -79,6 +84,7 @@ d3.json("/sound_changes").then(function(data) {
       .attr("r", CIRCLE_RADIUS)
       .attr("class", "highlighted")
 
+  // Labels
   let labels = svg
       .selectAll("mylabels")
       .data(data.changes)
@@ -89,10 +95,21 @@ d3.json("/sound_changes").then(function(data) {
         .attr("y", GRAPH_BOTTOM_Y + CIRCLE_RADIUS + 2)
         .text(sc => sc.name)
         .attr("class", "label")
-        // .attr("transform", "translate(10, 60) rotate(30)")
-        // .style("text-anchor", "middle")
-        // .style("fill", "#69b3b2")
-        // .style("text-anchor", "middle")
+
+  // TODO: Make more efficient
+  // Inspired by https://stackoverflow.com/a/27723725
+  function truncate() {
+    let element = d3.select(this)
+    let elHeight = element.node().getBBox().height
+    let elText = element.text();
+    while (elHeight + 10 > labelAreaHeight && elText.length > 0) {
+        elText = elText.slice(0, -1);
+        element.text(elText + '...');
+        elHeight = element.node().getBBox().height;
+    }
+  }
+
+  labels.each(truncate)
 
   // Highlight single node and its arcs on mouseover
   nodes
@@ -107,10 +124,19 @@ d3.json("/sound_changes").then(function(data) {
     
     // Get ids to be highlighted from arc data
     let highlight_ids = new Set(m_arcs.map(arc => [arc.source, arc.target]).flat())
+    console.log("highlight_ids:", highlight_ids)
     
     // Pass to nodes
     nodes
       .filter(node => highlight_ids.has(node.id))
+      .classed("highlighted", true)
+
+    // Pass to node labels
+    labels
+      .filter(function(d, i) {
+        return highlight_ids.has(i+1)
+      })
+      // .filter(d, i => highlight_ids.has(i))
       .classed("highlighted", true)
 
     // Sort, to draw highlighted arcs on top (z-index doesn't work inside svg)
@@ -127,6 +153,7 @@ d3.json("/sound_changes").then(function(data) {
   .on("mouseout", function(event,d){
     nodes.classed("highlighted", true)
     arcs.classed("highlighted", false)
+    labels.classed("highlighted", false)
   })
 
   // Semantic zoom behavior
@@ -136,6 +163,7 @@ d3.json("/sound_changes").then(function(data) {
 
     // Get new x positions from new scale
     nodes.attr("cx", sc => newScale(sc.id))
+    labels.attr("x", sc => newScale(sc.id))
 
     // Redraw arcs based on new scale
     arcs

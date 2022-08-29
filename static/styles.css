@@ -17,7 +17,11 @@ path.highlighted {
 }
 
 .label {
-    fill: #69b3b2;
+    fill: #b8b8b8;
     text-anchor: start;
     writing-mode: vertical-rl;
+}
+
+.label.highlighted {
+    fill: #69b3b2;
 }
