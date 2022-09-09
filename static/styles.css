@@ -29,6 +29,11 @@ path.highlighted {
 #tooltip {
     position: absolute;
     visibility: hidden;
+    background-color: #191919;
+    color: #fcfcfd;
+    border-radius: 6px;
+    padding: 5px;
+    opacity: 80%;
 }
 
 #tooltip.highlighted {
