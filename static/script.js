@@ -1,18 +1,20 @@
 // Draw interactable and zoomable arc diagram
 // Based on https://d3-graph-gallery.com/graph/arc_highlight.html
 const CIRCLE_RADIUS = 6
+// Calculated from finished graph
+const GRAPH_ASPECT_RATIO = 2.3
 
 // Get current diagram (div) width and size chart and margins accordingly
 let curDiagWidth = document
   .getElementById("arc_diagram")
   .getBoundingClientRect()
   .width
-let curDiagHeight = curDiagWidth / 2
+let curDiagHeight = curDiagWidth / GRAPH_ASPECT_RATIO + CIRCLE_RADIUS
 // Add 1/4th of self for labels
 let labelAreaHeight = curDiagHeight / 3
 curDiagHeight = curDiagHeight + labelAreaHeight
 
-const margin = {top: 0, right: CIRCLE_RADIUS, bottom: 0, left: CIRCLE_RADIUS}
+const margin = {top: CIRCLE_RADIUS, right: CIRCLE_RADIUS, bottom: 0, left: CIRCLE_RADIUS}
 const width = curDiagWidth - margin.left - margin.right
 const height = curDiagHeight - margin.top - margin.bottom
 
@@ -148,7 +150,7 @@ d3.json("/sound_changes").then(function(data) {
         }
       })
   })
-  .on("mouseout", function(event,d){
+  .on("mouseout", function(){
     nodes.classed("highlighted", true)
     arcs.classed("highlighted", false)
     labels.classed("highlighted", false)
