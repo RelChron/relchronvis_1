@@ -25,3 +25,12 @@ path.highlighted {
 .label.highlighted {
     fill: #69b3b2;
 }
+
+#tooltip {
+    position: absolute;
+    visibility: hidden;
+}
+
+#tooltip.highlighted {
+    visibility: visible;
+}

@@ -113,7 +113,9 @@ d3.json("/sound_changes").then(function(data) {
 
   labels.each(truncate)
 
-  // Highlight single node and its arcs on mouseover
+  let tooltip = d3.select("#tooltip")
+
+  // Highlight single node and its arcs on mouseover, and add tooltip
   nodes
   .on("mouseover", function(event, m_node){
     nodes.classed("highlighted", false)
@@ -149,11 +151,22 @@ d3.json("/sound_changes").then(function(data) {
           return -1;  // Send to bottom
         }
       })
+
+    tooltip
+      .html(m_node.name)
+      .classed("highlighted", true)
+  })
+  .on("mousemove", function(event, m_node){
+    // TODO Position it in such a way that it never covers nodes
+    tooltip
+      .style("left", event.x - 50 + "px")
+      .style("top", event.y - 50 + "px")
   })
   .on("mouseout", function(){
     nodes.classed("highlighted", true)
     arcs.classed("highlighted", false)
     labels.classed("highlighted", false)
+    tooltip.classed("highlighted", false)
   })
 
   // Semantic zoom behavior
