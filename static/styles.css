@@ -34,6 +34,7 @@ path.highlighted {
     border-radius: 6px;
     padding: 5px;
     opacity: 80%;
+    transform: translate(-50%);
 }
 
 #tooltip.highlighted {

@@ -159,8 +159,8 @@ d3.json("/sound_changes").then(function(data) {
   .on("mousemove", function(event, m_node){
     // TODO Position it in such a way that it never covers nodes
     tooltip
-      .style("left", event.x - 50 + "px")
-      .style("top", event.y - 50 + "px")
+      .style("left", event.x + "px")
+      .style("top", event.y + 30 + "px")
   })
   .on("mouseout", function(){
     nodes.classed("highlighted", true)
@@ -204,6 +204,9 @@ d3.json("/sound_changes").then(function(data) {
         ]       
         .join(' ');             
       })
+    
+    // Hide tooltips when zooming
+    tooltip.classed("highlighted", false)
   }
 
   // These lines are necessary for zoom to work
