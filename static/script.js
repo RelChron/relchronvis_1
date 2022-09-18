@@ -120,14 +120,16 @@ d3.json("/sound_changes").then(function(data) {
   .on("mouseover", function(event, m_node){
     nodes.classed("highlighted", false)
     
-    let m_arcs = arcs
+    let mArcs = arcs
       // If function returns false, element is filtered out of selection
       .filter(arc => arc.source === m_node.id || arc.target === m_node.id)
       .classed("highlighted", true)
-      .data()
+
+    let mArcsData = mArcs.data()
     
     // Get ids to be highlighted from arc data
-    let highlight_ids = new Set(m_arcs.map(arc => [arc.source, arc.target]).flat())
+    // let highlight_ids = new Set(m_arcs.map(arc => [arc.source, arc.target]).flat())
+    let highlight_ids = new Set(mArcsData.map(arc => [arc.source, arc.target]).flat())
     
     // Pass to nodes and labels
     nodes
@@ -135,10 +137,8 @@ d3.json("/sound_changes").then(function(data) {
       .classed("highlighted", true)
 
     labels
-      .filter(function(d, i) {
-        return highlight_ids.has(i+1)
-      })
-      // .filter(d, i => highlight_ids.has(i))
+      // Removed (d, i) from input, not sure why it doesn't break stuff?
+      .filter(i => highlight_ids.has(i + 1))
       .classed("highlighted", true)
 
     // Sort, to draw highlighted arcs on top (z-index doesn't work inside svg)
