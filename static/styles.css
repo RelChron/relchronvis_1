@@ -26,7 +26,7 @@ path.highlighted {
     fill: #69b3b2;
 }
 
-#node-tip {
+.tooltip {
     position: absolute;
     visibility: hidden;
     background-color: #191919;
@@ -37,6 +37,6 @@ path.highlighted {
     transform: translate(-50%);
 }
 
-#node-tip.highlighted {
+.tooltip.highlighted {
     visibility: visible;
 }

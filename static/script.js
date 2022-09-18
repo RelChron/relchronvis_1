@@ -68,6 +68,31 @@ d3.json("/sound_changes").then(function(data) {
         .join(' ');
     })
 
+  // Get array of path coordinates (we need the top middle for tooltips)
+  const arcElements = document.getElementsByTagName("path")
+  let arcApexes = []
+  for (const element of arcElements) {
+    posData = element.getBoundingClientRect()
+    const left = posData.left + posData.width / 2
+    const top = posData.top
+    arcApexes.push({"left": left, "top": top})
+  }
+
+  // console.log(arcApexes)
+
+  console.log(d3.zip(data.relations, arcApexes))
+
+  let arcTooltips = d3.select("#arc-tooltips")
+    .selectAll("mytooltips")
+    // Zip data with coordinates
+    .data(d3.zip(data.relations, arcApexes))
+    .enter()
+    .append("div")
+      .style("left", data => data[1].left + "px")
+      .style("top", data => data[1].top + "px")
+      .html(data => data[0].d_reason)
+      .attr("class", "tooltip highlighted")
+
   // Nodes
   let nodes = svg
     // Make elements called mynodes, this doesn't appear in the final html
@@ -113,9 +138,9 @@ d3.json("/sound_changes").then(function(data) {
 
   labels.each(truncate)
 
-  let node_tip = d3.select("#node-tip")
+  let nodeTooltip = d3.select("#node-tooltip")
 
-  // Highlight single node and its arcs on mouseover, and add node_tip
+  // Highlight single node and its arcs on mouseover, and add tooltip
   nodes
   .on("mouseover", function(event, m_node){
     nodes.classed("highlighted", false)
@@ -152,12 +177,12 @@ d3.json("/sound_changes").then(function(data) {
         }
       })
 
-    node_tip
+    nodeTooltip
       .html(m_node.name)
       .classed("highlighted", true)
   })
   .on("mousemove", function(event, m_node){
-    node_tip
+    nodeTooltip
       .style("left", event.x + "px")
       .style("top", event.y + 30 + "px")
   })
@@ -165,7 +190,7 @@ d3.json("/sound_changes").then(function(data) {
     nodes.classed("highlighted", true)
     arcs.classed("highlighted", false)
     labels.classed("highlighted", false)
-    node_tip.classed("highlighted", false)
+    nodeTooltip.classed("highlighted", false)
   })
 
   // Semantic zoom behavior
@@ -205,7 +230,7 @@ d3.json("/sound_changes").then(function(data) {
       })
     
     // Hide node_tip when zooming
-    node_tip.classed("highlighted", false)
+    nodeTooltip.classed("highlighted", false)
   }
 
   // These lines are necessary for zoom to work
