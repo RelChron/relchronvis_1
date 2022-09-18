@@ -1,4 +1,4 @@
-// Draw interactable and zoomable arc diagram
+// Draw interactive arc diagram
 // Based on https://d3-graph-gallery.com/graph/arc_highlight.html
 const CIRCLE_RADIUS = 6
 // Calculated from finished graph
@@ -72,7 +72,7 @@ d3.json("/sound_changes").then(function(data) {
   let nodes = svg
     // Make elements called mynodes, this doesn't appear in the final html
     .selectAll("mynodes")
-    // Bind this selection to the data (data.nodes)
+    // Bind this selection to the data (data.changes)
     .data(data.changes)
     // Create new elements (?) now that we bound data
     // Enter holds info about the "missing elements"
