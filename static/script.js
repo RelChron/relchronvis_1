@@ -10,7 +10,7 @@ let curDiagWidth = document
   .getBoundingClientRect()
   .width
 let curDiagHeight = curDiagWidth / GRAPH_ASPECT_RATIO + CIRCLE_RADIUS
-// Add 1/4th of self for labels
+// Add a third of self for labels
 let labelAreaHeight = curDiagHeight / 3
 curDiagHeight = curDiagHeight + labelAreaHeight
 
@@ -25,6 +25,7 @@ const GRAPH_BOTTOM_Y = height - labelAreaHeight
 console.log("curDiagWidth:", curDiagWidth)
 console.log("curDiagHeight:", curDiagHeight)
 console.log("labelAreaHeight:", labelAreaHeight)
+console.log("GRAPH_BOTTOM_Y:", GRAPH_BOTTOM_Y)
 
 
 // Append the svg object to the body of the page
@@ -69,6 +70,7 @@ d3.json("/sound_changes").then(function(data) {
     })
 
   // Get array of path coordinates (we need the top middle for tooltips)
+  // TODO: Change to D3 syntax for consistency
   const arcElements = document.getElementsByTagName("path")
   let arcApexes = []
   for (const element of arcElements) {
@@ -78,10 +80,7 @@ d3.json("/sound_changes").then(function(data) {
     arcApexes.push({"left": left, "top": top})
   }
 
-  // console.log(arcApexes)
-
-  console.log(d3.zip(data.relations, arcApexes))
-
+  // Arc Tooltips
   let arcTooltips = d3.select("#arc-tooltips")
     .selectAll("mytooltips")
     // Zip data with coordinates
@@ -89,23 +88,21 @@ d3.json("/sound_changes").then(function(data) {
     .enter()
     .append("div")
       .style("left", data => data[1].left + "px")
-      .style("top", data => data[1].top + "px")
+      .style("top", data => {
+        // Labels are about 21px high currently
+        let lowestAllowedLabelHeight = GRAPH_BOTTOM_Y - CIRCLE_RADIUS - 22
+        let labelHeight = Math.min(data[1].top - 12, lowestAllowedLabelHeight)
+        return labelHeight + "px"
+      })
       .html(data => data[0].d_reason)
-      .attr("class", "tooltip highlighted")
+      .attr("class", "tooltip")
 
   // Nodes
   let nodes = svg
-    // Make elements called mynodes, this doesn't appear in the final html
     .selectAll("mynodes")
-    // Bind this selection to the data (data.changes)
     .data(data.changes)
-    // Create new elements (?) now that we bound data
-    // Enter holds info about the "missing elements"
     .enter()
-    // Add actual html for each "mynode" element
     .append("circle")
-      // Get cx by passing sc.id into the scale function pointScale()
-      // I think the node variable holds a node object for each mynode element
       .attr("cx", sc => xScale(sc.id))
       .attr("cy", GRAPH_BOTTOM_Y)
       .attr("r", CIRCLE_RADIUS)
@@ -140,7 +137,7 @@ d3.json("/sound_changes").then(function(data) {
 
   let nodeTooltip = d3.select("#node-tooltip")
 
-  // Highlight single node and its arcs on mouseover, and add tooltip
+  // Mouse interactions
   nodes
   .on("mouseover", function(event, m_node){
     nodes.classed("highlighted", false)
@@ -153,7 +150,6 @@ d3.json("/sound_changes").then(function(data) {
     let mArcsData = mArcs.data()
     
     // Get ids to be highlighted from arc data
-    // let highlight_ids = new Set(m_arcs.map(arc => [arc.source, arc.target]).flat())
     let highlight_ids = new Set(mArcsData.map(arc => [arc.source, arc.target]).flat())
     
     // Pass to nodes and labels
@@ -180,6 +176,10 @@ d3.json("/sound_changes").then(function(data) {
     nodeTooltip
       .html(m_node.name)
       .classed("highlighted", true)
+
+    arcTooltips
+      .filter(d => d[0].source === m_node.id || d[0].target === m_node.id)
+      .classed("highlighted", true)
   })
   .on("mousemove", function(event, m_node){
     nodeTooltip
@@ -191,6 +191,7 @@ d3.json("/sound_changes").then(function(data) {
     arcs.classed("highlighted", false)
     labels.classed("highlighted", false)
     nodeTooltip.classed("highlighted", false)
+    arcTooltips.classed("highlighted", false)
   })
 
   // Semantic zoom behavior
