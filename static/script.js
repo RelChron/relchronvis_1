@@ -119,7 +119,7 @@ d3.json("/sound_changes").then(function(data) {
   nodes
   .on("mouseover", function(event, m_node){
     nodes.classed("highlighted", false)
-    // d3.select(this).classed("highlighted", true)
+    
     let m_arcs = arcs
       // If function returns false, element is filtered out of selection
       .filter(arc => arc.source === m_node.id || arc.target === m_node.id)
