@@ -5,7 +5,7 @@
 # A Relative Chronology of Sound Changes in Russian
 This web app visualizes a relative chronology of sound changes that have occurred in the Russian language from Proto-Slavic to the present day. It allows users to inspect individual changes and their relative datings and view examples.
 
-# Running the Project Locally
+## Running the Project Locally
 The web app runs on a Python flask server and can be run locally.
 Step-by-step guide:
 - Install [Python](https://www.python.org/downloads/) if you haven't already
