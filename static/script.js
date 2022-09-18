@@ -113,9 +113,9 @@ d3.json("/sound_changes").then(function(data) {
 
   labels.each(truncate)
 
-  let tooltip = d3.select("#tooltip")
+  let node_tip = d3.select("#node-tip")
 
-  // Highlight single node and its arcs on mouseover, and add tooltip
+  // Highlight single node and its arcs on mouseover, and add node_tip
   nodes
   .on("mouseover", function(event, m_node){
     nodes.classed("highlighted", false)
@@ -152,13 +152,12 @@ d3.json("/sound_changes").then(function(data) {
         }
       })
 
-    tooltip
+    node_tip
       .html(m_node.name)
       .classed("highlighted", true)
   })
   .on("mousemove", function(event, m_node){
-    // TODO Position it in such a way that it never covers nodes
-    tooltip
+    node_tip
       .style("left", event.x + "px")
       .style("top", event.y + 30 + "px")
   })
@@ -166,7 +165,7 @@ d3.json("/sound_changes").then(function(data) {
     nodes.classed("highlighted", true)
     arcs.classed("highlighted", false)
     labels.classed("highlighted", false)
-    tooltip.classed("highlighted", false)
+    node_tip.classed("highlighted", false)
   })
 
   // Semantic zoom behavior
@@ -205,8 +204,8 @@ d3.json("/sound_changes").then(function(data) {
         .join(' ');             
       })
     
-    // Hide tooltips when zooming
-    tooltip.classed("highlighted", false)
+    // Hide node_tip when zooming
+    node_tip.classed("highlighted", false)
   }
 
   // These lines are necessary for zoom to work
