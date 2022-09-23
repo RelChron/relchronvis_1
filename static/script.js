@@ -189,6 +189,8 @@ d3.json("/sound_changes").then(function(data) {
     arcLabels
       .filter(rel => rel.source === m_node.id || rel.target === m_node.id)
       .classed("locked", true)
+
+    d3.select(".sidebar").text(m_node.descr)
   })
 
   // SEMANTIC ZOOM BEHAVIOR
