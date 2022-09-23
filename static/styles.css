@@ -3,7 +3,8 @@ circle {
     fill: #b8b8b8;
 }
 
-circle.highlighted {
+circle.highlighted,
+circle.locked {
     fill: #69b3b2;
 }
 
@@ -12,7 +13,8 @@ path {
     fill: none;
 }
 
-path.highlighted {
+path.highlighted,
+path.locked {
     stroke: #69b3b2;
     stroke-width: 4;
 }
@@ -25,7 +27,8 @@ path.highlighted {
     writing-mode: vertical-rl;
 }
 
-.node-label.highlighted {
+.node-label.highlighted,
+.node-label.locked {
     fill: #69b3b2;
 }
 
@@ -37,7 +40,8 @@ textPath {
     visibility: hidden;
 }
 
-textPath.highlighted {
+textPath.highlighted,
+textPath.locked {
     fill: black;
     visibility: visible;
 }

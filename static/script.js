@@ -97,9 +97,7 @@ d3.json("/sound_changes").then(function(data) {
 
   // MOUSE INTERACTIONS
   nodes
-  .on("mouseover", function(event, m_node){
-    nodes.classed("highlighted", false)
-    
+  .on("mouseover", (event, m_node) => {
     let mArcs = arcs
       // If function returns false, element is filtered out of selection
       .filter(arc => arc.source === m_node.id || arc.target === m_node.id)
@@ -130,23 +128,70 @@ d3.json("/sound_changes").then(function(data) {
         }
       })
 
-    nodeTooltip
-      .html(m_node.name)
-      .classed("highlighted", true)
-
     arcLabels
       .filter(rel => rel.source === m_node.id || rel.target === m_node.id)
       .classed("highlighted", true)
+
+    nodeTooltip
+      .html(m_node.name)
+      .classed("highlighted", true)
   })
-  .on("mousemove", function(event, m_node){
+  .on("mousemove", (event, m_node) => {
     nodeTooltip
       .style("left", event.x + "px")
       .style("top", event.y + 30 + "px")
   })
-  .on("mouseout", function(){
-    for (const selection of [nodes, arcs, nodeLabels, nodeTooltip, arcLabels]) {
+  .on("mouseout", () => {
+    for (const selection of [nodes, nodeLabels, arcs, arcLabels, nodeTooltip]) {
       selection.classed("highlighted", false)
     }
+  })
+  .on("dblclick", function(event, m_node) {
+    // Same as mouseover, but we set things to "locked" (or toggle lock off)
+    const nodeIsLocked = d3.select(this).classed("locked")
+    
+    for (const selection of [nodes, nodeLabels, arcs, arcLabels]) {
+      selection.classed("locked", false)
+    }
+
+    if (nodeIsLocked) {
+      console.log("You double clicked on a locked node! Congrats!")
+      return
+    }
+
+    let mArcs = arcs
+      // If function returns false, element is filtered out of selection
+      .filter(arc => arc.source === m_node.id || arc.target === m_node.id)
+      .classed("locked", true)
+
+    let mArcsData = mArcs.data()
+    
+    // Get ids to be highlighted from arc data
+    let highlight_ids = new Set(mArcsData.map(arc => [arc.source, arc.target]).flat())
+    
+    // Pass to nodes and nodeLabels
+    nodes
+      .filter(node => highlight_ids.has(node.id))
+      .classed("locked", true)
+
+    nodeLabels
+      .filter((d, i) => highlight_ids.has(i + 1))
+      .classed("locked", true)
+
+    // Sort, to draw highlighted arcs on top (z-index doesn't work inside svg)
+    // From https://stackoverflow.com/a/13794019
+    arcs
+      .sort(arc => {
+        if (arc.source === m_node.id || arc.target === m_node.id) {
+          return 1;   // Bring to top
+        } else {
+          return -1;  // Send to bottom
+        }
+      })
+
+    arcLabels
+      .filter(rel => rel.source === m_node.id || rel.target === m_node.id)
+      .classed("locked", true)
   })
 
   // SEMANTIC ZOOM BEHAVIOR
