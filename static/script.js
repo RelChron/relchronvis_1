@@ -2,7 +2,7 @@
 // Based on https://d3-graph-gallery.com/graph/arc_highlight.html
 const CIRCLE_RADIUS = 6
 // Calculated from finished graph
-const GRAPH_ASPECT_RATIO = 2.3
+const GRAPH_ASPECT_RATIO = 2.2
 
 // Get current diagram (div) width and size chart and margins accordingly
 let curDiagWidth = document
