@@ -236,5 +236,7 @@ d3.json("/sound_changes").then(function(data) {
       
       nodeTooltip.classed("highlighted", false)
     })
-  d3.select('svg').call(zoom);
+  d3.select('svg')
+    .call(zoom)
+    .on("dblclick.zoom", null) // Prevent default double click zoom
 })
