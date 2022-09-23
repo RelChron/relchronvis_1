@@ -1,49 +1,35 @@
 // Draw interactive arc diagram
 // Based on https://d3-graph-gallery.com/graph/arc_highlight.html
+
 const CIRCLE_RADIUS = 6
-// Calculated from finished graph
-const GRAPH_ASPECT_RATIO = 2.2
+const DIAG_ASPECT_RATIO = 2.25
+const OUTER_WIDTH = document.getElementById("arc_diagram")
+  .getBoundingClientRect().width
+const OUTER_HEIGHT_UNLABELED = OUTER_WIDTH / DIAG_ASPECT_RATIO + CIRCLE_RADIUS
+const LABEL_AREA_HEIGHT = OUTER_HEIGHT_UNLABELED / 3
+const OUTER_HEIGHT = OUTER_HEIGHT_UNLABELED + LABEL_AREA_HEIGHT
 
-// Get current diagram (div) width and size chart and margins accordingly
-let curDiagWidth = document
-  .getElementById("arc_diagram")
-  .getBoundingClientRect()
-  .width
-let curDiagHeight = curDiagWidth / GRAPH_ASPECT_RATIO + CIRCLE_RADIUS
-// Add a third of self for nodeLabels
-let labelAreaHeight = curDiagHeight / 3
-curDiagHeight = curDiagHeight + labelAreaHeight
+const MARGIN = {TOP: CIRCLE_RADIUS, RIGHT: CIRCLE_RADIUS, BOTTOM: 0,
+  LEFT: CIRCLE_RADIUS}
+const INNER_WIDTH = OUTER_WIDTH - MARGIN.LEFT - MARGIN.RIGHT
+const INNER_HEIGHT = OUTER_HEIGHT - MARGIN.TOP - MARGIN.BOTTOM
+const GRAPH_BOTTOM_Y = INNER_HEIGHT - LABEL_AREA_HEIGHT
 
-const margin = {top: CIRCLE_RADIUS, right: CIRCLE_RADIUS, bottom: 0, left: CIRCLE_RADIUS}
-const width = curDiagWidth - margin.left - margin.right
-const height = curDiagHeight - margin.top - margin.bottom
-
-// Offset level of nodes by the space needed for nodeLabels
-const GRAPH_BOTTOM_Y = height - labelAreaHeight
-
-// Debug
-console.log("curDiagWidth:", curDiagWidth)
-console.log("curDiagHeight:", curDiagHeight)
-console.log("labelAreaHeight:", labelAreaHeight)
-console.log("GRAPH_BOTTOM_Y:", GRAPH_BOTTOM_Y)
-
-
-// Append the svg object to the body of the page
+// SVG AND GROUPING ELEMENT SETUP
 const svg = d3.select("#arc_diagram")
   .append("svg")
-    .attr("width", curDiagWidth)
-    .attr("height", curDiagHeight)
-  // g is a grouping element that inherits properties to children
+    .attr("width", OUTER_WIDTH)
+    .attr("height", OUTER_HEIGHT)
   .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")");
 
+// EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
+// D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
 d3.json("/sound_changes").then(function(data) {
-  // Scale
   let xScale = d3.scaleLinear()
     .domain([1, data.changes.length])
-    .range([0, width])
+    .range([0, INNER_WIDTH])
 
-  // Arcs
   let arcs = svg
     .selectAll("myArcs")
     .data(data.relations)
@@ -51,28 +37,17 @@ d3.json("/sound_changes").then(function(data) {
     .append("path")
       .attr("id", (d, i) => "arc-" + i )
       .attr("d", function (relation) {
-        // X position of start node on the X axis
         start = xScale(relation.source)
-        // X position of end node
         end = xScale(relation.target)
-        // The arc starts at the coordinate 
-        // x=start, y=height-30 (where the starting node is)
-        // This means we're gonna build an elliptical arc
         return ["M", start, GRAPH_BOTTOM_Y,
           "A",
-          // Next 2 lines are the coordinates of the inflexion point.
-          // Height of this point is proportional with start - end distance
           (start - end)/2, ",",
           (start - end)/2, 0, 0, ",",
-          // We always want the arc on top. So if end is before start, 
-          // putting 0 here turn the arc upside down.
           start < end ? 1 : 0, end, ",", GRAPH_BOTTOM_Y]
           .join(' ');
-    })
+      })
 
-  // Arc Labels
   svg.append("text").attr("id", "arc-labels")
-
   let arcLabels = d3.select("#arc-labels")
     .selectAll("myArcLabels")
     .data(data.relations)
@@ -82,7 +57,6 @@ d3.json("/sound_changes").then(function(data) {
       .attr("startOffset", "50%")
       .html(relation => relation.d_reason)
 
-  // Nodes
   let nodes = svg
     .selectAll("myNodes")
     .data(data.changes)
@@ -93,7 +67,6 @@ d3.json("/sound_changes").then(function(data) {
       .attr("r", CIRCLE_RADIUS)
       .attr("class", "highlighted")
 
-  // Node Labels
   let nodeLabels = svg
       .selectAll("myNodeLabels")
       .data(data.changes)
@@ -103,7 +76,7 @@ d3.json("/sound_changes").then(function(data) {
         // It starts drawing in the middle of the circle
         .attr("y", GRAPH_BOTTOM_Y + CIRCLE_RADIUS + 2)
         .text(sc => sc.name)
-        .attr("class", "label")
+        .attr("class", "node-label")
 
   // TODO: Make more efficient
   // Inspired by https://stackoverflow.com/a/27723725
@@ -111,7 +84,7 @@ d3.json("/sound_changes").then(function(data) {
     let element = d3.select(this)
     let elHeight = element.node().getBBox().height
     let elText = element.text();
-    while (elHeight + 10 > labelAreaHeight && elText.length > 0) {
+    while (elHeight + 10 > LABEL_AREA_HEIGHT && elText.length > 0) {
         elText = elText.slice(0, -1);
         element.text(elText + '...');
         elHeight = element.node().getBBox().height;
@@ -122,7 +95,7 @@ d3.json("/sound_changes").then(function(data) {
 
   let nodeTooltip = d3.select("#node-tooltip")
 
-  // Mouse interactions
+  // MOUSE INTERACTIONS
   nodes
   .on("mouseover", function(event, m_node){
     nodes.classed("highlighted", false)
@@ -143,8 +116,7 @@ d3.json("/sound_changes").then(function(data) {
       .classed("highlighted", true)
 
     nodeLabels
-      // Removed (d, i) from input, not sure why it doesn't break stuff?
-      .filter(i => highlight_ids.has(i + 1))
+      .filter((d, i) => highlight_ids.has(i + 1))
       .classed("highlighted", true)
 
     // Sort, to draw highlighted arcs on top (z-index doesn't work inside svg)
@@ -172,25 +144,22 @@ d3.json("/sound_changes").then(function(data) {
       .style("top", event.y + 30 + "px")
   })
   .on("mouseout", function(){
-    nodes.classed("highlighted", true)
-    arcs.classed("highlighted", false)
-    nodeLabels.classed("highlighted", false)
-    nodeTooltip.classed("highlighted", false)
-    arcLabels.classed("highlighted", false)
+    for (const selection of [nodes, arcs, nodeLabels, nodeTooltip, arcLabels]) {
+      selection.classed("highlighted", false)
+    }
   })
 
-  // Zoom behavior (semantic zoom)
+  // SEMANTIC ZOOM BEHAVIOR
   let zoom = d3.zoom()
+    // Limit scale and allow pan only inside diagram bounds
     .scaleExtent([1, 10])
-    // Allow pan only inside diagram bounds
-    .translateExtent([[0, 0], [curDiagWidth, curDiagHeight]])
+    .translateExtent([[0, 0], [OUTER_WIDTH, OUTER_HEIGHT]])
 
-    // The meat of the zoom behavior
     .on("zoom", zoomEvent => {
       transform = zoomEvent.transform
       let newScale = transform.rescaleX(xScale);
 
-      // Get new x positions from new scale
+      // Set new x positions from new scale
       nodes.attr("cx", sc => newScale(sc.id))
       nodeLabels.attr("x", sc => newScale(sc.id))
 
@@ -200,7 +169,6 @@ d3.json("/sound_changes").then(function(data) {
           // Get previous arc y radius, it stays constant
           const d_string = d3.select(this).attr("d")
           const ry = d_string.split(" ")[6]
-
           start = newScale(relation.source)
           end = newScale(relation.target)
 
@@ -211,7 +179,7 @@ d3.json("/sound_changes").then(function(data) {
             GRAPH_BOTTOM_Y,         // Starting y
             "A",                    // Elliptical Arc Curve
             (start - end)/2, ",",   // rx
-            ry,                     // ry
+            ry,                     // ry (from above)
             0,                      // angle
             0, ",",                 // large-arc-flag
             start < end ? 1 : 0,    // sweep-flag
@@ -221,7 +189,6 @@ d3.json("/sound_changes").then(function(data) {
           .join(' ');             
         })
       
-      // Hide node_tip when zooming
       nodeTooltip.classed("highlighted", false)
     })
   d3.select('svg').call(zoom);

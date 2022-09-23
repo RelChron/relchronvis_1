@@ -1,3 +1,4 @@
+/* Nodes and Arcs */
 circle {
     fill: #b8b8b8;
 }
@@ -11,14 +12,29 @@ path {
     fill: none;
 }
 
+path.highlighted {
+    stroke: #69b3b2;
+    stroke-width: 4;
+}
+
+
+/* Node Labels */
+.node-label {
+    fill: #b8b8b8;
+    text-anchor: start;
+    writing-mode: vertical-rl;
+}
+
+.node-label.highlighted {
+    fill: #69b3b2;
+}
+
+
+/* Arc Labels */
 textPath {
     fill: #b8b8b8;
     text-anchor: middle; 
     visibility: hidden;
-}
-
-#arc-labels {
-    transform: translateY(-5px);
 }
 
 textPath.highlighted {
@@ -26,21 +42,12 @@ textPath.highlighted {
     visibility: visible;
 }
 
-path.highlighted {
-    stroke: #69b3b2;
-    stroke-width: 4;
+#arc-labels {
+    transform: translateY(-5px);
 }
 
-.label {
-    fill: #b8b8b8;
-    text-anchor: start;
-    writing-mode: vertical-rl;
-}
 
-.label.highlighted {
-    fill: #69b3b2;
-}
-
+/* Tooltip on Node Mouseover */
 .tooltip {
     position: absolute;
     visibility: hidden;
