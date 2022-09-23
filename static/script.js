@@ -154,10 +154,7 @@ d3.json("/sound_changes").then(function(data) {
       selection.classed("locked", false)
     }
 
-    if (nodeIsLocked) {
-      console.log("You double clicked on a locked node! Congrats!")
-      return
-    }
+    if (nodeIsLocked) {return}
 
     let mArcs = arcs
       // If function returns false, element is filtered out of selection
@@ -236,7 +233,7 @@ d3.json("/sound_changes").then(function(data) {
       
       nodeTooltip.classed("highlighted", false)
     })
-  d3.select('svg')
-    .call(zoom)
-    .on("dblclick.zoom", null) // Prevent default double click zoom
+  d3.select('svg').call(zoom)
+    // Prevent default double click zoom
+    .on("dblclick.zoom", null)
 })
