@@ -179,7 +179,7 @@ d3.json("/sound_changes").then(function(data) {
     arcLabels.classed("highlighted", false)
   })
 
-  // Zoom behavior (semantic)
+  // Zoom behavior (semantic zoom)
   let zoom = d3.zoom()
     .scaleExtent([1, 10])
     // Allow pan only inside diagram bounds
