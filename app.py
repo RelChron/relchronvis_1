@@ -13,7 +13,7 @@ def give_sc_data():
     return send_file("data/sound_changes.json")
 
 
-# Accept a TSV (.txt) file (former excel sheet) and save it as json
+# Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation (TODO)
 def import_tsv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
     with open(infile_path, encoding="utf-8") as infile:
@@ -25,20 +25,31 @@ def import_tsv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
 
         # Remember what row (i.e. source) we're at, start counting after headers
         source_id = 1
+        # Use a line num counter because csv_reader.line_num is buggy
+        line_num = 0
 
         for row in csv_reader:
             # Extract sound changes
-            if csv_reader.line_num == 1:
+            if line_num == 0:
                 for i in range(1, n_of_sound_changes + 1):
                     sound_change = {
                         "id": i, 
                         "name": row[str(i)]
                     }
                     out_dict["changes"].append(sound_change)
+                line_num = line_num + 1
+                continue
+
+            # Extract sound change descriptions
+            elif line_num == 1:
+                for i in range(n_of_sound_changes):
+                    out_dict["changes"][i]["descr"] = row[str(i+1)]
+                line_num = line_num + 1
                 continue
 
             # Skip label row
-            elif csv_reader.line_num == 2:
+            elif line_num == 2:
+                line_num = line_num + 1
                 continue
 
             # Extract relations
@@ -56,6 +67,7 @@ def import_tsv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
                     out_dict["relations"].append(relation)
 
             source_id = source_id + 1
+            line_num = line_num + 1
 
     with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
         outfile.write(json.dumps(out_dict))
