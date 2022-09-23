@@ -11,6 +11,15 @@ path {
     fill: none;
 }
 
+textPath {
+    fill: #b8b8b8;
+    text-anchor: middle;
+}
+
+textPath.highlighted {
+    fill: #69b3b2;
+}
+
 path.highlighted {
     stroke: #69b3b2;
     stroke-width: 4;
