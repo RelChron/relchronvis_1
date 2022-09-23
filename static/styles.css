@@ -13,11 +13,17 @@ path {
 
 textPath {
     fill: #b8b8b8;
-    text-anchor: middle;
+    text-anchor: middle; 
+    visibility: hidden;
+}
+
+#arc-labels {
+    transform: translateY(-5px);
 }
 
 textPath.highlighted {
-    fill: #69b3b2;
+    fill: black;
+    visibility: visible;
 }
 
 path.highlighted {
