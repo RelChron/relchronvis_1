@@ -148,7 +148,8 @@ d3.json("/sound_changes").then(function(data) {
   })
   .on("dblclick", function(event, m_node) {
     // Same as mouseover, but we set things to "locked" (or toggle lock off)
-    const nodeIsOrigin = d3.select(this).classed("lock-origin")
+    // NB: Selection with "this" only works with non-arrow function def
+    let nodeIsOrigin = d3.select(this).classed("lock-origin")
     
     for (const selection of [nodes, nodeLabels, arcs, arcLabels]) {
       selection.classed("locked", false)
@@ -201,6 +202,15 @@ d3.json("/sound_changes").then(function(data) {
     d3.select("#sc-card-header").text(m_node.name)
     d3.select("#sc-card-body").text(m_node.descr)
     d3.select("#sc-card").classed("highlighted", true)
+  })
+
+  arcLabels
+  .on("click", function(event, m_arc) {
+    let header_string = m_arc.source + " vor " + m_arc.target + " wegen " 
+      + m_arc.d_reason + ":"
+
+    d3.select("#rel-card-header").text(header_string)
+    d3.select("#rel-card").classed("highlighted", true)
   })
 
   // SEMANTIC ZOOM BEHAVIOR
