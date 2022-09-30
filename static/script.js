@@ -148,13 +148,21 @@ d3.json("/sound_changes").then(function(data) {
   })
   .on("dblclick", function(event, m_node) {
     // Same as mouseover, but we set things to "locked" (or toggle lock off)
-    const nodeIsLocked = d3.select(this).classed("locked")
+    const nodeIsOrigin = d3.select(this).classed("lock-origin")
     
     for (const selection of [nodes, nodeLabels, arcs, arcLabels]) {
       selection.classed("locked", false)
+      selection.classed("lock-origin", false)
     }
 
-    if (nodeIsLocked) {return}
+    d3.select(".sidebar").text("")
+
+    // If lock origin clicked, just turn everything off. Else, toggle lock on
+    // for the appropriate elements (with all the code below)
+    if (nodeIsOrigin) {return}
+
+    // Only double-clicking the lock origin should toggle the lock fully off
+    d3.select(this).classed("lock-origin", true)
 
     let mArcs = arcs
       // If function returns false, element is filtered out of selection
