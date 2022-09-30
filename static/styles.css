@@ -69,11 +69,14 @@ textPath.locked {
 
 /* Sidebar */
 .sidebar {
-    padding-top: 10px;
+    height: 100vh;
+    overflow: auto;
 }
 
 .card {
     visibility: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .card.highlighted {
