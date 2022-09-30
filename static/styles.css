@@ -1,3 +1,7 @@
+.sidebar {
+    padding-top: 10px;
+}
+
 /* Nodes and Arcs */
 circle {
     fill: #b8b8b8;
