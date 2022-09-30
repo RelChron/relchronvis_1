@@ -155,7 +155,7 @@ d3.json("/sound_changes").then(function(data) {
       selection.classed("lock-origin", false)
     }
 
-    // d3.select(".sidebar").text("")
+    d3.select("#sc-card").classed("highlighted", false)
 
     // If lock origin clicked, just turn everything off. Else, toggle lock on
     // for the appropriate elements (with all the code below)
@@ -200,6 +200,7 @@ d3.json("/sound_changes").then(function(data) {
 
     d3.select("#sc-card-header").text(m_node.name)
     d3.select("#sc-card-body").text(m_node.descr)
+    d3.select("#sc-card").classed("highlighted", true)
   })
 
   // SEMANTIC ZOOM BEHAVIOR
