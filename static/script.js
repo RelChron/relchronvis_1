@@ -211,23 +211,31 @@ d3.json("/sound_changes").then(function(data) {
 
     arcLabels.classed("rel-card-open", false)
     d3.select("#rel-card").classed("highlighted", false)
-    d3.select("#target-sc-card").classed("highlighted", false)
+    d3.select("#second-sc-card").classed("highlighted", false)
 
     if (relCardIsOpen) {return}
-
+    
     let header_string = m_arc.source + " vor " + m_arc.target + " wegen " 
-      + m_arc.d_reason + ":"
-
+    + m_arc.d_reason + ":"
+    
+    // Select source or target change, depending on arc direction
+    // -1 because the array is 0-indexed, but IDs are 1-indexed
+    secondCardIndex = m_arc.target - 1
+    firstCardIndex = Number(d3.select("#sc-card-id").text()) - 1
+    if (firstCardIndex === secondCardIndex) {
+      secondCardIndex = m_arc.source - 1
+    }
+    
     d3.select(this).classed("rel-card-open", true)
     d3.select("#rel-card-header").text(header_string)
     d3.select("#rel-card").classed("highlighted", true)
-    d3.select("#target-sc-card-id")
-      .text(data["changes"][m_arc.target - 1]["id"])
-    d3.select("#target-sc-card-header")
-      .text(data["changes"][m_arc.target - 1]["name"])
-    d3.select("#target-sc-card-body")
-      .text(data["changes"][m_arc.target - 1]["descr"])
-    d3.select("#target-sc-card").classed("highlighted", true)
+    d3.select("#second-sc-card-id")
+      .text(data["changes"][secondCardIndex]["id"])
+    d3.select("#second-sc-card-header")
+      .text(data["changes"][secondCardIndex]["name"])
+    d3.select("#second-sc-card-body")
+      .text(data["changes"][secondCardIndex]["descr"])
+    d3.select("#second-sc-card").classed("highlighted", true)
   })
 
   // SEMANTIC ZOOM BEHAVIOR
