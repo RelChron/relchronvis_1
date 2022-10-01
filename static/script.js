@@ -75,7 +75,7 @@ d3.json("/sound_changes").then(function(data) {
         .attr("x", sc => xScale(sc.id))
         // It starts drawing in the middle of the circle
         .attr("y", GRAPH_BOTTOM_Y + CIRCLE_RADIUS + 2)
-        .text(sc => sc.name)
+        .text(sc => `${sc.id} ${sc.name}`)
         .attr("class", "node-label")
 
   // TODO: Make more efficient
