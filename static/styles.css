@@ -82,3 +82,8 @@ textPath.locked {
 .card.highlighted {
     visibility: visible;
 }
+
+/* Default bootstrap badges seem slightly too low */
+.badge {
+    transform: translateY(-1px);
+}

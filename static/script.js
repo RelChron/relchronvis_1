@@ -156,7 +156,7 @@ d3.json("/sound_changes").then(function(data) {
       selection.classed("lock-origin", false)
     }
 
-    d3.select("#sc-card").classed("highlighted", false)
+    d3.selectAll(".card").classed("highlighted", false)
 
     // If lock origin clicked, just turn everything off. Else, toggle lock on
     // for the appropriate elements (with all the code below)
@@ -199,6 +199,7 @@ d3.json("/sound_changes").then(function(data) {
       .filter(rel => rel.source === m_node.id || rel.target === m_node.id)
       .classed("locked", true)
 
+    d3.select("#sc-card-id").text(m_node.id)
     d3.select("#sc-card-header").text(m_node.name)
     d3.select("#sc-card-body").text(m_node.descr)
     d3.select("#sc-card").classed("highlighted", true)
@@ -206,11 +207,27 @@ d3.json("/sound_changes").then(function(data) {
 
   arcLabels
   .on("click", function(event, m_arc) {
+    let relCardIsOpen = d3.select(this).classed("rel-card-open")
+
+    arcLabels.classed("rel-card-open", false)
+    d3.select("#rel-card").classed("highlighted", false)
+    d3.select("#target-sc-card").classed("highlighted", false)
+
+    if (relCardIsOpen) {return}
+
     let header_string = m_arc.source + " vor " + m_arc.target + " wegen " 
       + m_arc.d_reason + ":"
 
+    d3.select(this).classed("rel-card-open", true)
     d3.select("#rel-card-header").text(header_string)
     d3.select("#rel-card").classed("highlighted", true)
+    d3.select("#target-sc-card-id")
+      .text(data["changes"][m_arc.target - 1]["id"])
+    d3.select("#target-sc-card-header")
+      .text(data["changes"][m_arc.target - 1]["name"])
+    d3.select("#target-sc-card-body")
+      .text(data["changes"][m_arc.target - 1]["descr"])
+    d3.select("#target-sc-card").classed("highlighted", true)
   })
 
   // SEMANTIC ZOOM BEHAVIOR
