@@ -88,3 +88,7 @@ textPath.locked {
 .badge {
     transform: translateY(-1px);
 }
+
+.offcanvas {
+    --bs-offcanvas-width: 200px;
+}

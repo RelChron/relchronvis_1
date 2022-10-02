@@ -203,6 +203,10 @@ d3.json("/sound_changes").then(function(data) {
     d3.select("#sc-card-header").text(m_node.name)
     d3.select("#sc-card-body").text(m_node.descr)
     d3.select("#sc-card").classed("highlighted", true)
+
+    let offcanvasDrawerEl = document.getElementById("offcanvasRight")
+    let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
+    offcanvasDrawerObj.show()
   })
 
   arcLabels
