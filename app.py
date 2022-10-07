@@ -1,5 +1,6 @@
 # Import data from csv, serve pages and data requests
 from flask import Flask, render_template, send_file
+from typing import OrderedDict
 import csv, json
 
 app = Flask(__name__)
@@ -15,7 +16,7 @@ def give_sc_data():
 
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation (TODO)
-def import_tsv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
+def import_csv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
     with open(infile_path, encoding="utf-8") as infile:
         csv_reader = csv.DictReader(infile, dialect="excel",
             # Makes first col "0", and the rest "1", "2", ..., "71" 
@@ -71,12 +72,33 @@ def import_tsv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
 
     with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
         outfile.write(json.dumps(out_dict))
-      
+
+     
+def import_csv_examples(infile_path, outfile_path):
+    out_dict = OrderedDict()
+    # "utf-8-sig" removes the BOM at the beginning of file (added by Excel). 
+    # Unsure if this will cause problems with files that don't have a BOM. 
+    with open(infile_path, encoding="utf-8-sig") as infile:
+        # Default reader takes field names from first row 
+        csv_reader = csv.DictReader(infile, dialect="excel")
+        for row in csv_reader:
+            example = {}
+            for field in row:
+                if row[field] != "":
+                    example[field] = row[field]
+            out_dict[row["russian"]] = example
+    
+    with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
+        outfile.write(json.dumps(out_dict))
 
 if __name__ == "__main__":
-    import_tsv_sound_changes(
-        infile_path="data/sound_changes.csv", 
-        outfile_path="data/sound_changes.json", 
-        n_of_sound_changes=71
+    import_csv_sound_changes(
+        infile_path = "data/sound_changes.csv", 
+        outfile_path = "data/sound_changes.json", 
+        n_of_sound_changes = 71
+    )
+    import_csv_examples(
+        infile_path = "data/examples.csv",
+        outfile_path = "data/examples.json"
     )
     app.run(debug=True, use_reloader=True)
