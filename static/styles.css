@@ -80,15 +80,7 @@ textPath.locked {
     margin-right: 20px;
 }
 
-.card.example {
-    display: none;
-}
-
 .card.highlighted {
-    display: inherit;
-}
-
-.card.example.shown {
     display: inherit;
 }
 
@@ -101,6 +93,20 @@ textPath.locked {
     transform: translateY(-1px);
 }
 
+/* Off-canvas drawer on the right */
 .offcanvas {
     --bs-offcanvas-width: 200px;
+}
+
+.card.example {
+    display: none;
+}
+
+.card.example.shown {
+    display: inherit;
+}
+
+/* Example box at the bottom */
+#example-display-box {
+    font-size: 1.5rem;
 }

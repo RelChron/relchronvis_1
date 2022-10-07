@@ -3,7 +3,7 @@
 
 const CIRCLE_RADIUS = 6
 const DIAG_ASPECT_RATIO = 2.25
-const OUTER_WIDTH = document.getElementById("arc_diagram")
+const OUTER_WIDTH = document.getElementById("arc-diagram")
   .getBoundingClientRect().width
 const OUTER_HEIGHT_UNLABELED = OUTER_WIDTH / DIAG_ASPECT_RATIO + CIRCLE_RADIUS
 const LABEL_AREA_HEIGHT = OUTER_HEIGHT_UNLABELED / 3
@@ -15,8 +15,11 @@ const INNER_WIDTH = OUTER_WIDTH - MARGIN.LEFT - MARGIN.RIGHT
 const INNER_HEIGHT = OUTER_HEIGHT - MARGIN.TOP - MARGIN.BOTTOM
 const GRAPH_BOTTOM_Y = INNER_HEIGHT - LABEL_AREA_HEIGHT
 
+let offcanvasDrawerEl = document.getElementById("offcanvasRight")
+let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
+
 // SVG AND GROUPING ELEMENT SETUP
-const svg = d3.select("#arc_diagram")
+const svg = d3.select("#arc-diagram")
   .append("svg")
   .attr("width", OUTER_WIDTH)
   .attr("height", OUTER_HEIGHT)
@@ -230,9 +233,7 @@ Promise.all([
     d3.select("#sc-card-header").text(m_node.name)
     d3.select("#sc-card-body").text(m_node.descr)
     d3.select("#sc-card").classed("highlighted", true)
-
-    let offcanvasDrawerEl = document.getElementById("offcanvasRight")
-    let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
+    
     offcanvasDrawerObj.show()
     examples
       // Arrow functions don't work when "this" is involved
@@ -276,7 +277,22 @@ Promise.all([
 
   examples
   .on("click", function(event, m_example) {
-    d3.select()
+    chronology_string = `PSl. ${m_example["proto_slavic"]}`
+    console.log(m_example)
+
+    for (const sc_id in m_example) {
+      // Skip strings (converting string with Number() will result in NaN)
+      if (isNaN(Number(sc_id))) {continue}
+      chron_step_str = ` ><sub><sub>${sc_id}</sub></sub> ${m_example[sc_id]}`
+      chronology_string += chron_step_str
+    }
+
+    let final_step_str = ` > Modern Russian: ${m_example["russian"]} / `
+    final_step_str += `${m_example["russian_alt"]}`
+    chronology_string += final_step_str
+
+    d3.select("#example-display-box").html(chronology_string)
+    offcanvasDrawerObj.hide()
   })
 
   // SEMANTIC ZOOM BEHAVIOR
