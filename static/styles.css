@@ -84,6 +84,10 @@ textPath.locked {
     visibility: visible;
 }
 
+.example {
+    --bs-card-spacer-y: 0.5rem;
+}
+
 /* Default bootstrap badges seem slightly too low */
 .badge {
     transform: translateY(-1px);

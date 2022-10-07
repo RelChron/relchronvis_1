@@ -18,10 +18,22 @@ const GRAPH_BOTTOM_Y = INNER_HEIGHT - LABEL_AREA_HEIGHT
 // SVG AND GROUPING ELEMENT SETUP
 const svg = d3.select("#arc_diagram")
   .append("svg")
-    .attr("width", OUTER_WIDTH)
-    .attr("height", OUTER_HEIGHT)
-  .append("g")
+  .attr("width", OUTER_WIDTH)
+  .attr("height", OUTER_HEIGHT)
+    .append("g")
     .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")");
+
+d3.json("/examples").then((data) => {
+  examples = d3.select(".offcanvas-body")
+    .selectAll("myExampleCards")
+    .data(data)
+    .enter()
+    .append("div")
+    .attr("class", "card example text-center text-dark bg-light")
+      .append("div")
+      .attr("class", "card-body")
+      .text(data => data["russian"])
+});
 
 // EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com

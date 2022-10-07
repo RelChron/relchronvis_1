@@ -13,6 +13,10 @@ def index():
 def give_sc_data():
     return send_file("data/sound_changes.json")
 
+@app.route('/examples', methods=['GET'])
+def give_example_data():
+    return send_file("data/examples.json")
+
 
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation (TODO)
@@ -75,7 +79,7 @@ def import_csv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
 
      
 def import_csv_examples(infile_path, outfile_path):
-    out_dict = OrderedDict()
+    out_list = []
     # "utf-8-sig" removes the BOM at the beginning of file (added by Excel). 
     # Unsure if this will cause problems with files that don't have a BOM. 
     with open(infile_path, encoding="utf-8-sig") as infile:
@@ -86,10 +90,10 @@ def import_csv_examples(infile_path, outfile_path):
             for field in row:
                 if row[field] != "":
                     example[field] = row[field]
-            out_dict[row["russian"]] = example
+            out_list.append(example)
     
     with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
-        outfile.write(json.dumps(out_dict))
+        outfile.write(json.dumps(out_list))
 
 if __name__ == "__main__":
     import_csv_sound_changes(
