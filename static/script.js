@@ -23,28 +23,32 @@ const svg = d3.select("#arc_diagram")
     .append("g")
     .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")");
 
-d3.json("/examples").then((data) => {
-  examples = d3.select(".offcanvas-body")
-    .selectAll("myExampleCards")
-    .data(data)
-    .enter()
-    .append("div")
-    .attr("class", "card example text-center text-dark bg-light")
-      .append("div")
-      .attr("class", "card-body")
-      .text(data => data["russian"])
-});
+// d3.json("/examples").then((data) => {
+//   let examples = d3.select(".offcanvas-body")
+//     .selectAll("myExampleCards")
+//     .data(data)
+//     .enter()
+//     .append("div")
+//     .attr("class", "card example text-center text-dark bg-light")
+//       .append("div")
+//       .attr("class", "card-body")
+//       .text(data => data["russian"])
+// });
 
 // EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
-d3.json("/sound_changes").then(function(data) {
+// Loading two files: https://stackoverflow.com/questions/70629019
+Promise.all([
+  d3.json("/sound_changes"),
+  d3.json("/examples")
+]).then(function([sc_data, example_data]) {
   let xScale = d3.scaleLinear()
-    .domain([1, data.changes.length])
+    .domain([1, sc_data.changes.length])
     .range([0, INNER_WIDTH])
 
   let arcs = svg
     .selectAll("myArcs")
-    .data(data.relations)
+    .data(sc_data.relations)
     .enter()
     .append("path")
       .attr("id", (d, i) => "arc-" + i )
@@ -62,7 +66,7 @@ d3.json("/sound_changes").then(function(data) {
   svg.append("text").attr("id", "arc-labels")
   let arcLabels = d3.select("#arc-labels")
     .selectAll("myArcLabels")
-    .data(data.relations)
+    .data(sc_data.relations)
     .enter()
     .append("textPath")
       .attr("href", (d, i) => "#arc-" + i)
@@ -71,7 +75,7 @@ d3.json("/sound_changes").then(function(data) {
 
   let nodes = svg
     .selectAll("myNodes")
-    .data(data.changes)
+    .data(sc_data.changes)
     .enter()
     .append("circle")
       .attr("cx", sc => xScale(sc.id))
@@ -80,15 +84,25 @@ d3.json("/sound_changes").then(function(data) {
       .attr("class", "highlighted")
 
   let nodeLabels = svg
-      .selectAll("myNodeLabels")
-      .data(data.changes)
-      .enter()
-      .append("text")
-        .attr("x", sc => xScale(sc.id))
-        // It starts drawing in the middle of the circle
-        .attr("y", GRAPH_BOTTOM_Y + CIRCLE_RADIUS + 2)
-        .text(sc => `${sc.id} ${sc.name}`)
-        .attr("class", "node-label")
+    .selectAll("myNodeLabels")
+    .data(sc_data.changes)
+    .enter()
+    .append("text")
+      .attr("x", sc => xScale(sc.id))
+      // It starts drawing in the middle of the circle
+      .attr("y", GRAPH_BOTTOM_Y + CIRCLE_RADIUS + 2)
+      .text(sc => `${sc.id} ${sc.name}`)
+      .attr("class", "node-label")
+
+  let examples = d3.select(".offcanvas-body")
+    .selectAll("myExampleCards")
+    .data(example_data)
+    .enter()
+    .append("div")
+    .attr("class", "card example text-center text-dark bg-light")
+      .append("div")
+      .attr("class", "card-body")
+      .text(data => data["russian"])
 
   // TODO: Make more efficient
   // Inspired by https://stackoverflow.com/a/27723725
@@ -169,6 +183,7 @@ d3.json("/sound_changes").then(function(data) {
     }
 
     d3.selectAll(".card").classed("highlighted", false)
+    d3.selectAll(".example").classed("shown", false)
 
     // If lock origin clicked, just turn everything off. Else, toggle lock on
     // for the appropriate elements (with all the code below)
@@ -219,6 +234,11 @@ d3.json("/sound_changes").then(function(data) {
     let offcanvasDrawerEl = document.getElementById("offcanvasRight")
     let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
     offcanvasDrawerObj.show()
+    examples
+      // Arrow functions don't work when "this" is involved
+      .select(function() {return this.parentNode})
+      .filter((d, i) => d.hasOwnProperty(m_node.id))
+      .classed("shown", true)
   })
 
   arcLabels
@@ -246,12 +266,17 @@ d3.json("/sound_changes").then(function(data) {
     d3.select("#rel-card-header").text(header_string)
     d3.select("#rel-card").classed("highlighted", true)
     d3.select("#second-sc-card-id")
-      .text(data["changes"][secondCardIndex]["id"])
+      .text(sc_data["changes"][secondCardIndex]["id"])
     d3.select("#second-sc-card-header")
-      .text(data["changes"][secondCardIndex]["name"])
+      .text(sc_data["changes"][secondCardIndex]["name"])
     d3.select("#second-sc-card-body")
-      .text(data["changes"][secondCardIndex]["descr"])
+      .text(sc_data["changes"][secondCardIndex]["descr"])
     d3.select("#second-sc-card").classed("highlighted", true)
+  })
+
+  examples
+  .on("click", function(event, m_example) {
+    d3.select()
   })
 
   // SEMANTIC ZOOM BEHAVIOR
