@@ -17,6 +17,7 @@ const GRAPH_BOTTOM_Y = INNER_HEIGHT - LABEL_AREA_HEIGHT
 
 let offcanvasDrawerEl = document.getElementById("offcanvasRight")
 let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
+let lockOriginNodeId = null
 
 // SVG AND GROUPING ELEMENT SETUP
 const svg = d3.select("#arc-diagram")
@@ -25,18 +26,6 @@ const svg = d3.select("#arc-diagram")
   .attr("height", OUTER_HEIGHT)
     .append("g")
     .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")");
-
-// d3.json("/examples").then((data) => {
-//   let examples = d3.select(".offcanvas-body")
-//     .selectAll("myExampleCards")
-//     .data(data)
-//     .enter()
-//     .append("div")
-//     .attr("class", "card example text-center text-dark bg-light")
-//       .append("div")
-//       .attr("class", "card-body")
-//       .text(data => data["russian"])
-// });
 
 // EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
@@ -194,6 +183,8 @@ Promise.all([
 
     // Only double-clicking the lock origin should toggle the lock fully off
     d3.select(this).classed("lock-origin", true)
+    lockOriginNodeId = d3.select(this).data()[0]["id"]
+    console.log(lockOriginNodeId)
 
     let mArcs = arcs
       // If function returns false, element is filtered out of selection
@@ -277,14 +268,26 @@ Promise.all([
 
   examples
   .on("click", function(event, m_example) {
-    chronology_string = `PSl. ${m_example["proto_slavic"]}`
+    idToBold = String(lockOriginNodeId)
+
+    if (Object.keys(m_example)[0] === idToBold) {
+      chronology_string = `PSl. <strong>${m_example["proto_slavic"]}</strong>`
+    } else {
+      chronology_string = `PSl. ${m_example["proto_slavic"]}`
+    }
     console.log(m_example)
 
     for (const sc_id in m_example) {
       // Skip strings (converting string with Number() will result in NaN)
       if (isNaN(Number(sc_id))) {continue}
-      chron_step_str = ` ><sub><sub>${sc_id}</sub></sub> ${m_example[sc_id]}`
-      chronology_string += chron_step_str
+      if (sc_id === idToBold) {
+        chron_step_str = `<strong> ><sub><sub>${sc_id}</sub></sub>`
+        chron_step_str += ` ${m_example[sc_id]}</strong>`
+        chronology_string += chron_step_str
+      } else {
+        chron_step_str = ` ><sub><sub>${sc_id}</sub></sub> ${m_example[sc_id]}`
+        chronology_string += chron_step_str
+      }
     }
 
     let final_step_str = ` > Modern Russian: ${m_example["russian"]} / `

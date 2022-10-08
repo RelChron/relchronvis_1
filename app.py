@@ -86,13 +86,14 @@ def import_csv_examples(infile_path, outfile_path):
         # Default reader takes field names from first row 
         csv_reader = csv.DictReader(infile, dialect="excel")
         for row in csv_reader:
-            example = {}
+            example = OrderedDict()
             for field in row:
                 if row[field] != "":
                     example[field] = row[field]
             out_list.append(example)
     
     with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
+        # outfile.write(json.dumps(out_list, sort_keys=True))
         outfile.write(json.dumps(out_list))
 
 if __name__ == "__main__":
