@@ -269,10 +269,12 @@ Promise.all([
   examples
   .on("click", function(event, m_example) {
     idToBold = String(lockOriginNodeId)
-    boldLastThree = false
-
-    // Select, plus clear any previous elements
-    box = d3.select("#example-display-box").html("")
+    let boldLastThree = false
+    let exampleIsOpen = d3.select(this).classed("open")
+    examples.classed("open", false)
+    // Clear info box, and remember element
+    box = d3.select("#example-chronology").html("")
+    if (exampleIsOpen) {return}    
 
     box.append("span")
       .attr("class", "chronology-el")
@@ -325,6 +327,16 @@ Promise.all([
        `${m_example["russian_alt"]}`)
 
     offcanvasDrawerObj.hide()
+    d3.select(this).classed("open", true)
+    d3.select("#chron-close-btn").classed("highlighted", true)
+  })
+
+  d3.select("#chron-close-btn")
+  .on("click", () => {
+    examples.classed("open", false)
+    d3.select("#example-chronology").html("")
+    // TODO Maybe rename all those "highlighted" properties, might be confusing
+    d3.select("#chron-close-btn").classed("highlighted", false)
   })
 
   // SEMANTIC ZOOM BEHAVIOR

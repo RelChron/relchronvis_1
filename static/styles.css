@@ -107,7 +107,7 @@ textPath.locked {
 }
 
 /* Example box at the bottom */
-#example-display-box {
+#example-chronology {
     font-size: 1.5rem;
 }
 
@@ -122,4 +122,13 @@ textPath.locked {
 
 .chronology-el.highlighted {
     font-weight: bold;
+}
+
+#chron-close-btn {
+    margin: 8px;
+    visibility: hidden;
+}
+
+#chron-close-btn.highlighted {
+    visibility: visible;
 }
