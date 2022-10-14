@@ -269,32 +269,61 @@ Promise.all([
   examples
   .on("click", function(event, m_example) {
     idToBold = String(lockOriginNodeId)
+    boldLastThree = false
+
+    // Select, plus clear any previous elements
+    box = d3.select("#example-display-box").html("")
+
+    box.append("span")
+      .attr("class", "chronology-el")
+      .html(`PSl. ${m_example["proto_slavic"]} `)
 
     if (Object.keys(m_example)[0] === idToBold) {
-      chronology_string = `PSl. <strong>${m_example["proto_slavic"]}</strong>`
-    } else {
-      chronology_string = `PSl. ${m_example["proto_slavic"]}`
+      boldLastThree = true
     }
-    console.log(m_example)
 
     for (const sc_id in m_example) {
       // Skip strings (converting string with Number() will result in NaN)
       if (isNaN(Number(sc_id))) {continue}
-      if (sc_id === idToBold) {
-        chron_step_str = `<strong> ><sub><sub>${sc_id}</sub></sub>`
-        chron_step_str += ` ${m_example[sc_id]}</strong>`
-        chronology_string += chron_step_str
-      } else {
-        chron_step_str = ` ><sub><sub>${sc_id}</sub></sub> ${m_example[sc_id]}`
-        chronology_string += chron_step_str
-      }
+
+      box.append("span")
+        .attr("class", "chronology-el")
+        .html(">")
+        .append("sub")
+          .append("sub")
+            .html(sc_id)
+
+      box.append("span")
+        .attr("class", "chronology-el")
+        .html(` ${m_example[sc_id]} `)
+
+        // TODO: Simplify by changing how bolding works for element 0
+        if (sc_id === idToBold) {
+          boldLastThree = true
+        }
+
+        if (boldLastThree === true) {
+          cElements = d3.selectAll(".chronology-el")
+          nOfElements = cElements.size()
+          console.log(nOfElements)
+
+          cElements
+            .filter((d, i) => i >= nOfElements - 3)
+            .classed("highlighted", "true")
+
+          boldLastThree = false
+        }
     }
 
-    let final_step_str = ` > Modern Russian: ${m_example["russian"]} / `
-    final_step_str += `${m_example["russian_alt"]}`
-    chronology_string += final_step_str
+    box.append("span")
+      .attr("class", "chronology-el")
+      .html(">")
 
-    d3.select("#example-display-box").html(chronology_string)
+    box.append("span")
+      .attr("class", "chronology-el")
+      .html(`Modern Russian: ${m_example["russian"]} / ` + 
+       `${m_example["russian_alt"]}`)
+
     offcanvasDrawerObj.hide()
   })
 

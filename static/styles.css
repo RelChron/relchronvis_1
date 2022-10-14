@@ -110,3 +110,16 @@ textPath.locked {
 #example-display-box {
     font-size: 1.5rem;
 }
+
+.chronology-el {
+    font-weight: normal;
+}
+
+/* Margin for every el preceded by another el */
+.chronology-el + .chronology-el {
+    margin-left: 5px;
+}
+
+.chronology-el.highlighted {
+    font-weight: bold;
+}
