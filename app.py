@@ -17,7 +17,6 @@ def give_sc_data():
 def give_example_data():
     return send_file("data/examples.json")
 
-
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation (TODO)
 def import_csv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
@@ -77,7 +76,6 @@ def import_csv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
     with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
         outfile.write(json.dumps(out_dict))
 
-     
 def import_csv_examples(infile_path, outfile_path):
     out_list = []
     # "utf-8-sig" removes the BOM at the beginning of file (added by Excel). 
