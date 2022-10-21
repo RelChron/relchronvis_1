@@ -9,8 +9,8 @@ const OUTER_HEIGHT_UNLABELED = OUTER_WIDTH / DIAG_ASPECT_RATIO + CIRCLE_RADIUS
 const LABEL_AREA_HEIGHT = OUTER_HEIGHT_UNLABELED / 3
 const OUTER_HEIGHT = OUTER_HEIGHT_UNLABELED + LABEL_AREA_HEIGHT
 
-const MARGIN = {TOP: CIRCLE_RADIUS, RIGHT: CIRCLE_RADIUS, BOTTOM: 0,
-  LEFT: CIRCLE_RADIUS}
+const MARGIN = {TOP: CIRCLE_RADIUS, RIGHT: CIRCLE_RADIUS + 10, BOTTOM: 0,
+  LEFT: CIRCLE_RADIUS + 10}
 const INNER_WIDTH = OUTER_WIDTH - MARGIN.LEFT - MARGIN.RIGHT
 const INNER_HEIGHT = OUTER_HEIGHT - MARGIN.TOP - MARGIN.BOTTOM
 const GRAPH_BOTTOM_Y = INNER_HEIGHT - LABEL_AREA_HEIGHT
@@ -20,11 +20,14 @@ let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
 let lockOriginNodeId = null
 
 // SVG AND GROUPING ELEMENT SETUP
-const svg = d3.select("#arc-diagram")
+const svgOriginal = d3.select("#arc-diagram")
   .append("svg")
+  .attr("xmlns", "http://www.w3.org/2000/svg")
   .attr("width", OUTER_WIDTH)
   .attr("height", OUTER_HEIGHT)
-    .append("g")
+
+// TODO Update names. This is just called svg now for compatibility.
+const svg = svgOriginal.append("g")
     .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")");
 
 // EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
@@ -184,7 +187,6 @@ Promise.all([
     // Only double-clicking the lock origin should toggle the lock fully off
     d3.select(this).classed("lock-origin", true)
     lockOriginNodeId = d3.select(this).data()[0]["id"]
-    console.log(lockOriginNodeId)
 
     let mArcs = arcs
       // If function returns false, element is filtered out of selection
@@ -307,7 +309,6 @@ Promise.all([
         if (boldLastThree === true) {
           cElements = d3.selectAll(".chronology-el")
           nOfElements = cElements.size()
-          console.log(nOfElements)
 
           cElements
             .filter((d, i) => i >= nOfElements - 3)
@@ -385,3 +386,85 @@ Promise.all([
     // Prevent default double click zoom
     .on("dblclick.zoom", null)
 })
+
+// Possibly speed up by only filtering rules that apply to svg
+// From https://stackoverflow.com/a/31949487
+function generateStyleDefs(svgEl) {
+  let styleDefs = "";
+  let sheets = document.styleSheets;
+  for (const sheet of sheets) {
+    let rules = sheet.cssRules;
+    for (const rule of rules) {
+      if (rule.style) {
+        styleDefs += rule.cssText;
+      }
+    }
+  }
+  styleDefs += "svg {background-color: white}\n"
+
+  let s = document.createElement('style');
+  s.setAttribute('type', 'text/css');
+  s.innerHTML = styleDefs;
+
+  let defs = document.createElement('defs');
+  defs.appendChild(s);
+  clone = svgEl.cloneNode(deep=true)
+  clone.insertBefore(defs, clone.firstChild)
+  return clone
+}
+
+
+// Below are the functions that handle actual exporting:
+// getSVGString ( svgNode ) and svgString2Image( svgString, width, height, format, callback )
+function getSVGString(svgNode) {
+	svgNode.setAttribute('xlink', 'http://www.w3.org/1999/xlink');
+  styledSVG = generateStyleDefs(svgNode)
+
+	var serializer = new XMLSerializer();
+	var svgString = serializer.serializeToString(styledSVG);
+	svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
+	svgString = svgString.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
+
+	return svgString;
+}
+
+
+function svgString2Image(svgString, width, height, format, callback) {
+	var format = format ? format : 'png';
+
+  // Convert SVG string to data URL
+	var imgsrc = 'data:image/svg+xml;base64,'+ btoa(unescape(encodeURIComponent(svgString)));
+
+	var canvas = document.createElement("canvas");
+	var context = canvas.getContext("2d");
+
+	canvas.width = width;
+	canvas.height = height;
+
+	var image = new Image();
+	image.onload = function() {
+		context.clearRect ( 0, 0, width, height );
+		context.drawImage(image, 0, 0, width, height);
+
+		canvas.toBlob( function(blob) {
+			var filesize = Math.round(blob.length/1024) + ' KB';
+			if (callback) callback(blob, filesize);
+		});
+	};
+
+	image.src = imgsrc;
+}
+
+
+d3.select("#download-btn")
+  .on("click", () => {
+    var svgString = getSVGString(svgOriginal.node());
+    // passes Blob and filesize String to the callback
+    svgString2Image(svgString, 2 * OUTER_WIDTH, 2 * OUTER_HEIGHT, 'png', save);
+
+    function save(dataBlob, filesize){
+      saveAs(dataBlob, 'success.png'); // FileSaver.js function
+    }
+  })
+
+
