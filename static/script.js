@@ -142,7 +142,10 @@ Promise.all([
     // From https://stackoverflow.com/a/13794019
     arcs
       .sort(arc => {
-        if (arc.source === m_node.id || arc.target === m_node.id) {
+        if (arc.source === m_node.id 
+            || arc.target === m_node.id
+            || arc.source === lockOriginNodeId
+            || arc.target === lockOriginNodeId) {
           return 1;   // Bring to top
         } else {
           return -1;  // Send to bottom
@@ -162,10 +165,19 @@ Promise.all([
       .style("left", event.x + "px")
       .style("top", event.y + 30 + "px")
   })
-  .on("mouseout", () => {
+  .on("mouseout", (event, m_node) => {
     for (const selection of [nodes, nodeLabels, arcs, arcLabels, nodeTooltip]) {
       selection.classed("highlighted", false)
     }
+    arcs
+      .sort(arc => {
+        if (arc.source === lockOriginNodeId
+            || arc.target === lockOriginNodeId) {
+          return 1;   // Bring to top
+        } else {
+          return -1;  // Send to bottom
+        }
+      })
   })
   .on("dblclick", function(event, m_node) {
     // Same as mouseover, but we set things to "locked" (or toggle lock off)
