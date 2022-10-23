@@ -20,15 +20,15 @@ let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
 let lockOriginNodeId = null
 
 // SVG AND GROUPING ELEMENT SETUP
-const svgOriginal = d3.select("#arc-diagram")
+const svg = d3.select("#arc-diagram")
   .append("svg")
   .attr("xmlns", "http://www.w3.org/2000/svg")
+  .attr("xlink", "http://www.w3.org/1999/xlink")
   .attr("width", OUTER_WIDTH)
   .attr("height", OUTER_HEIGHT)
 
-// TODO Update names. This is just called svg now for compatibility.
-const svg = svgOriginal.append("g")
-    .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")");
+const diagram = svg.append("g")
+    .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")")
 
 // EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
@@ -41,7 +41,7 @@ Promise.all([
     .domain([1, sc_data.changes.length])
     .range([0, INNER_WIDTH])
 
-  let arcs = svg
+  let arcs = diagram
     .selectAll("myArcs")
     .data(sc_data.relations)
     .enter()
@@ -55,10 +55,10 @@ Promise.all([
           (start - end)/2, ",",
           (start - end)/2, 0, 0, ",",
           start < end ? 1 : 0, end, ",", GRAPH_BOTTOM_Y]
-          .join(' ');
+          .join(' ')
       })
 
-  svg.append("text").attr("id", "arc-labels")
+  diagram.append("text").attr("id", "arc-labels")
   let arcLabels = d3.select("#arc-labels")
     .selectAll("myArcLabels")
     .data(sc_data.relations)
@@ -68,7 +68,7 @@ Promise.all([
       .attr("startOffset", "50%")
       .html(relation => relation.d_reason)
 
-  let nodes = svg
+  let nodes = diagram
     .selectAll("myNodes")
     .data(sc_data.changes)
     .enter()
@@ -78,7 +78,7 @@ Promise.all([
       .attr("r", CIRCLE_RADIUS)
       .attr("class", "highlighted")
 
-  let nodeLabels = svg
+  let nodeLabels = diagram
     .selectAll("myNodeLabels")
     .data(sc_data.changes)
     .enter()
@@ -104,11 +104,11 @@ Promise.all([
   function truncate() {
     let element = d3.select(this)
     let elHeight = element.node().getBBox().height
-    let elText = element.text();
+    let elText = element.text()
     while (elHeight + 10 > LABEL_AREA_HEIGHT && elText.length > 0) {
-        elText = elText.slice(0, -1);
-        element.text(elText + '...');
-        elHeight = element.node().getBBox().height;
+        elText = elText.slice(0, -1)
+        element.text(elText + '...')
+        elHeight = element.node().getBBox().height
     }
   }
 
@@ -212,9 +212,9 @@ Promise.all([
     arcs
       .sort(arc => {
         if (arc.source === m_node.id || arc.target === m_node.id) {
-          return 1;   // Bring to top
+          return 1   // Bring to top
         } else {
-          return -1;  // Send to bottom
+          return -1  // Send to bottom
         }
       })
 
@@ -348,7 +348,7 @@ Promise.all([
 
     .on("zoom", zoomEvent => {
       transform = zoomEvent.transform
-      let newScale = transform.rescaleX(xScale);
+      let newScale = transform.rescaleX(xScale)
 
       // Set new x positions from new scale
       nodes.attr("cx", sc => newScale(sc.id))
@@ -377,7 +377,7 @@ Promise.all([
             end, ",",               // Finishing x
             GRAPH_BOTTOM_Y          // Finishing y
           ]       
-          .join(' ');             
+          .join(' ')           
         })
       
       nodeTooltip.classed("highlighted", false)
@@ -387,83 +387,59 @@ Promise.all([
     .on("dblclick.zoom", null)
 })
 
-// Possibly speed up by only filtering rules that apply to svg
-// From https://stackoverflow.com/a/31949487
-function generateStyleDefs(svgEl) {
-  let styleDefs = "";
-  let sheets = document.styleSheets;
-  for (const sheet of sheets) {
-    let rules = sheet.cssRules;
-    for (const rule of rules) {
-      if (rule.style) {
-        styleDefs += rule.cssText;
-      }
-    }
-  }
-  styleDefs += "svg {background-color: white}\n"
-
-  let s = document.createElement('style');
-  s.setAttribute('type', 'text/css');
-  s.innerHTML = styleDefs;
-
-  let defs = document.createElement('defs');
-  defs.appendChild(s);
-  clone = svgEl.cloneNode(deep=true)
-  clone.insertBefore(defs, clone.firstChild)
-  return clone
-}
-
-
-// Below are the functions that handle actual exporting:
-// getSVGString ( svgNode ) and svgString2Image( svgString, width, height, format, callback )
-function getSVGString(svgNode) {
-	svgNode.setAttribute('xlink', 'http://www.w3.org/1999/xlink');
-  styledSVG = generateStyleDefs(svgNode)
-
-	var serializer = new XMLSerializer();
-	var svgString = serializer.serializeToString(styledSVG);
-	svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
-	svgString = svgString.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
-
-	return svgString;
-}
-
-
-function svgString2Image(svgString, width, height, format, callback) {
-	var format = format ? format : 'png';
-
-  // Convert SVG string to data URL
-	var imgsrc = 'data:image/svg+xml;base64,'+ btoa(unescape(encodeURIComponent(svgString)));
-
-	var canvas = document.createElement("canvas");
-	var context = canvas.getContext("2d");
-
-	canvas.width = width;
-	canvas.height = height;
-
-	var image = new Image();
-	image.onload = function() {
-		context.clearRect ( 0, 0, width, height );
-		context.drawImage(image, 0, 0, width, height);
-
-		canvas.toBlob( function(blob) {
-			var filesize = Math.round(blob.length/1024) + ' KB';
-			if (callback) callback(blob, filesize);
-		});
-	};
-
-	image.src = imgsrc;
-}
-
-
+// PNG DOWNLOAD FROM SVG
+// Built on http://bl.ocks.org/Rokotyan/0556f8facbaf344507cdc45dc3622177
 d3.select("#download-btn")
   .on("click", () => {
-    var svgString = getSVGString(svgOriginal.node());
-    // passes Blob and filesize String to the callback
-    svgString2Image(svgString, 2 * OUTER_WIDTH, 2 * OUTER_HEIGHT, 'png', save);
+    // Step 1. Extract external CSS styles
+    // From https://stackoverflow.com/a/31949487
+    let styleDefs = "svg {background-color: white}"
+    let sheets = document.styleSheets
+    for (const sheet of sheets) {
+      let rules = sheet.cssRules
+      for (const rule of rules) {
+        if (rule.style) {
+          styleDefs += rule.cssText
+        }
+      }
+    }
 
-    function save(dataBlob, filesize){
-      saveAs(dataBlob, 'success.png'); // FileSaver.js function
+    let styleEl = document.createElement('style')
+    styleEl.setAttribute('type', 'text/css')
+    styleEl.innerHTML = styleDefs;
+
+    let defs = document.createElement('defs')
+    defs.appendChild(styleEl)
+    styledSVG = svg.node().cloneNode(deep=true)
+    styledSVG.insertBefore(defs, styledSVG.firstChild)
+
+    // Step 2. Create SVG string
+    let svgString = new XMLSerializer().serializeToString(styledSVG)
+    // Fix root link without namespace, then fix Safari NS namespace
+    svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink=')
+    svgString = svgString.replace(/NS\d+:href/g, 'xlink:href')
+
+    let canvas = document.createElement("canvas")
+    let context = canvas.getContext("2d")
+    canvas.width = OUTER_WIDTH
+    canvas.height = OUTER_HEIGHT
+
+    // Step 3. Create data url from SVG string
+    // unescape() is deprecated but decodeURIComponent causes an "invalid
+    // string" error in btoa() which is not trivial to fix.
+    let image = new Image()
+    image.src = 'data:image/svg+xml;base64,' 
+      + btoa(unescape(encodeURIComponent(svgString)))
+    image.onload = function() {
+      // Step 4. Draw image from url to canvas
+      context.clearRect(0, 0, OUTER_WIDTH, OUTER_HEIGHT)
+      context.drawImage(image, 0, 0, OUTER_WIDTH, OUTER_HEIGHT)
+      // Step 5. Download canvas
+      // Polyfill from https://github.com/blueimp/JavaScript-Canvas-to-Blob
+      canvas.toBlob(function(blob) {
+        // Function from https://github.com/eligrey/FileSaver.js/
+        saveAs(blob, 'Relative Chronology.png')
+      })
     }
   })
 
