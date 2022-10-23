@@ -324,7 +324,7 @@ Promise.all([
 
     box.append("span")
       .attr("class", "chronology-el")
-      .html(`Modern Russian: ${m_example["russian"]} / ` + 
+      .html(`Ru. ${m_example["russian"]} / ` + 
        `${m_example["russian_alt"]}`)
 
     offcanvasDrawerObj.hide()
