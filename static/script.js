@@ -28,7 +28,7 @@ const svg = d3.select("#arc-diagram")
   .attr("height", OUTER_HEIGHT)
 
 const diagram = svg.append("g")
-    .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")")
+  .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")")
 
 // EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
@@ -42,6 +42,8 @@ Promise.all([
     .range([0, INNER_WIDTH])
 
   let arcs = diagram
+    .append("g")
+    .attr("id", "arcs")
     .selectAll("myArcs")
     .data(sc_data.relations)
     .enter()
@@ -58,8 +60,9 @@ Promise.all([
           .join(' ')
       })
 
-  diagram.append("text").attr("id", "arc-labels")
-  let arcLabels = d3.select("#arc-labels")
+  let arcLabels = diagram
+    .append("text")
+    .attr("id", "arc-labels")
     .selectAll("myArcLabels")
     .data(sc_data.relations)
     .enter()
@@ -138,19 +141,14 @@ Promise.all([
       .filter((d, i) => highlight_ids.has(i + 1))
       .classed("highlighted", true)
 
-    // Sort, to draw highlighted arcs on top (z-index doesn't work inside svg)
-    // From https://stackoverflow.com/a/13794019
+    // Bring highlighted arcs to front
     arcs
-      .sort(arc => {
-        if (arc.source === m_node.id 
-            || arc.target === m_node.id
-            || arc.source === lockOriginNodeId
-            || arc.target === lockOriginNodeId) {
-          return 1;   // Bring to top
-        } else {
-          return -1;  // Send to bottom
-        }
-      })
+      .filter(arc => (
+        arc.source === m_node.id 
+        || arc.target === m_node.id
+        || arc.source === lockOriginNodeId
+        || arc.target === lockOriginNodeId))
+      .raise()
 
     arcLabels
       .filter(rel => rel.source === m_node.id || rel.target === m_node.id)
@@ -169,15 +167,12 @@ Promise.all([
     for (const selection of [nodes, nodeLabels, arcs, arcLabels, nodeTooltip]) {
       selection.classed("highlighted", false)
     }
+    // Bring locked arcs to front
     arcs
-      .sort(arc => {
-        if (arc.source === lockOriginNodeId
-            || arc.target === lockOriginNodeId) {
-          return 1;   // Bring to top
-        } else {
-          return -1;  // Send to bottom
-        }
-      })
+      .filter(arc => (
+        arc.source === lockOriginNodeId 
+        || arc.target === lockOriginNodeId))
+      .raise()
   })
   .on("dblclick", function(event, m_node) {
     // Same as mouseover, but we set things to "locked" (or toggle lock off)
@@ -219,16 +214,14 @@ Promise.all([
       .filter((d, i) => highlight_ids.has(i + 1))
       .classed("locked", true)
 
-    // Sort, to draw highlighted arcs on top (z-index doesn't work inside svg)
-    // From https://stackoverflow.com/a/13794019
+    // Bring highlighted arcs to front
     arcs
-      .sort(arc => {
-        if (arc.source === m_node.id || arc.target === m_node.id) {
-          return 1   // Bring to top
-        } else {
-          return -1  // Send to bottom
-        }
-      })
+      .filter(arc => (
+        arc.source === m_node.id 
+        || arc.target === m_node.id
+        || arc.source === lockOriginNodeId
+        || arc.target === lockOriginNodeId))
+      .raise()
 
     arcLabels
       .filter(rel => rel.source === m_node.id || rel.target === m_node.id)
