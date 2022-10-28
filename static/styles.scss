@@ -1,15 +1,23 @@
+// Override default colors before importing Bootstrap css
+// https://www.cd.uzh.ch/de/basics/farben.html
+$uzh-blue-80: #3353b7;
+$uzh-grey-80: #b5bdc5;
+$primary: $uzh-blue-80;
+$secondary: $uzh-grey-80;
+@import "lib/bootstrap/scss/bootstrap";
+
 /* Nodes and Arcs */
 circle {
-    fill: #b8b8b8;
+    fill: $uzh-grey-80;
 }
 
 circle.highlighted,
 circle.locked {
-    fill: #69b3b2;
+    fill: $uzh-blue-80;
 }
 
 path.arc {
-    stroke: #b8b8b8;
+    stroke: $uzh-grey-80;
     fill: none;
     stroke-dasharray: none;
 }
@@ -20,27 +28,29 @@ path.arc.dashed {
 
 path.highlighted,
 path.locked {
-    stroke: #69b3b2;
+    stroke: $uzh-blue-80;
     stroke-width: 4;
 }
 
 
 /* Node Labels */
 .node-label {
-    fill: #b8b8b8;
+    fill: $uzh-grey-80;
     text-anchor: start;
-    writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
+            writing-mode: vertical-rl;
 }
 
 .node-label.highlighted,
 .node-label.locked {
-    fill: #69b3b2;
+    fill: $uzh-blue-80;
 }
 
 
 /* Arc Labels */
 textPath {
-    fill: #b8b8b8;
+    fill: $uzh-grey-80;
     text-anchor: middle; 
     visibility: hidden;
 }
