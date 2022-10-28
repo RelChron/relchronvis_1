@@ -1,161 +1,163 @@
 /* Nodes and Arcs */
 circle {
-    fill: #b8b8b8;
+  fill: #b8b8b8;
 }
 
 circle.highlighted,
 circle.locked {
-    fill: #69b3b2;
+  fill: #69b3b2;
 }
 
 path.arc {
-    stroke: #b8b8b8;
-    fill: none;
-    stroke-dasharray: none;
+  stroke: #b8b8b8;
+  fill: none;
+  stroke-dasharray: none;
 }
 
 path.arc.dashed {
-    stroke-dasharray: 10;
+  stroke-dasharray: 10;
 }
 
 path.highlighted,
 path.locked {
-    stroke: #69b3b2;
-    stroke-width: 4;
+  stroke: #69b3b2;
+  stroke-width: 4;
 }
-
 
 /* Node Labels */
 .node-label {
-    fill: #b8b8b8;
-    text-anchor: start;
-    writing-mode: vertical-rl;
+  fill: #b8b8b8;
+  text-anchor: start;
+  writing-mode: vertical-rl;
 }
 
 .node-label.highlighted,
 .node-label.locked {
-    fill: #69b3b2;
+  fill: #69b3b2;
 }
-
 
 /* Arc Labels */
 textPath {
-    fill: #b8b8b8;
-    text-anchor: middle; 
-    visibility: hidden;
+  fill: #b8b8b8;
+  text-anchor: middle;
+  visibility: hidden;
 }
 
 textPath.highlighted,
 textPath.locked {
-    fill: black;
-    visibility: visible;
+  fill: black;
+  visibility: visible;
 }
 
 #arc-labels {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
-
 
 /* Tooltip on Node Mouseover */
 .tooltip {
-    position: absolute;
-    visibility: hidden;
-    background-color: #191919;
-    color: #fcfcfd;
-    border-radius: 6px;
-    padding: 5px;
-    opacity: 80%;
-    transform: translate(-50%);
+  position: absolute;
+  visibility: hidden;
+  background-color: #191919;
+  color: #fcfcfd;
+  border-radius: 6px;
+  padding: 5px;
+  opacity: 80%;
+  transform: translate(-50%);
 }
 
 .tooltip.highlighted {
-    visibility: visible;
+  visibility: visible;
 }
 
 /* Sidebar */
 .sidebar {
-    height: 100vh;
-    overflow: auto;
+  height: 100vh;
+  overflow: auto;
 }
 
 .card {
-    display: none;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 20px;
+  display: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 20px;
 }
 
 .card.highlighted {
-    display: inherit;
+  display: inherit;
 }
 
 .example {
-    --bs-card-spacer-y: 0.5rem;
+  --bs-card-spacer-y: 0.5rem;
 }
 
 /* Default bootstrap badges seem slightly too low */
 .badge {
-    transform: translateY(-1px);
+  transform: translateY(-1px);
 }
 
 /* Off-canvas drawer on the right */
 .offcanvas {
-    --bs-offcanvas-width: 200px;
+  --bs-offcanvas-width: 200px;
 }
 
 .card.example {
-    display: none;
+  display: none;
 }
 
 .card.example.shown {
-    display: inherit;
+  display: inherit;
 }
 
 #drawer-btn {
-    margin: 15px;
+  margin: 15px;
+}
+
+#drawer-btn-icon {
+  transform: translateY(-2px);
 }
 
 #explainer-text {
-    display: none;
+  display: none;
 }
 
 #explainer-text.shown {
-    display: inherit;
+  display: inherit;
 }
-
 
 /* Example box at the bottom */
 #example-chronology {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .chronology-el {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 /* Margin for every el preceded by another el */
 .chronology-el + .chronology-el {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .chronology-el.highlighted {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #chron-close-btn {
-    margin: 8px;
-    visibility: hidden;
+  margin: 8px;
+  visibility: hidden;
 }
 
 #chron-close-btn.highlighted {
-    visibility: visible;
+  visibility: visible;
 }
 
 /* These declarations easily fix svg export with missing styles */
 .node-label {
-    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 textPath {
-    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+/*# sourceMappingURL=styles.css.map */
