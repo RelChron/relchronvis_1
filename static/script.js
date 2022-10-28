@@ -59,6 +59,7 @@ Promise.all([
           start < end ? 1 : 0, end, ",", GRAPH_BOTTOM_Y]
           .join(' ')
       })
+    .classed("arc", true)
 
   let arcLabels = diagram
     .append("text")
@@ -186,6 +187,7 @@ Promise.all([
 
     d3.selectAll(".card").classed("highlighted", false)
     d3.selectAll(".example").classed("shown", false)
+    d3.select("#explainer-text").classed("shown", true)
 
     // If lock origin clicked, just turn everything off. Else, toggle lock on
     // for the appropriate elements (with all the code below)
@@ -232,7 +234,8 @@ Promise.all([
     d3.select("#sc-card-body").text(m_node.descr)
     d3.select("#sc-card").classed("highlighted", true)
     
-    offcanvasDrawerObj.show()
+    d3.select("#explainer-text").classed("shown", false)
+
     examples
       // Arrow functions don't work when "this" is involved
       .select(function() {return this.parentNode})
@@ -337,12 +340,18 @@ Promise.all([
     d3.select("#chron-close-btn").classed("highlighted", true)
   })
 
+  // BUTTONS
   d3.select("#chron-close-btn")
   .on("click", () => {
     examples.classed("open", false)
     d3.select("#example-chronology").html("")
     // TODO Maybe rename all those "highlighted" properties, might be confusing
     d3.select("#chron-close-btn").classed("highlighted", false)
+  })
+
+  d3.select("#drawer-btn")
+  .on("click", () => {
+    offcanvasDrawerObj.show()
   })
 
   // SEMANTIC ZOOM BEHAVIOR

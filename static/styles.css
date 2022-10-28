@@ -8,7 +8,7 @@ circle.locked {
     fill: #69b3b2;
 }
 
-path {
+path.arc {
     stroke: #b8b8b8;
     fill: none;
 }
@@ -105,6 +105,19 @@ textPath.locked {
 .card.example.shown {
     display: inherit;
 }
+
+#drawer-btn {
+    margin-top: 10px;
+}
+
+#explainer-text {
+    display: none;
+}
+
+#explainer-text.shown {
+    display: inherit;
+}
+
 
 /* Example box at the bottom */
 #example-chronology {
