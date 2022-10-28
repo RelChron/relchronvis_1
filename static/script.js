@@ -285,7 +285,7 @@ Promise.all([
 
     box.append("span")
       .attr("class", "chronology-el")
-      .html(`PSl. ${m_example["proto_slavic"]} `)
+      .html(`PS ${m_example["proto_slavic"]} `)
 
     if (Object.keys(m_example)[0] === idToBold) {
       boldLastThree = true
