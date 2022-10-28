@@ -4,15 +4,13 @@
     <!-- Standard header tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <title>Relative Chronology</title>
 
-    <!-- Bootstrap and own CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link href="static/styles.css" rel="stylesheet">
 
-    <!-- Bootstrap, D3, and own JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous" defer></script>
+    <!-- Bootstrap, D3, helper libraries and own JS-->
+    <script src="static/lib/bootstrap/js/bootstrap.min.js" defer></script>
     <script src="https://d3js.org/d3.v7.min.js" defer></script>
     <script src="static/lib/canvas-to-blob.min.js"></script>
     <script src="static/lib/FileSaver.min.js"></script>
@@ -61,7 +59,7 @@
             </button>
             <div id="arc-diagram"></div>
             <div>
-                <button id="download-btn" class="btn btn-dark">Download Diagram</button>
+                <button id="download-btn" class="btn btn-primary">Download Diagram</button>
                 <button type="button" id="chron-close-btn" class="btn-close float-end" aria-label="Clear example chronology"></button>
                 <div id="example-chronology"></div>
             </div>
