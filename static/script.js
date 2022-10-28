@@ -61,6 +61,10 @@ Promise.all([
       })
     .classed("arc", true)
 
+  arcs
+    .filter(arc => arc.d_conf === false)
+    .classed("dashed", true)
+
   let arcLabels = diagram
     .append("text")
     .attr("id", "arc-labels")
@@ -396,7 +400,7 @@ Promise.all([
       
       nodeTooltip.classed("highlighted", false)
     })
-  d3.select('svg').call(zoom)
+  svg.call(zoom)
     // Prevent default double click zoom
     .on("dblclick.zoom", null)
 })

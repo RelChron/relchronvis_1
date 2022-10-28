@@ -11,6 +11,11 @@ circle.locked {
 path.arc {
     stroke: #b8b8b8;
     fill: none;
+    stroke-dasharray: none;
+}
+
+path.arc.dashed {
+    stroke-dasharray: 10;
 }
 
 path.highlighted,
