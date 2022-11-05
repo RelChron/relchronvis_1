@@ -10952,7 +10952,7 @@ path.arc {
 }
 
 path.arc.dashed {
-  stroke-dasharray: 10;
+  stroke-dasharray: 5, 2;
 }
 
 path.highlighted,
