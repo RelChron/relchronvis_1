@@ -396,6 +396,7 @@ Promise.all([
 // Built on http://bl.ocks.org/Rokotyan/0556f8facbaf344507cdc45dc3622177
 d3.select("#download-btn")
   .on("click", () => {
+    let scalingFactor = 2
     // Step 1. Make names full length and adjust svg size
     let longest_sc_name = 0
     nodeLabels = d3.selectAll(".node-label")
@@ -409,11 +410,14 @@ d3.select("#download-btn")
       })
 
     // Adjust svg height for full names
-    let full_height = OUTER_HEIGHT_UNLABELED + longest_sc_name + 10
+    let full_height = OUTER_HEIGHT_UNLABELED + longest_sc_name
     svg.attr("height", full_height)
+    // svg.attr("height", svg.attr("height") * 2)
+    // svg.attr("width", svg.attr("width") * 2)
 
     // Step 2. Extract external CSS styles
     // From https://stackoverflow.com/a/31949487
+    // let styleDefs = "svg {background-color: white; transform: scale(2);}"
     let styleDefs = "svg {background-color: white}"
     let sheets = document.styleSheets
     for (const sheet of sheets) {
@@ -446,8 +450,8 @@ d3.select("#download-btn")
 
     let canvas = document.createElement("canvas")
     let context = canvas.getContext("2d")
-    canvas.width = svg.attr("width")
-    canvas.height = full_height
+    canvas.width = svg.attr("width") * scalingFactor
+    canvas.height = full_height * scalingFactor
 
     // Step 4. Create data url from SVG string
     // unescape() is deprecated but decodeURIComponent causes an "invalid
@@ -457,8 +461,10 @@ d3.select("#download-btn")
       + btoa(unescape(encodeURIComponent(svgString)))
     image.onload = function() {
       // Step 5. Draw image from url to canvas
-      context.clearRect(0, 0, svg.attr("width"), full_height)
-      context.drawImage(image, 0, 0, svg.attr("width"), full_height)
+      context.clearRect(0, 0, svg.attr("width") * scalingFactor, 
+        full_height * scalingFactor)
+      context.drawImage(image, 0, 0, svg.attr("width") * scalingFactor, 
+        full_height * scalingFactor)
       // Step 6. Download canvas
       // Polyfill from https://github.com/blueimp/JavaScript-Canvas-to-Blob
       canvas.toBlob(function(blob) {

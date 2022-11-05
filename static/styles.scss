@@ -6,6 +6,11 @@ $primary: $uzh-blue-80;
 $secondary: $uzh-grey-80;
 @import "lib/bootstrap/scss/bootstrap";
 
+// TESTING
+// svg {
+//     transform: scale(2);
+// }
+
 /* Nodes and Arcs */
 circle {
     fill: $uzh-grey-80;
