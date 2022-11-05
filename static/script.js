@@ -474,6 +474,29 @@ d3.select("#download-btn")
     }
   })
 
+let labelsVisible = true
+
+d3.select("#toggle-label-btn")
+  .on("click", () => {
+    if (labelsVisible) {
+      // Setting this attribute takes Firefox multiple seconds for some reason
+      svg.attr("height", OUTER_HEIGHT_UNLABELED + CIRCLE_RADIUS + 5)
+      d3.selectAll(".node-label")
+        .each(function() {
+          d3.select(this).text("")
+        })
+      labelsVisible = false
+    } else {
+      svg.attr("height", OUTER_HEIGHT)
+      d3.selectAll(".node-label")
+        .each(function(sc) {
+          d3.select(this).text(`${sc.id}  ${sc.name}`)
+        })
+        .each(truncate)
+      labelsVisible = true
+    }
+  })
+
 // TODO: Make more efficient
 // Inspired by https://stackoverflow.com/a/27723725
 function truncate() {
