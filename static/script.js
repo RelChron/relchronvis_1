@@ -97,6 +97,8 @@ Promise.all([
       .text(sc => `${sc.id} ${sc.name}`)
       .attr("class", "node-label")
 
+  nodeLabels.each(truncate)
+
   let examples = d3.select(".offcanvas-body")
     .selectAll("myExampleCards")
     .data(example_data)
@@ -106,21 +108,6 @@ Promise.all([
       .append("div")
       .attr("class", "card-body")
       .text(data => data["russian"])
-
-  // TODO: Make more efficient
-  // Inspired by https://stackoverflow.com/a/27723725
-  function truncate() {
-    let element = d3.select(this)
-    let elHeight = element.node().getBBox().height
-    let elText = element.text()
-    while (elHeight + 10 > LABEL_AREA_HEIGHT && elText.length > 0) {
-        elText = elText.slice(0, -1)
-        element.text(elText + '...')
-        elHeight = element.node().getBBox().height
-    }
-  }
-
-  nodeLabels.each(truncate)
 
   let nodeTooltip = d3.select("#node-tooltip")
 
@@ -409,7 +396,23 @@ Promise.all([
 // Built on http://bl.ocks.org/Rokotyan/0556f8facbaf344507cdc45dc3622177
 d3.select("#download-btn")
   .on("click", () => {
-    // Step 1. Extract external CSS styles
+    // Step 1. Make names full length and adjust svg size
+    let longest_sc_name = 0
+    nodeLabels = d3.selectAll(".node-label")
+      .each(function(sc) {
+        let element = d3.select(this)
+        element.text(`${sc.id}  ${sc.name}`)
+        let elHeight = element.node().getBBox().height
+        if (elHeight > longest_sc_name) {
+          longest_sc_name = elHeight
+        }
+      })
+
+    // Adjust svg height for full names
+    let full_height = OUTER_HEIGHT_UNLABELED + longest_sc_name + 10
+    svg.attr("height", full_height)
+
+    // Step 2. Extract external CSS styles
     // From https://stackoverflow.com/a/31949487
     let styleDefs = "svg {background-color: white}"
     let sheets = document.styleSheets
@@ -431,7 +434,11 @@ d3.select("#download-btn")
     styledSVG = svg.node().cloneNode(deep=true)
     styledSVG.insertBefore(defs, styledSVG.firstChild)
 
-    // Step 2. Create SVG string
+    // Reset the svg on the actual page
+    svg.attr("height", OUTER_HEIGHT)
+    nodeLabels.each(truncate)
+
+    // Step 3. Create SVG string
     let svgString = new XMLSerializer().serializeToString(styledSVG)
     // Fix root link without namespace, then fix Safari NS namespace
     svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink=')
@@ -439,20 +446,20 @@ d3.select("#download-btn")
 
     let canvas = document.createElement("canvas")
     let context = canvas.getContext("2d")
-    canvas.width = OUTER_WIDTH
-    canvas.height = OUTER_HEIGHT
+    canvas.width = svg.attr("width")
+    canvas.height = full_height
 
-    // Step 3. Create data url from SVG string
+    // Step 4. Create data url from SVG string
     // unescape() is deprecated but decodeURIComponent causes an "invalid
     // string" error in btoa() which is not trivial to fix.
     let image = new Image()
     image.src = 'data:image/svg+xml;base64,' 
       + btoa(unescape(encodeURIComponent(svgString)))
     image.onload = function() {
-      // Step 4. Draw image from url to canvas
-      context.clearRect(0, 0, OUTER_WIDTH, OUTER_HEIGHT)
-      context.drawImage(image, 0, 0, OUTER_WIDTH, OUTER_HEIGHT)
-      // Step 5. Download canvas
+      // Step 5. Draw image from url to canvas
+      context.clearRect(0, 0, svg.attr("width"), full_height)
+      context.drawImage(image, 0, 0, svg.attr("width"), full_height)
+      // Step 6. Download canvas
       // Polyfill from https://github.com/blueimp/JavaScript-Canvas-to-Blob
       canvas.toBlob(function(blob) {
         // Function from https://github.com/eligrey/FileSaver.js/
@@ -461,4 +468,15 @@ d3.select("#download-btn")
     }
   })
 
-
+// TODO: Make more efficient
+// Inspired by https://stackoverflow.com/a/27723725
+function truncate() {
+  let element = d3.select(this)
+  let elHeight = element.node().getBBox().height
+  let elText = element.text()
+  while (elHeight + 10 > LABEL_AREA_HEIGHT && elText.length > 0) {
+      elText = elText.slice(0, -1)
+      element.text(elText + '...')
+      elHeight = element.node().getBBox().height
+  }
+}
