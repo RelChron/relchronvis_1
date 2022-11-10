@@ -27,7 +27,26 @@
     <div class="container-fluid">
     <div class="row">
         <div class="col-3">
-            <div class="sidebar">
+            <div class="sidebar scrollable">
+                <h2>A Relative Chronology of Sound Changes in Russian</h2>
+                <div class="d-grid gap-2">
+                    <div class="btn-group" role="group">
+                        <button id="download-btn" class="btn btn-outline-primary">
+                            Download Diagram
+                        </button>
+                        <button id="toggle-label-btn" class="btn btn-outline-primary">
+                            Toggle labels
+                        </button>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button id="toggle-filter-btn" class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Filter</button>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body" id="filters">
+                          Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                        </div>
+                    </div>
+                </div>
                 <div class="card" id="sc-card">
                     <div class="card-header">
                         <span class="badge bg-primary" id="sc-card-id">1</span>
@@ -59,8 +78,6 @@
             </button>
             <div id="arc-diagram"></div>
             <div>
-                <button id="download-btn" class="btn btn-primary">Download Diagram</button>
-                <button id="toggle-label-btn" class="btn btn-primary">Toggle labels</button>
                 <button type="button" id="chron-close-btn" class="btn-close float-end" aria-label="Clear example chronology"></button>
                 <div id="example-chronology"></div>
             </div>
@@ -73,7 +90,7 @@
             <h5 id="offcanvasRightLabel">Examples</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body scrollable">
             <p id="explainer-text" class="shown">
                 Please double-click a sound change node to see example lexias.
             </p>
