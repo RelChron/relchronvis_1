@@ -1,9 +1,21 @@
 // Override default colors before importing Bootstrap css
 // https://www.cd.uzh.ch/de/basics/farben.html
+$uzh-blue-100: #0028a5;
 $uzh-blue-80: #3353b7;
+$uzh-blue-60: #667ec9;
+$uzh-blue-40: #99a9db;
+$uzh-blue-20: #ccd4ed;
+$uzh-grey-100: #a3adb7;
 $uzh-grey-80: #b5bdc5;
+$uzh-grey-60: #c8ced4;
+$uzh-grey-40: #dadee2;
+$uzh-grey-20: #edeff1;
 $primary: $uzh-blue-80;
 $secondary: $uzh-grey-80;
+$light: $uzh-grey-40;
+$info: $uzh-grey-20;
+$input-bg: $uzh-grey-20;
+
 @import "lib/bootstrap/scss/bootstrap";
 
 /* Nodes and Arcs */
@@ -87,14 +99,19 @@ textPath.locked {
 .sidebar {
     height: 100vh;
     overflow: auto;
+    background-color: $uzh-grey-20;
 }
 
 .scrollable {
-    padding-right: 20px;
+    padding-right: 10px;
 }
 
 h2 {
     margin-top: 10px;
+}
+
+.display-6 {
+    font-size: 2.4rem;
 }
 
 button {
@@ -120,6 +137,7 @@ button {
 #filters-card {
     display: inherit;
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #apply-btn-div {
@@ -147,6 +165,7 @@ button {
 /* Off-canvas drawer on the right */
 .offcanvas {
     --bs-offcanvas-width: 200px;
+    background-color: $uzh-grey-20;
 }
 
 .example {
@@ -181,6 +200,7 @@ button {
 /* Example box at the bottom */
 #example-chronology {
     font-size: 1.5rem;
+    border-top: 1px solid $uzh-grey-20;
 }
 
 .chronology-el {
@@ -215,6 +235,6 @@ textPath {
     font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
-.wow {
-    stroke: red !important;
+select {
+    background-color: $uzh-grey-20;
 }

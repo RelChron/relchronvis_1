@@ -111,7 +111,7 @@ Promise.all([
     .data(example_data)
     .enter()
     .append("div")
-    .attr("class", "card example text-center text-dark bg-light")
+    .attr("class", "card example text-center text-bg-light")
       .append("div")
       .attr("class", "card-body")
       .text(data => data["russian"])
@@ -490,7 +490,7 @@ d3.select("#download-btn")
 let labelsVisible = true
 
 d3.select("#toggle-label-btn")
-  .on("click", () => {
+  .on("click", function(event, button) {
     if (labelsVisible) {
       // Setting this attribute takes Firefox multiple seconds for some reason
       svg.attr("height", OUTER_HEIGHT_UNLABELED + CIRCLE_RADIUS + 5)
@@ -499,6 +499,7 @@ d3.select("#toggle-label-btn")
           d3.select(this).text("")
         })
       labelsVisible = false
+      d3.select(this).text("Show Labels")
     } else {
       svg.attr("height", OUTER_HEIGHT)
       d3.selectAll(".node-label")
@@ -507,6 +508,7 @@ d3.select("#toggle-label-btn")
         })
         .each(truncate)
       labelsVisible = true
+      d3.select(this).text("Hide Labels")
     }
   })
 
@@ -572,7 +574,6 @@ d3.select("#apply-btn")
         .map(arc => [arc.source, arc.target]).flat())
       touchedIDs = new Set([...touchedIDs, ...currentTouchedIDs])
     })
-
 
     nodeLabels
       .filter(sc => touchedIDs.has(sc.id))
