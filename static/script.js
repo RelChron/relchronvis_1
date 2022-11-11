@@ -75,16 +75,23 @@ Promise.all([
       .attr("href", (d, i) => "#arc-" + i)
       .attr("startOffset", "50%")
       .html(relation => relation.d_reason)
+      .attr("class", "arc-label active")
 
+  let filterOptionEl = d3.select("#filter-ids")
   let nodes = diagram
     .selectAll("myNodes")
     .data(sc_data.changes)
     .enter()
+    .each(sc => {
+      if (sc.id) {
+        filterOptionEl.append("option").text(sc.id)
+      }
+    })
     .append("circle")
       .attr("cx", sc => xScale(sc.id))
       .attr("cy", GRAPH_BOTTOM_Y)
       .attr("r", CIRCLE_RADIUS)
-      .attr("class", "highlighted")
+      .attr("class", "active")
 
   let nodeLabels = diagram
     .selectAll("myNodeLabels")
@@ -95,7 +102,7 @@ Promise.all([
       // It starts drawing in the middle of the circle
       .attr("y", GRAPH_BOTTOM_Y + CIRCLE_RADIUS + 2)
       .text(sc => `${sc.id} ${sc.name}`)
-      .attr("class", "node-label")
+      .attr("class", "node-label active")
 
   nodeLabels.each(truncate)
 
@@ -115,7 +122,7 @@ Promise.all([
   nodes
   .on("mouseover", (event, m_node) => {
     let mArcs = arcs
-      // If function returns false, element is filtered out of selection
+      // If function returns false, element is removed
       .filter(arc => arc.source === m_node.id || arc.target === m_node.id)
       .classed("highlighted", true)
 
@@ -127,10 +134,12 @@ Promise.all([
     // Pass to nodes and nodeLabels
     nodes
       .filter(node => highlight_ids.has(node.id))
+      .filter(".active")
       .classed("highlighted", true)
 
     nodeLabels
       .filter((d, i) => highlight_ids.has(i + 1))
+      .filter(".active")
       .classed("highlighted", true)
 
     // Bring highlighted arcs to front
@@ -144,6 +153,7 @@ Promise.all([
 
     arcLabels
       .filter(rel => rel.source === m_node.id || rel.target === m_node.id)
+      .filter(".active")
       .classed("highlighted", true)
 
     nodeTooltip
@@ -201,10 +211,12 @@ Promise.all([
     // Pass to nodes and nodeLabels
     nodes
       .filter(node => highlight_ids.has(node.id))
+      .filter(".active")
       .classed("locked", true)
 
     nodeLabels
       .filter((d, i) => highlight_ids.has(i + 1))
+      .filter(".active")
       .classed("locked", true)
 
     // Bring highlighted arcs to front
@@ -218,6 +230,7 @@ Promise.all([
 
     arcLabels
       .filter(rel => rel.source === m_node.id || rel.target === m_node.id)
+      .filter(".active")
       .classed("locked", true)
 
     d3.select("#sc-card-id").text(m_node.id)
@@ -495,6 +508,105 @@ d3.select("#toggle-label-btn")
         .each(truncate)
       labelsVisible = true
     }
+  })
+
+d3.select("#apply-btn")
+  .on("click", () => {
+    // Get form data
+    let selectedEls = document.getElementById("filter-ids").selectedOptions
+    let selectedIDs = Array.from(selectedEls).map(({ value }) => Number(value))
+    let showInArcs = document.getElementById("in-check").checked
+    let showOutArcs = document.getElementById("out-check").checked
+    let showOnlyConf = document.getElementById("conf-check").checked
+
+    // Set all the elements to unfiltered (inactive) state
+    let nodes = d3.selectAll("circle")
+      .classed("cold", true)
+      .classed("active", false)
+    let nodeLabels = d3.selectAll(".node-label")
+      .classed("hidden", true)
+      .classed("active", false)
+    let arcs = d3.selectAll(".arc")
+      .classed("hidden", true)
+    let arcLabels = d3.selectAll(".arc-label")
+      .classed("active", false)
+
+    for (const selection of [nodes, nodeLabels, arcs, arcLabels]) {
+      selection.classed("locked", false)
+      selection.classed("lock-origin", false)
+    }
+    d3.selectAll(".card").classed("highlighted", false)
+    d3.selectAll(".example").classed("shown", false)
+    d3.select("#explainer-text").classed("shown", true)
+
+    let filtNodes = nodes
+      .filter(sc => selectedIDs.includes(sc.id))
+      .classed("cold", false)
+      .classed("active", true)
+
+    nodeLabels
+      .filter(sc => selectedIDs.includes(sc.id))
+      .classed("active", true)
+      .classed("hidden", false)
+
+    // Find out which nodes get touched by arcs of selected sound changes
+    let touchedIDs = new Set()
+    filtNodes.each(sc => {
+      let filtArcs = arcs
+        .filter(arc => (
+          (arc.source === sc.id) && showOutArcs
+          || (arc.target === sc.id) && showInArcs))
+        // If only confidents, filter out the others via data; else no filter
+        .filter(rel => showOnlyConf ? rel.d_conf : true)
+        .classed("hidden", false)
+      
+      arcLabels
+        .filter(arc => (
+          (arc.source === sc.id) && showOutArcs
+          || (arc.target === sc.id) && showInArcs))
+        // Ternary operator, see above
+        .filter(rel => showOnlyConf ? rel.d_conf : true)
+        .classed("active", true)
+    
+      let currentTouchedIDs = new Set(filtArcs.data()
+        .map(arc => [arc.source, arc.target]).flat())
+      touchedIDs = new Set([...touchedIDs, ...currentTouchedIDs])
+    })
+
+
+    nodeLabels
+      .filter(sc => touchedIDs.has(sc.id))
+      .classed("hidden", false)
+    nodes
+      .filter(sc => touchedIDs.has(sc.id))
+      .classed("cold", false)
+    
+    if (showOnlyConf) {
+      arcs.filter(".dashed").classed("hidden", true)
+    }
+    
+  })
+
+d3.select("#reset-btn")
+  .on("click", () => {
+    let nodes = d3.selectAll("circle")
+      .classed("cold", false)
+      .classed("active", true)
+    let nodeLabels = d3.selectAll(".node-label")
+      .classed("hidden", false)
+      .classed("active", true)
+    let arcs = d3.selectAll(".arc")
+      .classed("hidden", false)
+    let arcLabels = d3.selectAll(".arc-label")
+      .classed("active", true)
+
+    for (const selection of [nodes, nodeLabels, arcs, arcLabels]) {
+      selection.classed("locked", false)
+      selection.classed("lock-origin", false)
+    }
+    d3.selectAll(".card").classed("highlighted", false)
+    d3.selectAll(".example").classed("shown", false)
+    d3.select("#explainer-text").classed("shown", true)
   })
 
 // TODO: Make more efficient

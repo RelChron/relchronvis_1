@@ -11022,7 +11022,11 @@ h2, .h2 {
 }
 
 button {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.btn-group {
+  margin-bottom: 8px;
 }
 
 .card {
@@ -11035,15 +11039,27 @@ button {
   display: inherit;
 }
 
-#filters {
+#filters-card {
   display: inherit;
+  margin-top: 0px;
 }
 
-.example {
-  --bs-card-spacer-y: 0.5rem;
+#apply-btn-div {
+  margin-top: 10px;
 }
 
-/* Default bootstrap badges seem slightly too low */
+#apply-btn-div button, .btn-group {
+  margin-bottom: 0;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.cold {
+  pointer-events: none;
+}
+
 .badge {
   transform: translateY(-1px);
 }
@@ -11051,6 +11067,10 @@ button {
 /* Off-canvas drawer on the right */
 .offcanvas {
   --bs-offcanvas-width: 200px;
+}
+
+.example {
+  --bs-card-spacer-y: 0.5rem;
 }
 
 .card.example {
@@ -11086,7 +11106,6 @@ button {
   font-weight: normal;
 }
 
-/* Margin for every el preceded by another el */
 .chronology-el + .chronology-el {
   margin-left: 5px;
 }
@@ -11111,4 +11130,8 @@ button {
 
 textPath {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.wow {
+  stroke: red !important;
 }/*# sourceMappingURL=styles.css.map */
