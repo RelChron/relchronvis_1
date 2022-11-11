@@ -10935,6 +10935,27 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* Sidebar */
+.sidebar {
+  height: 100vh;
+  overflow: auto;
+  background-color: #edeff1;
+  padding-bottom: 10px;
+}
+
+h2.display-6, .display-6.h2 {
+  margin-top: 5px;
+  font-size: 2.4rem;
+}
+
+#filters-card {
+  display: inherit !important;
+}
+
+.badge {
+  transform: translateY(-1px);
+}
+
 /* Nodes and Arcs */
 circle {
   fill: #b5bdc5;
@@ -10976,14 +10997,13 @@ path.locked {
 
 /* Arc Labels */
 textPath {
-  fill: #b5bdc5;
+  fill: black;
   text-anchor: middle;
   visibility: hidden;
 }
 
 textPath.highlighted,
 textPath.locked {
-  fill: black;
   visibility: visible;
 }
 
@@ -10994,7 +11014,6 @@ textPath.locked {
 /* Tooltip on Node Mouseover */
 .tooltip {
   position: absolute;
-  visibility: hidden;
   background-color: #191919;
   color: #fcfcfd;
   border-radius: 6px;
@@ -11003,89 +11022,18 @@ textPath.locked {
   transform: translate(-50%);
 }
 
-.tooltip.highlighted {
-  visibility: visible;
-}
-
-/* Sidebar */
-.sidebar {
-  height: 100vh;
-  overflow: auto;
-  background-color: #edeff1;
-}
-
-.scrollable {
-  padding-right: 10px;
-}
-
-h2, .h2 {
-  margin-top: 10px;
-}
-
-.display-6 {
-  font-size: 2.4rem;
-}
-
-button {
-  margin-bottom: 10px;
-}
-
-.btn-group {
-  margin-bottom: 8px;
-}
-
-.card {
-  display: none;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.card.highlighted {
-  display: inherit;
-}
-
-#filters-card {
-  display: inherit;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-#apply-btn-div {
-  margin-top: 10px;
-}
-
-#apply-btn-div button, .btn-group {
-  margin-bottom: 0;
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-.cold {
-  pointer-events: none;
-}
-
-.badge {
-  transform: translateY(-1px);
-}
-
 /* Off-canvas drawer on the right */
 .offcanvas {
   --bs-offcanvas-width: 200px;
   background-color: #edeff1;
 }
 
+.offcanvas-body {
+  flex-grow: initial;
+}
+
 .example {
   --bs-card-spacer-y: 0.5rem;
-}
-
-.card.example {
-  display: none;
-}
-
-.card.example.shown {
-  display: inherit;
 }
 
 #drawer-btn {
@@ -11096,22 +11044,9 @@ button {
   transform: translateY(-2px);
 }
 
-#explainer-text {
-  display: none;
-}
-
-#explainer-text.shown {
-  display: inherit;
-}
-
 /* Example box at the bottom */
 #example-chronology {
   font-size: 1.5rem;
-  border-top: 1px solid #edeff1;
-}
-
-.chronology-el {
-  font-weight: normal;
 }
 
 .chronology-el + .chronology-el {
@@ -11124,11 +11059,6 @@ button {
 
 #chron-close-btn {
   margin: 8px;
-  visibility: hidden;
-}
-
-#chron-close-btn.highlighted {
-  visibility: visible;
 }
 
 /* These declarations easily fix svg export with missing styles */
@@ -11138,8 +11068,4 @@ button {
 
 textPath {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-select {
-  background-color: #edeff1;
 }/*# sourceMappingURL=styles.css.map */

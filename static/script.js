@@ -111,7 +111,7 @@ Promise.all([
     .data(example_data)
     .enter()
     .append("div")
-    .attr("class", "card example text-center text-bg-light")
+    .attr("class", "card example text-center text-bg-light d-none")
       .append("div")
       .attr("class", "card-body")
       .text(data => data["russian"])
@@ -158,7 +158,7 @@ Promise.all([
 
     nodeTooltip
       .html(m_node.name)
-      .classed("highlighted", true)
+      .classed("invisible", false)
   })
   .on("mousemove", (event, m_node) => {
     nodeTooltip
@@ -166,9 +166,10 @@ Promise.all([
       .style("top", event.y + 30 + "px")
   })
   .on("mouseout", (event, m_node) => {
-    for (const selection of [nodes, nodeLabels, arcs, arcLabels, nodeTooltip]) {
+    for (const selection of [nodes, nodeLabels, arcs, arcLabels]) {
       selection.classed("highlighted", false)
     }
+    nodeTooltip.classed("invisible", true)
     // Bring locked arcs to front
     arcs
       .filter(arc => (
@@ -186,9 +187,8 @@ Promise.all([
       selection.classed("lock-origin", false)
     }
 
-    d3.selectAll(".card").classed("highlighted", false)
-    d3.selectAll(".example").classed("shown", false)
-    d3.select("#explainer-text").classed("shown", true)
+    d3.selectAll(".card").classed("d-none", true)
+    d3.select("#explainer-text").classed("d-none", false)
 
     // If lock origin clicked, just turn everything off. Else, toggle lock on
     // for the appropriate elements (with all the code below)
@@ -236,15 +236,14 @@ Promise.all([
     d3.select("#sc-card-id").text(m_node.id)
     d3.select("#sc-card-header").text(m_node.name)
     d3.select("#sc-card-body").text(m_node.descr)
-    d3.select("#sc-card").classed("highlighted", true)
+    d3.select("#sc-card").classed("d-none", false)
     
-    d3.select("#explainer-text").classed("shown", false)
+    d3.select("#explainer-text").classed("d-none", true)
 
     examples
-      // Arrow functions don't work when "this" is involved
       .select(function() {return this.parentNode})
       .filter((d, i) => d.hasOwnProperty(m_node.id))
-      .classed("shown", true)
+      .classed("d-none", false)
   })
 
   arcLabels
@@ -252,8 +251,8 @@ Promise.all([
     let relCardIsOpen = d3.select(this).classed("rel-card-open")
 
     arcLabels.classed("rel-card-open", false)
-    d3.select("#rel-card").classed("highlighted", false)
-    d3.select("#second-sc-card").classed("highlighted", false)
+    d3.select("#rel-card").classed("d-none", true)
+    d3.select("#second-sc-card").classed("d-none", true)
 
     if (relCardIsOpen) {return}
     
@@ -270,14 +269,14 @@ Promise.all([
     
     d3.select(this).classed("rel-card-open", true)
     d3.select("#rel-card-header").text(header_string)
-    d3.select("#rel-card").classed("highlighted", true)
+    d3.select("#rel-card").classed("d-none", false)
     d3.select("#second-sc-card-id")
       .text(sc_data["changes"][secondCardIndex]["id"])
     d3.select("#second-sc-card-header")
       .text(sc_data["changes"][secondCardIndex]["name"])
     d3.select("#second-sc-card-body")
       .text(sc_data["changes"][secondCardIndex]["descr"])
-    d3.select("#second-sc-card").classed("highlighted", true)
+    d3.select("#second-sc-card").classed("d-none", false)
   })
 
   examples
@@ -341,7 +340,7 @@ Promise.all([
 
     offcanvasDrawerObj.hide()
     d3.select(this).classed("open", true)
-    d3.select("#chron-close-btn").classed("highlighted", true)
+    d3.select("#chron-close-btn").classed("invisible", false)
   })
 
   // BUTTONS
@@ -350,7 +349,7 @@ Promise.all([
     examples.classed("open", false)
     d3.select("#example-chronology").html("")
     // TODO Maybe rename all those "highlighted" properties, might be confusing
-    d3.select("#chron-close-btn").classed("highlighted", false)
+    d3.select("#chron-close-btn").classed("invisible", true)
   })
 
   d3.select("#drawer-btn")
@@ -398,7 +397,7 @@ Promise.all([
           .join(' ')           
         })
       
-      nodeTooltip.classed("highlighted", false)
+      nodeTooltip.classed("invisible", true)
     })
   svg.call(zoom)
     // Prevent default double click zoom
@@ -523,13 +522,14 @@ d3.select("#apply-btn")
 
     // Set all the elements to unfiltered (inactive) state
     let nodes = d3.selectAll("circle")
-      .classed("cold", true)
+      // pe-none is a bootstrap utility that sets {pointer-event: none}
+      .classed("pe-none", true)
       .classed("active", false)
     let nodeLabels = d3.selectAll(".node-label")
-      .classed("hidden", true)
+      .classed("invisible", true)
       .classed("active", false)
     let arcs = d3.selectAll(".arc")
-      .classed("hidden", true)
+      .classed("invisible", true)
     let arcLabels = d3.selectAll(".arc-label")
       .classed("active", false)
 
@@ -537,19 +537,18 @@ d3.select("#apply-btn")
       selection.classed("locked", false)
       selection.classed("lock-origin", false)
     }
-    d3.selectAll(".card").classed("highlighted", false)
-    d3.selectAll(".example").classed("shown", false)
-    d3.select("#explainer-text").classed("shown", true)
+    d3.selectAll(".card").classed("d-none", true)
+    d3.select("#explainer-text").classed("d-none", false)
 
     let filtNodes = nodes
       .filter(sc => selectedIDs.includes(sc.id))
-      .classed("cold", false)
+      .classed("pe-none", false)
       .classed("active", true)
 
     nodeLabels
       .filter(sc => selectedIDs.includes(sc.id))
       .classed("active", true)
-      .classed("hidden", false)
+      .classed("invisible", false)
 
     // Find out which nodes get touched by arcs of selected sound changes
     let touchedIDs = new Set()
@@ -560,7 +559,7 @@ d3.select("#apply-btn")
           || (arc.target === sc.id) && showInArcs))
         // If only confidents, filter out the others via data; else no filter
         .filter(rel => showOnlyConf ? rel.d_conf : true)
-        .classed("hidden", false)
+        .classed("invisible", false)
       
       arcLabels
         .filter(arc => (
@@ -577,13 +576,13 @@ d3.select("#apply-btn")
 
     nodeLabels
       .filter(sc => touchedIDs.has(sc.id))
-      .classed("hidden", false)
+      .classed("invisible", false)
     nodes
       .filter(sc => touchedIDs.has(sc.id))
-      .classed("cold", false)
+      .classed("pe-none", false)
     
     if (showOnlyConf) {
-      arcs.filter(".dashed").classed("hidden", true)
+      arcs.filter(".dashed").classed("invisible", true)
     }
     
   })
@@ -591,13 +590,13 @@ d3.select("#apply-btn")
 d3.select("#reset-btn")
   .on("click", () => {
     let nodes = d3.selectAll("circle")
-      .classed("cold", false)
+      .classed("pe-none", false)
       .classed("active", true)
     let nodeLabels = d3.selectAll(".node-label")
-      .classed("hidden", false)
+      .classed("invisible", false)
       .classed("active", true)
     let arcs = d3.selectAll(".arc")
-      .classed("hidden", false)
+      .classed("invisible", false)
     let arcLabels = d3.selectAll(".arc-label")
       .classed("active", true)
 
@@ -605,9 +604,8 @@ d3.select("#reset-btn")
       selection.classed("locked", false)
       selection.classed("lock-origin", false)
     }
-    d3.selectAll(".card").classed("highlighted", false)
-    d3.selectAll(".example").classed("shown", false)
-    d3.select("#explainer-text").classed("shown", true)
+    d3.selectAll(".card").classed("d-none", true)
+    d3.select("#explainer-text").classed("d-none", false)
   })
 
 // TODO: Make more efficient

@@ -27,7 +27,7 @@
     <div class="container-fluid">
     <div class="row">
         <div class="col-3 sidebar">
-            <div class="scrollable">
+            <div class="scrollable d-grid gap-2">
                 <h2 class="display-6">Relative Chronology Model of Sound Changes in Russian</h2>
                 <div class="row">
                     <div class="col d-grid">
@@ -41,12 +41,12 @@
                         </button>
                     </div>
                 </div>
-                <div class="d-grid">
-                    <button id="toggle-filter-btn" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false" aria-controls="collapseExample">
-                        Filter
-                    </button>
-                    <div class="collapse" id="filters">
-                        <div class="card text-bg-info card-body" id="filters-card">
+                <button id="toggle-filter-btn" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false" aria-controls="collapseExample">
+                    Filter
+                </button>
+                <div class="collapse" id="filters">
+                    <div class="card text-bg-info card-body" id="filters-card">
+                        <div class="d-grid gap-2">
                             <div class="row">
                                 <div class="col-4">
                                     <select class="form-select" multiple aria-label="multiple select example" id="filter-ids"></select>
@@ -55,54 +55,53 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="conf-check">
                                         <label class="form-check-label" for="conf-check">
-                                          Only confident relations
+                                            Only confident relations
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="in-check" checked>
                                         <label class="form-check-label" for="in-check">
-                                          Incoming relations
+                                            Incoming relations
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="out-check" checked>
                                         <label class="form-check-label" for="out-check">
-                                          Outgoing relations
+                                            Outgoing relations
                                         </label>
                                     </div>
                                 </div>
-                                <div class="d-grid" id="apply-btn-div">
-                                    <div class="row">
-                                        <div class="col d-grid">
-                                            <button id="apply-btn" class="btn btn-primary">
-                                                Apply
-                                            </button>
-                                        </div>
-                                        <div class="col d-grid">
-                                            <button id="reset-btn" class="btn btn-primary">
-                                                Reset
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>      
-                            </div>                
+                            </div>
+                            <div class="row">
+                                <div class="col d-grid">
+                                    <button id="apply-btn" class="btn btn-primary">
+                                        Apply
+                                    </button>
+                                </div>
+                                <div class="col d-grid">
+                                    <button id="reset-btn" class="btn btn-primary">
+                                        Reset
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card text-bg-primary" id="sc-card">
+
+                <div class="card text-bg-primary d-none" id="sc-card">
                     <div class="card-header">
                         <span class="badge text-bg-info" id="sc-card-id">1</span>
                         <span id="sc-card-header"></span>
                     </div>
                     <div class="card-body" id="sc-card-body"></div>
                 </div>
-                <div class="card text-bg-primary" id="rel-card">
+                <div class="card text-bg-primary d-none" id="rel-card">
                     <div class="card-header" id="rel-card-header"></div>
                     <div class="card-body" id="rel-card-body">
                         Platzhalter für Info über Relation. Ipsa doloremque ratione tempore culpa fugit sed explicabo inventore.
                     </div>
                 </div>
-                <div class="card text-bg-primary" id="second-sc-card">
+                <div class="card text-bg-primary d-none" id="second-sc-card">
                     <div class="card-header"s>
                         <span class="badge text-bg-info" id="second-sc-card-id">2</span>
                         <span id="second-sc-card-header"></span>
@@ -120,8 +119,8 @@
             </button>
             <div id="arc-diagram"></div>
             <div>
-                <button type="button" id="chron-close-btn" class="btn-close float-end" aria-label="Clear example chronology"></button>
-                <div id="example-chronology"></div>
+                <button type="button" id="chron-close-btn" class="btn-close float-end invisible" aria-label="Clear example chronology"></button>
+                <div id="example-chronology" class="border-top border-info"></div>
             </div>
         </div>
     </div>
@@ -132,12 +131,12 @@
             <h5 id="offcanvasRightLabel">Examples</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body scrollable">
+        <div class="offcanvas-body scrollable d-grid gap-1">
             <p id="explainer-text" class="shown">
                 Please double-click a sound change node to see example lexias.
             </p>
         </div>
     </div>
-    <div id="node-tooltip" class="tooltip"></div>
+    <div id="node-tooltip" class="tooltip invisible"></div>
 </body>
 </html>
