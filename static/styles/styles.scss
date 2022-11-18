@@ -15,7 +15,7 @@ $secondary: $uzh-grey-80;
 $light: $uzh-grey-40;
 $info: $uzh-grey-20;
 $input-bg: $uzh-grey-20;
-@import "lib/bootstrap/scss/bootstrap";
+@import "../bootstrap/scss/bootstrap";
 
 
 /* Sidebar */
@@ -145,10 +145,6 @@ textPath.locked {
 // Margin for every el preceded by another el
 .chronology-el + .chronology-el {
     margin-left: 5px;
-}
-
-.chronology-el.highlighted {
-    font-weight: bold;
 }
 
 #chron-close-btn {

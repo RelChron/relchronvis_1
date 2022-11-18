@@ -1,4 +1,4 @@
-// Draw interactive arc diagram
+// Manage interactive arc diagram, sidebar and examples
 // Based on https://d3-graph-gallery.com/graph/arc_highlight.html
 
 const CIRCLE_RADIUS = 6
@@ -323,7 +323,7 @@ Promise.all([
 
           cElements
             .filter((d, i) => i >= nOfElements - 3)
-            .classed("highlighted", "true")
+            .classed("fw-bold", "true")
 
           boldLastThree = false
         }
