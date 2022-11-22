@@ -4,7 +4,7 @@ This web app visualizes a relative chronology of sound changes that have occurre
 ## sound_changes.csv
 You can modify this file with your own data. Below is a model of what it looks like when you open it in Excel. (Currently, you need Excel to modify the file.)
 
-| | A | B | C | D |
+| Test | A | B | C | D |
 | 1 |---|---|---|---|
 | 2 |  | Name of SC 1 | Name of SC 2 | Name of SC 3 |
 | 3 |  | Description of SC 1 | Description of SC 2 | Description of SC 3 |
