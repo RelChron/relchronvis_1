@@ -104,12 +104,12 @@ def import_csv_examples(infile_path, outfile_path):
 
 if __name__ == "__main__":
     import_csv_sound_changes(
-        infile_path = "data/sound_changes.csv", 
-        outfile_path = "data/sound_changes.json", 
+        infile_path = "data/sound_changes_ru.csv", 
+        outfile_path = "data/sound_changes_ru.json", 
         n_of_sound_changes = 71
     )
     import_csv_examples(
-        infile_path = "data/examples.csv",
-        outfile_path = "data/examples.json"
+        infile_path = "data/examples_ru.csv",
+        outfile_path = "data/examples_ru.json"
     )
     app.run(debug=True, use_reloader=True)
