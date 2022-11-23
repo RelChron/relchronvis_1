@@ -261,8 +261,7 @@ Promise.all([
 
     if (relCardIsOpen) {return}
     
-    let header_string = m_arc.source + " vor " + m_arc.target + " wegen " 
-    + m_arc.d_reason + ":"
+    let header = `${m_arc.source} vor ${m_arc.target} wegen ${m_arc.d_reason}`
     
     // Select source or target change, depending on arc direction
     // -1 because the array is 0-indexed, but IDs are 1-indexed
@@ -273,8 +272,19 @@ Promise.all([
     }
     
     d3.select(this).classed("rel-card-open", true)
-    d3.select("#rel-card-header").text(header_string)
-    d3.select("#rel-card").classed("d-none", false)
+    relCard = d3.select("#rel-card").classed("d-none", false)
+    if (m_arc.d_conf) {
+      relCard
+        .classed("border-primary bg-transparent text-primary", false)
+        .classed("text-bg-primary", true)
+      header += ":"
+    } else {
+      relCard
+        .classed("border-primary bg-transparent text-primary", true)
+        .classed("text-bg-primary", false)
+      header += " (unsicher):"
+    } 
+    d3.select("#rel-card-header").text(header)
     d3.select("#second-sc-card-id")
       .text(sc_data["changes"][secondCardIndex]["id"])
     d3.select("#second-sc-card-header")
