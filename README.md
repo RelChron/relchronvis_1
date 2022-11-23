@@ -23,6 +23,6 @@ Here's how to modify it with your own data:
  5. Make sure that row 3 enumerates all sound changes, starting at B3.
  6. Make sure that column A enumerates all sound changes, starting at A4.
  7. In the space below row 3 and after column A, you can add abbreviations that specify how the sound changes are related chronologically. For example, in the model table above, SC 2 comes after SC 1 because of Feeding (F). SC 3 comes after SC 2 because of Bleeding (B). You can add a `?` (like in D5) to specify that the relation is not confident. This is visualized as a dotted arc.
- 8. **Do not to add any text** to any other cells in the sheet, and do not add in or below the "diagonal" of sound change relations. In the model table above, the diagonal consists of cells B4, C5, and D6.
+ 8. **Do not enter anyything** into any other cells in the sheet, and do not enter any data in or below the "diagonal" of sound change relations. In the model table above, the diagonal consists of cells B4, C5, and D6.
  9. Save the file as "CSV UTF-8 (Comma-delimited) (.csv)".
  10. Replace the `sound_changes.csv` your `.csv` file.
