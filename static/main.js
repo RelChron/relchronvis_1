@@ -190,6 +190,11 @@ Promise.all([
     d3.selectAll(".card").classed("d-none", true)
     d3.select("#explainer-text").classed("d-none", false)
 
+    // Reset example chronology
+    examples.classed("open", false)
+    d3.select("#example-chronology").html("")
+    d3.select("#chron-close-btn").classed("invisible", true)
+
     // If lock origin clicked, just turn everything off. Else, toggle lock on
     // for the appropriate elements (with all the code below)
     if (nodeIsOrigin) {return}
@@ -348,7 +353,6 @@ Promise.all([
   .on("click", () => {
     examples.classed("open", false)
     d3.select("#example-chronology").html("")
-    // TODO Maybe rename all those "highlighted" properties, might be confusing
     d3.select("#chron-close-btn").classed("invisible", true)
   })
 
