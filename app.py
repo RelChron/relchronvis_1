@@ -9,6 +9,14 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route("/ru")
+def ru():
+    return render_template("diagram.html")
+
+@app.route("/hr")
+def hr():
+    return render_template("diagram.html")
+
 @app.route('/sound_changes', methods=['GET'])
 def give_sc_data():
     return send_file("data/sound_changes.json")
