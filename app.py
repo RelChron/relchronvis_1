@@ -19,11 +19,11 @@ def hr():
 
 @app.route('/sound_changes', methods=['GET'])
 def give_sc_data():
-    return send_file("data/sound_changes.json")
+    return send_file("data/sound_changes_ru.json")
 
 @app.route('/examples', methods=['GET'])
 def give_example_data():
-    return send_file("data/examples.json")
+    return send_file("data/examples_ru.json")
 
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation (TODO)
