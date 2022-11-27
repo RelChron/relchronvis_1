@@ -2,7 +2,7 @@
 This web app visualizes a relative chronology of sound changes that have occurred in the Russian language from Proto-Slavic to the present day. It allows users to inspect individual changes and their relative datings and view examples. Try it out [here](https://relchron.eu.pythonanywhere.com).
 
 ## sound_changes.csv
-Download the template for sound change data [here](https://relchron.eu.pythonanywhere.com/sc_template) (right-click > "Download Linked File").
+Download the template for sound change data [here](https://relchron.eu.pythonanywhere.com/sc_template) (right-click > "Download Linked File" / "Save Link As...").
 You can modify this file with your own data. Below is a model of what it looks like when you open it in Excel (currently, you need Excel to modify the file). This would already be a valid file to pass into the web app.
 
 |  | A | B | C | D |
