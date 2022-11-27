@@ -25,6 +25,10 @@ def give_sc_data():
 def give_example_data():
     return send_file("data/examples_ru.json")
 
+@app.route('/sc_template', methods=['GET'])
+def give_template():
+    return send_file("data/sound_changes_ru.csv")
+
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation (TODO)
 def import_csv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
