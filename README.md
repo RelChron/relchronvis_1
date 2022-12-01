@@ -4,14 +4,11 @@ This web app visualizes a relative chronology of sound changes that have occurre
 ## Terminology
 | Term | Explanation |
 | ---  | --- |
-| Sound Change (SC) | Changes that a language has gone through. In the case of the Russian data, N = 71. Sound changes are dated relatively to each other, and each sound change is represented by a filled circle in the arc diagram. Each sound change has an ID, name and description. They are loaded from sound_changes.csv. |
-| Relation | Relations between sound changes, e.g. "3 before 8". Each sound change has a set of relations to other sound changes, which are represented by arcs in the arc diagram. Relations have a dating reason and confidence. They are loaded from sound_changes.csv. |
-| Dating Reason | An abbreviation describing the process by which a relation was established, e.g. "B", which stands for "Bleeding".
-- asd
-- asd
- |
-| Dating Confidence | --- |
-| Example | --- |
+| Sound Change (SC) | Changes that a language has gone through. In the case of the Russian data, N = 71. Sound changes are dated relatively to each other, and each sound change is represented by a filled circle in the arc diagram. Each sound change has an ID, name and description. They are loaded from `sound_changes.csv`. |
+| Relation | Relations between sound changes, e.g. "3 before 8". Each sound change has a set of relations to other sound changes, which are represented by arcs in the arc diagram. Relations have a dating reason and confidence. They are loaded from `sound_changes.csv`. |
+| Dating Reason | An abbreviation describing the process by which a relation was established, e.g. "B", which stands for "Bleeding". These are also loaded from `sound_changes.csv` and show in the labels above arcs in the arc diagram. |
+| Dating Confidence | If a dating of a relation is uncertain, the corresponding arc will be displayed with a dotted line, and it can be filtered out. |
+| Example | The example lexemes show up in a drawer element on the right side of the website after a sound change has been selected. They are loaded from `examples.csv`, which contains data about each form of the lexeme after particular sound changes. The website only displays examples that have undergone the selected sound change. |
 
 ## sound_changes.csv
 Download the template for sound change data [here](https://relchron.eu.pythonanywhere.com/sc_template) (right-click > "Download Linked File" / "Save Link As...").
