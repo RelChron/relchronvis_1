@@ -261,7 +261,8 @@ Promise.all([
 
     if (relCardIsOpen) {return}
     
-    let header = `${m_arc.source} vor ${m_arc.target} wegen ${m_arc.d_reason}`
+    let header = `${m_arc.source} before ${m_arc.target} ` 
+    header += `because of ${m_arc.d_reason}`
     
     // Select source or target change, depending on arc direction
     // -1 because the array is 0-indexed, but IDs are 1-indexed
@@ -282,7 +283,7 @@ Promise.all([
       relCard
         .classed("border-primary bg-transparent text-primary", true)
         .classed("text-bg-primary", false)
-      header += " (unsicher):"
+      header += " (uncertain):"
     } 
     d3.select("#rel-card-header").text(header)
     d3.select("#second-sc-card-id")
