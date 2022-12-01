@@ -26,8 +26,12 @@ def give_example_data():
     return send_file("data/examples_ru.json")
 
 @app.route('/sc_template', methods=['GET'])
-def give_template():
+def give_sc_template():
     return send_file("data/sound_changes_ru.csv")
+
+@app.route('/ex_template', methods=['GET'])
+def give_ex_template():
+    return send_file("data/examples_ru.csv")
 
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation (TODO)
