@@ -1,6 +1,18 @@
 # A Relative Chronology of Sound Changes in Russian
 This web app visualizes a relative chronology of sound changes that have occurred in the Russian language from Proto-Slavic to the present day. It allows users to inspect individual changes and their relative datings and view examples. Try it out [here](https://relchron.eu.pythonanywhere.com).
 
+## Terminology
+| Term | Explanation |
+| ---  | --- |
+| Sound Change (SC) | Changes that a language has gone through. In the case of the Russian data, N = 71. Sound changes are dated relatively to each other, and each sound change is represented by a filled circle in the arc diagram. Each sound change has an ID, name and description. They are loaded from sound_changes.csv. |
+| Relation | Relations between sound changes, e.g. "3 before 8". Each sound change has a set of relations to other sound changes, which are represented by arcs in the arc diagram. Relations have a dating reason and confidence. They are loaded from sound_changes.csv. |
+| Dating Reason | An abbreviation describing the process by which a relation was established, e.g. "B", which stands for "Bleeding".
+- asd
+- asd
+ |
+| Dating Confidence | --- |
+| Example | --- |
+
 ## sound_changes.csv
 Download the template for sound change data [here](https://relchron.eu.pythonanywhere.com/sc_template) (right-click > "Download Linked File" / "Save Link As...").
 You can modify this file with your own data. Below is a model of what it looks like when you open it in Excel (currently, you need Excel to modify the file). This would already be a valid file to pass into the web app.
