@@ -328,7 +328,7 @@ Promise.all([
         .attr("class", "chronology-el")
         .html(` ${m_example[sc_id]} `)
 
-        // TODO: Simplify by changing how bolding works for element 0
+        // Simplify by changing how bolding works for element 0
         if (sc_id === idToBold) {
           boldLastThree = true
         }
@@ -623,7 +623,6 @@ d3.select("#reset-btn")
     d3.select("#explainer-text").classed("d-none", false)
   })
 
-// TODO: Make more efficient
 // Inspired by https://stackoverflow.com/a/27723725
 function truncate() {
   let element = d3.select(this)
