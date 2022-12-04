@@ -114,7 +114,7 @@ Promise.all([
     .attr("class", "card example text-center text-bg-light d-none")
       .append("div")
       .attr("class", "card-body")
-      .text(data => data["russian"])
+      .text(data => data[newestVariety])
 
   let nodeTooltip = d3.select("#node-tooltip")
 
@@ -307,7 +307,8 @@ Promise.all([
 
     box.append("span")
       .attr("class", "chronology-el")
-      .html(`PS ${m_example["proto_slavic"]} `)
+      // oldestVariety (and newest) is passed into html script tag by flask
+      .html(`${oldestVariety} ${m_example[oldestVariety]} `)
 
     if (Object.keys(m_example)[0] === idToBold) {
       boldLastThree = true
@@ -351,8 +352,7 @@ Promise.all([
 
     box.append("span")
       .attr("class", "chronology-el")
-      .html(`Ru. ${m_example["russian"]} / ` + 
-       `${m_example["russian_alt"]}`)
+      .html(`${newestVariety} ${m_example[newestVariety]}`)
 
     offcanvasDrawerObj.hide()
     d3.select(this).classed("open", true)

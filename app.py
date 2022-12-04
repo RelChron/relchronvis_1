@@ -11,7 +11,10 @@ def index():
 
 @app.route("/ru")
 def ru():
-    return render_template("diagram.html")
+    return render_template(
+        "diagram.html.j2", 
+        abbreviations=get_abbr("data/examples_ru.csv")
+    )
 
 @app.route("/hr")
 def hr():
@@ -34,7 +37,7 @@ def give_ex_template():
     return send_file("data/examples_ru.csv")
 
 # Accept a CSV file (former excel sheet) and save it as json
-# Formatting see documentation (TODO)
+# Formatting see documentation
 def import_csv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
     with open(infile_path, encoding="utf-8") as infile:
         csv_reader = csv.DictReader(infile, dialect="excel",
@@ -109,6 +112,22 @@ def import_csv_examples(infile_path, outfile_path):
     with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
         # outfile.write(json.dumps(out_list, sort_keys=True))
         outfile.write(json.dumps(out_list))
+
+def get_abbr(examples_file_path):
+    with open(examples_file_path, encoding="utf-8-sig", newline='') as infile:
+        csv_reader = csv.reader(infile, dialect="excel")
+
+        for row in csv_reader:
+            oldest_variety = row[1]
+            newest_variety = row[0]
+            break
+
+        abbreviations = {
+            "oldest_variety": oldest_variety,
+            "newest_variety": newest_variety
+        }
+
+        return abbreviations
 
 if __name__ == "__main__":
     import_csv_sound_changes(
