@@ -1,0 +1,23 @@
+{% extends "layout.html.jinja" %}
+{% block body %}
+<div class="container text-center align-items-center mt-5 row">
+    <div class="col-1"></div>
+    <div class="col-8 position-absolute top-50 start-50 translate-middle">
+        <h1 class="display-5 fw-bold">Relative Chronology Visualization</h1>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <p class="lead">
+                    Pick a language to get started.
+                </p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a class="btn btn-primary btn-lg px-4 gap-3" href="/ru">Russian</a>
+                <a class="btn btn-primary btn-lg px-4 gap-3" href="/hr">Croatian</a>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+{% endblock %}

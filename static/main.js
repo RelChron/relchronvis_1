@@ -34,8 +34,8 @@ const diagram = svg.append("g")
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
 // Loading two files: https://stackoverflow.com/questions/70629019
 Promise.all([
-  d3.json("/sound_changes"),
-  d3.json("/examples")
+  d3.json(`/sound_changes?lang=${language}`),
+  d3.json(`/examples?lang=${language}`)
 ]).then(function([sc_data, example_data]) {
   let xScale = d3.scaleLinear()
     .domain([1, sc_data.changes.length])
@@ -106,6 +106,10 @@ Promise.all([
 
   nodeLabels.each(truncate)
 
+  if (example_data.hasOwnProperty("error")) {
+    console.log(example_data["error"])
+  }
+
   let examples = d3.select(".offcanvas-body")
     .selectAll("myExampleCards")
     .data(example_data)
@@ -115,6 +119,7 @@ Promise.all([
       .append("div")
       .attr("class", "card-body")
       .text(data => data[newestVariety])
+  
 
   let nodeTooltip = d3.select("#node-tooltip")
 

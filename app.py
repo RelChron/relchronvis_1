@@ -1,32 +1,65 @@
 # Import data from csv, serve pages and data requests
-from flask import Flask, render_template, send_file
+from flask import Flask, render_template, send_file, request, jsonify
 from typing import OrderedDict
+from pathlib import Path
 import csv, json
 
 app = Flask(__name__)
 
 @app.route("/")
-def index():
-    return render_template("index.html")
+def landing():
+    return render_template("landing.html.jinja")
 
 @app.route("/ru")
 def ru():
+    oldest_variety, newest_variety = get_abbr("data/examples_ru.csv")
     return render_template(
-        "diagram.html.j2", 
-        abbreviations=get_abbr("data/examples_ru.csv")
+        "arc_diagram.html.jinja", 
+        data = {
+            "oldest_variety": oldest_variety,
+            "newest_variety": newest_variety,
+            "language": "Russian",
+        }
     )
 
 @app.route("/hr")
 def hr():
-    return render_template("diagram.html")
+    # oldest_variety, newest_variety = get_abbr("data/examples_hr.csv")
+    oldest_variety, newest_variety = "", ""
+    return render_template(
+        "arc_diagram.html.jinja", 
+        data = {
+            "oldest_variety": oldest_variety,
+            "newest_variety": newest_variety,
+            "language": "Croatian",
+        }
+    )
 
 @app.route('/sound_changes', methods=['GET'])
 def give_sc_data():
-    return send_file("data/sound_changes_ru.json")
+    language = request.args.get("lang")
+    if language == "Russian":
+        return send_file("data/sound_changes_ru.json")
+    elif language == "Croatian":
+        return send_file("data/sound_changes_hr.json")
 
 @app.route('/examples', methods=['GET'])
 def give_example_data():
-    return send_file("data/examples_ru.json")
+    language = request.args.get("lang")
+    if language == "Russian":
+        if Path("data/examples_ru.json").exists():
+            return send_file("data/examples_ru.json")
+        else:
+            return {"error": "Error getting Russian example data: "
+                    "file 'data/examples_ru.json' does not exist."}
+    elif language == "Croatian":
+        if Path("data/examples_hr.json").exists():
+            return send_file("data/examples_hr.json")
+        else:
+            return {"error": "Error getting Croatian example data: "
+                    "file 'data/examples_hr.json' does not exist."}
+    else:
+        return {"error": "Error getting example data"}
 
 @app.route('/sc_template', methods=['GET'])
 def give_sc_template():
@@ -122,17 +155,12 @@ def get_abbr(examples_file_path):
             newest_variety = row[0]
             break
 
-        abbreviations = {
-            "oldest_variety": oldest_variety,
-            "newest_variety": newest_variety
-        }
-
-        return abbreviations
+        return oldest_variety, newest_variety
 
 if __name__ == "__main__":
     import_csv_sound_changes(
-        infile_path = "data/sound_changes_ru.csv", 
-        outfile_path = "data/sound_changes_ru.json", 
+        infile_path = "data/sound_changes_hr.csv", 
+        outfile_path = "data/sound_changes_hr.json", 
         n_of_sound_changes = 71
     )
     import_csv_examples(
