@@ -52,7 +52,7 @@ def give_sc_data():
 def give_example_data():
     language = request.args.get("lang")
     if language == "Russian":
-        if Path("data/examples_ru.json").exists():
+        if Path(BASE_DIR / "data/examples_ru.json").exists():
             return send_file("data/examples_ru.json")
         else:
             return {"error": "Error getting Russian example data: "
