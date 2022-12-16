@@ -58,7 +58,7 @@ def give_example_data():
             return {"error": "Error getting Russian example data: "
                     "file 'data/examples_ru.json' does not exist."}
     elif language == "Croatian":
-        if Path("data/examples_hr.json").exists():
+        if Path(BASE_DIR / "data/examples_hr.json").exists():
             return send_file("data/examples_hr.json")
         else:
             return {"error": "Error getting Croatian example data: "
