@@ -4,6 +4,7 @@ from typing import OrderedDict
 from pathlib import Path
 import csv, json
 import sys
+import os
 
 app = Flask(__name__)
 
@@ -148,8 +149,12 @@ def import_csv_examples(infile_path, outfile_path):
         outfile.write(json.dumps(out_list))
 
 def get_abbr(examples_file_path):
+    working_directory = Path(os.getcwd())
+    print(working_directory)
     filepath = Path(examples_file_path)
     print("Filepath exists:", filepath.exists())
+    absolute_path = working_directory / filepath
+    print(absolute_path)
 
     with filepath.open(encoding="utf-8-sig", newline="") as infile:
         csv_reader = csv.reader(infile, dialect="excel")
