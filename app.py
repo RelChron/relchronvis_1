@@ -5,7 +5,9 @@ from pathlib import Path
 import csv, json
 import os
 
-working_dir = Path(os.getcwd())
+# This should run only when deployed. Running this script directly changes 
+# the working directory.
+BASE_DIR = Path(os.getcwd()) / "relchron_1"
 
 app = Flask(__name__)
 
@@ -150,21 +152,7 @@ def import_csv_examples(infile_path, outfile_path):
         outfile.write(json.dumps(out_list))
 
 def get_abbr(examples_file_path):
-    working_directory = Path(os.getcwd())
-    print("Working directory exists:", working_directory.exists())
-    print(working_directory)
-    data_dir = working_directory / "relchron_1" / "data"
-    print("Data dir exists:", data_dir.exists())
-    print(data_dir)
-    filepath = Path(examples_file_path)
-    print("Filepath exists:", filepath.exists())
-    absolute_path = working_directory / filepath
-    print(absolute_path)
-    print("Absolute path exists:", absolute_path.exists())
-
-    if app.debug:
-        print("APP IS IN DEBUG MODE")
-
+    absolute_path = BASE_DIR / examples_file_path
     with absolute_path.open(encoding="utf-8-sig", newline="") as infile:
         csv_reader = csv.reader(infile, dialect="excel")
 
@@ -176,7 +164,8 @@ def get_abbr(examples_file_path):
         return oldest_variety, newest_variety
 
 if __name__ == "__main__":
-    print("THIS SHOULD ONLY RUN WHEN APP.PY IS CALLED DIRECTLY")
+    # When running directly, cwd == base dir (as opposed to on pythonanywhere)
+    BASE_DIR = Path(os.getcwd())
     import_csv_sound_changes(
         infile_path = "data/sound_changes_hr.csv", 
         outfile_path = "data/sound_changes_hr.json", 
