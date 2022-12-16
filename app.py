@@ -147,15 +147,16 @@ def import_csv_examples(infile_path, outfile_path):
         outfile.write(json.dumps(out_list))
 
 def get_abbr(examples_file_path):
-    with open(examples_file_path, encoding="utf-8-sig", newline='') as infile:
-        csv_reader = csv.reader(infile, dialect="excel")
+    # with open(examples_file_path, encoding="utf-8-sig", newline='') as infile:
+    #     csv_reader = csv.reader(infile, dialect="excel")
 
-        for row in csv_reader:
-            oldest_variety = row[1]
-            newest_variety = row[0]
-            break
+    #     for row in csv_reader:
+    #         oldest_variety = row[1]
+    #         newest_variety = row[0]
+    #         break
 
-        return oldest_variety, newest_variety
+    #     return oldest_variety, newest_variety
+    return "", ""
 
 if __name__ == "__main__":
     import_csv_sound_changes(
