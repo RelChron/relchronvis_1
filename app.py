@@ -172,6 +172,7 @@ def get_abbr(examples_file_path):
         return oldest_variety, newest_variety
 
 if __name__ == "__main__":
+    print("THIS SHOULD ONLY RUN WHEN APP.PY IS CALLED DIRECTLY")
     import_csv_sound_changes(
         infile_path = "data/sound_changes_hr.csv", 
         outfile_path = "data/sound_changes_hr.json", 
