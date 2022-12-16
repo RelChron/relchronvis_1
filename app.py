@@ -150,13 +150,15 @@ def import_csv_examples(infile_path, outfile_path):
 
 def get_abbr(examples_file_path):
     working_directory = Path(os.getcwd())
+    print("Working directory exists:", working_directory.exists())
     print(working_directory)
     filepath = Path(examples_file_path)
     print("Filepath exists:", filepath.exists())
     absolute_path = working_directory / filepath
     print(absolute_path)
+    print("Absolute path exists:", absolute_path.exists())
 
-    with filepath.open(encoding="utf-8-sig", newline="") as infile:
+    with absolute_path.open(encoding="utf-8-sig", newline="") as infile:
         csv_reader = csv.reader(infile, dialect="excel")
 
         for row in csv_reader:
