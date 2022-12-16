@@ -3,6 +3,7 @@ from flask import Flask, render_template, send_file, request
 from typing import OrderedDict
 from pathlib import Path
 import csv, json
+import sys
 
 app = Flask(__name__)
 
@@ -147,16 +148,18 @@ def import_csv_examples(infile_path, outfile_path):
         outfile.write(json.dumps(out_list))
 
 def get_abbr(examples_file_path):
-    # with open(examples_file_path, encoding="utf-8-sig", newline='') as infile:
-    #     csv_reader = csv.reader(infile, dialect="excel")
+    filepath = Path(examples_file_path)
+    print("Filepath exists:", filepath.exists())
 
-    #     for row in csv_reader:
-    #         oldest_variety = row[1]
-    #         newest_variety = row[0]
-    #         break
+    with filepath.open(encoding="utf-8-sig", newline='') as infile:
+        csv_reader = csv.reader(infile, dialect="excel")
 
-    #     return oldest_variety, newest_variety
-    return "", ""
+        for row in csv_reader:
+            oldest_variety = row[1]
+            newest_variety = row[0]
+            break
+
+        return oldest_variety, newest_variety
 
 if __name__ == "__main__":
     import_csv_sound_changes(
