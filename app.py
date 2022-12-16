@@ -151,7 +151,7 @@ def get_abbr(examples_file_path):
     filepath = Path(examples_file_path)
     print("Filepath exists:", filepath.exists())
 
-    with filepath.open(encoding="utf-8-sig", newline='') as infile:
+    with filepath.open(encoding="utf-8-sig", newline="") as infile:
         csv_reader = csv.reader(infile, dialect="excel")
 
         for row in csv_reader:
