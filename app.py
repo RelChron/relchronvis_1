@@ -1,5 +1,5 @@
 # Import data from csv, serve pages and data requests
-from flask import Flask, render_template, send_file, request, jsonify
+from flask import Flask, render_template, send_file, request
 from typing import OrderedDict
 from pathlib import Path
 import csv, json
