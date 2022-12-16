@@ -152,6 +152,9 @@ def get_abbr(examples_file_path):
     working_directory = Path(os.getcwd())
     print("Working directory exists:", working_directory.exists())
     print(working_directory)
+    data_dir = working_directory / "data"
+    print("Data dir exists:", data_dir.exists())
+    print(data_dir)
     filepath = Path(examples_file_path)
     print("Filepath exists:", filepath.exists())
     absolute_path = working_directory / filepath
