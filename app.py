@@ -3,8 +3,9 @@ from flask import Flask, render_template, send_file, request
 from typing import OrderedDict
 from pathlib import Path
 import csv, json
-import sys
 import os
+
+working_dir = Path(os.getcwd())
 
 app = Flask(__name__)
 
@@ -160,6 +161,9 @@ def get_abbr(examples_file_path):
     absolute_path = working_directory / filepath
     print(absolute_path)
     print("Absolute path exists:", absolute_path.exists())
+
+    if app.debug:
+        print("APP IS IN DEBUG MODE")
 
     with absolute_path.open(encoding="utf-8-sig", newline="") as infile:
         csv_reader = csv.reader(infile, dialect="excel")
