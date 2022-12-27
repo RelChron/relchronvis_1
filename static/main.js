@@ -37,6 +37,9 @@ Promise.all([
   d3.json(`/sound_changes?lang=${language}`),
   d3.json(`/examples?lang=${language}`)
 ]).then(function([sc_data, example_data]) {
+  // Catch errors
+  // TODO
+
   let xScale = d3.scaleLinear()
     .domain([1, sc_data.changes.length])
     .range([0, INNER_WIDTH])
@@ -610,6 +613,7 @@ d3.select("#apply-btn")
 d3.select("#reset-btn")
   .on("click", () => {
     let nodes = d3.selectAll("circle")
+      // pe = pointer events (bootstrap class)
       .classed("pe-none", false)
       .classed("active", true)
     let nodeLabels = d3.selectAll(".node-label")
@@ -638,4 +642,8 @@ function truncate() {
       element.text(elText + '...')
       elHeight = element.node().getBBox().height
   }
+}
+
+function addErrorCard(errorText) {
+  // TODO
 }

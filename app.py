@@ -17,15 +17,17 @@ def landing():
 
 @app.route("/ru")
 def ru():
-    oldest_variety, newest_variety = get_abbr("data/examples_ru.csv")
-    return render_template(
-        "arc_diagram.html.jinja", 
-        data = {
-            "oldest_variety": oldest_variety,
-            "newest_variety": newest_variety,
-            "language": "Russian",
-        }
-    )
+    data = {"language": "Russian"}
+    try:
+        oldest_variety, newest_variety = get_abbr("data/examples_ru.csv")
+    except FileNotFoundError as e:
+        data["error"] = ("Error getting Russian language varieties:", e)
+        oldest_variety, newest_variety = "", ""
+
+    data["oldest_variety"] = oldest_variety
+    data["newest_variety"] = newest_variety
+
+    return render_template("arc_diagram.html.jinja", data = data)
 
 @app.route("/hr")
 def hr():
@@ -34,9 +36,9 @@ def hr():
     return render_template(
         "arc_diagram.html.jinja", 
         data = {
-            "oldest_variety": oldest_variety,
-            "newest_variety": newest_variety,
             "language": "Croatian",
+            "oldest_variety": oldest_variety,
+            "newest_variety": newest_variety
         }
     )
 
@@ -153,15 +155,19 @@ def import_csv_examples(infile_path, outfile_path):
 
 def get_abbr(examples_file_path):
     absolute_path = BASE_DIR / examples_file_path
-    with absolute_path.open(encoding="utf-8-sig", newline="") as infile:
-        csv_reader = csv.reader(infile, dialect="excel")
+    try:
+        with absolute_path.open(encoding="utf-8-sig", newline="") as infile:
+            csv_reader = csv.reader(infile, dialect="excel")
 
-        for row in csv_reader:
-            oldest_variety = row[1]
-            newest_variety = row[0]
-            break
-
-        return oldest_variety, newest_variety
+            for row in csv_reader:
+                oldest_variety = row[1]
+                newest_variety = row[0]
+                break
+    except FileNotFoundError:
+        return 
+    
+    return oldest_variety, newest_variety
+    
 
 if __name__ == "__main__":
     # When running directly, cwd == base dir (as opposed to on pythonanywhere)
