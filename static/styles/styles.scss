@@ -10,13 +10,13 @@ $uzh-grey-80: #b5bdc5;
 $uzh-grey-60: #c8ced4;
 $uzh-grey-40: #dadee2;
 $uzh-grey-20: #edeff1;
+$uzh-red-80: #e38052;
 $primary: $uzh-blue-80;
 $secondary: $uzh-grey-80;
 $light: $uzh-grey-40;
 $info: $uzh-grey-20;
 $input-bg: $uzh-grey-20;
-$danger: #fbe651;
-$danger: #e38052;
+$danger: $uzh-red-80;
 @import "../bootstrap/scss/bootstrap";
 
 
