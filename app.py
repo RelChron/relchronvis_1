@@ -165,12 +165,9 @@ def import_csv_examples(infile_path, outfile_path):
 def get_abbr(examples_file_path):
     absolute_path = BASE_DIR / examples_file_path
     with absolute_path.open(encoding="utf-8-sig", newline="") as infile:
-        csv_reader = csv.reader(infile, dialect="excel")
-
-        for row in csv_reader:
-            oldest_variety = row[1]
-            newest_variety = row[0]
-            break
+        first_row = next(csv.reader(infile, dialect="excel"))
+        oldest_variety = first_row[1]
+        newest_variety = first_row[0]
     
     return oldest_variety, newest_variety
     
