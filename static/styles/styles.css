@@ -11036,11 +11036,7 @@ textPath.locked {
   --bs-card-spacer-y: 0.5rem;
 }
 
-#drawer-btn {
-  margin: 15px;
-}
-
-#drawer-btn-icon {
+#drawer-btn-icon, #home-btn-icon {
   transform: translateY(-2px);
 }
 
