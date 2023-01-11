@@ -21,26 +21,27 @@ def ru():
     try:
         oldest_variety, newest_variety = get_abbr("data/examples_ru.csv")
     except FileNotFoundError as e:
-        data["error"] = ("Error getting Russian language varieties:", e)
+        data["error"] = ("Error getting Russian language varieties:", str(e))
         oldest_variety, newest_variety = "", ""
 
     data["oldest_variety"] = oldest_variety
     data["newest_variety"] = newest_variety
 
-    return render_template("arc_diagram.html.jinja", data = data)
+    return render_template("arc_diagram.html.jinja", data=data)
 
 @app.route("/hr")
 def hr():
-    # oldest_variety, newest_variety = get_abbr("data/examples_hr.csv")
-    oldest_variety, newest_variety = "", ""
-    return render_template(
-        "arc_diagram.html.jinja", 
-        data = {
-            "language": "Croatian",
-            "oldest_variety": oldest_variety,
-            "newest_variety": newest_variety
-        }
-    )
+    data = {"language": "Croatian"}
+    try:
+        oldest_variety, newest_variety = get_abbr("data/examples_hr.csv")
+    except FileNotFoundError as e:
+        data["error"] = ("Error getting Croatian language varieties from 'data/examples_hr.csv'", e.strerror)
+        oldest_variety, newest_variety = "", ""
+
+    data["oldest_variety"] = oldest_variety
+    data["newest_variety"] = newest_variety
+
+    return render_template("arc_diagram.html.jinja", data=data)
 
 @app.route('/sound_changes', methods=['GET'])
 def give_sc_data():
@@ -57,14 +58,14 @@ def give_example_data():
         if Path(BASE_DIR / "data/examples_ru.json").exists():
             return send_file("data/examples_ru.json")
         else:
-            return {"error": "Error getting Russian example data: "
-                    "file 'data/examples_ru.json' does not exist."}
+            return {"error": ("Error getting Russian example data",
+                    "File 'data/examples_ru.json' does not exist")}
     elif language == "Croatian":
         if Path(BASE_DIR / "data/examples_hr.json").exists():
             return send_file("data/examples_hr.json")
         else:
-            return {"error": "Error getting Croatian example data: "
-                    "file 'data/examples_hr.json' does not exist."}
+            return {"error": ("Error getting Croatian example data",
+                    "File 'data/examples_hr.json' does not exist")}
     else:
         return {"error": "Error getting example data"}
 
@@ -155,16 +156,13 @@ def import_csv_examples(infile_path, outfile_path):
 
 def get_abbr(examples_file_path):
     absolute_path = BASE_DIR / examples_file_path
-    try:
-        with absolute_path.open(encoding="utf-8-sig", newline="") as infile:
-            csv_reader = csv.reader(infile, dialect="excel")
+    with absolute_path.open(encoding="utf-8-sig", newline="") as infile:
+        csv_reader = csv.reader(infile, dialect="excel")
 
-            for row in csv_reader:
-                oldest_variety = row[1]
-                newest_variety = row[0]
-                break
-    except FileNotFoundError:
-        return 
+        for row in csv_reader:
+            oldest_variety = row[1]
+            newest_variety = row[0]
+            break
     
     return oldest_variety, newest_variety
     

@@ -30,6 +30,11 @@ const svg = d3.select("#arc-diagram")
 const diagram = svg.append("g")
   .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")")
 
+if (serverResponse.hasOwnProperty("error")) {
+  // the template receives the server response and sets serverResponse
+  addErrorCard(serverResponse["error"])
+}
+
 // EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
 // Loading two files: https://stackoverflow.com/questions/70629019
@@ -38,7 +43,11 @@ Promise.all([
   d3.json(`/examples?lang=${language}`)
 ]).then(function([sc_data, example_data]) {
   // Catch errors
-  // TODO
+  if (example_data.hasOwnProperty("error")) {
+    addErrorCard(example_data["error"])
+  }
+
+  // TODO: sound change data errors
 
   let xScale = d3.scaleLinear()
     .domain([1, sc_data.changes.length])
@@ -109,9 +118,7 @@ Promise.all([
 
   nodeLabels.each(truncate)
 
-  if (example_data.hasOwnProperty("error")) {
-    console.log(example_data["error"])
-  }
+  
 
   let examples = d3.select(".offcanvas-body")
     .selectAll("myExampleCards")
@@ -197,6 +204,7 @@ Promise.all([
 
     d3.selectAll(".card").classed("d-none", true)
     d3.select("#explainer-text").classed("d-none", false)
+    d3.selectAll(".bg-danger").classed("d-none", false)
 
     // Reset example chronology
     examples.classed("open", false)
@@ -562,6 +570,7 @@ d3.select("#apply-btn")
     }
     d3.selectAll(".card").classed("d-none", true)
     d3.select("#explainer-text").classed("d-none", false)
+    d3.selectAll(".bg-danger").classed("d-none", false)
 
     let filtNodes = nodes
       .filter(sc => selectedIDs.includes(sc.id))
@@ -630,6 +639,7 @@ d3.select("#reset-btn")
     }
     d3.selectAll(".card").classed("d-none", true)
     d3.select("#explainer-text").classed("d-none", false)
+    d3.selectAll(".bg-danger").classed("d-none", false)
   })
 
 // Inspired by https://stackoverflow.com/a/27723725
@@ -645,5 +655,18 @@ function truncate() {
 }
 
 function addErrorCard(errorText) {
-  // TODO
+  let sidebar = d3.select("#sidebar-contents")
+  let errorCard = sidebar
+    .append("div")
+    .classed("card bg-danger text-white", true)
+  
+  errorCard
+    .append("div")
+    .classed("card-header", true)
+    .text(errorText[0])
+  
+  errorCard
+    .append("div")
+    .classed("card-body", true)
+    .text(errorText[1])
 }

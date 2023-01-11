@@ -9,10 +9,11 @@
 
     {# Bootstrap, D3, helper libraries and own JS #}
     {% if data is defined %}
-    <script type="text/javascript">
+    <script type="text/javascript" defer>
         const oldestVariety = {{ data["oldest_variety"]|tojson }}
         const newestVariety = {{ data["newest_variety"]|tojson }}
         const language = {{ data["language"]|tojson }}
+        const serverResponse = {{ data|tojson }}
     </script>
     {% endif %}
     <script src="static/bootstrap/js/bootstrap.min.js" defer></script>
