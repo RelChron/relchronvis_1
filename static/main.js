@@ -47,7 +47,9 @@ Promise.all([
     addErrorCard(example_data["error"])
   }
 
-  // TODO: sound change data errors
+  if (sc_data.hasOwnProperty("error")) {
+    addErrorCard(sc_data["error"])
+  }
 
   let xScale = d3.scaleLinear()
     .domain([1, sc_data.changes.length])

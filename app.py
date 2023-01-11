@@ -47,9 +47,17 @@ def hr():
 def give_sc_data():
     language = request.args.get("lang")
     if language == "Russian":
-        return send_file("data/sound_changes_ru.json")
+        if Path(BASE_DIR / "data/sound_changes_ru.json").exists():
+            return send_file("data/sound_changes_ru.json")
+        else:
+            return {"error": ("Error getting Russian sound change data",
+                    "File 'data/sound_changes_ru.json' does not exist")}
     elif language == "Croatian":
-        return send_file("data/sound_changes_hr.json")
+        if Path(BASE_DIR / "data/sound_changes_hr.json").exists():
+            return send_file("data/sound_changes_hr.json")
+        else:
+            return {"error": ("Error getting Croatian sound change data",
+                    "File 'data/sound_changes_hr.json' does not exist")}
 
 @app.route('/examples', methods=['GET'])
 def give_example_data():
