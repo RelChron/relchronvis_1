@@ -672,3 +672,7 @@ function addErrorCard(errorText) {
     .classed("card-body", true)
     .text(errorText[1])
 }
+
+// Listen for home button clicks
+const homeButton = document.getElementById("home-btn")
+homeButton.addEventListener("click", () => window.open("/"))
