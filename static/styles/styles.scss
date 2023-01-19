@@ -130,10 +130,6 @@ textPath.locked {
     --bs-card-spacer-y: 0.5rem;
 }
 
-// #drawer-btn {
-//     margin: 15px;
-// }
-
 #drawer-btn-icon, #home-btn-icon {
     transform: translateY(-2px);
 }
@@ -151,6 +147,10 @@ textPath.locked {
 
 #chron-close-btn {
     margin: 8px;
+}
+
+.stress {
+    text-decoration: underline;
 }
 
 
