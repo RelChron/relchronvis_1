@@ -43,6 +43,10 @@ def hr():
 
     return render_template("arc_diagram.html.jinja", data=data)
 
+@app.route("/dw_demo")
+def dw_demo():
+    return render_template("dependency_wheel_demo.html.jinja")
+
 @app.route('/sound_changes', methods=['GET'])
 def give_sc_data():
     language = request.args.get("lang")
