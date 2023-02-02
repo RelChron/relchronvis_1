@@ -120,8 +120,6 @@ Promise.all([
 
   nodeLabels.each(truncate)
 
-  
-
   let examples = d3.select(".offcanvas-body")
     .selectAll("myExampleCards")
     .data(example_data)
@@ -130,7 +128,9 @@ Promise.all([
     .attr("class", "card example text-center text-bg-light d-none")
       .append("div")
       .attr("class", "card-body")
-      .text(data => data[newestVariety])
+        .append("p")
+        .attr("class", "card-text")
+        .html(data => data[newestVariety])
   
 
   let nodeTooltip = d3.select("#node-tooltip")
@@ -264,7 +264,7 @@ Promise.all([
     d3.select("#explainer-text").classed("d-none", true)
 
     examples
-      .select(function() {return this.parentNode})
+      .select(function() {return this.parentNode.parentNode})
       .filter((d, i) => d.hasOwnProperty(m_node.id))
       .classed("d-none", false)
   })
@@ -313,6 +313,10 @@ Promise.all([
     d3.select("#second-sc-card").classed("d-none", false)
   })
 
+  // On example click, if it's already shown ("open"), set "open" to false
+  // and clear the example chronology display box. If it wasn't shown yet,
+  // fill the box with the chronology of the examples and bold the selected
+  // sound change as well as the forms before and after it.
   examples
   .on("click", function(event, m_example) {
     idToBold = String(lockOriginNodeId)
