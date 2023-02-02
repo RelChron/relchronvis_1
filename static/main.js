@@ -2,7 +2,10 @@
 // Based on https://d3-graph-gallery.com/graph/arc_highlight.html
 
 const CIRCLE_RADIUS = 6
-const DIAG_ASPECT_RATIO = 2.25
+let DIAG_ASPECT_RATIO = 2.25
+if (language === "Croatian") {
+  DIAG_ASPECT_RATIO = 2.2
+}
 const OUTER_WIDTH = document.getElementById("arc-diagram")
   .getBoundingClientRect().width
 const OUTER_HEIGHT_UNLABELED = OUTER_WIDTH / DIAG_ASPECT_RATIO + CIRCLE_RADIUS
