@@ -44,22 +44,32 @@ def hr():
     return render_template("arc_diagram.html.jinja", data=data)
 
 @app.route("/dependency_wheel")
-def dw_demo():
-    return render_template("dependency_wheel_demo.html.jinja")
-
-@app.route("/dw_data")
 def dw_data():
-    """Convert and return sound change data for dependency wheel.
+    """Convert sound change data for dependency wheel and pass to template.
     
     Delivers an object with the "packageNames" and "matrix" Arrays that are
     required by the dependency wheel module. 
     For packageNames, just gather an array from the appropriate 
     sound_changes file.
     For matrix, construct a matrix of what "depends" on what, using the
-    relations part of the sound_changes file. Documentation see 
-    static/d3.dependencyWheel.js.
+    relations part of the sound_changes file. See static/d3.dependencyWheel.js
+    for the required format.
     """
-    with open("data/sound_changes_ru.json", encoding="utf-8-sig") as sc_file:
+    # Read language query string, handle errors, set filepath to read data from
+    language = request.args.get("lang")
+    if language == "Russian":
+        sc_file_path = Path(BASE_DIR / "data/sound_changes_ru.json")
+    elif language == "Croatian":
+        sc_file_path = Path(BASE_DIR / "data/sound_changes_hr.json")
+    else:
+        return {"error": ("Error getting sound change data",
+                f"Language parameter not recognized: {language}")}
+    if not sc_file_path.exists():
+        return {"error": ("Error getting sound change data",
+                f"Path {sc_file_path} does not exist")}
+
+    # Prepare data for dependency wheel
+    with open(sc_file_path, encoding="utf-8-sig") as sc_file:
         sc_data = json.load(sc_file)
         
         # Get names
@@ -91,7 +101,7 @@ def dw_data():
             "matrix": matrix_rows
         }
 
-    return data
+    return render_template("dependency_wheel_demo.html.jinja", data=data)
 
 @app.route('/sound_changes', methods=['GET'])
 def give_sc_data():
