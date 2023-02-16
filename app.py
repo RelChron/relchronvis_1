@@ -43,9 +43,55 @@ def hr():
 
     return render_template("arc_diagram.html.jinja", data=data)
 
-@app.route("/dw_demo")
+@app.route("/dependency_wheel")
 def dw_demo():
     return render_template("dependency_wheel_demo.html.jinja")
+
+@app.route("/dw_data")
+def dw_data():
+    """Convert and return sound change data for dependency wheel.
+    
+    Delivers an object with the "packageNames" and "matrix" Arrays that are
+    required by the dependency wheel module. 
+    For packageNames, just gather an array from the appropriate 
+    sound_changes file.
+    For matrix, construct a matrix of what "depends" on what, using the
+    relations part of the sound_changes file. Documentation see 
+    static/d3.dependencyWheel.js.
+    """
+    with open("data/sound_changes_ru.json", encoding="utf-8-sig") as sc_file:
+        sc_data = json.load(sc_file)
+        
+        # Get names
+        names = [sc["name"] for sc in sc_data["changes"]]
+
+        # Get matrix
+        matrix_rows = []
+        # For each sound change..
+        for sc in sc_data["changes"]:
+            matrix_row = []
+            outgoing_ids = set()
+
+            # ...get all outgoing connections...
+            for relation in sc_data["relations"]:
+                if relation["source"] == sc["id"]:
+                    outgoing_ids.add(relation["target"])
+            # ...and add 1s in the corresponding place in the matrix row.
+            for i in range(1, len(sc_data["changes"]) + 1):
+                if i in outgoing_ids:
+                    matrix_row.append(1)
+                else:
+                    matrix_row.append(0)
+
+            matrix_rows.append(matrix_row)
+
+        # Key names required by dependencyWheel package
+        data = {
+            "packageNames": names,
+            "matrix": matrix_rows
+        }
+
+    return data
 
 @app.route('/sound_changes', methods=['GET'])
 def give_sc_data():
@@ -174,7 +220,7 @@ def get_abbr(examples_file_path):
         newest_variety = first_row[0]
     
     return oldest_variety, newest_variety
-    
+
 
 if __name__ == "__main__":
     # When running directly, cwd == base dir (as opposed to on pythonanywhere)

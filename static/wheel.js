@@ -1,11 +1,14 @@
-let data = {
-    packageNames: ['Main', 'A', 'B'],
-    matrix: [[0, 1, 1], // Main depends on A and B
-            [0, 0, 1], // A depends on B
-            [0, 0, 0]] // B doesn't depend on A or Main
-};
+// Get json data from server and feed into chart
+// Documentation see static/d3.dependencyWheel.js
 
-let chart = d3.chart.dependencyWheel();
+fetch("/dw_data")
+.then(response => response.json())
+.then(json => {
+    console.log("Fetched data:")
+    console.log(json)
+
+    let chart = d3.chart.dependencyWheel();
     d3.select('#chart_placeholder')
-    .datum(data)
+    .datum(json)
     .call(chart);
+});
