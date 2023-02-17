@@ -240,6 +240,11 @@ if __name__ == "__main__":
         outfile_path = "data/sound_changes_hr.json", 
         n_of_sound_changes = 71
     )
+    import_csv_sound_changes(
+        infile_path = "data/sound_changes_ru.csv", 
+        outfile_path = "data/sound_changes_ru.json", 
+        n_of_sound_changes = 71
+    )
     import_csv_examples(
         infile_path = "data/examples_hr.csv",
         outfile_path = "data/examples_hr.json"
