@@ -45,7 +45,7 @@ The first row and column in this table (A/B/C/D, 1/2/3/4/5/6) are only visible i
 
 |   | A | B | C | D |
 |---|---|---|---|---|
-| 1 | Ru. | PS | 1 | 2 |
+| 1 | Ru. | PSl. | 1 | 2 |
 | 2 | Last form of example 1 | First form of example 1 | Example 1 after SC 1 | Example 1 after SC 2 |
 | 3 | Last form of example 2 | First form of example 2 | Example 2 after SC 1 | Example 2 after SC 2 |
 | 4 | Last form of example 3 | First form of example 3 | Example 3 after SC 1 | Example 3 after SC 2 |
@@ -56,7 +56,7 @@ Here's how to modify the file with your own data:
  1. Open it with MS Excel.
  2. Each row after row 1 contains all the forms for one example lexeme.
  3. Column A is the most recent form of each example. In this case, it's present-day Russian ("Ru." for short).
- 4. Column B is the earliest form of each example. In this case, that is proto-slavic ("PS" for short).
+ 4. Column B is the earliest form of each example. In this case, that is proto-slavic ("PSl." for short).
  5. Each column after B is numbered with a SC ID in row 1.
  6. If the lexeme changes after a SC, it appears in the cell under that SC.
  7. Add each form for each lexeme

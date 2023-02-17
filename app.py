@@ -244,4 +244,8 @@ if __name__ == "__main__":
         infile_path = "data/examples_hr.csv",
         outfile_path = "data/examples_hr.json"
     )
+    import_csv_examples(
+        infile_path = "data/examples_ru.csv",
+        outfile_path = "data/examples_ru.json"
+    )
     app.run(debug=True, use_reloader=True)
