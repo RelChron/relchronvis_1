@@ -141,7 +141,7 @@ d3.chart.dependencyWheel = function(options) {
           .data(chordResult)
           .enter().append("svg:path")
           .attr("class", "chord")
-          .style("stroke", function(d) { return d3.rgb(fill(d.source)).darker(); })
+          // .style("stroke", function(d) { return d3.rgb(fill(d.source)).darker(); })
           .style("fill", function(d) { return fill(d.source); })
           .attr("d", d3.ribbon().radius(radius))
           .attr("transform", function(d) {
@@ -151,23 +151,25 @@ d3.chart.dependencyWheel = function(options) {
     });
   }
 
-  chart.width = function(value) {
-    if (!arguments.length) return width;
-    width = value;
-    return chart;
-  };
 
-  chart.margin = function(value) {
-    if (!arguments.length) return margin;
-    margin = value;
-    return chart;
-  };
+  // // The three setter functions below are largely irrelevant
+  // chart.width = function(value) {
+  //   if (!arguments.length) return width;
+  //   width = value;
+  //   return chart;
+  // };
 
-  chart.padding = function(value) {
-    if (!arguments.length) return padding;
-    padding = value;
-    return chart;
-  };
+  // chart.margin = function(value) {
+  //   if (!arguments.length) return margin;
+  //   margin = value;
+  //   return chart;
+  // };
+
+  // chart.padding = function(value) {
+  //   if (!arguments.length) return padding;
+  //   padding = value;
+  //   return chart;
+  // };
 
   return chart;
 };

@@ -43,7 +43,7 @@ if (serverResponse.hasOwnProperty("error")) {
 // Loading two files: https://stackoverflow.com/questions/70629019
 Promise.all([
   d3.json(`/sound_changes?lang=${language}`),
-  d3.json(`/examples?lang=${language}`)
+  d3.json(`/examples?lang=${language}`),
 ]).then(function([sc_data, example_data]) {
   // Catch errors
   if (example_data.hasOwnProperty("error")) {
@@ -280,6 +280,9 @@ Promise.all([
     d3.select("#rel-card").classed("d-none", true)
     d3.select("#second-sc-card").classed("d-none", true)
 
+    // Remove description elements from relation card
+    d3.selectAll(".list-group-item").remove()
+
     if (relCardIsOpen) {return}
     
     let header = `${m_arc.source} before ${m_arc.target} ` 
@@ -295,18 +298,14 @@ Promise.all([
     
     d3.select(this).classed("rel-card-open", true)
     relCard = d3.select("#rel-card").classed("d-none", false)
-    if (m_arc.d_conf) {
-      relCard
-        .classed("border-primary bg-transparent text-primary", false)
-        .classed("text-bg-primary", true)
-      header += ":"
-    } else {
-      relCard
-        .classed("border-primary bg-transparent text-primary", true)
-        .classed("text-bg-primary", false)
-      header += " (uncertain):"
-    } 
-    d3.select("#rel-card-header").text(header)
+    for (const description of m_arc.descr) {
+      d3.select("#rel-card-list")
+      .append("li")
+        // Perhaps need to set class rather than use classed
+        .classed("list-group-item", true)
+        .text(description)
+    }
+    
     d3.select("#second-sc-card-id")
       .text(sc_data["changes"][secondCardIndex]["id"])
     d3.select("#second-sc-card-header")
@@ -314,6 +313,28 @@ Promise.all([
     d3.select("#second-sc-card-body")
       .text(sc_data["changes"][secondCardIndex]["descr"])
     d3.select("#second-sc-card").classed("d-none", false)
+
+    // Change visibilities and styles depending on confidence
+    // Select <li>'s to change their styles as well
+    descriptions = d3.selectAll(".list-group-item")
+    if (m_arc.d_conf) {
+      relCard
+        .classed("border-primary bg-transparent text-primary", false)
+        .classed("text-bg-primary", true)
+      header += ":"
+      descriptions
+        .classed("border-primary bg-transparent text-primary", false)
+        .classed("text-bg-primary", true)
+    } else {
+      relCard
+        .classed("border-primary bg-transparent text-primary", true)
+        .classed("text-bg-primary", false)
+      header += " (uncertain):"
+      descriptions
+        .classed("border-primary bg-transparent text-primary", true)
+        .classed("text-bg-primary", false)
+    } 
+    d3.select("#rel-card-header").text(header)
   })
 
   // On example click, if it's already shown ("open"), set "open" to false

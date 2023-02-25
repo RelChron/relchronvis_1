@@ -147,11 +147,14 @@ def give_ex_template():
 
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation
-def import_csv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
-    with open(infile_path, encoding="utf-8") as infile:
-        csv_reader = csv.DictReader(infile, dialect="excel",
+def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path, n_of_sound_changes):
+    with (open(sc_infile_path, encoding="utf-8-sig") as sc_infile,
+          open(relations_infile_path, encoding="utf-8-sig") as rel_infile):
+        sc_reader = csv.DictReader(sc_infile, dialect="excel",
             # Makes first col "0", and the rest "1", "2", ..., "71" 
             fieldnames=[str(n) for n in range(0, n_of_sound_changes + 1)])
+        
+        rel_reader = list(csv.DictReader(rel_infile, dialect="excel"))
 
         out_dict = {"changes": [], "relations": []}
 
@@ -160,7 +163,7 @@ def import_csv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
         # Use a line num counter because csv_reader.line_num is buggy
         line_num = 0
 
-        for row in csv_reader:
+        for row in sc_reader:
             # Extract sound changes
             if line_num == 0:
                 for i in range(1, n_of_sound_changes + 1):
@@ -186,7 +189,6 @@ def import_csv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
 
             # Extract relations
             for target_id in range(1, n_of_sound_changes + 1):
-                cell_content = ""
                 cell_content = row[str(target_id)]
                 
                 if cell_content:
@@ -194,8 +196,13 @@ def import_csv_sound_changes(infile_path, outfile_path, n_of_sound_changes):
                         "source": source_id,
                         "target": target_id,
                         "d_reason": cell_content.replace("?", ""),
-                        "d_conf": not "?" in cell_content
+                        "d_conf": not "?" in cell_content,
+                        "descr": []
                     }
+                    for rel in rel_reader:
+                        if (rel["source_id"] == str(source_id)
+                                and rel["target_id"] == str(target_id)):
+                            relation["descr"].append(rel["description"])
                     out_dict["relations"].append(relation)
 
             source_id = source_id + 1
@@ -235,13 +242,15 @@ def get_abbr(examples_file_path):
 if __name__ == "__main__":
     # When running directly, cwd == base dir (as opposed to on pythonanywhere)
     BASE_DIR = Path(os.getcwd())
+    # import_csv_sound_changes(
+    #     sc_infile_path = "data/sound_changes_hr.csv", 
+    #     relations_infile_path = "", 
+    #     outfile_path = "data/sound_changes_hr.json", 
+    #     n_of_sound_changes = 71
+    # )
     import_csv_sound_changes(
-        infile_path = "data/sound_changes_hr.csv", 
-        outfile_path = "data/sound_changes_hr.json", 
-        n_of_sound_changes = 71
-    )
-    import_csv_sound_changes(
-        infile_path = "data/sound_changes_ru.csv", 
+        sc_infile_path = "data/sound_changes_ru.csv", 
+        relations_infile_path = "data/relations_ru.csv", 
         outfile_path = "data/sound_changes_ru.json", 
         n_of_sound_changes = 71
     )
