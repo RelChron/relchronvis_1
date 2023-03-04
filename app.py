@@ -145,6 +145,10 @@ def give_sc_template():
 def give_ex_template():
     return send_file("data/examples_ru.csv")
 
+@app.route('/rel_template', methods=['GET'])
+def give_rel_template():
+    return send_file("data/relations_ru.csv")
+
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation
 def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path, n_of_sound_changes):
