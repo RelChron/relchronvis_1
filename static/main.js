@@ -79,7 +79,7 @@ Promise.all([
     .classed("arc", true)
 
   arcs
-    .filter(arc => arc.d_conf === false)
+    .filter(arc => arc.conf === false)
     .classed("dashed", true)
 
   let arcLabels = diagram
@@ -91,7 +91,7 @@ Promise.all([
     .append("textPath")
       .attr("href", (d, i) => "#arc-" + i)
       .attr("startOffset", "50%")
-      .html(relation => relation.d_reason)
+      .html(relation => relation.type)
       .attr("class", "arc-label active")
 
   let filterOptionEl = d3.select("#filter-ids")
@@ -286,7 +286,7 @@ Promise.all([
     if (relCardIsOpen) {return}
     
     let header = `${m_arc.source} before ${m_arc.target} ` 
-    header += `because of ${m_arc.d_reason}`
+    header += `because of ${m_arc.type}`
     
     // Select source or target change, depending on arc direction
     // -1 because the array is 0-indexed, but IDs are 1-indexed
@@ -317,7 +317,7 @@ Promise.all([
     // Change visibilities and styles depending on confidence
     // Select <li>'s to change their styles as well
     descriptions = d3.selectAll(".list-group-item")
-    if (m_arc.d_conf) {
+    if (m_arc.conf) {
       relCard
         .classed("border-primary bg-transparent text-primary", false)
         .classed("text-bg-primary", true)
@@ -620,7 +620,7 @@ d3.select("#apply-btn")
           (arc.source === sc.id) && showOutArcs
           || (arc.target === sc.id) && showInArcs))
         // If only confidents, filter out the others via data; else no filter
-        .filter(rel => showOnlyConf ? rel.d_conf : true)
+        .filter(rel => showOnlyConf ? rel.conf : true)
         .classed("invisible", false)
       
       arcLabels
@@ -628,7 +628,7 @@ d3.select("#apply-btn")
           (arc.source === sc.id) && showOutArcs
           || (arc.target === sc.id) && showInArcs))
         // Ternary operator, see above
-        .filter(rel => showOnlyConf ? rel.d_conf : true)
+        .filter(rel => showOnlyConf ? rel.conf : true)
         .classed("active", true)
     
       let currentTouchedIDs = new Set(filtArcs.data()

@@ -152,6 +152,7 @@ def give_rel_template():
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation
 def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path, n_of_sound_changes):
+    # with open(sc_infile_path, encoding="utf-8-sig") as sc_infile:
     with (open(sc_infile_path, encoding="utf-8-sig") as sc_infile,
           open(relations_infile_path, encoding="utf-8-sig") as rel_infile):
         sc_reader = csv.DictReader(sc_infile, dialect="excel",
@@ -199,8 +200,8 @@ def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path
                     relation = {
                         "source": source_id,
                         "target": target_id,
-                        "d_reason": cell_content.replace("?", ""),
-                        "d_conf": not "?" in cell_content,
+                        "type": cell_content.replace("?", ""),
+                        "conf": not "?" in cell_content,
                         "descr": []
                     }
                     for rel in rel_reader:
@@ -252,18 +253,18 @@ if __name__ == "__main__":
     #     outfile_path = "data/sound_changes_hr.json", 
     #     n_of_sound_changes = 71
     # )
-    import_csv_sound_changes(
-        sc_infile_path = "data/sound_changes_ru.csv", 
-        relations_infile_path = "data/relations_ru.csv", 
-        outfile_path = "data/sound_changes_ru.json", 
-        n_of_sound_changes = 71
-    )
-    import_csv_examples(
-        infile_path = "data/examples_hr.csv",
-        outfile_path = "data/examples_hr.json"
-    )
-    import_csv_examples(
-        infile_path = "data/examples_ru.csv",
-        outfile_path = "data/examples_ru.json"
-    )
+    # import_csv_sound_changes(
+    #     sc_infile_path = "data/sound_changes_ru.csv", 
+    #     relations_infile_path = "data/relations_ru.csv", 
+    #     outfile_path = "data/sound_changes_ru.json", 
+    #     n_of_sound_changes = 71
+    # )
+    # import_csv_examples(
+    #     infile_path = "data/examples_hr.csv",
+    #     outfile_path = "data/examples_hr.json"
+    # )
+    # import_csv_examples(
+    #     infile_path = "data/examples_ru.csv",
+    #     outfile_path = "data/examples_ru.json"
+    # )
     app.run(debug=True, use_reloader=True)

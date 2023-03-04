@@ -5,9 +5,9 @@ This web app visualizes a relative chronology of sound changes that have occurre
 | Term | Explanation |
 | ---  | --- |
 | Sound Change (SC) | Changes that a language has gone through. In the case of the Russian data, N = 71. Sound changes are dated relatively to each other, and each SC is represented by a filled circle in the arc diagram. Each SC has an ID, name and description. They are loaded from `sound_changes.csv`. |
-| Relation | Relations between SCs, e.g. "3 before 8". Each SC has a set of relations to other SCs, which are represented by arcs in the arc diagram. Relations have a dating reason and confidence. They are loaded from `sound_changes.csv`. |
-| Dating Reason | An abbreviation describing the process by which a relation was established, e.g. "B", which stands for "Bleeding". These are also loaded from `sound_changes.csv` and show in the labels above arcs in the arc diagram. |
-| Dating Confidence | If a dating of a relation is uncertain, the corresponding arc will be displayed with a dotted line, and it can be filtered out. |
+| Relation | Relations between SCs, e.g. "3 before 8". Each SC has a set of relations to other SCs, which are represented by arcs in the arc diagram. Relations have a type and confidence. They are loaded from `sound_changes.csv`. |
+| Relation type | An abbreviation describing the process by which a relation was established, e.g. "B", which stands for "Bleeding". These are also loaded from `sound_changes.csv` and show in the labels above arcs in the arc diagram. |
+| Relation confidence | If a dating of a relation is uncertain, the corresponding arc will be displayed with a dotted line, and it can be filtered out. |
 | Example | The example lexemes show up in a drawer element on the right side of the website after a SC has been selected. They are loaded from `examples.csv`, which contains data about each form of the lexeme after particular SCs. The website only displays examples that have undergone the selected SC. |
 
 ## sound_changes.csv
