@@ -31,6 +31,7 @@ d3.chart = d3.chart || {};
  * @license MIT
  * @see https://github.com/fzaninotto/DependencyWheel for complete source and license
  */
+
 d3.chart.dependencyWheel = function(options) {
 
   var width = 700;
@@ -47,7 +48,7 @@ d3.chart.dependencyWheel = function(options) {
       // create the layout
       var chord = d3.chord()
         .padAngle(padding)
-        .sortSubgroups(d3.descending);
+        // .sortSubgroups(d3.descending);
 
       // Select the svg element, if it exists.
       var svg = d3.select(this).selectAll("svg").data([data]);
