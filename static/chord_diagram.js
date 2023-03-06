@@ -51,7 +51,7 @@ Promise.all([
   // Actually load data
   chords = chord(sc_data.matrix)
   
-  diagram
+  ring_elements = diagram
     .datum(chords)
     .selectAll("g")
     .data(function(d) { return d.groups; })
