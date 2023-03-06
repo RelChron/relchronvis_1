@@ -80,28 +80,32 @@ def dw_data():
         # For each sound change..
         for sc in sc_data["changes"]:
             matrix_row = []
-            outgoing_ids = set()
+            connected_ids = set()
 
-            # ...get all outgoing connections...
+            # ...check relations and get all connections...
             for relation in sc_data["relations"]:
                 if relation["source"] == sc["id"]:
-                    outgoing_ids.add(relation["target"])
+                    connected_ids.add(relation["target"])
+                if relation["target"] == sc["id"]:
+                    connected_ids.add(relation["source"])
             # ...and add 1s in the corresponding place in the matrix row.
             for i in range(1, len(sc_data["changes"]) + 1):
-                if i in outgoing_ids:
+                if i in connected_ids:
                     matrix_row.append(1)
                 else:
                     matrix_row.append(0)
 
             matrix_rows.append(matrix_row)
 
-        # Key names required by dependencyWheel package
         data = {
-            "packageNames": names,
+            "sc_names": names,
             "matrix": matrix_rows
         }
 
-    return render_template("dependency_wheel_demo.html.jinja", data=data)
+    # return render_template("dependency_wheel_demo.html.jinja", data=data)
+
+    # Should convert to json automatically
+    return data
 
 @app.route("/chord_diagram")
 def chord_diagram():
