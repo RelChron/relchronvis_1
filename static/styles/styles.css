@@ -10926,6 +10926,10 @@ textPath.locked {
 }
 
 /* Example box at the bottom */
+#example-chronology-chord {
+  height: 4rem;
+}
+
 .chronology-el + .chronology-el {
   margin-left: 5px;
 }

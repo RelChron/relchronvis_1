@@ -136,6 +136,10 @@ textPath.locked {
 
 
 /* Example box at the bottom */
+#example-chronology-chord {
+    height: 4rem;
+}
+
 // Margin for every el preceded by another el
 .chronology-el + .chronology-el {
     margin-left: 5px;
