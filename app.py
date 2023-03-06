@@ -43,7 +43,7 @@ def hr():
 
     return render_template("arc_diagram.html.jinja", data=data)
 
-@app.route("/dependency_wheel")
+@app.route("/dependency_wheel_old")
 def dw_data():
     """Convert sound change data for dependency wheel and pass to template.
     
@@ -103,6 +103,10 @@ def dw_data():
 
     return render_template("dependency_wheel_demo.html.jinja", data=data)
 
+@app.route("/chord_diagram")
+def chord_diagram():
+    return render_template("chord_diagram.html.jinja")
+
 @app.route('/sound_changes', methods=['GET'])
 def give_sc_data():
     language = request.args.get("lang")
@@ -152,7 +156,6 @@ def give_rel_template():
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation
 def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path, n_of_sound_changes):
-    # with open(sc_infile_path, encoding="utf-8-sig") as sc_infile:
     with (open(sc_infile_path, encoding="utf-8-sig") as sc_infile,
           open(relations_infile_path, encoding="utf-8-sig") as rel_infile):
         sc_reader = csv.DictReader(sc_infile, dialect="excel",
@@ -267,4 +270,4 @@ if __name__ == "__main__":
     #     infile_path = "data/examples_ru.csv",
     #     outfile_path = "data/examples_ru.json"
     # )
-    app.run(debug=True, use_reloader=True)
+    app.run(debug=True, use_reloader=True, port="8000")
