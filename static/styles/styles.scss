@@ -162,3 +162,31 @@ textPath.locked {
 textPath {
     font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
+
+
+/* Chord diagram */
+.ring-el {
+    fill: $uzh-grey-80;
+    stroke: $uzh-grey-80;
+}
+
+// circle.highlighted,
+// circle.locked {
+//     fill: $uzh-blue-80;
+// }
+
+// path.arc {
+//     stroke: $uzh-grey-80;
+//     fill: none;
+//     stroke-dasharray: none;
+// }
+
+// path.arc.dashed {
+//     stroke-dasharray: 5, 2;
+// }
+
+// path.highlighted,
+// path.locked {
+//     stroke: $uzh-blue-80;
+//     stroke-width: 4;
+// }
