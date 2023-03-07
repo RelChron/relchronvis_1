@@ -160,13 +160,14 @@ def give_rel_template():
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation
 def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path, n_of_sound_changes):
-    with (open(sc_infile_path, encoding="utf-8-sig") as sc_infile,
-          open(relations_infile_path, encoding="utf-8-sig") as rel_infile):
+    with open(sc_infile_path, encoding="utf-8-sig") as sc_infile:
+    # with (open(sc_infile_path, encoding="utf-8-sig") as sc_infile,
+    #       open(relations_infile_path, encoding="utf-8-sig") as rel_infile):
         sc_reader = csv.DictReader(sc_infile, dialect="excel",
             # Makes first col "0", and the rest "1", "2", ..., "71" 
             fieldnames=[str(n) for n in range(0, n_of_sound_changes + 1)])
         
-        rel_reader = list(csv.DictReader(rel_infile, dialect="excel"))
+        # rel_reader = list(csv.DictReader(rel_infile, dialect="excel"))
 
         out_dict = {"changes": [], "relations": []}
 
@@ -211,10 +212,10 @@ def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path
                         "conf": not "?" in cell_content,
                         "descr": []
                     }
-                    for rel in rel_reader:
-                        if (rel["source_id"] == str(source_id)
-                                and rel["target_id"] == str(target_id)):
-                            relation["descr"].append(rel["description"])
+                    # for rel in rel_reader:
+                    #     if (rel["source_id"] == str(source_id)
+                    #             and rel["target_id"] == str(target_id)):
+                    #         relation["descr"].append(rel["description"])
                     out_dict["relations"].append(relation)
 
             source_id = source_id + 1
