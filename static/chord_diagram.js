@@ -8,12 +8,8 @@ const OUTER_WIDTH = document.getElementById("chord-diagram")
 const OUTER_HEIGHT = document.getElementById("chord-diagram")
     .getBoundingClientRect().height
 
-console.log("Width:" + OUTER_WIDTH)
-console.log("Height:" + OUTER_HEIGHT)
-
 // Arbitrary division
-const RADIUS = OUTER_WIDTH / 5
-// const MARGIN = OUTER_WIDTH / 2
+const RADIUS = OUTER_WIDTH / 4
 const MARGIN = {
   TOP: OUTER_HEIGHT / 2, 
   RIGHT: OUTER_WIDTH / 2, 
@@ -21,13 +17,10 @@ const MARGIN = {
   LEFT: OUTER_WIDTH / 2
 }
 
-console.log("Radius:" + RADIUS)
-console.log("Margin:" + MARGIN)
-
-
-let offcanvasDrawerEl = document.getElementById("offcanvasRight")
-let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
-let lockOriginNodeId = null
+// For later
+// let offcanvasDrawerEl = document.getElementById("offcanvasRight")
+// let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
+// let lockOriginNodeId = null
 
 // SVG AND GROUPING ELEMENT SETUP
 const svg = d3.select("#chord-diagram")
@@ -44,11 +37,8 @@ Promise.all([
   d3.json(`/dependency_wheel_old?lang=${language}`),
   d3.json(`/examples?lang=${language}`),
 ]).then(function([sc_data, example_data]) {
-  // Set up chord layout
-  chord = d3.chord()
-    .padAngle(0.02)
-
-  // Actually load data
+  // Set up chord layout, load data
+  chord = d3.chord().padAngle(0.02)
   chords = chord(sc_data.matrix)
   
   ring_elements = diagram
@@ -58,11 +48,22 @@ Promise.all([
     .enter()
     .append("g")
     .append("path")
-      // .style("fill", "grey")
-      // .style("stroke", "black")
       .attr("class", "ring-el")
       .attr("d", d3.arc()
         .innerRadius(RADIUS)
         .outerRadius(RADIUS + 10)
+      )
+  
+  // Add the links between groups
+  diagram
+    .datum(chords)
+    .append("g")
+    .selectAll("path")
+    .data(function(d) { return d; })
+    .enter()
+    .append("path")
+      .attr("class", "ribbon")
+      .attr("d", d3.ribbon()
+        .radius(RADIUS)
       )
 })

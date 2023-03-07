@@ -165,7 +165,8 @@ textPath {
 
 
 /* Chord diagram */
-.ring-el {
+.ring-el,
+.ribbon {
     fill: $uzh-grey-80;
     stroke: $uzh-grey-80;
 }

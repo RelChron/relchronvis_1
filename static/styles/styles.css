@@ -10952,7 +10952,8 @@ textPath {
 }
 
 /* Chord diagram */
-.ring-el {
+.ring-el,
+.ribbon {
   fill: #b5bdc5;
   stroke: #b5bdc5;
 }/*# sourceMappingURL=styles.css.map */
