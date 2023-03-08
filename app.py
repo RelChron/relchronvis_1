@@ -275,4 +275,4 @@ if __name__ == "__main__":
     #     infile_path = "data/examples_ru.csv",
     #     outfile_path = "data/examples_ru.json"
     # )
-    app.run(debug=True, use_reloader=True, port="8000")
+    app.run(debug=True, use_reloader=True, port="5001")

@@ -1,5 +1,6 @@
 // Draw and manage interactive chord diagram, sidebar and examples
 // Based on https://d3-graph-gallery.com/graph/chord_basic.html
+// Also based on http://www.redotheweb.com/DependencyWheel/
 
 const language = "Russian"
 
@@ -41,12 +42,11 @@ Promise.all([
   chord = d3.chord().padAngle(0.02)
   chords = chord(sc_data.matrix)
   
-  ring_elements = diagram
+  let ringElements = diagram
     .datum(chords)
     .selectAll("g")
-    .data(function(d) { return d.groups; })
+    .data(d => d.groups)
     .enter()
-    .append("g")
     .append("path")
       .attr("class", "ring-el")
       .attr("d", d3.arc()
@@ -55,7 +55,7 @@ Promise.all([
       )
   
   // Add the links between groups
-  diagram
+  let ribbons = diagram
     .datum(chords)
     .append("g")
     .selectAll("path")
@@ -66,4 +66,21 @@ Promise.all([
       .attr("d", d3.ribbon()
         .radius(RADIUS)
       )
+
+  // Labels displayed outside ring
+  let ringLabels = diagram
+    .selectAll("ringLabels")
+    .data(chords.groups)
+    .enter()
+    .append("text")
+    .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
+    .attr("dy", ".35em")
+    .attr("text-anchor", d => d.angle > Math.PI ? "end" : null)
+    .attr("transform", d => {
+      return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")" +
+        "translate(" + (RADIUS + 20) + ")" +
+        (d.angle > Math.PI ? "rotate(180)" : "");
+    })
+    .style("cursor", "pointer")
+    .text(function(d) { return sc_data.sc_names[d.index]; })
 })
