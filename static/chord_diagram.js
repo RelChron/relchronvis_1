@@ -2,7 +2,7 @@
 // Based on https://d3-graph-gallery.com/graph/chord_basic.html
 // Also based on http://www.redotheweb.com/DependencyWheel/
 
-const language = "Russian"
+// const language = "Russian"
 
 const OUTER_WIDTH = document.getElementById("chord-diagram")
     .getBoundingClientRect().width
@@ -19,8 +19,8 @@ const MARGIN = {
 }
 
 // For later
-// let offcanvasDrawerEl = document.getElementById("offcanvasRight")
-// let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
+let offcanvasDrawerEl = document.getElementById("offcanvasRight")
+let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
 // let lockOriginNodeId = null
 
 // SVG AND GROUPING ELEMENT SETUP
@@ -35,12 +35,13 @@ const diagram = svg.append("g")
   .attr("transform", `translate(${MARGIN.LEFT},${MARGIN.TOP})`)
 
 Promise.all([
+  d3.json(`/sound_changes?lang=${language}`),
   d3.json(`/dependency_wheel_old?lang=${language}`),
   d3.json(`/examples?lang=${language}`),
-]).then(function([sc_data, example_data]) {
+]).then(function([sc_data, matrix, example_data]) {
   // Set up chord layout, load data
   chord = d3.chord().padAngle(0.02)
-  chords = chord(sc_data.matrix)
+  chords = chord(matrix)
   console.log("Here's the chords object")
   console.log(chords)
   console.log("Here's the chords.groups object")
@@ -82,7 +83,8 @@ Promise.all([
           "translate(" + (RADIUS + 30) + ")" +
           (d.angle > Math.PI ? "rotate(180)" : "");
       })
-      .text(d => sc_data.sc_names[d.index])
+      // TEST
+      .text(d => sc_data.changes[d.index].name)
 
   // Same as in main.js
   let examples = d3.select(".offcanvas-body")
@@ -140,6 +142,10 @@ Promise.all([
         selection.classed("lock-origin", false)
       }
 
+      d3.selectAll(".card").classed("d-none", true)
+      d3.select("#explainer-text").classed("d-none", false)
+      d3.selectAll(".bg-danger").classed("d-none", false)
+
       // If lock origin clicked, just turn everything off. Else, toggle lock on
       // for the appropriate elements (with all the code below)
       if (elemIsOrigin) {return}
@@ -166,8 +172,26 @@ Promise.all([
       ringLabels
         .filter(element => hlIndices.has(element.index))
         .classed("locked", true)
+
+      // Add SC card and display examples
+      selected_sc = sc_data.changes[lockOriginIndex]
+      d3.select("#sc-card-id").text(selected_sc.id)
+      d3.select("#sc-card-header").text(selected_sc.name)
+      d3.select("#sc-card-body").text(selected_sc.descr)
+      d3.select("#sc-card").classed("d-none", false)
+      
+      d3.select("#explainer-text").classed("d-none", true)
+  
+      examples
+        .select(function() {return this.parentNode.parentNode})
+        .filter((d, i) => d.hasOwnProperty(String(lockOriginIndex + 1)))
+        .classed("d-none", false)
     })
 
+    d3.select("#drawer-btn")
+    .on("click", () => {
+      offcanvasDrawerObj.show()
+    })
 
     
 
