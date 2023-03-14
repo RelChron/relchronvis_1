@@ -1,5 +1,5 @@
 # Import data from csv, serve pages and data requests
-from flask import Flask, render_template, send_file, request
+from flask import Flask, render_template, send_file, request, jsonify
 from typing import OrderedDict
 from pathlib import Path
 import csv, json
@@ -47,6 +47,7 @@ def hr():
 def dw_data():
     """Convert sound change data for dependency wheel and pass to template.
     
+    OLD
     Delivers an object with the "packageNames" and "matrix" Arrays that are
     required by the dependency wheel module. 
     For packageNames, just gather an array from the appropriate 
@@ -100,8 +101,8 @@ def dw_data():
 
     # return render_template("dependency_wheel_demo.html.jinja", data=data)
 
-    # Should convert to json automatically
-    return matrix
+    # Should convert to json automatically (throws error on pythonanywhere though)
+    return jsonify(matrix)
 
 @app.route("/chord_diagram")
 def chord_diagram():
