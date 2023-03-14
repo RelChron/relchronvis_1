@@ -71,12 +71,8 @@ def dw_data():
     # Prepare data for dependency wheel
     with open(sc_file_path, encoding="utf-8-sig") as sc_file:
         sc_data = json.load(sc_file)
-        
-        # Get names
-        names = [sc["name"] for sc in sc_data["changes"]]
 
-        # Get matrix
-        matrix_rows = []
+        matrix = []
         # For each sound change..
         for sc in sc_data["changes"]:
             matrix_row = []
@@ -95,21 +91,31 @@ def dw_data():
                 else:
                     matrix_row.append(0)
 
-            matrix_rows.append(matrix_row)
+            matrix.append(matrix_row)
 
-        data = {
-            "sc_names": names,
-            "matrix": matrix_rows
-        }
+        # data = {
+        #     "sc_names": names,
+        #     "matrix": matrix_rows
+        # }
 
     # return render_template("dependency_wheel_demo.html.jinja", data=data)
 
     # Should convert to json automatically
-    return data
+    return matrix
 
 @app.route("/chord_diagram")
 def chord_diagram():
-    return render_template("chord_diagram.html.jinja")
+    data = {"language": "Russian"}
+    try:
+        oldest_variety, newest_variety = get_abbr("data/examples_ru.csv")
+    except FileNotFoundError as e:
+        data["error"] = ("Error getting Russian language varieties from 'data/examples_ru.csv'", e.strerror)
+        oldest_variety, newest_variety = "", ""
+
+    data["oldest_variety"] = oldest_variety
+    data["newest_variety"] = newest_variety
+
+    return render_template("chord_diagram.html.jinja", data=data)
 
 @app.route('/sound_changes', methods=['GET'])
 def give_sc_data():
@@ -169,7 +175,8 @@ def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path
         
         # rel_reader = list(csv.DictReader(rel_infile, dialect="excel"))
 
-        out_dict = {"changes": [], "relations": []}
+        # Used to be regular dict, check if it works still (at some point)
+        out_dict = OrderedDict({"changes": [], "relations": []})
 
         # Remember what row (i.e. source) we're at, start counting after headers
         source_id = 1
