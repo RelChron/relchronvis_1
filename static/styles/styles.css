@@ -10956,4 +10956,23 @@ textPath {
 .ribbon {
   fill: #b5bdc5;
   stroke: #b5bdc5;
+  stroke-width: 1px;
+}
+
+.ring-el.highlighted,
+.ring-el.locked,
+.ribbon.highlighted,
+.ribbon.locked {
+  stroke: #3353b7;
+  fill: #3353b7;
+  stroke-width: 1px;
+}
+
+.ring-label {
+  fill: #b5bdc5;
+}
+
+.ring-label.highlighted,
+.ring-label.locked {
+  fill: #3353b7;
 }/*# sourceMappingURL=styles.css.map */

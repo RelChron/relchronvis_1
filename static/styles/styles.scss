@@ -165,29 +165,29 @@ textPath {
 
 
 /* Chord diagram */
+// Ring
 .ring-el,
 .ribbon {
     fill: $uzh-grey-80;
     stroke: $uzh-grey-80;
+    stroke-width: 1px;
 }
 
-// circle.highlighted,
-// circle.locked {
-//     fill: $uzh-blue-80;
-// }
+.ring-el.highlighted,
+.ring-el.locked,
+.ribbon.highlighted,
+.ribbon.locked {
+    stroke: $uzh-blue-80;
+    fill: $uzh-blue-80;
+    stroke-width: 1px;
+}
 
-// path.arc {
-//     stroke: $uzh-grey-80;
-//     fill: none;
-//     stroke-dasharray: none;
-// }
+// Labels
+.ring-label {
+    fill: $uzh-grey-80;
+}
 
-// path.arc.dashed {
-//     stroke-dasharray: 5, 2;
-// }
-
-// path.highlighted,
-// path.locked {
-//     stroke: $uzh-blue-80;
-//     stroke-width: 4;
-// }
+.ring-label.highlighted,
+.ring-label.locked {
+    fill: $uzh-blue-80;
+}

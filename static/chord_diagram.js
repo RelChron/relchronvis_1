@@ -41,25 +41,25 @@ Promise.all([
   // Set up chord layout, load data
   chord = d3.chord().padAngle(0.02)
   chords = chord(sc_data.matrix)
-  
+  console.log("Here's the chords object")
+  console.log(chords)
+  console.log("Here's the chords.groups object")
+  console.log(chords.groups)
+
   let ringElements = diagram
-    .datum(chords)
-    .selectAll("g")
-    .data(d => d.groups)
+    .selectAll()
+    .data(chords.groups)
     .enter()
     .append("path")
       .attr("class", "ring-el")
       .attr("d", d3.arc()
         .innerRadius(RADIUS)
-        .outerRadius(RADIUS + 10)
+        .outerRadius(RADIUS + 20)
       )
-  
-  // Add the links between groups
+
   let ribbons = diagram
-    .datum(chords)
-    .append("g")
-    .selectAll("path")
-    .data(function(d) { return d; })
+    .selectAll()
+    .data(chords)
     .enter()
     .append("path")
       .attr("class", "ribbon")
@@ -69,18 +69,124 @@ Promise.all([
 
   // Labels displayed outside ring
   let ringLabels = diagram
-    .selectAll("ringLabels")
+    .selectAll()
     .data(chords.groups)
     .enter()
     .append("text")
-    .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
-    .attr("dy", ".35em")
-    .attr("text-anchor", d => d.angle > Math.PI ? "end" : null)
-    .attr("transform", d => {
-      return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")" +
-        "translate(" + (RADIUS + 20) + ")" +
-        (d.angle > Math.PI ? "rotate(180)" : "");
+      .attr("class", "ring-label")
+      .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", d => d.angle > Math.PI ? "end" : null)
+      .attr("transform", d => {
+        return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")" +
+          "translate(" + (RADIUS + 30) + ")" +
+          (d.angle > Math.PI ? "rotate(180)" : "");
+      })
+      .text(d => sc_data.sc_names[d.index])
+
+  // Same as in main.js
+  let examples = d3.select(".offcanvas-body")
+    .selectAll("myExampleCards")
+    .data(example_data)
+    .enter()
+    .append("div")
+    .attr("class", "card example text-center text-bg-light d-none")
+      .append("div")
+      .attr("class", "card-body")
+        .append("p")
+        .attr("class", "card-text")
+        .html(data => data[newestVariety])
+
+  // MOUSE INTERACTIONS
+  ringElements
+    .on("mouseover", (event, mElement) => {
+      let ribbonsToHighlight = ribbons
+        .filter(ribbon => (ribbon.source.index === mElement.index
+                           || ribbon.target.index === mElement.index))
+        .classed("highlighted", true)
+
+      let hlData = ribbonsToHighlight.data()
+
+      let hlIndices = new Set(hlData.map(ribbon => (
+        [ribbon.source.index, ribbon.target.index]))
+        .flat())
+
+      ringElements
+        .filter(element => hlIndices.has(element.index))
+        .classed("highlighted", true)
+
+      ringLabels
+        .filter(element => hlIndices.has(element.index))
+        .classed("highlighted", true)
+
+      // Bring highlighted ribbons to front
+      ribbons
+        .filter(".highlighted")
+        .raise()
     })
-    .style("cursor", "pointer")
-    .text(function(d) { return sc_data.sc_names[d.index]; })
+    .on("mouseout", (event, mElement) => {
+      for (const selection of [ringElements, ringLabels, ribbons]) {
+        selection.classed("highlighted", false)
+      }
+      ribbons
+        .filter(".locked")
+        .raise()
+    })
+    .on("dblclick", function(event, mElement) {
+      let elemIsOrigin = d3.select(this).classed("lock-origin")
+
+      for (const selection of [ringElements, ringLabels, ribbons]) {
+        selection.classed("locked", false)
+        selection.classed("lock-origin", false)
+      }
+
+      // If lock origin clicked, just turn everything off. Else, toggle lock on
+      // for the appropriate elements (with all the code below)
+      if (elemIsOrigin) {return}
+
+      // Only double-clicking the lock origin should toggle the lock fully off
+      d3.select(this).classed("lock-origin", true)
+      lockOriginIndex = d3.select(this).data()[0].index
+
+      let ribbonsToHighlight = ribbons
+        .filter(ribbon => (ribbon.source.index === mElement.index
+                           || ribbon.target.index === mElement.index))
+        .classed("locked", true)
+
+      let hlData = ribbonsToHighlight.data()
+
+      let hlIndices = new Set(hlData.map(ribbon => (
+        [ribbon.source.index, ribbon.target.index]))
+        .flat())
+
+      ringElements
+        .filter(element => hlIndices.has(element.index))
+        .classed("locked", true)
+
+      ringLabels
+        .filter(element => hlIndices.has(element.index))
+        .classed("locked", true)
+    })
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })
