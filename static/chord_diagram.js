@@ -273,8 +273,85 @@ Promise.all([
       d3.select("#rel-card-header").text(header)
     })
 
-  d3.select("#drawer-btn")
+  // On example click, if it's already shown ("open"), set "open" to false
+  // and clear the example chronology display box. If it wasn't shown yet,
+  // fill the box with the chronology of the examples and bold the selected
+  // sound change as well as the forms before and after it.
+  examples
+    .on("click", function(event, mExample) {
+      idToBold = String(lockOriginIndex + 1)
+      let boldLastThree = false
+      let exampleIsOpen = d3.select(this).classed("open")
+      examples.classed("open", false)
+      // Clear info box, and remember element
+      box = d3.select("#example-chronology").html("")
+      if (exampleIsOpen) {return}    
+
+      box.append("span")
+        .attr("class", "chronology-el")
+        // oldestVariety (and newest) is passed into html script tag by flask
+        .html(`${oldestVariety} ${mExample[oldestVariety]} `)
+
+      if (Object.keys(mExample)[0] === idToBold) {
+        boldLastThree = true
+      }
+
+      for (const sc_id in mExample) {
+        // Skip strings (converting string with Number() will result in NaN)
+        if (isNaN(Number(sc_id))) {continue}
+
+        box.append("span")
+          .attr("class", "chronology-el")
+          .html(">")
+          .append("sub")
+            .append("sub")
+              .html(sc_id)
+
+        box.append("span")
+          .attr("class", "chronology-el")
+          .html(` ${mExample[sc_id]} `)
+
+          // Simplify by changing how bolding works for element 0
+          if (sc_id === idToBold) {
+            boldLastThree = true
+          }
+
+          if (boldLastThree === true) {
+            cElements = d3.selectAll(".chronology-el")
+            nOfElements = cElements.size()
+
+            cElements
+              .filter((d, i) => i >= nOfElements - 3)
+              .classed("fw-bold", "true")
+
+            boldLastThree = false
+          }
+      }
+
+      box.append("span")
+        .attr("class", "chronology-el")
+        .html(">")
+
+      box.append("span")
+        .attr("class", "chronology-el")
+        .html(`${newestVariety} ${mExample[newestVariety]}`)
+
+      offcanvasDrawerObj.hide()
+      d3.select(this).classed("open", true)
+      d3.select("#chron-close-btn").classed("invisible", false)
+    })
+
+    d3.select("#chron-close-btn")
+      .on("click", () => {
+        examples.classed("open", false)
+        d3.select("#example-chronology").html("")
+        d3.select("#chron-close-btn").classed("invisible", true)
+      })
+})
+
+d3.select("#drawer-btn")
   .on("click", () => {
     offcanvasDrawerObj.show()
   })
-})
+
+
