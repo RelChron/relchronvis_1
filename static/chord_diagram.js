@@ -42,10 +42,20 @@ Promise.all([
   // Set up chord layout, load data
   chord = d3.chord().padAngle(0.02)
   chords = chord(matrix)
+  
+  for (let i = 0; i < chords.length; i++) {
+    console.assert((chords[i].source.index + 1 === sc_data.relations[i].source
+           && chords[i].target.index + 1 === sc_data.relations[i].target),
+           "Copied relation data with different source and target value :(")
+    chords[i].type = sc_data.relations[i].type
+    chords[i].descr = sc_data.relations[i].descr
+  }
   console.log("Here's the chords object")
   console.log(chords)
   console.log("Here's the chords.groups object")
   console.log(chords.groups)
+  console.log("Here's the sc_data.relations object with length", sc_data.relations.length)
+  console.log(sc_data.relations)
 
   let ringElements = diagram
     .selectAll()
@@ -188,29 +198,83 @@ Promise.all([
         .classed("d-none", false)
     })
 
-    d3.select("#drawer-btn")
-    .on("click", () => {
-      offcanvasDrawerObj.show()
-    })
+  ribbons
+    .on("click", function(event, mRibbon) {
+      let ribbonIsLocked = d3.select(this).classed("locked")
+      if (!ribbonIsLocked) {return}
 
+      let relCardIsOpen = d3.select(this).classed("rel-card-open")
+      ribbons.classed("rel-card-open", false)
+      d3.select("#rel-card").classed("d-none", true)
+      d3.select("#second-sc-card").classed("d-none", true)
     
 
+      // Remove description elements from relation card
+      d3.selectAll(".list-group-item").remove()
 
+      if (relCardIsOpen) {return}
 
+      sourceId = mRibbon.source.index+1
+      targetId = mRibbon.target.index+1
+      // Problem: will need to iterate over all of relations and filter to find the one I need
+      // Could use native js filter function?
+      // Or bind two arrays to ribbons?
+      // Or iterate over chords in beginning and add properties to objects
+      // type = sc_data.relations[?]
 
+      let header = `${sourceId} before ${targetId} ` 
+      header += `because of ${mRibbon.type}`
 
+      // Select source or target change, depending on arc direction
+      // The array is 0-indexed, so no +1 here
+      secondCardIndex = mRibbon.target.index
+      firstCardIndex = Number(d3.select("#sc-card-id").text()) - 1
+      if (firstCardIndex === secondCardIndex) {
+        secondCardIndex = mRibbon.source.index
+      }
 
+      d3.select(this).classed("rel-card-open", true)
+      relCard = d3.select("#rel-card").classed("d-none", false)
+      for (const description of mRibbon.descr) {
+        d3.select("#rel-card-list")
+        .append("li")
+          .classed("list-group-item", true)
+          .text(description)
+      }
 
+      d3.select("#second-sc-card-id")
+        .text(sc_data["changes"][secondCardIndex]["id"])
+      d3.select("#second-sc-card-header")
+        .text(sc_data["changes"][secondCardIndex]["name"])
+      d3.select("#second-sc-card-body")
+        .text(sc_data["changes"][secondCardIndex]["descr"])
+      d3.select("#second-sc-card").classed("d-none", false)
 
+      // Change visibilities and styles depending on confidence
+      // Select <li>'s to change their styles as well
+      descriptions = d3.selectAll(".list-group-item")
+      if (mRibbon.conf) {
+        relCard
+          .classed("border-primary bg-transparent text-primary", false)
+          .classed("text-bg-primary", true)
+        header += ":"
+        descriptions
+          .classed("border-primary bg-transparent text-primary", false)
+          .classed("text-bg-primary", true)
+      } else {
+        relCard
+          .classed("border-primary bg-transparent text-primary", true)
+          .classed("text-bg-primary", false)
+        header += " (uncertain):"
+        descriptions
+          .classed("border-primary bg-transparent text-primary", true)
+          .classed("text-bg-primary", false)
+      } 
+      d3.select("#rel-card-header").text(header)
+    })
 
-
-
-
-
-
-
-
-
-
-
+  d3.select("#drawer-btn")
+  .on("click", () => {
+    offcanvasDrawerObj.show()
+  })
 })

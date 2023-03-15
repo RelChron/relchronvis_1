@@ -301,7 +301,6 @@ Promise.all([
     for (const description of m_arc.descr) {
       d3.select("#rel-card-list")
       .append("li")
-        // Perhaps need to set class rather than use classed
         .classed("list-group-item", true)
         .text(description)
     }
