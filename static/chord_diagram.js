@@ -2,8 +2,6 @@
 // Based on https://d3-graph-gallery.com/graph/chord_basic.html
 // Also based on http://www.redotheweb.com/DependencyWheel/
 
-// const language = "Russian"
-
 const OUTER_WIDTH = document.getElementById("chord-diagram")
     .getBoundingClientRect().width
 const OUTER_HEIGHT = document.getElementById("chord-diagram")
@@ -77,6 +75,29 @@ Promise.all([
       .attr("d", d3.ribbon()
         .radius(RADIUS)
       )
+      // can I call .each() here or do it on ribbons later?
+      .each(function(d, i) {
+        className = null
+        if (d.type === "F") {
+          className = "feeding"
+        } else if (d.type === "CF") {
+          className = "counterfeeding"
+        } else if (d.type === "B") {
+          className = "bleeding"
+        } else if (d.type === "CB") {
+          className = "counterbleeding"
+        } else if (d.type === "M") {
+          className = "manuscript"
+        } else if (d.type === "LW") {
+          className = "loanword"
+        } else {
+          className = "other"
+        }
+
+        d3.select(this).classed(className, true)
+      })
+      // set class to variable base on type
+      // can I define a function for that and call .each() or something?
 
   // Labels displayed outside ring
   let ringLabels = diagram
@@ -216,11 +237,6 @@ Promise.all([
 
       sourceId = mRibbon.source.index+1
       targetId = mRibbon.target.index+1
-      // Problem: will need to iterate over all of relations and filter to find the one I need
-      // Could use native js filter function?
-      // Or bind two arrays to ribbons?
-      // Or iterate over chords in beginning and add properties to objects
-      // type = sc_data.relations[?]
 
       let header = `${sourceId} before ${targetId} ` 
       header += `because of ${mRibbon.type}`

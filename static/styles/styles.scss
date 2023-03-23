@@ -1,3 +1,4 @@
+@use "sass:color";
 // Override default colors before importing Bootstrap css
 // https://www.cd.uzh.ch/de/basics/farben.html
 $uzh-blue-100: #0028a5;
@@ -11,12 +12,28 @@ $uzh-grey-60: #c8ced4;
 $uzh-grey-40: #dadee2;
 $uzh-grey-20: #edeff1;
 $uzh-red-80: #e38052;
+$feeding: #AC3931;
+$counterfeeding: color.scale($feeding, $lightness: 35%);
+$bleeding: #187795;
+$counterbleeding: color.scale($bleeding, $lightness: 35%);
+$loanword: #629460;
+$other: #FFCF56;
+$manuscript: #A39594;
+// Divergent color palette
+// $feeding: #00429d;
+// $counterfeeding: #5681b9;
+// $loanword: #93c4d2;
+// $other: #ffffe0;
+// $manuscript: #ffa59e;
+// $counterbleeding: #dd4c65;
+// $bleeding: #93003a;
 $primary: $uzh-blue-80;
 $secondary: $uzh-grey-80;
 $light: $uzh-grey-40;
 $info: $uzh-grey-20;
 $input-bg: $uzh-grey-20;
 $danger: $uzh-red-80;
+$black: #080708;
 @import "../bootstrap/scss/bootstrap";
 
 
@@ -171,23 +188,51 @@ textPath {
     fill: $uzh-grey-80;
     stroke: $uzh-grey-80;
     stroke-width: 1px;
-}
-
-.ring-el.highlighted,
-.ring-el.locked,
-.ribbon.highlighted,
-.ribbon.locked {
-    stroke: $uzh-blue-80;
-    fill: $uzh-blue-80;
-    stroke-width: 1px;
+    &.highlighted,
+    &.locked {
+        // stroke: $uzh-blue-80;
+        // fill: $uzh-blue-80;
+        stroke: $black;
+        fill: $black;
+        stroke-width: 1px;
+        &.feeding {
+            fill: $feeding;
+            stroke: $feeding;
+        }
+        &.counterfeeding {
+            fill: $counterfeeding;
+            stroke: $counterfeeding;
+        }
+        &.bleeding {
+            fill: $bleeding;
+            stroke: $bleeding;
+        }
+        &.counterbleeding {
+            fill: $counterbleeding;
+            stroke: $counterbleeding;
+        }
+        &.manuscript {
+            fill: $manuscript;
+            stroke: $manuscript;
+        }
+        &.loanword {
+            fill: $loanword;
+            stroke: $loanword;
+        }
+        &.other {
+            fill: $other;
+            stroke: $other;
+        }
+    }
 }
 
 // Labels
 .ring-label {
     fill: $uzh-grey-80;
+    &.highlighted,
+    &.locked {
+        fill: $black;
+    }
 }
 
-.ring-label.highlighted,
-.ring-label.locked {
-    fill: $uzh-blue-80;
-}
+
