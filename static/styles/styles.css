@@ -10954,8 +10954,8 @@ textPath {
 /* Chord diagram */
 .ring-el,
 .ribbon {
-  fill: #b5bdc5;
-  stroke: #b5bdc5;
+  fill: #edeff1;
+  stroke: #edeff1;
   stroke-width: 1px;
 }
 .ring-el.highlighted, .ring-el.locked,
@@ -10968,44 +10968,44 @@ textPath {
 .ring-el.highlighted.feeding, .ring-el.locked.feeding,
 .ribbon.highlighted.feeding,
 .ribbon.locked.feeding {
-  fill: #AC3931;
-  stroke: #AC3931;
+  fill: #dc6027;
+  stroke: #dc6027;
 }
 .ring-el.highlighted.counterfeeding, .ring-el.locked.counterfeeding,
 .ribbon.highlighted.counterfeeding,
 .ribbon.locked.counterfeeding {
-  fill: #d5746d;
-  stroke: #d5746d;
+  fill: #eaa07d;
+  stroke: #eaa07d;
 }
 .ring-el.highlighted.bleeding, .ring-el.locked.bleeding,
 .ribbon.highlighted.bleeding,
 .ribbon.locked.bleeding {
-  fill: #187795;
-  stroke: #187795;
+  fill: #0028a5;
+  stroke: #0028a5;
 }
 .ring-el.highlighted.counterbleeding, .ring-el.locked.counterbleeding,
 .ribbon.highlighted.counterbleeding,
 .ribbon.locked.counterbleeding {
-  fill: #42bbe1;
-  stroke: #42bbe1;
+  fill: #667ec9;
+  stroke: #667ec9;
 }
 .ring-el.highlighted.manuscript, .ring-el.locked.manuscript,
 .ribbon.highlighted.manuscript,
 .ribbon.locked.manuscript {
-  fill: #A39594;
-  stroke: #A39594;
+  fill: #0b82a0;
+  stroke: #0b82a0;
 }
 .ring-el.highlighted.loanword, .ring-el.locked.loanword,
 .ribbon.highlighted.loanword,
 .ribbon.locked.loanword {
-  fill: #629460;
-  stroke: #629460;
+  fill: #2a7f62;
+  stroke: #2a7f62;
 }
 .ring-el.highlighted.other, .ring-el.locked.other,
 .ribbon.highlighted.other,
 .ribbon.locked.other {
-  fill: #FFCF56;
-  stroke: #FFCF56;
+  fill: #fbe651;
+  stroke: #fbe651;
 }
 
 .ring-label {

@@ -11,14 +11,50 @@ $uzh-grey-80: #b5bdc5;
 $uzh-grey-60: #c8ced4;
 $uzh-grey-40: #dadee2;
 $uzh-grey-20: #edeff1;
+$uzh-red-100: #dc6027;
 $uzh-red-80: #e38052;
-$feeding: #AC3931;
-$counterfeeding: color.scale($feeding, $lightness: 35%);
-$bleeding: #187795;
-$counterbleeding: color.scale($bleeding, $lightness: 35%);
-$loanword: #629460;
-$other: #FFCF56;
-$manuscript: #A39594;
+$uzh-red-60: #eaa07d;
+$uzh-red-40: #f1bfa9;
+$uzh-red-20: #f8dfd4;
+$uzh-turquoise-100: #0b82a0;
+$uzh-turquoise-80: #3c9fb6;
+$uzh-turquoise-60: #6bb7c7;
+$uzh-turquoise-40: #9ed0d9;
+$uzh-turquoise-20: #cfe8ec;
+$uzh-bottle-green-100: #2a7f62;
+$uzh-bottle-green-80: #569d85;
+$uzh-bottle-green-60: #80b6a4;
+$uzh-bottle-green-40: #abcec2;
+$uzh-bottle-green-20: #d5e7e1;
+$uzh-limetree-green-100: #91c34a;
+$uzh-limetree-green-80: #aad470;
+$uzh-limetree-green-60: #bfdf94;
+$uzh-limetree-green-40: #d5e9b7;
+$uzh-limetree-green-20: #eaf4db;
+$uzh-yellow-100: #fede00;
+$uzh-yellow-80: #fbe651;
+$uzh-yellow-60: #fcec7c;
+$uzh-yellow-40: #fdf3a8;
+$uzh-yellow-20: #fef9d3;
+
+// UZH color palette
+$feeding: $uzh-red-100;
+$counterfeeding: $uzh-red-60;
+$bleeding: $uzh-blue-100;
+$counterbleeding: $uzh-blue-60;
+$loanword: $uzh-bottle-green-100;
+$other: $uzh-yellow-80;
+$manuscript: $uzh-turquoise-100;
+
+// First qualitative color palette
+// $feeding: #AC3931;
+// $counterfeeding: color.scale($feeding, $lightness: 35%);
+// $bleeding: #187795;
+// $counterbleeding: color.scale($bleeding, $lightness: 35%);
+// $loanword: #629460;
+// $other: #FFCF56;
+// $manuscript: #A39594;
+
 // Divergent color palette
 // $feeding: #00429d;
 // $counterfeeding: #5681b9;
@@ -185,8 +221,8 @@ textPath {
 // Ring
 .ring-el,
 .ribbon {
-    fill: $uzh-grey-80;
-    stroke: $uzh-grey-80;
+    fill: $uzh-grey-20;
+    stroke: $uzh-grey-20;
     stroke-width: 1px;
     &.highlighted,
     &.locked {
