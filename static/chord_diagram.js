@@ -16,6 +16,10 @@ const MARGIN = {
   LEFT: OUTER_WIDTH / 2
 }
 
+let translateX = MARGIN.LEFT
+let translateY = MARGIN.TOP
+let scaleFactor = 1
+
 // For later
 let offcanvasDrawerEl = document.getElementById("offcanvasRight")
 let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
@@ -30,7 +34,7 @@ const svg = d3.select("#chord-diagram")
   .attr("height", OUTER_HEIGHT)
 
 const diagram = svg.append("g")
-  .attr("transform", `translate(${MARGIN.LEFT},${MARGIN.TOP})`)
+  .attr("transform", `translate(${translateX},${translateY})`)
 
 Promise.all([
   d3.json(`/sound_changes?lang=${language}`),
@@ -48,6 +52,8 @@ Promise.all([
     chords[i].type = sc_data.relations[i].type
     chords[i].descr = sc_data.relations[i].descr
   }
+
+  // Debug
   console.log("Here's the chords object")
   console.log(chords)
   console.log("Here's the chords.groups object")
@@ -114,7 +120,6 @@ Promise.all([
           "translate(" + (RADIUS + 30) + ")" +
           (d.angle > Math.PI ? "rotate(180)" : "");
       })
-      // TEST
       .text(d => sc_data.changes[d.index].name)
 
   // Same as in main.js
@@ -363,6 +368,53 @@ Promise.all([
         d3.select("#example-chronology").html("")
         d3.select("#chron-close-btn").classed("invisible", true)
       })
+    
+    // SEMANTIC ZOOM BEHAVIOR
+    let zoom = d3.zoom()
+      // Limit scale
+      .scaleExtent([0.1, 10])
+
+      // Scale radius and apply to elements
+      .on("zoom", zoomEvent => {
+        let newScaleFactor = zoomEvent.transform.k
+        let newRadius = RADIUS * newScaleFactor
+
+        ringElements
+          .attr("d", d3.arc()
+            .innerRadius(newRadius)
+            .outerRadius(newRadius + 20)
+          )
+
+        ribbons
+          .attr("d", d3.ribbon()
+            .radius(newRadius)
+          )
+      
+        ringLabels
+          .attr("transform", d => {
+            return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")" +
+              "translate(" + (newRadius + 30) + ")" +
+              (d.angle > Math.PI ? "rotate(180)" : "");
+          })
+      })
+    svg.call(zoom)
+      // Prevent default double click zoom
+      .on("dblclick.zoom", null)
+
+    // Handles dragging only, and only when <g> elements are clicked
+    let drag = d3.drag()
+      .on("drag", dragEvent => {
+        // let transform = dragEvent.transform
+        console.log(dragEvent.dx)
+        console.log(dragEvent.dy)
+        translateX += dragEvent.dx
+        translateY += dragEvent.dy
+        diagram
+          .attr("transform", `translate(${translateX},${translateY})`)
+      })
+    diagram.call(drag)
+      
+
 })
 
 d3.select("#drawer-btn")
