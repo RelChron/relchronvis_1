@@ -38,7 +38,7 @@ const diagram = svg.append("g")
 
 Promise.all([
   d3.json(`/sound_changes?lang=${language}`),
-  d3.json(`/dependency_wheel_old?lang=${language}`),
+  d3.json(`/matrix?lang=${language}`),
   d3.json(`/examples?lang=${language}`),
 ]).then(function([sc_data, matrix, example_data]) {
   // Set up chord layout, load data

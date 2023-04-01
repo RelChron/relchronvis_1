@@ -1,5 +1,5 @@
 # Import data from csv, serve pages and data requests
-from flask import Flask, render_template, send_file, request, jsonify
+from flask import Flask, render_template, send_file, request
 from typing import OrderedDict
 from pathlib import Path
 import csv, json
@@ -15,110 +15,69 @@ app = Flask(__name__)
 def landing():
     return render_template("landing.html.jinja")
 
-@app.route("/ru")
-def ru():
-    data = {"language": "Russian"}
-    try:
-        oldest_variety, newest_variety = get_abbr("data/examples_ru.csv")
-    except FileNotFoundError as e:
-        data["error"] = ("Error getting Russian language varieties:", str(e))
-        oldest_variety, newest_variety = "", ""
-
-    data["oldest_variety"] = oldest_variety
-    data["newest_variety"] = newest_variety
-
-    return render_template("arc_diagram.html.jinja", data=data)
-
-@app.route("/hr")
-def hr():
-    data = {"language": "Croatian"}
-    try:
-        oldest_variety, newest_variety = get_abbr("data/examples_hr.csv")
-    except FileNotFoundError as e:
-        data["error"] = ("Error getting Croatian language varieties from 'data/examples_hr.csv'", e.strerror)
-        oldest_variety, newest_variety = "", ""
-
-    data["oldest_variety"] = oldest_variety
-    data["newest_variety"] = newest_variety
-
-    return render_template("arc_diagram.html.jinja", data=data)
-
-@app.route("/dependency_wheel_old")
-def dw_data():
-    """Convert sound change data for dependency wheel and pass to template.
-    
-    OLD
-    Delivers an object with the "packageNames" and "matrix" Arrays that are
-    required by the dependency wheel module. 
-    For packageNames, just gather an array from the appropriate 
-    sound_changes file.
-    For matrix, construct a matrix of what "depends" on what, using the
-    relations part of the sound_changes file. See static/d3.dependencyWheel.js
-    for the required format.
-    """
-    # Read language query string, handle errors, set filepath to read data from
+@app.route("/arc_diagram", methods=["GET"])
+def arc_diagram():
     language = request.args.get("lang")
+    data = {}
     if language == "Russian":
-        sc_file_path = Path(BASE_DIR / "data/sound_changes_ru.json")
+        data["language"] = "Russian"
+        try:
+            oldest_variety, newest_variety = get_abbr("data/examples_ru.csv")
+        except FileNotFoundError as e:
+            data["error"] = ("Error getting Russian language varieties:", str(e))
+            oldest_variety, newest_variety = "", ""
+
+        data["oldest_variety"] = oldest_variety
+        data["newest_variety"] = newest_variety
+
     elif language == "Croatian":
-        sc_file_path = Path(BASE_DIR / "data/sound_changes_hr.json")
+        data["language"] = "Croatian"
+        try:
+            oldest_variety, newest_variety = get_abbr("data/examples_hr.csv")
+        except FileNotFoundError as e:
+            data["error"] = ("Error getting Croatian language varieties from 'data/examples_hr.csv'", e.strerror)
+            oldest_variety, newest_variety = "", ""
+
+        data["oldest_variety"] = oldest_variety
+        data["newest_variety"] = newest_variety
+
     else:
-        return {"error": ("Error getting sound change data",
-                f"Language parameter not recognized: {language}")}
-    if not sc_file_path.exists():
-        return {"error": ("Error getting sound change data",
-                f"Path {sc_file_path} does not exist")}
+        data["error"] = "Error parsing language for arc diagram"
 
-    # Prepare data for dependency wheel
-    with open(sc_file_path, encoding="utf-8-sig") as sc_file:
-        sc_data = json.load(sc_file)
+    return render_template("arc_diagram.html.jinja", data=data)
 
-        matrix = []
-        # For each sound change..
-        for sc in sc_data["changes"]:
-            matrix_row = []
-            connected_ids = set()
-
-            # ...check relations and get all connections...
-            for relation in sc_data["relations"]:
-                if relation["source"] == sc["id"]:
-                    connected_ids.add(relation["target"])
-                if relation["target"] == sc["id"]:
-                    connected_ids.add(relation["source"])
-            # ...and add 1s in the corresponding place in the matrix row.
-            for i in range(1, len(sc_data["changes"]) + 1):
-                if i in connected_ids:
-                    matrix_row.append(1)
-                else:
-                    matrix_row.append(0)
-
-            matrix.append(matrix_row)
-
-        # data = {
-        #     "sc_names": names,
-        #     "matrix": matrix_rows
-        # }
-
-    # return render_template("dependency_wheel_demo.html.jinja", data=data)
-
-    # Should convert to json automatically (throws error on pythonanywhere though)
-    return jsonify(matrix)
-
-@app.route("/chord_diagram")
+@app.route("/chord_diagram", methods=["GET"])
 def chord_diagram():
-    data = {"language": "Russian"}
-    try:
-        oldest_variety, newest_variety = get_abbr("data/examples_ru.csv")
-    except FileNotFoundError as e:
-        data["error"] = ("Error getting Russian language varieties from 'data/examples_ru.csv'", e.strerror)
-        oldest_variety, newest_variety = "", ""
+    language = request.args.get("lang")
+    data = {}
+    if language == "Russian":
+        data["language"] = "Russian"
+        try:
+            oldest_variety, newest_variety = get_abbr("data/examples_ru.csv")
+        except FileNotFoundError as e:
+            data["error"] = ("Error getting Russian language varieties from 'data/examples_ru.csv'", e.strerror)
+            oldest_variety, newest_variety = "", ""
 
-    data["oldest_variety"] = oldest_variety
-    data["newest_variety"] = newest_variety
+        data["oldest_variety"] = oldest_variety
+        data["newest_variety"] = newest_variety
+
+    elif language == "Croatian":
+        data["language"] = "Croatian"
+        try:
+            oldest_variety, newest_variety = get_abbr("data/examples_hr.csv")
+        except FileNotFoundError as e:
+            data["error"] = ("Error getting Croatian language varieties from 'data/examples_hr.csv'", e.strerror)
+            oldest_variety, newest_variety = "", ""
+
+        data["oldest_variety"] = oldest_variety
+        data["newest_variety"] = newest_variety
+
+    else:
+        data["error"] = "Error parsing language for chord diagram"
 
     return render_template("chord_diagram.html.jinja", data=data)
 
-@app.route('/sound_changes', methods=['GET'])
+@app.route('/sound_changes', methods=["GET"])
 def give_sc_data():
     language = request.args.get("lang")
     if language == "Russian":
@@ -134,7 +93,7 @@ def give_sc_data():
             return {"error": ("Error getting Croatian sound change data",
                     "File 'data/sound_changes_hr.json' does not exist")}
 
-@app.route('/examples', methods=['GET'])
+@app.route('/examples', methods=["GET"])
 def give_example_data():
     language = request.args.get("lang")
     if language == "Russian":
@@ -152,29 +111,49 @@ def give_example_data():
     else:
         return {"error": "Error getting example data"}
 
-@app.route('/sc_template', methods=['GET'])
+@app.route("/matrix", methods=["GET"])
+def give_matrix_data():
+    language = request.args.get("lang")
+    if language == "Russian":
+        if Path(BASE_DIR / "data/matrix_ru.json").exists():
+            return send_file("data/matrix_ru.json")
+        else:
+            return {"error": ("Error getting Russian matrix data",
+                    "File 'data/matrix_ru.json' does not exist")}
+    elif language == "Croatian":
+        if Path(BASE_DIR / "data/matrix_hr.json").exists():
+            return send_file("data/matrix_hr.json")
+        else:
+            return {"error": ("Error getting Croatian matrix data",
+                    "File 'data/matrix_hr.json' does not exist")}
+    else:
+        return {"error": "Error getting matrix data"}
+
+@app.route('/sc_template', methods=["GET"])
 def give_sc_template():
     return send_file("data/sound_changes_ru.csv")
 
-@app.route('/ex_template', methods=['GET'])
+@app.route('/ex_template', methods=["GET"])
 def give_ex_template():
     return send_file("data/examples_ru.csv")
 
-@app.route('/rel_template', methods=['GET'])
+@app.route('/rel_template', methods=["GET"])
 def give_rel_template():
     return send_file("data/relations_ru.csv")
 
 # Accept a CSV file (former excel sheet) and save it as json
 # Formatting see documentation
-def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path, n_of_sound_changes):
-    with open(sc_infile_path, encoding="utf-8-sig") as sc_infile:
-    # with (open(sc_infile_path, encoding="utf-8-sig") as sc_infile,
-    #       open(relations_infile_path, encoding="utf-8-sig") as rel_infile):
+def import_csv_sound_changes(sc_infile_path, relations_infile_path, 
+                             outfile_path, matrix_outfile_path, 
+                             n_of_sound_changes):
+    # with open(sc_infile_path, encoding="utf-8-sig") as sc_infile:
+    with (open(sc_infile_path, encoding="utf-8-sig") as sc_infile,
+          open(relations_infile_path, encoding="utf-8-sig") as rel_infile):
         sc_reader = csv.DictReader(sc_infile, dialect="excel",
             # Makes first col "0", and the rest "1", "2", ..., "71" 
             fieldnames=[str(n) for n in range(0, n_of_sound_changes + 1)])
         
-        # rel_reader = list(csv.DictReader(rel_infile, dialect="excel"))
+        rel_reader = list(csv.DictReader(rel_infile, dialect="excel"))
 
         # Used to be regular dict, check if it works still (at some point)
         out_dict = OrderedDict({"changes": [], "relations": []})
@@ -220,10 +199,10 @@ def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path
                         "conf": not "?" in cell_content,
                         "descr": []
                     }
-                    # for rel in rel_reader:
-                    #     if (rel["source_id"] == str(source_id)
-                    #             and rel["target_id"] == str(target_id)):
-                    #         relation["descr"].append(rel["description"])
+                    for rel in rel_reader:
+                        if (rel["source_id"] == str(source_id)
+                                and rel["target_id"] == str(target_id)):
+                            relation["descr"].append(rel["description"])
                     out_dict["relations"].append(relation)
 
             source_id = source_id + 1
@@ -231,6 +210,31 @@ def import_csv_sound_changes(sc_infile_path, relations_infile_path, outfile_path
 
     with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
         outfile.write(json.dumps(out_dict))
+
+    # Save matrix needed for chord diagram
+    matrix = []
+    # For each sound change..
+    for sc in out_dict["changes"]:
+        matrix_row = []
+        connected_ids = set()
+
+        # ...check relations and get all connections...
+        for relation in out_dict["relations"]:
+            if relation["source"] == sc["id"]:
+                connected_ids.add(relation["target"])
+            if relation["target"] == sc["id"]:
+                connected_ids.add(relation["source"])
+        # ...and add 1s in the corresponding place in the matrix row.
+        for i in range(1, len(out_dict["changes"]) + 1):
+            if i in connected_ids:
+                matrix_row.append(1)
+            else:
+                matrix_row.append(0)
+
+        matrix.append(matrix_row)
+    
+    with open(matrix_outfile_path, mode="w+", encoding="utf-8") as outfile:
+        outfile.write(json.dumps(matrix))
 
 def import_csv_examples(infile_path, outfile_path):
     out_list = []
@@ -273,6 +277,7 @@ if __name__ == "__main__":
     #     sc_infile_path = "data/sound_changes_ru.csv", 
     #     relations_infile_path = "data/relations_ru.csv", 
     #     outfile_path = "data/sound_changes_ru.json", 
+    #     matrix_outfile_path = "data/matrix_ru.json",
     #     n_of_sound_changes = 71
     # )
     # import_csv_examples(
