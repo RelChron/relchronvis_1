@@ -120,7 +120,15 @@ Promise.all([
           "translate(" + (RADIUS + 30) + ")" +
           (d.angle > Math.PI ? "rotate(180)" : "");
       })
-      .text(d => sc_data.changes[d.index].name)
+      .text(d => {
+        // If angle is in first half of circle (i.e. below pi radians), put 
+        // the number at the start of the label, otherwise at the end
+        if (d.angle < Math.PI) {
+          return sc_data.changes[d.index].id + " " + sc_data.changes[d.index].name
+        } else {
+          return sc_data.changes[d.index].name + " " +  sc_data.changes[d.index].id
+        }
+      })
 
   // Same as in main.js
   let examples = d3.select(".offcanvas-body")
