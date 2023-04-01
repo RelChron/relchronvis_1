@@ -371,10 +371,10 @@ Promise.all([
     
     // SEMANTIC ZOOM BEHAVIOR
     let zoom = d3.zoom()
-      // Limit scale
+      // Limit how far in and out you can zoom
       .scaleExtent([0.1, 10])
 
-      // Scale radius and apply to elements
+      // Scale radius based on zoom factor and apply to elements
       .on("zoom", zoomEvent => {
         let newScaleFactor = zoomEvent.transform.k
         let newRadius = RADIUS * newScaleFactor
@@ -397,6 +397,7 @@ Promise.all([
               (d.angle > Math.PI ? "rotate(180)" : "");
           })
       })
+
     svg.call(zoom)
       // Prevent default double click zoom
       .on("dblclick.zoom", null)
@@ -412,9 +413,8 @@ Promise.all([
         diagram
           .attr("transform", `translate(${translateX},${translateY})`)
       })
-    diagram.call(drag)
-      
 
+    diagram.call(drag)
 })
 
 d3.select("#drawer-btn")
@@ -422,4 +422,63 @@ d3.select("#drawer-btn")
     offcanvasDrawerObj.show()
   })
 
+// PNG DOWNLOAD FROM SVG
+// Built on http://bl.ocks.org/Rokotyan/0556f8facbaf344507cdc45dc3622177
+d3.select("#download-btn")
+.on("click", () => {
+  let scalingFactor = 2
+
+  // Step 1. Extract external CSS styles
+  // From https://stackoverflow.com/a/31949487
+  let styleDefs = "svg {background-color: white}"
+  let sheets = document.styleSheets
+  for (const sheet of sheets) {
+    let rules = sheet.cssRules
+    for (const rule of rules) {
+      if (rule.style) {
+        styleDefs += rule.cssText
+      }
+    }
+  }
+
+  let styleEl = document.createElement('style')
+  styleEl.setAttribute('type', 'text/css')
+  styleEl.innerHTML = styleDefs;
+
+  let defs = document.createElement('defs')
+  defs.appendChild(styleEl)
+  styledSVG = svg.node().cloneNode(deep=true)
+  styledSVG.insertBefore(defs, styledSVG.firstChild)
+
+  // Step 2. Create SVG string
+  let svgString = new XMLSerializer().serializeToString(styledSVG)
+  // Fix root link without namespace, then fix Safari NS namespace
+  svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink=')
+  svgString = svgString.replace(/NS\d+:href/g, 'xlink:href')
+
+  let canvas = document.createElement("canvas")
+  let context = canvas.getContext("2d")
+  canvas.width = svg.attr("width") * scalingFactor
+  canvas.height = svg.attr("height") * scalingFactor
+
+  // Step 3. Create data url from SVG string
+  // unescape() is deprecated but decodeURIComponent causes an "invalid
+  // string" error in btoa() which is not trivial to fix.
+  let image = new Image()
+  image.src = 'data:image/svg+xml;base64,' 
+    + btoa(unescape(encodeURIComponent(svgString)))
+  image.onload = function() {
+    // Step 4. Draw image from url to canvas
+    context.clearRect(0, 0, svg.attr("width") * scalingFactor, 
+      svg.attr("height") * scalingFactor)
+    context.drawImage(image, 0, 0, svg.attr("width") * scalingFactor, 
+      svg.attr("height") * scalingFactor)
+    // Step 5. Download canvas
+    // Polyfill from https://github.com/blueimp/JavaScript-Canvas-to-Blob
+    canvas.toBlob(function(blob) {
+      // Function from https://github.com/eligrey/FileSaver.js/
+      saveAs(blob, 'Relative Chronology.png')
+    })
+  }
+})
 
