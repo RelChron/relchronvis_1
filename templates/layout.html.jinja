@@ -7,20 +7,31 @@
     <title>{% block title %}Relative Chronology{% endblock %}</title>
     <link href="static/styles/styles.css" rel="stylesheet">
 
-    {# Bootstrap, D3, helper libraries and own JS #}
-    {% if data is defined %}
-    <script type="text/javascript" defer>
-        const oldestVariety = {{ data["oldest_variety"]|tojson }}
-        const newestVariety = {{ data["newest_variety"]|tojson }}
-        const language = {{ data["language"]|tojson }}
-        const serverResponse = {{ data|tojson }}
-    </script>
-    {% endif %}
+    {# Always load bootstrap js #}
     <script src="static/bootstrap/js/bootstrap.min.js" defer></script>
-    <script src="static/d3.v7.min.js" defer></script>
-    <script src="static/helpers/canvas-to-blob.min.js"></script>
-    <script src="static/helpers/FileSaver.min.js"></script>
-    <script src="static/main.js" defer></script>
+
+    {# Data is defined on diagram pages #}
+    {% if data is defined %}
+        {# Give the js the variables it needs for diagram drawing #}
+        <script type="text/javascript" defer>
+            const oldestVariety = {{ data["oldest_variety"]|tojson }}
+            const newestVariety = {{ data["newest_variety"]|tojson }}
+            const language = {{ data["language"]|tojson }}
+            const serverResponse = {{ data|tojson }}
+        </script>
+
+        {# Load D3js #}
+        <script src="static/d3.v7.min.js" defer></script>
+
+        {# Load helper libraries #}
+        <script src="static/helpers/canvas-to-blob.min.js"></script>
+        <script src="static/helpers/FileSaver.min.js"></script>
+
+        {# Load general code for diagrams #}
+        <script src="static/helpers/diagram_helpers.js" defer></script>
+        {# Load own js, arc_diagram.js or chord_diagram.js #}
+        <script src={{ "static/{}.js".format(data['diagram_type']) }} defer></script>
+    {% endif %}
 
     <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png">

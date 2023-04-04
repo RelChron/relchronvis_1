@@ -18,7 +18,7 @@ def landing():
 @app.route("/arc_diagram", methods=["GET"])
 def arc_diagram():
     language = request.args.get("lang")
-    data = {}
+    data = {"diagram_type": "arc_diagram"}
     if language == "Russian":
         data["language"] = "Russian"
         try:
@@ -29,7 +29,6 @@ def arc_diagram():
 
         data["oldest_variety"] = oldest_variety
         data["newest_variety"] = newest_variety
-
     elif language == "Croatian":
         data["language"] = "Croatian"
         try:
@@ -40,16 +39,15 @@ def arc_diagram():
 
         data["oldest_variety"] = oldest_variety
         data["newest_variety"] = newest_variety
-
     else:
-        data["error"] = "Error parsing language for arc diagram"
+        data["error"] = ("Error parsing language for arc diagram", "")
 
     return render_template("arc_diagram.html.jinja", data=data)
 
 @app.route("/chord_diagram", methods=["GET"])
 def chord_diagram():
     language = request.args.get("lang")
-    data = {}
+    data = {"diagram_type": "chord_diagram"}
     if language == "Russian":
         data["language"] = "Russian"
         try:
@@ -60,7 +58,6 @@ def chord_diagram():
 
         data["oldest_variety"] = oldest_variety
         data["newest_variety"] = newest_variety
-
     elif language == "Croatian":
         data["language"] = "Croatian"
         try:
@@ -71,9 +68,8 @@ def chord_diagram():
 
         data["oldest_variety"] = oldest_variety
         data["newest_variety"] = newest_variety
-
     else:
-        data["error"] = "Error parsing language for chord diagram"
+        data["error"] = ("Error parsing language for chord diagram", "")
 
     return render_template("chord_diagram.html.jinja", data=data)
 

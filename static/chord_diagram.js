@@ -20,11 +20,6 @@ let translateX = MARGIN.LEFT
 let translateY = MARGIN.TOP
 let scaleFactor = 1
 
-// For later
-let offcanvasDrawerEl = document.getElementById("offcanvasRight")
-let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
-// let lockOriginNodeId = null
-
 // SVG AND GROUPING ELEMENT SETUP
 const svg = d3.select("#chord-diagram")
   .append("svg")
@@ -41,6 +36,14 @@ Promise.all([
   d3.json(`/matrix?lang=${language}`),
   d3.json(`/examples?lang=${language}`),
 ]).then(function([sc_data, matrix, example_data]) {
+  // Catch errors
+  for (const returnedData of [sc_data, example_data, matrix]) {
+    if (returnedData.hasOwnProperty("error")) {
+      // the template receives the server response and sets serverResponse
+      addErrorCard(returnedData["error"])
+    }
+  }
+  
   // Set up chord layout, load data
   chord = d3.chord().padAngle(0.02)
   chords = chord(matrix)

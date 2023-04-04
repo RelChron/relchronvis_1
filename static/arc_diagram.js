@@ -4,7 +4,7 @@
 const CIRCLE_RADIUS = 6
 let DIAG_ASPECT_RATIO = 2.25
 if (language === "Croatian") {
-  DIAG_ASPECT_RATIO = 2.2
+    DIAG_ASPECT_RATIO = 2.2
 }
 const OUTER_WIDTH = document.getElementById("arc-diagram")
   .getBoundingClientRect().width
@@ -18,8 +18,6 @@ const INNER_WIDTH = OUTER_WIDTH - MARGIN.LEFT - MARGIN.RIGHT
 const INNER_HEIGHT = OUTER_HEIGHT - MARGIN.TOP - MARGIN.BOTTOM
 const GRAPH_BOTTOM_Y = INNER_HEIGHT - LABEL_AREA_HEIGHT
 
-let offcanvasDrawerEl = document.getElementById("offcanvasRight")
-let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
 let lockOriginNodeId = null
 
 // SVG AND GROUPING ELEMENT SETUP
@@ -33,11 +31,6 @@ const svg = d3.select("#arc-diagram")
 const diagram = svg.append("g")
   .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")")
 
-if (serverResponse.hasOwnProperty("error")) {
-  // the template receives the server response and sets serverResponse
-  addErrorCard(serverResponse["error"])
-}
-
 // EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
 // Loading two files: https://stackoverflow.com/questions/70629019
@@ -46,12 +39,10 @@ Promise.all([
   d3.json(`/examples?lang=${language}`),
 ]).then(function([sc_data, example_data]) {
   // Catch errors
-  if (example_data.hasOwnProperty("error")) {
-    addErrorCard(example_data["error"])
-  }
-
-  if (sc_data.hasOwnProperty("error")) {
-    addErrorCard(sc_data["error"])
+  for (const returnedData of [sc_data, example_data]) {
+    if (returnedData.hasOwnProperty("error")) {
+      addErrorCard(returnedData["error"])
+    }
   }
 
   let xScale = d3.scaleLinear()
@@ -671,35 +662,35 @@ d3.select("#reset-btn")
     d3.selectAll(".bg-danger").classed("d-none", false)
   })
 
-// Inspired by https://stackoverflow.com/a/27723725
-function truncate() {
-  let element = d3.select(this)
-  let elHeight = element.node().getBBox().height
-  let elText = element.text()
-  while (elHeight + 10 > LABEL_AREA_HEIGHT && elText.length > 0) {
-      elText = elText.slice(0, -1)
-      element.text(elText + '...')
-      elHeight = element.node().getBBox().height
-  }
-}
+// // Inspired by https://stackoverflow.com/a/27723725
+// function truncate() {
+//   let element = d3.select(this)
+//   let elHeight = element.node().getBBox().height
+//   let elText = element.text()
+//   while (elHeight + 10 > LABEL_AREA_HEIGHT && elText.length > 0) {
+//       elText = elText.slice(0, -1)
+//       element.text(elText + '...')
+//       elHeight = element.node().getBBox().height
+//   }
+// }
 
-function addErrorCard(errorText) {
-  let sidebar = d3.select("#sidebar-contents")
-  let errorCard = sidebar
-    .append("div")
-    .classed("card bg-danger text-white", true)
+// function addErrorCard(errorText) {
+//   let sidebar = d3.select("#sidebar-contents")
+//   let errorCard = sidebar
+//     .append("div")
+//     .classed("card bg-danger text-white", true)
   
-  errorCard
-    .append("div")
-    .classed("card-header", true)
-    .text(errorText[0])
+//   errorCard
+//     .append("div")
+//     .classed("card-header", true)
+//     .text(errorText[0])
   
-  errorCard
-    .append("div")
-    .classed("card-body", true)
-    .text(errorText[1])
-}
+//   errorCard
+//     .append("div")
+//     .classed("card-body", true)
+//     .text(errorText[1])
+// }
 
-// Listen for home button clicks
-const homeButton = document.getElementById("home-btn")
-homeButton.addEventListener("click", () => window.open("/", "_self"))
+// // Listen for home button clicks
+// const homeButton = document.getElementById("home-btn")
+// homeButton.addEventListener("click", () => window.open("/", "_self"))
