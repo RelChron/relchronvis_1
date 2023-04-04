@@ -1,4 +1,4 @@
-{% extends "layout_dep_wheel_copy.html.jinja" %}
+{% extends "layout.html.jinja" %}
 {% block body %}
 <div class="container-fluid">
 <div class="row">
@@ -14,57 +14,6 @@
                     <button id="download-btn" class="btn btn-primary">
                         Save Diagram
                     </button>
-                </div>
-                <div class="col d-grid">
-                    <button id="toggle-label-btn" class="btn btn-primary">
-                        Hide Labels
-                    </button>
-                </div>
-            </div>
-            <button id="toggle-filter-btn" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false" aria-controls="collapseExample">
-                Filter
-            </button>
-            <div class="collapse" id="filters">
-                <div class="card text-bg-info card-body" id="filters-card">
-                    <div class="d-grid gap-2">
-                        <div class="row">
-                            <div class="col-4">
-                                <select class="form-select" multiple aria-label="multiple select example" id="filter-ids"></select>
-                            </div>
-                            <div class="col-8">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="conf-check">
-                                    <label class="form-check-label" for="conf-check">
-                                        Only confident relations
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="in-check" checked>
-                                    <label class="form-check-label" for="in-check">
-                                        Incoming relations
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="out-check" checked>
-                                    <label class="form-check-label" for="out-check">
-                                        Outgoing relations
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col d-grid">
-                                <button id="apply-btn" class="btn btn-primary">
-                                    Apply
-                                </button>
-                            </div>
-                            <div class="col d-grid">
-                                <button id="reset-btn" class="btn btn-primary">
-                                    Reset
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
