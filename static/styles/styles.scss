@@ -63,6 +63,7 @@ $manuscript: $uzh-turquoise-100;
 // $manuscript: #ffa59e;
 // $counterbleeding: #dd4c65;
 // $bleeding: #93003a;
+
 $primary: $uzh-blue-80;
 $secondary: $uzh-grey-80;
 $light: $uzh-grey-40;
@@ -260,6 +261,11 @@ textPath {
             stroke: $other;
         }
     }
+}
+
+.ribbon.highlighted:hover,
+.ribbon.locked:hover {
+    stroke-width: 10px;
 }
 
 // Labels

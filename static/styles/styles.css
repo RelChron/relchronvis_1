@@ -11008,6 +11008,11 @@ textPath {
   stroke: #fbe651;
 }
 
+.ribbon.highlighted:hover,
+.ribbon.locked:hover {
+  stroke-width: 10px;
+}
+
 .ring-label {
   fill: #b5bdc5;
 }
