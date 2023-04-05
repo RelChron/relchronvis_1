@@ -2,8 +2,7 @@
 from flask import Flask, render_template, send_file, request
 from typing import OrderedDict
 from pathlib import Path
-import csv, json
-import os
+import json, csv, os
 
 # This should run only when deployed. Running this script directly changes 
 # the working directory.
