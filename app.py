@@ -76,17 +76,17 @@ def chord_diagram():
 def give_sc_data():
     language = request.args.get("lang")
     if language == "Russian":
-        if Path(BASE_DIR / "data/sound_changes_ru.json").exists():
-            return send_file("data/sound_changes_ru.json")
+        if Path(BASE_DIR / "data/data_ru.json").exists():
+            return send_file("data/data_ru.json")
         else:
             return {"error": ("Error getting Russian sound change data",
-                    "File 'data/sound_changes_ru.json' does not exist")}
+                    "File 'data/data_ru.json' does not exist")}
     elif language == "Croatian":
-        if Path(BASE_DIR / "data/sound_changes_hr.json").exists():
-            return send_file("data/sound_changes_hr.json")
+        if Path(BASE_DIR / "data/data_hr.json").exists():
+            return send_file("data/data_hr.json")
         else:
             return {"error": ("Error getting Croatian sound change data",
-                    "File 'data/sound_changes_hr.json' does not exist")}
+                    "File 'data/data_hr.json' does not exist")}
 
 @app.route('/examples', methods=["GET"])
 def give_example_data():
@@ -136,72 +136,28 @@ def give_ex_template():
 def give_rel_template():
     return send_file("data/relations_ru.csv")
 
-# Accept a CSV file (former excel sheet) and save it as json
-# Formatting see documentation
 def import_csv_sound_changes(sc_infile_path, relations_infile_path, 
                              outfile_path, matrix_outfile_path, 
                              n_of_sound_changes):
     # with open(sc_infile_path, encoding="utf-8-sig") as sc_infile:
     with (open(sc_infile_path, encoding="utf-8-sig") as sc_infile,
           open(relations_infile_path, encoding="utf-8-sig") as rel_infile):
-        sc_reader = csv.DictReader(sc_infile, dialect="excel",
-            # Makes first col "0", and the rest "1", "2", ..., "71" 
-            fieldnames=[str(n) for n in range(0, n_of_sound_changes + 1)])
-        
-        rel_reader = list(csv.DictReader(rel_infile, dialect="excel"))
+        out_dict = OrderedDict({
+            "changes": list(csv.DictReader(sc_infile, dialect="excel")), 
+            "relations": list(csv.DictReader(rel_infile, dialect="excel"))
+        })
 
-        # Used to be regular dict, check if it works still (at some point)
-        out_dict = OrderedDict({"changes": [], "relations": []})
+        # Convert some strings to ints and booleans
+        for sc in out_dict["changes"]:
+            sc["id"] = int(sc["id"])
 
-        # Remember what row (i.e. source) we're at, start counting after headers
-        source_id = 1
-        # Use a line num counter because csv_reader.line_num is buggy
-        line_num = 0
-
-        for row in sc_reader:
-            # Extract sound changes
-            if line_num == 0:
-                for i in range(1, n_of_sound_changes + 1):
-                    sound_change = {
-                        "id": i, 
-                        "name": row[str(i)]
-                    }
-                    out_dict["changes"].append(sound_change)
-                line_num = line_num + 1
-                continue
-
-            # Extract sound change descriptions
-            elif line_num == 1:
-                for i in range(n_of_sound_changes):
-                    out_dict["changes"][i]["descr"] = row[str(i+1)]
-                line_num = line_num + 1
-                continue
-
-            # Skip label row
-            elif line_num == 2:
-                line_num = line_num + 1
-                continue
-
-            # Extract relations
-            for target_id in range(1, n_of_sound_changes + 1):
-                cell_content = row[str(target_id)]
-                
-                if cell_content:
-                    relation = {
-                        "source": source_id,
-                        "target": target_id,
-                        "type": cell_content.replace("?", ""),
-                        "conf": not "?" in cell_content,
-                        "descr": []
-                    }
-                    for rel in rel_reader:
-                        if (rel["source_id"] == str(source_id)
-                                and rel["target_id"] == str(target_id)):
-                            relation["descr"].append(rel["description"])
-                    out_dict["relations"].append(relation)
-
-            source_id = source_id + 1
-            line_num = line_num + 1
+        for relation in out_dict["relations"]:
+            relation["source"] = int(relation["source"])
+            relation["target"] = int(relation["target"])
+            if relation["confidence"] == "TRUE":
+                relation["confidence"] = True
+            elif relation["confidence"] == "FALSE":
+                relation["confidence"] = False
 
     with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
         outfile.write(json.dumps(out_dict))
@@ -264,14 +220,15 @@ if __name__ == "__main__":
     BASE_DIR = Path(os.getcwd())
     # import_csv_sound_changes(
     #     sc_infile_path = "data/sound_changes_hr.csv", 
-    #     relations_infile_path = "", 
-    #     outfile_path = "data/sound_changes_hr.json", 
+    #     relations_infile_path = "data/relations_hr.csv", 
+    #     outfile_path = "data/data_hr.json", 
+    #     matrix_outfile_path = "data/matrix_hr.json",
     #     n_of_sound_changes = 71
     # )
     # import_csv_sound_changes(
     #     sc_infile_path = "data/sound_changes_ru.csv", 
     #     relations_infile_path = "data/relations_ru.csv", 
-    #     outfile_path = "data/sound_changes_ru.json", 
+    #     outfile_path = "data/data_ru.json", 
     #     matrix_outfile_path = "data/matrix_ru.json",
     #     n_of_sound_changes = 71
     # )
@@ -283,4 +240,4 @@ if __name__ == "__main__":
     #     infile_path = "data/examples_ru.csv",
     #     outfile_path = "data/examples_ru.json"
     # )
-    app.run(debug=True, use_reloader=True, port="5002")
+    app.run(debug=True, use_reloader=True, port="5001")
