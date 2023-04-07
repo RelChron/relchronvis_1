@@ -70,7 +70,7 @@ Promise.all([
     .classed("arc", true)
 
   arcs
-    .filter(arc => arc.conf === false)
+    .filter(arc => arc.confident === false)
     .classed("dashed", true)
 
   let arcLabels = diagram
@@ -252,7 +252,7 @@ Promise.all([
 
     d3.select("#sc-card-id").text(m_node.id)
     d3.select("#sc-card-header").text(m_node.name)
-    d3.select("#sc-card-body").text(m_node.descr)
+    d3.select("#sc-card-body").text(m_node.description)
     d3.select("#sc-card").classed("d-none", false)
     
     d3.select("#explainer-text").classed("d-none", true)
@@ -289,25 +289,32 @@ Promise.all([
     
     d3.select(this).classed("rel-card-open", true)
     relCard = d3.select("#rel-card").classed("d-none", false)
-    for (const description of m_arc.descr) {
-      d3.select("#rel-card-list")
+    
+    d3.select("#rel-card-list")
       .append("li")
-        .classed("list-group-item", true)
-        .text(description)
-    }
+      .classed("list-group-item", true)
+      .text(m_arc.description)
+
+    // OLD
+    // for (const description of m_arc.descr) {
+    //   d3.select("#rel-card-list")
+    //   .append("li")
+    //     .classed("list-group-item", true)
+    //     .text(description)
+    // }
     
     d3.select("#second-sc-card-id")
       .text(sc_data["changes"][secondCardIndex]["id"])
     d3.select("#second-sc-card-header")
       .text(sc_data["changes"][secondCardIndex]["name"])
     d3.select("#second-sc-card-body")
-      .text(sc_data["changes"][secondCardIndex]["descr"])
+      .text(sc_data["changes"][secondCardIndex]["description"])
     d3.select("#second-sc-card").classed("d-none", false)
 
     // Change visibilities and styles depending on confidence
     // Select <li>'s to change their styles as well
     descriptions = d3.selectAll(".list-group-item")
-    if (m_arc.conf) {
+    if (m_arc.confident) {
       relCard
         .classed("border-primary bg-transparent text-primary", false)
         .classed("text-bg-primary", true)
@@ -610,7 +617,7 @@ d3.select("#apply-btn")
           (arc.source === sc.id) && showOutArcs
           || (arc.target === sc.id) && showInArcs))
         // If only confidents, filter out the others via data; else no filter
-        .filter(rel => showOnlyConf ? rel.conf : true)
+        .filter(rel => showOnlyConf ? rel.confident : true)
         .classed("invisible", false)
       
       arcLabels
@@ -618,7 +625,7 @@ d3.select("#apply-btn")
           (arc.source === sc.id) && showOutArcs
           || (arc.target === sc.id) && showInArcs))
         // Ternary operator, see above
-        .filter(rel => showOnlyConf ? rel.conf : true)
+        .filter(rel => showOnlyConf ? rel.confident : true)
         .classed("active", true)
     
       let currentTouchedIDs = new Set(filtArcs.data()
