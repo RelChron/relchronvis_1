@@ -40,6 +40,39 @@ function addErrorCard(errorText) {
   }
 }
 
+function splitChord(chord, howManyChords) {
+  outChords = []
+
+  let oldSourceStartAngle = chord.source.startAngle
+  let oldSourceEndAngle = chord.source.endAngle
+  let oldTargetStartAngle = chord.target.startAngle
+  let oldTargetEndAngle = chord.target.endAngle
+
+  let sourceStep = (oldSourceEndAngle - oldSourceStartAngle) / howManyChords
+  let targetStep = (oldTargetEndAngle - oldTargetStartAngle) / howManyChords
+
+  for (let i = 0; i < howManyChords; i++) {
+    outChord = structuredClone(chord)
+
+    // For example, of original start was 0 and end was 6, and we want to
+    // split into 3 new chords, this will result in these pairs of angles: 
+    // i=0: (0, 2), i=1: (2, 4), i=2 (4, 6)
+    outChord.source.startAngle = oldSourceStartAngle + (sourceStep * i)
+    outChord.source.endAngle = oldSourceStartAngle + (sourceStep * (i + 1))
+
+    outChord.target.startAngle = oldTargetStartAngle + (targetStep * i)
+    outChord.target.endAngle = oldTargetStartAngle + (targetStep * (i + 1))
+
+    outChord.source.value = 1
+    outChord.target.value = 1
+    outChord.isNew = true
+
+    outChords.push(outChord)
+  }
+
+  return outChords
+}
+
 // Display possible errors in left sidebar
 if (serverResponse.hasOwnProperty("error")) {
   // the template receives the server response and sets serverResponse

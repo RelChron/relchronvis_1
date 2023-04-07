@@ -47,13 +47,70 @@ Promise.all([
   // Set up chord layout, load data
   chord = d3.chord().padAngle(0.02)
   chords = chord(matrix)
-  
+
+  for (let i = 0; i < chords.length; i++) {
+    const chord = chords[i];
+    if (chord.source.value > 1) {
+      console.log("thick chord found:", chord.source.index + 1, chord.target.index + 1)
+      newChords = splitChord(chord, chord.source.value)
+      chords.splice(i, 1, ...newChords)
+    }
+  }
+
+  // for (const chord of chords) {
+  //   if (chord.source.value > 1) {
+  //     console.log("thick chord found:", chord.source.index + 1, chord.target.index + 1)
+  //     newChords = splitChord(chord, chord.source.value)
+  //     chords.splice(0, 1, ...newChords)
+  //   }
+  // }
+
+  // Test chord removal and re-entry
+  // let newChord1 = structuredClone(chords[1])
+  // let newChord2 = structuredClone(chords[1])
+  // newChord1.isNew = true
+  // newChord2.isNew = true
+  // newChord2.target.endAngle = 0.2
+  // chords.splice(1, 2, newChord1, newChord2)
+
+  // // Old stuff that worked
+  // let newChord1 = structuredClone(chords[0])
+  // let newChord2 = structuredClone(chords[0])
+  // let oldSourceStartAngle = chords[0].source.startAngle
+  // let oldSourceEndAngle = chords[0].source.endAngle
+  // let oldTargetStartAngle = chords[0].target.startAngle
+  // let oldTargetEndAngle = chords[0].target.endAngle
+  // let middleSourceAngle = oldSourceStartAngle + ((oldSourceEndAngle - oldSourceStartAngle) / 2)
+  // let middleTargetAngle = oldTargetStartAngle + ((oldTargetEndAngle - oldTargetStartAngle) / 2)
+  // console.log("Here's chord 0:", chords[0])
+  // console.log("oldSourceStartAngle:", oldSourceStartAngle)
+  // console.log("oldSourceEndAngle:", oldSourceEndAngle)
+  // console.log("middleSourceAngle:", middleSourceAngle)
+  // newChord1.source.startAngle = oldSourceStartAngle
+  // newChord1.source.endAngle = middleSourceAngle
+  // newChord1.target.startAngle = oldTargetStartAngle
+  // newChord1.target.endAngle = middleTargetAngle
+  // newChord1.source.value = 1
+  // newChord1.target.value = 1
+  // newChord2.source.startAngle = middleSourceAngle
+  // newChord2.source.endAngle = oldSourceEndAngle
+  // newChord2.target.startAngle = middleTargetAngle
+  // newChord2.target.endAngle = oldTargetEndAngle
+  // newChord2.source.value = 1
+  // newChord2.target.value = 1
+  // newChord1.isNew = true
+  // newChord2.isNew = true
+
+  // newChords = splitChord(chords[0], 2)
+  // console.log(newChords)
+  // chords.splice(0, 1, ...newChords)
+
   for (let i = 0; i < chords.length; i++) {
     console.assert((chords[i].source.index + 1 === sc_data.relations[i].source
            && chords[i].target.index + 1 === sc_data.relations[i].target),
-           "Copied relation data with different source and target value :(")
+           "Copied relation data with different source or target value :(")
     chords[i].type = sc_data.relations[i].type
-    chords[i].descr = sc_data.relations[i].descr
+    chords[i].description = sc_data.relations[i].description
   }
 
   // Debug
@@ -224,7 +281,7 @@ Promise.all([
       selected_sc = sc_data.changes[lockOriginIndex]
       d3.select("#sc-card-id").text(selected_sc.id)
       d3.select("#sc-card-header").text(selected_sc.name)
-      d3.select("#sc-card-body").text(selected_sc.descr)
+      d3.select("#sc-card-body").text(selected_sc.description)
       d3.select("#sc-card").classed("d-none", false)
       
       d3.select("#explainer-text").classed("d-none", true)
@@ -267,25 +324,24 @@ Promise.all([
 
       d3.select(this).classed("rel-card-open", true)
       relCard = d3.select("#rel-card").classed("d-none", false)
-      for (const description of mRibbon.descr) {
-        d3.select("#rel-card-list")
+      
+      d3.select("#rel-card-list")
         .append("li")
           .classed("list-group-item", true)
-          .text(description)
-      }
+          .text(mRibbon.description)
 
       d3.select("#second-sc-card-id")
         .text(sc_data["changes"][secondCardIndex]["id"])
       d3.select("#second-sc-card-header")
         .text(sc_data["changes"][secondCardIndex]["name"])
       d3.select("#second-sc-card-body")
-        .text(sc_data["changes"][secondCardIndex]["descr"])
+        .text(sc_data["changes"][secondCardIndex]["description"])
       d3.select("#second-sc-card").classed("d-none", false)
 
       // Change visibilities and styles depending on confidence
       // Select <li>'s to change their styles as well
       descriptions = d3.selectAll(".list-group-item")
-      if (mRibbon.conf) {
+      if (mRibbon.confident) {
         relCard
           .classed("border-primary bg-transparent text-primary", false)
           .classed("text-bg-primary", true)
@@ -416,9 +472,6 @@ Promise.all([
     // Handles dragging only, and only when <g> elements are clicked
     let drag = d3.drag()
       .on("drag", dragEvent => {
-        // let transform = dragEvent.transform
-        console.log(dragEvent.dx)
-        console.log(dragEvent.dy)
         translateX += dragEvent.dx
         translateY += dragEvent.dy
         diagram
