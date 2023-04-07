@@ -48,62 +48,14 @@ Promise.all([
   chord = d3.chord().padAngle(0.02)
   chords = chord(matrix)
 
+  // Find chords with multiple relation types and split them for each type
   for (let i = 0; i < chords.length; i++) {
     const chord = chords[i];
     if (chord.source.value > 1) {
-      console.log("thick chord found:", chord.source.index + 1, chord.target.index + 1)
       newChords = splitChord(chord, chord.source.value)
       chords.splice(i, 1, ...newChords)
     }
   }
-
-  // for (const chord of chords) {
-  //   if (chord.source.value > 1) {
-  //     console.log("thick chord found:", chord.source.index + 1, chord.target.index + 1)
-  //     newChords = splitChord(chord, chord.source.value)
-  //     chords.splice(0, 1, ...newChords)
-  //   }
-  // }
-
-  // Test chord removal and re-entry
-  // let newChord1 = structuredClone(chords[1])
-  // let newChord2 = structuredClone(chords[1])
-  // newChord1.isNew = true
-  // newChord2.isNew = true
-  // newChord2.target.endAngle = 0.2
-  // chords.splice(1, 2, newChord1, newChord2)
-
-  // // Old stuff that worked
-  // let newChord1 = structuredClone(chords[0])
-  // let newChord2 = structuredClone(chords[0])
-  // let oldSourceStartAngle = chords[0].source.startAngle
-  // let oldSourceEndAngle = chords[0].source.endAngle
-  // let oldTargetStartAngle = chords[0].target.startAngle
-  // let oldTargetEndAngle = chords[0].target.endAngle
-  // let middleSourceAngle = oldSourceStartAngle + ((oldSourceEndAngle - oldSourceStartAngle) / 2)
-  // let middleTargetAngle = oldTargetStartAngle + ((oldTargetEndAngle - oldTargetStartAngle) / 2)
-  // console.log("Here's chord 0:", chords[0])
-  // console.log("oldSourceStartAngle:", oldSourceStartAngle)
-  // console.log("oldSourceEndAngle:", oldSourceEndAngle)
-  // console.log("middleSourceAngle:", middleSourceAngle)
-  // newChord1.source.startAngle = oldSourceStartAngle
-  // newChord1.source.endAngle = middleSourceAngle
-  // newChord1.target.startAngle = oldTargetStartAngle
-  // newChord1.target.endAngle = middleTargetAngle
-  // newChord1.source.value = 1
-  // newChord1.target.value = 1
-  // newChord2.source.startAngle = middleSourceAngle
-  // newChord2.source.endAngle = oldSourceEndAngle
-  // newChord2.target.startAngle = middleTargetAngle
-  // newChord2.target.endAngle = oldTargetEndAngle
-  // newChord2.source.value = 1
-  // newChord2.target.value = 1
-  // newChord1.isNew = true
-  // newChord2.isNew = true
-
-  // newChords = splitChord(chords[0], 2)
-  // console.log(newChords)
-  // chords.splice(0, 1, ...newChords)
 
   for (let i = 0; i < chords.length; i++) {
     console.assert((chords[i].source.index + 1 === sc_data.relations[i].source
@@ -141,7 +93,6 @@ Promise.all([
       .attr("d", d3.ribbon()
         .radius(RADIUS)
       )
-      // can I call .each() here or do it on ribbons later?
       .each(function(d, i) {
         className = null
         if (d.type === "F") {
@@ -162,8 +113,6 @@ Promise.all([
 
         d3.select(this).classed(className, true)
       })
-      // set class to variable base on type
-      // can I define a function for that and call .each() or something?
 
   // Labels displayed outside ring
   let ringLabels = diagram
