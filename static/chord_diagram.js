@@ -63,6 +63,7 @@ Promise.all([
            "Copied relation data with different source or target value :(")
     chords[i].type = sc_data.relations[i].type
     chords[i].description = sc_data.relations[i].description
+    chords[i].confident = sc_data.relations[i].confident
   }
 
   // Debug
@@ -251,7 +252,6 @@ Promise.all([
       d3.select("#rel-card").classed("d-none", true)
       d3.select("#second-sc-card").classed("d-none", true)
     
-
       // Remove description elements from relation card
       d3.selectAll(".list-group-item").remove()
 
