@@ -49,11 +49,38 @@ Promise.all([
     .domain([1, sc_data.changes.length])
     .range([0, INNER_WIDTH])
 
+  // Fuse relations together for this diagram
+  let lastRelation = null
+  let processedRelations = []
+  for (const relation of sc_data.relations) {
+    // Prepare the first item
+    if (lastRelation == null) {
+      relation.description = [relation.description]
+      lastRelation = structuredClone(relation)
+      processedRelations.push(relation)
+      continue
+    }
+    // If we find a double
+    if (relation.source == lastRelation.source 
+        && relation.target == lastRelation.target) {
+      // Combine the two relations into one
+      relation.type = lastRelation.type + relation.type
+      relation.description = [lastRelation.description[0], relation.description]
+      processedRelations.pop()
+      processedRelations.push(relation)
+    } else {
+      // Else, just adapt the description format so it fits
+      relation.description = [relation.description]
+      processedRelations.push(relation)
+    }
+    lastRelation = structuredClone(relation)
+  }
+
   let arcs = diagram
     .append("g")
     .attr("id", "arcs")
     .selectAll("myArcs")
-    .data(sc_data.relations)
+    .data(processedRelations)
     .enter()
     .append("path")
       .attr("id", (d, i) => "arc-" + i )
@@ -77,7 +104,7 @@ Promise.all([
     .append("text")
     .attr("id", "arc-labels")
     .selectAll("myArcLabels")
-    .data(sc_data.relations)
+    .data(processedRelations)
     .enter()
     .append("textPath")
       .attr("href", (d, i) => "#arc-" + i)
@@ -290,18 +317,12 @@ Promise.all([
     d3.select(this).classed("rel-card-open", true)
     relCard = d3.select("#rel-card").classed("d-none", false)
     
-    d3.select("#rel-card-list")
+    for (const description of m_arc.description) {
+      d3.select("#rel-card-list")
       .append("li")
-      .classed("list-group-item", true)
-      .text(m_arc.description)
-
-    // OLD
-    // for (const description of m_arc.descr) {
-    //   d3.select("#rel-card-list")
-    //   .append("li")
-    //     .classed("list-group-item", true)
-    //     .text(description)
-    // }
+        .classed("list-group-item", true)
+        .text(description)
+    }
     
     d3.select("#second-sc-card-id")
       .text(sc_data["changes"][secondCardIndex]["id"])
