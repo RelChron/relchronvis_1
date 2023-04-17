@@ -32,7 +32,7 @@ const diagram = svg.append("g")
   .attr("transform", `translate(${translateX},${translateY})`)
 
 Promise.all([
-  d3.json(`/sound_changes?lang=${language}`),
+  d3.json(`/sc_data?lang=${language}`),
   d3.json(`/matrix?lang=${language}`),
   d3.json(`/examples?lang=${language}`),
 ]).then(function([sc_data, matrix, example_data]) {

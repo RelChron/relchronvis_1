@@ -73,7 +73,7 @@ def chord_diagram():
 
     return render_template("chord_diagram.html.jinja", data=data)
 
-@app.route('/sound_changes', methods=["GET"])
+@app.route('/sc_data', methods=["GET"])
 def give_sc_data():
     language = request.args.get("lang")
     if language == "Russian":

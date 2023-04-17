@@ -35,7 +35,7 @@ const diagram = svg.append("g")
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
 // Loading two files: https://stackoverflow.com/questions/70629019
 Promise.all([
-  d3.json(`/sound_changes?lang=${language}`),
+  d3.json(`/sc_data?lang=${language}`),
   d3.json(`/examples?lang=${language}`),
 ]).then(function([sc_data, example_data]) {
   // Catch errors
