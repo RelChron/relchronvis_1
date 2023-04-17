@@ -220,7 +220,6 @@ def import_csv_examples(infile_path, outfile_path):
             out_list.append(example)
     
     with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
-        # outfile.write(json.dumps(out_list, sort_keys=True))
         outfile.write(json.dumps(out_list))
 
 def get_abbr(examples_file_path):
@@ -234,7 +233,7 @@ def get_abbr(examples_file_path):
 
 
 if __name__ == "__main__":
-    # When running directly, cwd == base dir (as opposed to on pythonanywhere)
+    # When running directly (not the case on pythonanywhere), cwd == base dir
     BASE_DIR = Path(os.getcwd())
     import_csv_sound_changes(
         sc_infile_path = "data/sound_changes_hr.csv", 
