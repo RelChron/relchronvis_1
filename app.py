@@ -250,12 +250,12 @@ if __name__ == "__main__":
         matrix_outfile_path = "data/matrix_ru.json",
         n_of_sound_changes = 71
     )
-    # import_csv_examples(
-    #     infile_path = "data/examples_hr.csv",
-    #     outfile_path = "data/examples_hr.json"
-    # )
-    # import_csv_examples(
-    #     infile_path = "data/examples_ru.csv",
-    #     outfile_path = "data/examples_ru.json"
-    # )
+    import_csv_examples(
+        infile_path = "data/examples_hr.csv",
+        outfile_path = "data/examples_hr.json"
+    )
+    import_csv_examples(
+        infile_path = "data/examples_ru.csv",
+        outfile_path = "data/examples_ru.json"
+    )
     app.run(debug=True, use_reloader=True, port="5001")
