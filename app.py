@@ -177,13 +177,8 @@ def import_csv_sound_changes(sc_infile_path, relations_infile_path,
             if relation["source"] == sc["id"]:
                 # If we're looking at a double relation
                 if relation["target"] in connected_ids:
-                    # print(f"Double relation found: {relation['source']}-{relation['target']}")
-                    # double_connected_ids.add(relation["source"])
-                    # I think it will work if I only add this
-
-                    # Add +1 to multi_connected_ids entry
-                    # Add an extra count if at 0, because the smallest 
-                    # "multi connection" is 2
+                    # Add +1 to multi_connected_ids entry (add an extra count 
+                    # if at 0, because the smallest "multi connection" is 2)
                     if multi_connected_ids[relation["target"]] == 0:
                         multi_connected_ids[relation["target"]] += 1
                     multi_connected_ids[relation["target"]] += 1
@@ -191,27 +186,12 @@ def import_csv_sound_changes(sc_infile_path, relations_infile_path,
 
             if relation["target"] == sc["id"]:
                 if relation["source"] in connected_ids:
-                    # print(f"Double relation found: {relation['source']}-{relation['target']}")
                     if multi_connected_ids[relation["source"]] == 0:
                         multi_connected_ids[relation["source"]] += 1
                     multi_connected_ids[relation["source"]] += 1
                 connected_ids.add(relation["source"])
 
-            # MAYBE: check if the current source and target are both already in connected_ids
-            # Does this hold true only for double relations, as I am assuming?
-
-            # if ((relation["source"] in connected_ids) 
-            #         and (relation["target"] in connected_ids)):
-            #     print(f"Double relation found: {relation['source']}-{relation['target']}")
-
-            # BUT: I need to know in which place to place the 2 instead of the 1.
-            # In some cases I will need to place multiple 2s.
-
-            # Do I always add target and source?
-            # If I do, the "origin" of any sc connected to other sc's by double relation will be 2
-            # I think the answer is "yes". Actually, I changed it now, to follow how the 1's work.
-
-        # ...and add 1s in the corresponding place in the matrix row.
+        # ...and add ints in the corresponding place in the matrix row.
         for i in range(1, len(out_dict["changes"]) + 1):
             if i in multi_connected_ids:
                 matrix_row.append(multi_connected_ids[i])
