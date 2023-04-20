@@ -108,6 +108,10 @@ Promise.all([
           className = "manuscript"
         } else if (d.type === "LW") {
           className = "loanword"
+        } else if (d.type === "N") {
+          className = "naturalness"
+        } else if (d.type === "S") {
+          className = "simplicity"
         } else {
           className = "other"
         }

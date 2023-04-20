@@ -37,14 +37,25 @@ $uzh-yellow-60: #fcec7c;
 $uzh-yellow-40: #fdf3a8;
 $uzh-yellow-20: #fef9d3;
 
-// UZH color palette
+// UI colors
+$primary: $uzh-blue-80;
+$secondary: $uzh-grey-80;
+$light: $uzh-grey-40;
+$info: $uzh-grey-20;
+$input-bg: $uzh-grey-20;
+$danger: $uzh-red-80;
+$black: #080708;
+
+// Ribbons
 $feeding: $uzh-red-100;
 $counterfeeding: $uzh-red-60;
 $bleeding: $uzh-blue-100;
 $counterbleeding: $uzh-blue-60;
 $loanword: $uzh-bottle-green-100;
-$other: $uzh-yellow-80;
 $manuscript: $uzh-turquoise-100;
+$simplicity: $uzh-limetree-green-100;
+$naturalness:  $uzh-yellow-80;
+$other: $black;
 
 // First qualitative color palette
 // $feeding: #AC3931;
@@ -64,13 +75,7 @@ $manuscript: $uzh-turquoise-100;
 // $counterbleeding: #dd4c65;
 // $bleeding: #93003a;
 
-$primary: $uzh-blue-80;
-$secondary: $uzh-grey-80;
-$light: $uzh-grey-40;
-$info: $uzh-grey-20;
-$input-bg: $uzh-grey-20;
-$danger: $uzh-red-80;
-$black: #080708;
+
 @import "../bootstrap/scss/bootstrap";
 
 
@@ -255,6 +260,14 @@ textPath {
         &.loanword {
             fill: $loanword;
             stroke: $loanword;
+        }
+        &.naturalness {
+            fill: $naturalness;
+            stroke: $naturalness;
+        }
+        &.simplicity {
+            fill: $simplicity;
+            stroke: $simplicity;
         }
         &.other {
             fill: $other;

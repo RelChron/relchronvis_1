@@ -5803,8 +5803,7 @@ textarea.form-control-lg {
   float: left;
   width: 100%;
   margin-right: -100%;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -11001,11 +11000,23 @@ textPath {
   fill: #2a7f62;
   stroke: #2a7f62;
 }
+.ring-el.highlighted.naturalness, .ring-el.locked.naturalness,
+.ribbon.highlighted.naturalness,
+.ribbon.locked.naturalness {
+  fill: #fbe651;
+  stroke: #fbe651;
+}
+.ring-el.highlighted.simplicity, .ring-el.locked.simplicity,
+.ribbon.highlighted.simplicity,
+.ribbon.locked.simplicity {
+  fill: #91c34a;
+  stroke: #91c34a;
+}
 .ring-el.highlighted.other, .ring-el.locked.other,
 .ribbon.highlighted.other,
 .ribbon.locked.other {
-  fill: #fbe651;
-  stroke: #fbe651;
+  fill: #080708;
+  stroke: #080708;
 }
 
 .ribbon.highlighted:hover,
