@@ -12270,6 +12270,7 @@ textPath {
 
 .ring-label {
   fill: #b5bdc5;
+  cursor: pointer;
 }
 .ring-label.highlighted, .ring-label.locked {
   fill: #080708;

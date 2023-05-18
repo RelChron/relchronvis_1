@@ -299,6 +299,7 @@ textPath {
 // Labels
 .ring-label {
     fill: $uzh-grey-80;
+    cursor: pointer;
     &.highlighted,
     &.locked {
         fill: $black;

@@ -216,6 +216,7 @@ Promise.all([
       let hlIndices = new Set(hlData.map(ribbon => (
         [ribbon.source.index, ribbon.target.index]))
         .flat())
+      hlIndices.add(mElement.index)
 
       ringElements
         .filter(element => hlIndices.has(element.index))
@@ -268,6 +269,97 @@ Promise.all([
       let hlIndices = new Set(hlData.map(ribbon => (
         [ribbon.source.index, ribbon.target.index]))
         .flat())
+      hlIndices.add(mElement.index)
+
+      ringElements
+        .filter(element => hlIndices.has(element.index))
+        .classed("locked", true)
+
+      ringLabels
+        .filter(element => hlIndices.has(element.index))
+        .classed("locked", true)
+
+      // Add SC card and display examples
+      selected_sc = sc_data.changes[lockOriginIndex]
+      d3.select("#sc-card-id").text(selected_sc.id)
+      d3.select("#sc-card-header").text(selected_sc.name)
+      d3.select("#sc-card-body").text(selected_sc.description)
+      d3.select("#sc-card").classed("d-none", false)
+      
+      d3.select("#explainer-text").classed("d-none", true)
+  
+      examples
+        .select(function() {return this.parentNode.parentNode})
+        .filter((d, i) => d.hasOwnProperty(String(lockOriginIndex + 1)))
+        .classed("d-none", false)
+    })
+
+    ringLabels
+    .on("mouseover", (event, mElement) => {
+      let ribbonsToHighlight = ribbons
+        .filter(ribbon => (ribbon.source.index === mElement.index
+                           || ribbon.target.index === mElement.index))
+        .classed("highlighted", true)
+
+      let hlData = ribbonsToHighlight.data()
+
+      let hlIndices = new Set(hlData.map(ribbon => (
+        [ribbon.source.index, ribbon.target.index]))
+        .flat())
+      hlIndices.add(mElement.index)
+
+      ringElements
+        .filter(element => hlIndices.has(element.index))
+        .classed("highlighted", true)
+
+      ringLabels
+        .filter(element => hlIndices.has(element.index))
+        .classed("highlighted", true)
+
+      // Bring highlighted ribbons to front
+      ribbons
+        .filter(".highlighted")
+        .raise()
+    })
+    .on("mouseout", (event, mElement) => {
+      for (const selection of [ringElements, ringLabels, ribbons]) {
+        selection.classed("highlighted", false)
+      }
+      ribbons
+        .filter(".locked")
+        .raise()
+    })
+    .on("dblclick", function(event, mElement) {
+      let elemIsOrigin = d3.select(this).classed("lock-origin")
+
+      for (const selection of [ringElements, ringLabels, ribbons]) {
+        selection.classed("locked", false)
+        selection.classed("lock-origin", false)
+      }
+
+      d3.selectAll(".card").classed("d-none", true)
+      d3.select("#explainer-text").classed("d-none", false)
+      d3.selectAll(".bg-danger").classed("d-none", false)
+
+      // If lock origin clicked, just turn everything off. Else, toggle lock on
+      // for the appropriate elements (with all the code below)
+      if (elemIsOrigin) {return}
+
+      // Only double-clicking the lock origin should toggle the lock fully off
+      d3.select(this).classed("lock-origin", true)
+      lockOriginIndex = d3.select(this).data()[0].index
+
+      let ribbonsToHighlight = ribbons
+        .filter(ribbon => (ribbon.source.index === mElement.index
+                           || ribbon.target.index === mElement.index))
+        .classed("locked", true)
+
+      let hlData = ribbonsToHighlight.data()
+
+      let hlIndices = new Set(hlData.map(ribbon => (
+        [ribbon.source.index, ribbon.target.index]))
+        .flat())
+      hlIndices.add(mElement.index)
 
       ringElements
         .filter(element => hlIndices.has(element.index))
