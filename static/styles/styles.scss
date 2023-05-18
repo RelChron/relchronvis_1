@@ -47,10 +47,10 @@ $danger: $uzh-red-80;
 $black: #080708;
 
 // Ribbons
-$feeding: $uzh-red-100;
-$counterfeeding: $uzh-red-60;
-$bleeding: $uzh-blue-100;
-$counterbleeding: $uzh-blue-60;
+$feeding: $uzh-blue-100;
+$counterfeeding: $uzh-blue-60;
+$bleeding: $uzh-red-100;
+$counterbleeding: $uzh-red-60;
 $loanword: $uzh-bottle-green-100;
 $manuscript: $uzh-turquoise-100;
 $simplicity: $uzh-limetree-green-100;
@@ -226,7 +226,8 @@ textPath {
 /* Chord diagram */
 // Ring
 .ring-el,
-.ribbon {
+.ribbon,
+.swatch {
     fill: $uzh-grey-20;
     stroke: $uzh-grey-20;
     stroke-width: 1px;
@@ -291,3 +292,13 @@ textPath {
 }
 
 
+/* Legend */
+.legend-box {
+    fill: $uzh-grey-20;
+}
+
+// Make legend text smaller
+.legend-text {
+    font-size: small;
+    margin-left: 5px;
+}

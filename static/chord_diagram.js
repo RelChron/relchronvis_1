@@ -2,22 +2,16 @@
 // Based on https://d3-graph-gallery.com/graph/chord_basic.html
 // Also based on http://www.redotheweb.com/DependencyWheel/
 
-const OUTER_WIDTH = document.getElementById("chord-diagram")
+const SVG_WIDTH = document.getElementById("chord-diagram")
     .getBoundingClientRect().width
-const OUTER_HEIGHT = document.getElementById("chord-diagram")
+const SVG_HEIGHT = document.getElementById("chord-diagram")
     .getBoundingClientRect().height
 
 // Arbitrary division
-const RADIUS = OUTER_WIDTH / 4
-const MARGIN = {
-  TOP: OUTER_HEIGHT / 2, 
-  RIGHT: OUTER_WIDTH / 2, 
-  BOTTOM: OUTER_HEIGHT / 2,
-  LEFT: OUTER_WIDTH / 2
-}
+const RADIUS = SVG_WIDTH / 4
 
-let translateX = MARGIN.LEFT
-let translateY = MARGIN.TOP
+let translateX = SVG_WIDTH / 2
+let translateY = SVG_HEIGHT / 2
 let scaleFactor = 1
 
 // SVG AND GROUPING ELEMENT SETUP
@@ -25,8 +19,8 @@ const svg = d3.select("#chord-diagram")
   .append("svg")
   .attr("xmlns", "http://www.w3.org/2000/svg")
   .attr("xlink", "http://www.w3.org/1999/xlink")
-  .attr("width", OUTER_WIDTH)
-  .attr("height", OUTER_HEIGHT)
+  .attr("width", SVG_WIDTH)
+  .attr("height", SVG_HEIGHT)
 
 const diagram = svg.append("g")
   .attr("transform", `translate(${translateX},${translateY})`)
@@ -157,6 +151,53 @@ Promise.all([
         .attr("class", "card-text")
         .html(data => data[newestVariety])
 
+  // LEGEND BOX (LB)
+  const LEGEND_ITEMS = ["Feeding", "Counterfeeding", "Bleeding", 
+                     "Counterbleeding", "Manuscript", "Loanword", 
+                     "Simplicity", "Naturalness"]
+
+  const LB_HEIGHT = 135
+  const LB_WIDTH = 135
+  const LB_MARGIN_LEFT = 10
+  const LB_MARGIN_BOTTOM = 10
+  const LB_X = -(SVG_WIDTH / 2) + LB_MARGIN_LEFT
+  const LB_Y = SVG_HEIGHT / 2 - LB_MARGIN_BOTTOM - LB_HEIGHT
+
+  let legend = diagram
+    .append("g")
+
+  let legendBox = legend
+    .append("rect")
+      .attr("class", "legend-box")
+      .attr("x", LB_X)
+      .attr("y", LB_Y)
+      .attr("width", LB_WIDTH)
+      .attr("height", LB_HEIGHT)
+      .attr("rx", 10)
+
+  let legendList = legend
+    .selectAll()
+    .data(LEGEND_ITEMS)
+    .enter()
+    .append("text")
+      .attr("class", "legend-text")
+      .attr("x", LB_X + 25)
+      // Iterate through y-positions, +1 y-offset to align better with circles
+      .attr("y", (d,i) => LB_Y + 1 + (i + 1) * 15)
+      .text(d => d)
+      .attr("text-anchor", "left")
+      .style("alignment-baseline", "middle")
+
+  let legendSwatches = legend
+    .selectAll()
+    .data(LEGEND_ITEMS)
+    .enter()
+    .append("circle")
+      .attr("cx", LB_X + 15)
+      .attr("cy", (d,i) => LB_Y + (i + 1) * 15)
+      .attr("r", 5)
+      .attr("class", d => "swatch highlighted ".concat(d.toLowerCase()))
+
   // MOUSE INTERACTIONS
   ringElements
     .on("mouseover", (event, mElement) => {
@@ -183,6 +224,9 @@ Promise.all([
       ribbons
         .filter(".highlighted")
         .raise()
+      
+      // Bring legend to front
+      legend.raise()
     })
     .on("mouseout", (event, mElement) => {
       for (const selection of [ringElements, ringLabels, ribbons]) {
@@ -191,6 +235,9 @@ Promise.all([
       ribbons
         .filter(".locked")
         .raise()
+
+      // Bring legend to front
+      legend.raise()
     })
     .on("dblclick", function(event, mElement) {
       let elemIsOrigin = d3.select(this).classed("lock-origin")
