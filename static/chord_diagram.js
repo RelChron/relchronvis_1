@@ -165,8 +165,10 @@ Promise.all([
   const LB_X = -(SVG_WIDTH / 2) + LB_MARGIN_LEFT
   const LB_Y = SVG_HEIGHT / 2 - LB_MARGIN_BOTTOM - LB_HEIGHT
 
-  let legend = diagram
+  // let legend = diagram
+  let legend = svg
     .append("g")
+    .attr("transform", `translate(${translateX},${translateY})`)
 
   let legendBox = legend
     .append("rect")
@@ -226,9 +228,6 @@ Promise.all([
       ribbons
         .filter(".highlighted")
         .raise()
-      
-      // Bring legend to front
-      legend.raise()
     })
     .on("mouseout", (event, mElement) => {
       for (const selection of [ringElements, ringLabels, ribbons]) {
@@ -237,9 +236,6 @@ Promise.all([
       ribbons
         .filter(".locked")
         .raise()
-
-      // Bring legend to front
-      legend.raise()
     })
     .on("dblclick", function(event, mElement) {
       let elemIsOrigin = d3.select(this).classed("lock-origin")
