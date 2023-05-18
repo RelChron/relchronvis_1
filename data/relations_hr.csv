@@ -3,8 +3,8 @@
 1,2,CF,TRUE,The Third palatalization (§ 1) did not take place after *i resulting from Umlaut (§ 2) of *u; had Umlaut occurred bevor the Third palatalization it would have fed it
 1,9,F,TRUE,The Third palatalization (§ 1) created the inputs for the change *ś > *s (§ 9)
 1,12,LW,TRUE,"The loan *Bigi > Bâg was borrowed only after the Third palatalization (§ 1), but was affected by Dybo's law (§ 12)"
-1,17,LW,TRUE,"The Karelian loanword luota(nen) reflects a Slavic stage *bljōda posterior to monophthongization (§ 3) but prior to the change of *ō to *ū (§ 17); hence, the former change must be older than the latter"
 1,16,F,TRUE,The Third palatalization (§ 3) created inputs for the assibiliation (§ 16)
+1,17,LW,TRUE,"The Karelian loanword luota(nen) reflects a Slavic stage *bljōda posterior to monophthongization (§ 3) but prior to the change of *ō to *ū (§ 17); hence, the former change must be older than the latter"
 1,43,LW,TRUE,"Gk. sámpsuxon > Lat. *Sa̱mpsicum > Rom. *Sa̱msẹku > Sl. *Sa̱n˙siku > *Sǫ̱˙sьkъ > Cr. Sȕsak and Lat. *Liciniā̱na > Rom. *Lẹkẹnjā̱na > Sl. *Likinā̱˙nu > *Lьkьńa̱nъ > *Lakńa̱n > Cr. Làkljan were borrowed after the Third palatalization (§ 3), but before the loss of the acute tone (§ 43)"
 2,3,F,TRUE,Umlaut (§ 2) of *aj to *ej feeded monophthongization (§ 3) of *ej to *ī but bleeded monophthongization of *ej to *?
 2,3,B,TRUE,Umlaut (§ 2) of *aj to *ej feeded monophthongization (§ 3) of *ej to *ī but bleeded monophthongization of *ej to *?
@@ -131,8 +131,8 @@
 25,31,CF,TRUE,"Had the shortening of word-final long vowels (§ 31) occurred before the change of *u to *ъ and of *i to *ь (§ 25), the former change would have created inputs for the former"
 25,40,CF,TRUE,"Had the change of word-initial *jь- to *i- (§ 40) occurred before the change of *u to *ъ and of *i to *ь (§ 25), the former change would have created inputs for the former"
 25,41,CF,TRUE,"Had Kapović's two-mora law (§ 40) occurred before the change of *u to *ъ and of *i to *ь (§ 25), the former change would have created inputs for the former"
-25,43,CF,TRUE,"Had the shortening accompanying the loss of the acute tone (§ 43) occurred before the change of *u to *ъ and of *i to *ь (§ 25), the former change would have created inputs for the latter"
 25,42,CF,TRUE,"Had Kapović's four-syllable law (§ 42) occurred before the change of *u to *ъ and of *i to *ь (§ 25), the former change would have created inputs for the latter"
+25,43,CF,TRUE,"Had the shortening accompanying the loss of the acute tone (§ 43) occurred before the change of *u to *ъ and of *i to *ь (§ 25), the former change would have created inputs for the latter"
 25,44,CF,TRUE,"Had the Three-syllable law (§ 44) occurred before the change of *u to *ъ and of *i to *ь (§ 25), the former change would have created inputs for the latter"
 25,67,LW,TRUE,"Čak. kī̱rla was borrowed from Rom. *kẹ̱rla (< Lat. ci̱rrula) posterior to the change of *u to *ъ and of *i to *ь (§ 25), but prior to the lengthening of short vowels before a sequence of sonorant + consonant and before word-final *j (§ 67)"
 26,27,B,TRUE,"By inserting a vowel in a word-final sequences of consonant + *r + jer, the first jer-epenthesis (§ 26) withdrew inputs from the rise of syllabic liquids (§ 27)"

@@ -54,14 +54,15 @@ Promise.all([
   for (let i = 0; i < chords.length; i++) {
     console.assert((chords[i].source.index + 1 === sc_data.relations[i].source
            && chords[i].target.index + 1 === sc_data.relations[i].target),
-           "Copied relation data with different source or target value :(")
+           "Copied relation data with different source or target value :(",
+           chords[i])
     chords[i].type = sc_data.relations[i].type
     chords[i].description = sc_data.relations[i].description
     chords[i].confident = sc_data.relations[i].confident
   }
 
   // Debug
-  console.log("Here's the chords object")
+  console.log("Here's the chords object with length", chords.length)
   console.log(chords)
   console.log("Here's the chords.groups object")
   console.log(chords.groups)
