@@ -106,6 +106,8 @@ Promise.all([
           className = "naturalness"
         } else if (d.type === "S") {
           className = "simplicity"
+        } else if (d.type === "P") {
+          className = "plausibility"
         } else {
           className = "other"
         }

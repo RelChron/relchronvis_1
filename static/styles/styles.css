@@ -12235,6 +12235,14 @@ textPath {
   fill: #91c34a;
   stroke: #91c34a;
 }
+.ring-el.highlighted.plausibility, .ring-el.locked.plausibility,
+.ribbon.highlighted.plausibility,
+.ribbon.locked.plausibility,
+.swatch.highlighted.plausibility,
+.swatch.locked.plausibility {
+  fill: #bfdf94;
+  stroke: #bfdf94;
+}
 .ring-el.highlighted.other, .ring-el.locked.other,
 .ribbon.highlighted.other,
 .ribbon.locked.other,
