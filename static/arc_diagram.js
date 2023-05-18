@@ -168,6 +168,7 @@ Promise.all([
     
     // Get ids to be highlighted from arc data
     let highlight_ids = new Set(mArcsData.map(arc => [arc.source, arc.target]).flat())
+    highlight_ids.add(m_node.id)
     
     // Pass to nodes and nodeLabels
     nodes
@@ -251,6 +252,7 @@ Promise.all([
     
     // Get ids to be highlighted from arc data
     let highlight_ids = new Set(mArcsData.map(arc => [arc.source, arc.target]).flat())
+    highlight_ids.add(m_node.id)
     
     // Pass to nodes and nodeLabels
     nodes
