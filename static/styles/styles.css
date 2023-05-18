@@ -12024,6 +12024,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+svg {
+  cursor: default;
+}
+
 /* Sidebar */
 .sidebar {
   height: 100vh;
@@ -12048,6 +12052,7 @@ h2.display-6, .display-6.h2 {
 /* Nodes and Arcs */
 circle {
   fill: #b5bdc5;
+  cursor: pointer;
 }
 
 circle.highlighted,
@@ -12088,6 +12093,7 @@ textPath {
   fill: black;
   text-anchor: middle;
   visibility: hidden;
+  cursor: pointer;
 }
 
 textPath.highlighted,
@@ -12170,6 +12176,7 @@ textPath {
   stroke: #080708;
   fill: #080708;
   stroke-width: 1px;
+  cursor: pointer;
 }
 .ring-el.highlighted.feeding, .ring-el.locked.feeding,
 .ribbon.highlighted.feeding,
@@ -12250,6 +12257,10 @@ textPath {
 .swatch.locked.other {
   fill: #080708;
   stroke: #080708;
+}
+
+.swatch {
+  cursor: default !important;
 }
 
 .ribbon.highlighted:hover,

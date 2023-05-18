@@ -79,6 +79,9 @@ $other: $black;
 
 @import "../bootstrap/scss/bootstrap";
 
+svg {
+    cursor: default;
+}
 
 /* Sidebar */
 .sidebar {
@@ -107,6 +110,7 @@ h2.display-6 {
 /* Nodes and Arcs */
 circle {
     fill: $uzh-grey-80;
+    cursor: pointer;
 }
 
 circle.highlighted,
@@ -151,6 +155,7 @@ textPath {
     fill: black;
     text-anchor: middle; 
     visibility: hidden;
+    cursor: pointer;
 }
 
 textPath.highlighted,
@@ -234,11 +239,10 @@ textPath {
     stroke-width: 1px;
     &.highlighted,
     &.locked {
-        // stroke: $uzh-blue-80;
-        // fill: $uzh-blue-80;
         stroke: $black;
         fill: $black;
         stroke-width: 1px;
+        cursor: pointer;
         &.feeding {
             fill: $feeding;
             stroke: $feeding;
@@ -280,6 +284,11 @@ textPath {
             stroke: $other;
         }
     }
+}
+
+.swatch {
+    // Simple exemption to cursor rules above
+    cursor: default !important;
 }
 
 .ribbon.highlighted:hover,
