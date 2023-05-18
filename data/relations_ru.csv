@@ -4,7 +4,8 @@
 1,9,F,TRUE,Feeding: PSl. *wi̠xa > *wi̠śa > *wi̠sʼe > Ru fʼsʼo̠
 1,13,F,TRUE,Feeding: PSl. *awi̠kā˙ > *awi̠tˊā˙ > *awicʼā̠˙ > Ru. ʌfca̠; PSl *kuningu > *kunińdˊu > *kunińdzʼi > Ru. knʼa̠sʼ
 1,23,LW,TRUE,"Loanword: The loanwords Fi. arnitsa 'thick linen' (cf. ORu or(ь)nica), Fi. katitsa 'fishing weir' (cf. Gen. Sg. ursl. *kati̠kā), and Estn. narits 'European mink' (cf. PSl. *na̠rī˙kā˙) reflect a stage posterior to the Third Palatalization but prior to the change of PSl *a to *o"
-2,3,FB,TRUE,Feeding and Bleeding: PSl *ja̠jxu > *je̠jxu > *jī̠xu > Ru i̠x
+2,3,F,TRUE,Feeding and Bleeding: PSl *ja̠jxu > *je̠jxu > *jī̠xu > Ru i̠x
+2,3,B,TRUE,Feeding and Bleeding: PSl *ja̠jxu > *je̠jxu > *jī̠xu > Ru i̠x
 2,4,F,TRUE,Feeding: PSl. *brā̠˙tijā˙ > *brā̠˙tijē˙ > *brā̠˙tijā˙ > Ru. bra̠tʼjɪ
 2,9,CB,TRUE,Counterbleeding: PSl. *wi̠xa > *wi̠śa > *wi̠śe > *wi̠sʼe > Ru. fʼsʼo̠
 2,17,B,FALSE,Bleeding: PSl. *sjū̠˙jā˙ > *sjī̠˙jē˙ > Ru. ṡe̠jə (or did umlaut affect *ȳ here?)
@@ -36,7 +37,8 @@
 8,30,F,TRUE,Feeding: PSl. *zemju̠ > *zemlji̠ > *zemlˊь̠ > *zemьlˊь̠ > Ru. zʼɪmʼe̠lʼ; PSl. *kā̠˙pju > *kā̠˙plji > *kā̠˙plˊь > *kā̠˙pьlˊь Ru. ka̠pʼɪlʼ
 8,38,LW,TRUE,Loanword: Fi. luota (cf. PSl. *bja̠w˙da) reflects a stage posterior to l-epenthesis (§ 8) but prior to the change *ọ̄ > *ū 
 8,48,CF,TRUE,Counterfeeding: no lateral was inserted in cases such as PSl. *karbi̠jā˙ > *korobь1ja̠ > *korobja̠ > Ru. kərʌbja̠ 
-10,12,CFCB,FALSE,"Counterfeeding and Counterbleeding: Unstressed word-initial liquid diphthongs which have the feature ""acute"" develop in the same way as stressed word-initial liquid diphthongs, i.e.  cf. Ukr. ратa̠й. Had the acute already been lost in unstressed syllables at the time when liquid metathesis took place, we would expect metathesis without lengthening, cf. *a̠R˙C- > *rā̠˙C-, not *a̠R˙C- > *a̠RC- > *ra̠C-. "
+10,12,CF,FALSE,"Counterfeeding and Counterbleeding: Unstressed word-initial liquid diphthongs which have the feature ""acute"" develop in the same way as stressed word-initial liquid diphthongs, i.e.  cf. Ukr. ратa̠й. Had the acute already been lost in unstressed syllables at the time when liquid metathesis took place, we would expect metathesis without lengthening, cf. *a̠R˙C- > *rā̠˙C-, not *a̠R˙C- > *a̠RC- > *ra̠C-. "
+10,12,CB,FALSE,"Counterfeeding and Counterbleeding: Unstressed word-initial liquid diphthongs which have the feature ""acute"" develop in the same way as stressed word-initial liquid diphthongs, i.e.  cf. Ukr. ратa̠й. Had the acute already been lost in unstressed syllables at the time when liquid metathesis took place, we would expect metathesis without lengthening, cf. *a̠R˙C- > *rā̠˙C-, not *a̠R˙C- > *a̠RC- > *ra̠C-. "
 10,19,B,FALSE,Bleeding: PSl. *elbedā̠˙ > *lebedā̠˙ > Ru lʼɪbʼɪda̠ and not *elbedā̠˙ > *albedā̠˙ etc.
 10,23,LW,FALSE,"Loanword: Because the place name Ru. Olьnica, which was borrowed from Baltic (cf. OPr Alna, Alne), was affected by the change of a to o (§ 23) but not by liquid metathesis (§ 10)"
 10,24,CF,FALSE,Counterfeeding: PSl. *elbedā̠˙ > *lebedā̠˙ > Ru. lʼɪbʼɪda̠ and not *elbedā̠˙ > *jelbedā̠˙ etc.
@@ -55,8 +57,10 @@
 11,26,LW,FALSE,"Loanword: Latv. grȩ̀ks was borrowed after Dybo's law (§ 11), but before the change ē > ě̄ (cf. Ru грe̠х)"
 11,27,LW,FALSE,"Loanword: Lat. Ma̠ximus > rom.*Ma̠jsẹmu > sl. *Ma̠jsьmъ > Čak. *Ma̠jsan missed Dybo's law (§ 11), but was affected by the change *i > *ь, *u > *ъ"
 11,29,F,TRUE,Feeding: because Kortlandt's compensatory lenghtening (§ 27) afected syllables which recived their accent only as a result of Dybo's law (§ 11)
-11,35,FB,TRUE,Feeding: PSl. *pe̠jsjemu > *pʼīšē̠mъ1 > *pʼī̠šēmъ1 > Ru. pʼi̠ṡəm; Bleeding: PSl. *kamā̠ru > *kamāru̠ > Ru. kʌma̠r
-11,36,FB,TRUE,Feeding: PSl. *sta̠lu > *stolъ̠1 > *sto̠lъ1 > Ru. sto̠l; PSl. *gawmi̠na > *gọ̄mina̠ > Ru. gumno̠
+11,35,F,TRUE,Feeding: PSl. *pe̠jsjemu > *pʼīšē̠mъ1 > *pʼī̠šēmъ1 > Ru. pʼi̠ṡəm; Bleeding: PSl. *kamā̠ru > *kamāru̠ > Ru. kʌma̠r
+11,35,B,TRUE,Feeding: PSl. *pe̠jsjemu > *pʼīšē̠mъ1 > *pʼī̠šēmъ1 > Ru. pʼi̠ṡəm; Bleeding: PSl. *kamā̠ru > *kamāru̠ > Ru. kʌma̠r
+11,36,F,TRUE,Feeding: PSl. *sta̠lu > *stolъ̠1 > *sto̠lъ1 > Ru. sto̠l; Bleeding: PSl. *gawmi̠na > *gọ̄mina̠ > Ru. gumno̠
+11,36,B,TRUE,Feeding: PSl. *sta̠lu > *stolъ̠1 > *sto̠lъ1 > Ru. sto̠l; Bleeding: PSl. *gawmi̠na > *gọ̄mina̠ > Ru. gumno̠
 11,37,CF,FALSE,Counterfeeding: otherwise one would expect an accent shift from newly deacuted syllables by Dybo's law (§ 11)
 11,38,LW,TRUE,"Loanword: when Latv. ļùoti was borrowed from Slavic (cf. PSl. *lja̠wtu) Dybo's law (§ 11) had already operated while ọ̄, which was subsequently changed to uo in Latvian, was still present"
 11,44,F,TRUE,Feeding: PSl. *me̠lka > *moloko̠ > *molokô̠ > Ru. məlʌko̠
@@ -91,12 +95,12 @@
 20,48,CF,TRUE,Counterfeeding: PSl. *sedu̠la > *sʼedъ1lô̠ > *sʼedlô̠ > Ru. sʼɪdlo̠ and not **sʼɪlo̠
 20,70,LW,FALSE,"Loanword: the Old East Slavic personal name Glěbъ was borrowed from ONo. *Guđleifr before the change *dl > *l (§ 20), but still had the vowel ě "
 21,22,LW,FALSE,"Loanword: Finn. värtsi 'sack' was borrowed from Slavic (cf. PSl. *we̠rtjā˙) before the rise of pleophony (§ 22) but after the change tˊ > č, dˊ > dž (§ 21)"
-21,26,(LW),FALSE,"Loanword: if the change *ē > *ě̄ (§ 26) was accompanied by a change *e > *ẹ, the loanword Finn. pätsi 'oven' (cf. PSl. *pekti) shows that it occured only after *tˊ > *č, *dˊ > *dž (§ 21)"
+21,26,LW,FALSE,"Loanword: if the change *ē > *ě̄ (§ 26) was accompanied by a change *e > *ẹ, the loanword Finn. pätsi 'oven' (cf. PSl. *pekti) shows that it occured only after *tˊ > *č, *dˊ > *dž (§ 21)"
 21,29,LW,FALSE,"Loanword: when Finn. värtsi 'sack' was borrowed from Slavic (cf. PSl. *we̠rtjā˙), the change *tˊ > *č, *dˊ > *dž (§ 21) had already taken place while the rise of pleophony (§ 22) had not; the latter change, on the other hand, must have occurred before the change *a > *o (§ 23) which preceded the shortening of word final vowels (§ 28); since compensatory lengthening (§ 29) must have followed the shortening, the change *tˊ > *č, *dˊ > *dž (§ 21) can be dated before the former change "
 21,39,F,TRUE,"Feeding: the change *tˊ > *č, *dˊ > *dž (§ 21) created inputs for the change *dž > *ž (§ 39)"
 21,69,F,TRUE,"Feeding: the change *tˊ > *č, *dˊ > *dž (§ 21) created inputs for the change *šč > *šš, *ždž > *žž (§ 69)"
 22,23,LW,TRUE,Loanword: Finn. vaalasti ‘volost (administrative subdivision)ʼ was borrowed from Slavic (cf. PSl. *walsti) after the rise of pleophony (§ 22) but before the change a > o (§ 23)
-22,26,(LW),FALSE,"Loanword: if the change *ē > *ě̄ (§ 29) was accompanied by a change *e > *ẹ, the loanword Wot. pärämmä shows that it occured only after the rise of pleophony (§ 22)"
+22,26,LW,FALSE,"Loanword: if the change *ē > *ě̄ (§ 29) was accompanied by a change *e > *ẹ, the loanword Wot. pärämmä shows that it occured only after the rise of pleophony (§ 22)"
 22,31,F,TRUE,Feeding: CerC > CereC > CʼerʼeC not CerC > CʼerC > CʼereC
 22,48,CF,TRUE,Counterfeeding: cf. PSl. *garikā̠˙ > *gorьkā̠˙ > *gorʼka̠ > Ru. gʌrʼka̠ 'bitter' where we would expect to find a pleophonic sequence if the loss of weak jers (§ 48) had preceded the rise of pleophony (§ 22)
 22,48,M,TRUE,Manuscript: the rise of pleophony (§ 22) is reflected in the earliest Slavic texts while the loss of weak jers (§ 48) had not yet taken place at this stage
