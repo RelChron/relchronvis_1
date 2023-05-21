@@ -12028,6 +12028,17 @@ svg {
   cursor: default;
 }
 
+textPath::-moz-selection, text::-moz-selection {
+  background-color: transparent;
+  color: #000;
+}
+
+textPath::selection,
+text::selection {
+  background-color: transparent;
+  color: #000;
+}
+
 /* Sidebar */
 .sidebar {
   height: 100vh;

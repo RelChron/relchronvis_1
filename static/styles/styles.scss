@@ -83,6 +83,15 @@ svg {
     cursor: default;
 }
 
+// Disable text selection for svg text elements
+textPath,
+text {
+    &::selection {
+        background-color: transparent;
+        color: #000;
+    }
+}
+
 /* Sidebar */
 .sidebar {
     height: 100vh;
