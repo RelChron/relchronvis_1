@@ -12091,7 +12091,6 @@ path.locked {
 .node-label {
   fill: #b5bdc5;
   text-anchor: start;
-  writing-mode: vertical-rl;
 }
 
 .node-label.highlighted,

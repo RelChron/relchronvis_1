@@ -138,6 +138,12 @@ Promise.all([
       .attr("y", GRAPH_BOTTOM_Y + CIRCLE_RADIUS + 2)
       .text(sc => `${sc.id} ${sc.name}`)
       .attr("class", "node-label active")
+      .attr("transform", sc => {
+        return "rotate(90," 
+          + xScale(sc.id) + "," 
+          + (GRAPH_BOTTOM_Y + CIRCLE_RADIUS + 2) + ")"
+          + "translate(0, 6)";
+      })
 
   nodeLabels.each(truncate)
 
@@ -450,7 +456,15 @@ Promise.all([
 
       // Set new x positions from new scale
       nodes.attr("cx", sc => newScale(sc.id))
-      nodeLabels.attr("x", sc => newScale(sc.id))
+      nodeLabels
+        .attr("x", sc => newScale(sc.id))
+        .attr("transform", sc => {
+          return "rotate(90," 
+            + newScale(sc.id) + "," 
+            + (GRAPH_BOTTOM_Y + CIRCLE_RADIUS + 2) + ")"
+            + "translate(0, 6)";
+        })
+
 
       // Redraw arcs based on new scale
       arcs

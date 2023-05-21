@@ -148,9 +148,6 @@ path.locked {
 .node-label {
     fill: $uzh-grey-80;
     text-anchor: start;
-    -webkit-writing-mode: vertical-rl;
-        -ms-writing-mode: tb-rl;
-            writing-mode: vertical-rl;
 }
 
 .node-label.highlighted,
