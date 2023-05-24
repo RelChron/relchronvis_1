@@ -199,10 +199,12 @@ textPath.locked {
 
 .example {
     --bs-card-spacer-y: 0.5rem;
+    cursor: pointer;
 }
 
 #drawer-btn-icon, #home-btn-icon {
     transform: translateY(-2px);
+    cursor: pointer;
 }
 
 
