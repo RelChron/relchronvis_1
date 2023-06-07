@@ -40,5 +40,41 @@
 </head>
 <body>
     {% block body %}{% endblock %}
+    <!-- Common elements of all diagrams go here -->
+    <!-- Bootstrap Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Examples</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body scrollable d-grid gap-1">
+            <p id="explainer-text" class="shown">
+                Please double-click a sound change node to see example lexemes.
+            </p>
+        </div>
+    </div>
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="instructions-modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Instructions</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Double-click sound change nodes to get info and show relations</li>
+                    <li>Then, click "Open Examples" at the top right to see suitable example lexemes</li>
+                    <ul><li>Click an example to see its chronology</li></ul>
+                    <li>Click on frozen arcs to get info on the relative dating of the connected sound changes</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div id="node-tooltip" class="tooltip invisible"></div>
 </body>
 </html>

@@ -97,7 +97,15 @@ if (toArcButton) {
   toArcButton.addEventListener("click", () => window.open(urlToOpen, "_self"))
 }
 
-
 // Prepare hidden drawer element from bootstrap
-let offcanvasDrawerEl = document.getElementById("offcanvasRight")
-let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
+const offcanvasDrawerEl = document.getElementById("offcanvasRight")
+const offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
+
+// Show modal on load
+let instructionsGiven = sessionStorage.getItem("instructionsGiven")
+console.log(instructionsGiven)
+if (!instructionsGiven) {
+  const modalObj = new bootstrap.Modal("#instructions-modal")
+  modalObj.show()
+  sessionStorage.setItem("instructionsGiven", true);
+}
