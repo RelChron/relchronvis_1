@@ -705,36 +705,4 @@ d3.select("#reset-btn")
     d3.select("#explainer-text").classed("d-none", false)
     d3.selectAll(".bg-danger").classed("d-none", false)
   })
-
-// // Inspired by https://stackoverflow.com/a/27723725
-// function truncate() {
-//   let element = d3.select(this)
-//   let elHeight = element.node().getBBox().height
-//   let elText = element.text()
-//   while (elHeight + 10 > LABEL_AREA_HEIGHT && elText.length > 0) {
-//       elText = elText.slice(0, -1)
-//       element.text(elText + '...')
-//       elHeight = element.node().getBBox().height
-//   }
-// }
-
-// function addErrorCard(errorText) {
-//   let sidebar = d3.select("#sidebar-contents")
-//   let errorCard = sidebar
-//     .append("div")
-//     .classed("card bg-danger text-white", true)
   
-//   errorCard
-//     .append("div")
-//     .classed("card-header", true)
-//     .text(errorText[0])
-  
-//   errorCard
-//     .append("div")
-//     .classed("card-body", true)
-//     .text(errorText[1])
-// }
-
-// // Listen for home button clicks
-// const homeButton = document.getElementById("home-btn")
-// homeButton.addEventListener("click", () => window.open("/", "_self"))
