@@ -3,7 +3,7 @@
 <div class="container-fluid">
 <div class="row">
     <div class="col-3 sidebar">
-        <div class="scrollable d-grid gap-2" id="sidebar-contents">
+        <div class="d-grid gap-2" id="sidebar-contents">
             {% if data is defined %}
             <h2 class="display-6">Relative chronology of {{ data["language"] }} sound changes</h2>
             {% else %}
@@ -89,9 +89,7 @@
         </div>
     </div>
     <div class="col position-relative m-3">
-        <button type="button" class="btn btn-primary position-absolute top-0 end-0" id="drawer-btn">
-            Open Examples
-        </button>
+        <div id="arc-diagram"></div>
         <div class="position-absolute top-0 start-0">
             <button type="button" class="btn btn-primary" id="home-btn">
                 Home
@@ -99,8 +97,13 @@
             <button type="button" class="btn btn-primary" id="to-chord-btn">
                 Switch to Chord Diagram
             </button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#instructions-modal">
+                Help
+            </button>
         </div>
-        <div id="arc-diagram"></div>
+        <button type="button" class="btn btn-primary position-absolute top-0 end-0" id="drawer-btn">
+            Open Examples
+        </button>
         <div>
             <button type="button" id="chron-close-btn" class="btn-close float-end invisible" aria-label="Clear example chronology"></button>
             <div id="example-chronology" class="border-top border-info"></div>
@@ -108,17 +111,4 @@
     </div>
 </div>
 </div>
-<!-- See https://getbootstrap.com/docs/5.0/components/offcanvas -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel">Examples</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body scrollable d-grid gap-1">
-        <p id="explainer-text" class="shown">
-            Please double-click a sound change node to see example lexemes.
-        </p>
-    </div>
-</div>
-<div id="node-tooltip" class="tooltip invisible"></div>
 {% endblock %}
