@@ -83,6 +83,21 @@ if (serverResponse.hasOwnProperty("error")) {
 const homeButton = document.getElementById("home-btn")
 homeButton.addEventListener("click", () => window.open("/", "_self"))
 
+// Listen for button clicks to change to chord diagram
+const toChordButton = document.getElementById("to-chord-btn")
+if (toChordButton) {
+  let urlToOpen = "/chord_diagram?lang=" + language
+  toChordButton.addEventListener("click", () => window.open(urlToOpen, "_self"))
+}
+
+// Listen for button clicks to change to arc diagram
+const toArcButton = document.getElementById("to-arc-btn")
+if (toArcButton) {
+  urlToOpen = "/arc_diagram?lang=" + language
+  toArcButton.addEventListener("click", () => window.open(urlToOpen, "_self"))
+}
+
+
 // Prepare hidden drawer element from bootstrap
 let offcanvasDrawerEl = document.getElementById("offcanvasRight")
 let offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
