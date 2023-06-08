@@ -564,7 +564,7 @@ d3.select("#download-btn")
       })
 
     // Adjust svg height for full names
-    let full_height = OUTER_HEIGHT_UNLABELED + longest_sc_name
+    let full_height = SVG_HEIGHT + longest_sc_name
     svg.attr("height", full_height)
     // svg.attr("height", svg.attr("height") * 2)
     // svg.attr("width", svg.attr("width") * 2)
@@ -593,7 +593,7 @@ d3.select("#download-btn")
     styledSVG.insertBefore(defs, styledSVG.firstChild)
 
     // Reset the svg on the actual page
-    svg.attr("height", OUTER_HEIGHT)
+    svg.attr("height", SVG_HEIGHT)
 
     // Step 3. Create SVG string
     let svgString = new XMLSerializer().serializeToString(styledSVG)
