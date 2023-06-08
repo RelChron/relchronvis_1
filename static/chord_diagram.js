@@ -141,7 +141,6 @@ Promise.all([
         }
       })
 
-  // Same as in main.js
   let examples = d3.select(".offcanvas-body")
     .selectAll("myExampleCards")
     .data(example_data)

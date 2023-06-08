@@ -12065,26 +12065,55 @@ circle {
   fill: #b5bdc5;
   cursor: pointer;
 }
-
-circle.highlighted,
-circle.locked {
-  fill: #3353b7;
+circle.highlighted, circle.locked {
+  fill: #080708;
 }
 
-path.arc {
+.arc {
   stroke: #b5bdc5;
   fill: none;
   stroke-dasharray: none;
 }
-
-path.arc.dashed {
+.arc.dashed {
   stroke-dasharray: 5, 2;
 }
-
-path.highlighted,
-path.locked {
-  stroke: #3353b7;
+.arc.highlighted, .arc.locked {
   stroke-width: 4;
+}
+.arc.highlighted.feeding, .arc.locked.feeding {
+  stroke: #0028a5;
+}
+.arc.highlighted.counterfeeding, .arc.locked.counterfeeding {
+  stroke: #667ec9;
+}
+.arc.highlighted.bleeding, .arc.locked.bleeding {
+  stroke: #dc6027;
+}
+.arc.highlighted.counterbleeding, .arc.locked.counterbleeding {
+  stroke: #eaa07d;
+}
+.arc.highlighted.manuscript, .arc.locked.manuscript {
+  stroke: #0b82a0;
+}
+.arc.highlighted.loanword, .arc.locked.loanword {
+  stroke: #2a7f62;
+}
+.arc.highlighted.naturalness, .arc.locked.naturalness {
+  stroke: #fbe651;
+}
+.arc.highlighted.simplicity, .arc.locked.simplicity {
+  stroke: #91c34a;
+}
+.arc.highlighted.plausibility, .arc.locked.plausibility {
+  stroke: #bfdf94;
+}
+.arc.highlighted.other, .arc.locked.other {
+  stroke: #080708;
+}
+
+.arc.highlighted:hover,
+.arc.locked:hover {
+  stroke-width: 10px;
 }
 
 /* Node Labels */
@@ -12092,10 +12121,8 @@ path.locked {
   fill: #b5bdc5;
   text-anchor: start;
 }
-
-.node-label.highlighted,
-.node-label.locked {
-  fill: #3353b7;
+.node-label.highlighted, .node-label.locked {
+  fill: #080708;
 }
 
 /* Arc Labels */

@@ -1,22 +1,19 @@
-// Manage interactive arc diagram, sidebar and examples
+// Draw and manage interactive arc diagram, sidebar and examples
 // Based on https://d3-graph-gallery.com/graph/arc_highlight.html
 
-const CIRCLE_RADIUS = 6
-let DIAG_ASPECT_RATIO = 2.25
-if (language === "Croatian") {
-    DIAG_ASPECT_RATIO = 2.2
-}
-const OUTER_WIDTH = document.getElementById("arc-diagram")
-  .getBoundingClientRect().width
-const OUTER_HEIGHT_UNLABELED = OUTER_WIDTH / DIAG_ASPECT_RATIO + CIRCLE_RADIUS
-const LABEL_AREA_HEIGHT = OUTER_HEIGHT_UNLABELED / 3
-const OUTER_HEIGHT = OUTER_HEIGHT_UNLABELED + LABEL_AREA_HEIGHT
+const SVG_WIDTH = document.getElementById("arc-diagram")
+    .getBoundingClientRect().width
+const SVG_HEIGHT = document.getElementById("arc-diagram")
+    .getBoundingClientRect().height
 
+const CIRCLE_RADIUS = 6
 const MARGIN = {TOP: CIRCLE_RADIUS, RIGHT: CIRCLE_RADIUS + 10, BOTTOM: 0,
   LEFT: CIRCLE_RADIUS + 10}
-const INNER_WIDTH = OUTER_WIDTH - MARGIN.LEFT - MARGIN.RIGHT
-const INNER_HEIGHT = OUTER_HEIGHT - MARGIN.TOP - MARGIN.BOTTOM
-const GRAPH_BOTTOM_Y = INNER_HEIGHT - LABEL_AREA_HEIGHT
+
+const INNER_HEIGHT = SVG_HEIGHT - MARGIN.TOP - MARGIN.BOTTOM
+const GRAPH_BOTTOM_Y = INNER_HEIGHT * 3 / 5
+
+const INNER_WIDTH = SVG_WIDTH - MARGIN.LEFT - MARGIN.RIGHT
 
 let lockOriginNodeId = null
 
@@ -25,8 +22,8 @@ const svg = d3.select("#arc-diagram")
   .append("svg")
   .attr("xmlns", "http://www.w3.org/2000/svg")
   .attr("xlink", "http://www.w3.org/1999/xlink")
-  .attr("width", OUTER_WIDTH)
-  .attr("height", OUTER_HEIGHT)
+  .attr("width", SVG_WIDTH)
+  .attr("height", SVG_HEIGHT)
 
 const diagram = svg.append("g")
   .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")")
@@ -95,22 +92,36 @@ Promise.all([
           .join(' ')
       })
     .classed("arc", true)
+    .each(function(d, i) {
+      className = null
+      if (d.type === "F") {
+        className = "feeding"
+      } else if (d.type === "CF") {
+        className = "counterfeeding"
+      } else if (d.type === "B") {
+        className = "bleeding"
+      } else if (d.type === "CB") {
+        className = "counterbleeding"
+      } else if (d.type === "M") {
+        className = "manuscript"
+      } else if (d.type === "LW") {
+        className = "loanword"
+      } else if (d.type === "N") {
+        className = "naturalness"
+      } else if (d.type === "S") {
+        className = "simplicity"
+      } else if (d.type === "P") {
+        className = "plausibility"
+      } else {
+        className = "other"
+      }
+
+      d3.select(this).classed(className, true)
+    })
 
   arcs
     .filter(arc => arc.confident === false)
     .classed("dashed", true)
-
-  let arcLabels = diagram
-    .append("text")
-    .attr("id", "arc-labels")
-    .selectAll("myArcLabels")
-    .data(processedRelations)
-    .enter()
-    .append("textPath")
-      .attr("href", (d, i) => "#arc-" + i)
-      .attr("startOffset", "50%")
-      .html(relation => relation.type)
-      .attr("class", "arc-label active")
 
   let filterOptionEl = d3.select("#filter-ids")
   let nodes = diagram
@@ -145,8 +156,6 @@ Promise.all([
           + "translate(0, 6)";
       })
 
-  nodeLabels.each(truncate)
-
   let examples = d3.select(".offcanvas-body")
     .selectAll("myExampleCards")
     .data(example_data)
@@ -161,6 +170,52 @@ Promise.all([
   
 
   let nodeTooltip = d3.select("#node-tooltip")
+
+  // LEGEND BOX (LB)
+  const LEGEND_ITEMS = ["Feeding", "Counterfeeding", "Bleeding", 
+                     "Counterbleeding", "Manuscript", "Loanword", 
+                     "Simplicity", "Plausibility", "Naturalness"]
+
+  const LB_HEIGHT = 150
+  const LB_WIDTH = 135
+  const LB_X = -10
+  const LB_Y = 35
+
+  let legend = svg
+    .append("g")
+    .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")")
+
+  let legendBox = legend
+    .append("rect")
+      .attr("class", "legend-box")
+      .attr("x", LB_X)
+      .attr("y", LB_Y)
+      .attr("width", LB_WIDTH)
+      .attr("height", LB_HEIGHT)
+      .attr("rx", 10)
+
+  let legendList = legend
+    .selectAll()
+    .data(LEGEND_ITEMS)
+    .enter()
+    .append("text")
+      .attr("class", "legend-text")
+      .attr("x", LB_X + 25)
+      // Iterate through y-positions, +1 y-offset to align better with circles
+      .attr("y", (d,i) => LB_Y + 1 + (i + 1) * 15)
+      .text(d => d)
+      .attr("text-anchor", "left")
+      .style("alignment-baseline", "middle")
+
+  let legendSwatches = legend
+    .selectAll()
+    .data(LEGEND_ITEMS)
+    .enter()
+    .append("circle")
+      .attr("cx", LB_X + 15)
+      .attr("cy", (d,i) => LB_Y + (i + 1) * 15)
+      .attr("r", 5)
+      .attr("class", d => "swatch highlighted ".concat(d.toLowerCase()))
 
   // MOUSE INTERACTIONS
   nodes
@@ -196,11 +251,6 @@ Promise.all([
         || arc.target === lockOriginNodeId))
       .raise()
 
-    arcLabels
-      .filter(rel => rel.source === m_node.id || rel.target === m_node.id)
-      .filter(".active")
-      .classed("highlighted", true)
-
     nodeTooltip
       .html(m_node.name)
       .classed("invisible", false)
@@ -211,7 +261,7 @@ Promise.all([
       .style("top", event.y + 30 + "px")
   })
   .on("mouseout", (event, m_node) => {
-    for (const selection of [nodes, nodeLabels, arcs, arcLabels]) {
+    for (const selection of [nodes, nodeLabels, arcs]) {
       selection.classed("highlighted", false)
     }
     nodeTooltip.classed("invisible", true)
@@ -227,7 +277,7 @@ Promise.all([
     // NB: Selection with "this" only works with non-arrow function def
     let nodeIsOrigin = d3.select(this).classed("lock-origin")
     
-    for (const selection of [nodes, nodeLabels, arcs, arcLabels]) {
+    for (const selection of [nodes, nodeLabels, arcs]) {
       selection.classed("locked", false)
       selection.classed("lock-origin", false)
     }
@@ -280,11 +330,6 @@ Promise.all([
         || arc.target === lockOriginNodeId))
       .raise()
 
-    arcLabels
-      .filter(rel => rel.source === m_node.id || rel.target === m_node.id)
-      .filter(".active")
-      .classed("locked", true)
-
     d3.select("#sc-card-id").text(m_node.id)
     d3.select("#sc-card-header").text(m_node.name)
     d3.select("#sc-card-body").text(m_node.description)
@@ -298,11 +343,13 @@ Promise.all([
       .classed("d-none", false)
   })
 
-  arcLabels
+  arcs
   .on("click", function(event, m_arc) {
-    let relCardIsOpen = d3.select(this).classed("rel-card-open")
+    let arcIsLocked = d3.select(this).classed("locked")
+    if (!arcIsLocked) {return}
 
-    arcLabels.classed("rel-card-open", false)
+    let relCardIsOpen = d3.select(this).classed("rel-card-open")
+    arcs.classed("rel-card-open", false)
     d3.select("#rel-card").classed("d-none", true)
     d3.select("#second-sc-card").classed("d-none", true)
 
@@ -448,7 +495,7 @@ Promise.all([
   let zoom = d3.zoom()
     // Limit scale and allow pan only inside diagram bounds
     .scaleExtent([1, 10])
-    .translateExtent([[0, 0], [OUTER_WIDTH, OUTER_HEIGHT]])
+    .translateExtent([[0, 0], [SVG_WIDTH, SVG_HEIGHT]])
 
     .on("zoom", zoomEvent => {
       transform = zoomEvent.transform
@@ -547,7 +594,6 @@ d3.select("#download-btn")
 
     // Reset the svg on the actual page
     svg.attr("height", OUTER_HEIGHT)
-    nodeLabels.each(truncate)
 
     // Step 3. Create SVG string
     let svgString = new XMLSerializer().serializeToString(styledSVG)
@@ -586,8 +632,6 @@ let labelsVisible = true
 d3.select("#toggle-label-btn")
   .on("click", function(event, button) {
     if (labelsVisible) {
-      // Setting this attribute takes Firefox multiple seconds for some reason
-      svg.attr("height", OUTER_HEIGHT_UNLABELED + CIRCLE_RADIUS + 5)
       d3.selectAll(".node-label")
         .each(function() {
           d3.select(this).text("")
@@ -595,12 +639,10 @@ d3.select("#toggle-label-btn")
       labelsVisible = false
       d3.select(this).text("Show Labels")
     } else {
-      svg.attr("height", OUTER_HEIGHT)
       d3.selectAll(".node-label")
         .each(function(sc) {
           d3.select(this).text(`${sc.id}  ${sc.name}`)
         })
-        .each(truncate)
       labelsVisible = true
       d3.select(this).text("Hide Labels")
     }
@@ -625,10 +667,8 @@ d3.select("#apply-btn")
       .classed("active", false)
     let arcs = d3.selectAll(".arc")
       .classed("invisible", true)
-    let arcLabels = d3.selectAll(".arc-label")
-      .classed("active", false)
 
-    for (const selection of [nodes, nodeLabels, arcs, arcLabels]) {
+    for (const selection of [nodes, nodeLabels, arcs]) {
       selection.classed("locked", false)
       selection.classed("lock-origin", false)
     }
@@ -656,14 +696,6 @@ d3.select("#apply-btn")
         // If only confidents, filter out the others via data; else no filter
         .filter(rel => showOnlyConf ? rel.confident : true)
         .classed("invisible", false)
-      
-      arcLabels
-        .filter(arc => (
-          (arc.source === sc.id) && showOutArcs
-          || (arc.target === sc.id) && showInArcs))
-        // Ternary operator, see above
-        .filter(rel => showOnlyConf ? rel.confident : true)
-        .classed("active", true)
     
       let currentTouchedIDs = new Set(filtArcs.data()
         .map(arc => [arc.source, arc.target]).flat())
@@ -694,10 +726,8 @@ d3.select("#reset-btn")
       .classed("active", true)
     let arcs = d3.selectAll(".arc")
       .classed("invisible", false)
-    let arcLabels = d3.selectAll(".arc-label")
-      .classed("active", true)
 
-    for (const selection of [nodes, nodeLabels, arcs, arcLabels]) {
+    for (const selection of [nodes, nodeLabels, arcs]) {
       selection.classed("locked", false)
       selection.classed("lock-origin", false)
     }

@@ -1,17 +1,5 @@
 // Helpers and basic functionality taht applies to all diagrams
 
-// Inspired by https://stackoverflow.com/a/27723725
-function truncate() {
-  let element = d3.select(this)
-  let elHeight = element.node().getBBox().height
-  let elText = element.text()
-  while (elHeight + 10 > LABEL_AREA_HEIGHT && elText.length > 0) {
-      elText = elText.slice(0, -1)
-      element.text(elText + '...')
-      elHeight = element.node().getBBox().height
-  }
-}
-
 function addErrorCard(errorText) {
   console.log("This is an addErrorCard errorText:")
   console.log(errorText)

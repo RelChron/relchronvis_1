@@ -58,25 +58,6 @@ $plausibility: $uzh-limetree-green-60;
 $naturalness:  $uzh-yellow-80;
 $other: $black;
 
-// First qualitative color palette
-// $feeding: #AC3931;
-// $counterfeeding: color.scale($feeding, $lightness: 35%);
-// $bleeding: #187795;
-// $counterbleeding: color.scale($bleeding, $lightness: 35%);
-// $loanword: #629460;
-// $other: #FFCF56;
-// $manuscript: #A39594;
-
-// Divergent color palette
-// $feeding: #00429d;
-// $counterfeeding: #5681b9;
-// $loanword: #93c4d2;
-// $other: #ffffe0;
-// $manuscript: #ffa59e;
-// $counterbleeding: #dd4c65;
-// $bleeding: #93003a;
-
-
 @import "../bootstrap/scss/bootstrap";
 
 svg {
@@ -120,27 +101,58 @@ h2.display-6 {
 circle {
     fill: $uzh-grey-80;
     cursor: pointer;
+    &.highlighted,
+    &.locked {
+        fill: $black;
+    }
 }
 
-circle.highlighted,
-circle.locked {
-    fill: $uzh-blue-80;
-}
-
-path.arc {
+.arc {
     stroke: $uzh-grey-80;
     fill: none;
     stroke-dasharray: none;
+    &.dashed {
+        stroke-dasharray: 5, 2;
+    }
+    &.highlighted,
+    &.locked {
+        stroke-width: 4;
+        &.feeding {
+            stroke: $feeding;
+        }
+        &.counterfeeding {
+            stroke: $counterfeeding;
+        }
+        &.bleeding {
+            stroke: $bleeding;
+        }
+        &.counterbleeding {
+            stroke: $counterbleeding;
+        }
+        &.manuscript {
+            stroke: $manuscript;
+        }
+        &.loanword {
+            stroke: $loanword;
+        }
+        &.naturalness {
+            stroke: $naturalness;
+        }
+        &.simplicity {
+            stroke: $simplicity;
+        }
+        &.plausibility {
+            stroke: $plausibility;
+        }
+        &.other {
+            stroke: $other;
+        }
+    }
 }
 
-path.arc.dashed {
-    stroke-dasharray: 5, 2;
-}
-
-path.highlighted,
-path.locked {
-    stroke: $uzh-blue-80;
-    stroke-width: 4;
+.arc.highlighted:hover,
+.arc.locked:hover {
+    stroke-width: 10px;
 }
 
 
@@ -148,11 +160,10 @@ path.locked {
 .node-label {
     fill: $uzh-grey-80;
     text-anchor: start;
-}
-
-.node-label.highlighted,
-.node-label.locked {
-    fill: $uzh-blue-80;
+    &.highlighted,
+    &.locked {
+        fill: $black;
+    }
 }
 
 
