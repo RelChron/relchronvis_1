@@ -1,8 +1,6 @@
 // Helpers and basic functionality taht applies to all diagrams
 
 function addErrorCard(errorText) {
-  console.log("This is an addErrorCard errorText:")
-  console.log(errorText)
   let sidebar = d3.select("#sidebar-contents")
   let errorCard = sidebar
     .append("div")
@@ -91,7 +89,6 @@ const offcanvasDrawerObj = new bootstrap.Offcanvas(offcanvasDrawerEl)
 
 // Show modal on load
 let instructionsGiven = sessionStorage.getItem("instructionsGiven")
-console.log(instructionsGiven)
 if (!instructionsGiven) {
   const modalObj = new bootstrap.Modal("#instructions-modal")
   modalObj.show()
