@@ -94,3 +94,31 @@ if (!instructionsGiven) {
   modalObj.show()
   sessionStorage.setItem("instructionsGiven", true);
 }
+
+// Example: take "F", return "feeding"
+function getTypeName(code) {
+  if (code === "F") {
+    typeName = "feeding"
+  } else if (code === "CF") {
+    typeName = "counterfeeding"
+  } else if (code === "B") {
+    typeName = "bleeding"
+  } else if (code === "CB") {
+    typeName = "counterbleeding"
+  } else if (code === "M") {
+    typeName = "manuscript"
+  } else if (code === "LW") {
+    typeName = "loanword"
+  } else if (code === "N") {
+    typeName = "naturalness"
+  } else if (code === "S") {
+    typeName = "simplicity"
+  } else if (code === "P") {
+    typeName = "plausibility"
+  } else {
+    typeName = "other"
+  }
+
+  return typeName
+}
+

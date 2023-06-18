@@ -51,7 +51,8 @@ $feeding: $uzh-blue-100;
 $counterfeeding: $uzh-blue-60;
 $bleeding: $uzh-red-100;
 $counterbleeding: $uzh-red-60;
-$manuscript: $uzh-turquoise-100;
+$manuscript: $uzh-yellow-80;
+
 // $loanword: $uzh-bottle-green-100;
 // $simplicity: $uzh-limetree-green-100;
 // $plausibility: $uzh-limetree-green-60;
@@ -63,7 +64,7 @@ $loanword: $uzh-limetree-green-100;
 $simplicity: $uzh-yellow-80;
 $plausibility: $uzh-yellow-80;
 $naturalness:  $uzh-yellow-80;
-$other: $uzh-yellow-80;
+$other: $uzh-turquoise-100;
 
 
 @import "../bootstrap/scss/bootstrap";
@@ -119,11 +120,18 @@ circle {
     stroke: $uzh-grey-80;
     fill: none;
     stroke-dasharray: none;
-    &.dashed {
+    &.dashed path {
         stroke-dasharray: 5, 2;
     }
-    &.highlighted,
-    &.locked {
+    &.comb-part-1 {
+        stroke-dasharray: 20, 20;
+    }
+    &.comb-part-2 {
+        stroke-dasharray: 20, 20;
+        stroke-dashoffset: 20;
+    }
+    &.highlighted path,
+    &.locked path {
         stroke-width: 4;
         &.feeding {
             stroke: $feeding;
@@ -158,8 +166,8 @@ circle {
     }
 }
 
-.arc.highlighted:hover,
-.arc.locked:hover {
+.arc.highlighted:hover path,
+.arc.locked:hover path {
     stroke-width: 10px;
 }
 

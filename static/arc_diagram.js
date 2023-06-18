@@ -62,8 +62,10 @@ Promise.all([
     if (relation.source == lastRelation.source 
         && relation.target == lastRelation.target) {
       // Combine the two relations into one
-      relation.type = lastRelation.type + relation.type
+      relation.type = [lastRelation.type, relation.type]
       relation.description = [lastRelation.description[0], relation.description]
+      relation.combined = true
+      console.log(relation)
       processedRelations.pop()
       processedRelations.push(relation)
     } else {
@@ -74,51 +76,76 @@ Promise.all([
     lastRelation = structuredClone(relation)
   }
 
+  console.log("Here's the processed relations")
+  console.log(processedRelations)
+
   let arcs = diagram
     .append("g")
     .attr("id", "arcs")
     .selectAll("myArcs")
     .data(processedRelations)
     .enter()
-    .append("path")
-      .attr("id", (d, i) => "arc-" + i )
-      .attr("d", function (relation) {
-        start = xScale(relation.source)
-        end = xScale(relation.target)
-        return ["M", start, GRAPH_BOTTOM_Y,
-          "A",
-          (start - end)/2, ",",
-          (start - end)/2, 0, 0, ",",
-          start < end ? 1 : 0, end, ",", GRAPH_BOTTOM_Y]
-          .join(' ')
-      })
-    .classed("arc", true)
-    .each(function(d, i) {
-      className = null
-      if (d.type === "F") {
-        className = "feeding"
-      } else if (d.type === "CF") {
-        className = "counterfeeding"
-      } else if (d.type === "B") {
-        className = "bleeding"
-      } else if (d.type === "CB") {
-        className = "counterbleeding"
-      } else if (d.type === "M") {
-        className = "manuscript"
-      } else if (d.type === "LW") {
-        className = "loanword"
-      } else if (d.type === "N") {
-        className = "naturalness"
-      } else if (d.type === "S") {
-        className = "simplicity"
-      } else if (d.type === "P") {
-        className = "plausibility"
-      } else {
-        className = "other"
-      }
+		.append("g")
+		.classed("arc", true)
 
-      d3.select(this).classed(className, true)
-    })
+	arcs
+		.append("path")
+		.classed("arc", true)
+			// .attr("id", (d, i) => "arc-" + i)
+			.attr("d", function (relation) {
+				start = xScale(relation.source)
+				end = xScale(relation.target)
+				return ["M", start, GRAPH_BOTTOM_Y,
+					"A",
+					(start - end)/2, ",",
+					(start - end)/2, 0, 0, ",",
+					start < end ? 1 : 0, end, ",", GRAPH_BOTTOM_Y]
+					.join(' ')
+			})
+		.each(function(d, i) {
+			// Get e.g. "feeding" from d.type "F"
+			className = getTypeName(d.type)
+
+			// Set up combined arcs for relations with multiple possible relations
+			if (d.combined) {
+				className = " comb-part-1"
+			}
+
+			d3.select(this).classed(className, true)
+		})
+
+	arcs
+		.filter(relation => relation.combined)
+		.each(function(d, i) {
+			className0 = getTypeName(d.type[0])
+			className1 = getTypeName(d.type[1])
+			d3.select(this.firstChild)
+				.classed(className0, true)
+					.clone(deep=true)
+					.classed(className0, false)
+					.classed("comb-part-1", false)
+					.classed(className1, true)
+					.classed("comb-part-2", true)
+		})
+
+  // // Second, append arcs that have to be combined
+  // arcs
+  //   .filter(relation => relation.combined)
+  //   .append("g")
+  //   .classed("arc combined", true)
+  //     .append("path")
+  //       // .attr("id", (d, i) => "arc-" + i)
+  //       .attr("d", function (relation) {
+  //         start = xScale(relation.source)
+  //         end = xScale(relation.target)
+  //         return ["M", start, GRAPH_BOTTOM_Y,
+  //           "A",
+  //           (start - end)/2, ",",
+  //           (start - end)/2, 0, 0, ",",
+  //           start < end ? 1 : 0, end, ",", GRAPH_BOTTOM_Y]
+  //           .join(' ')
+  //       })
+  //     .classed("arc", true)
 
   arcs
     .filter(arc => arc.confident === false)

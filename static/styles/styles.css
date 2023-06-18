@@ -12074,45 +12074,52 @@ circle.highlighted, circle.locked {
   fill: none;
   stroke-dasharray: none;
 }
-.arc.dashed {
+.arc.dashed path {
   stroke-dasharray: 5, 2;
 }
-.arc.highlighted, .arc.locked {
+.arc.comb-part-1 {
+  stroke-dasharray: 20, 20;
+}
+.arc.comb-part-2 {
+  stroke-dasharray: 20, 20;
+  stroke-dashoffset: 20;
+}
+.arc.highlighted path, .arc.locked path {
   stroke-width: 4;
 }
-.arc.highlighted.feeding, .arc.locked.feeding {
+.arc.highlighted path.feeding, .arc.locked path.feeding {
   stroke: #0028a5;
 }
-.arc.highlighted.counterfeeding, .arc.locked.counterfeeding {
+.arc.highlighted path.counterfeeding, .arc.locked path.counterfeeding {
   stroke: #667ec9;
 }
-.arc.highlighted.bleeding, .arc.locked.bleeding {
+.arc.highlighted path.bleeding, .arc.locked path.bleeding {
   stroke: #dc6027;
 }
-.arc.highlighted.counterbleeding, .arc.locked.counterbleeding {
+.arc.highlighted path.counterbleeding, .arc.locked path.counterbleeding {
   stroke: #eaa07d;
 }
-.arc.highlighted.manuscript, .arc.locked.manuscript {
-  stroke: #0b82a0;
+.arc.highlighted path.manuscript, .arc.locked path.manuscript {
+  stroke: #fbe651;
 }
-.arc.highlighted.loanword, .arc.locked.loanword {
+.arc.highlighted path.loanword, .arc.locked path.loanword {
   stroke: #91c34a;
 }
-.arc.highlighted.naturalness, .arc.locked.naturalness {
+.arc.highlighted path.naturalness, .arc.locked path.naturalness {
   stroke: #fbe651;
 }
-.arc.highlighted.simplicity, .arc.locked.simplicity {
+.arc.highlighted path.simplicity, .arc.locked path.simplicity {
   stroke: #fbe651;
 }
-.arc.highlighted.plausibility, .arc.locked.plausibility {
+.arc.highlighted path.plausibility, .arc.locked path.plausibility {
   stroke: #fbe651;
 }
-.arc.highlighted.other, .arc.locked.other {
-  stroke: #fbe651;
+.arc.highlighted path.other, .arc.locked path.other {
+  stroke: #0b82a0;
 }
 
-.arc.highlighted:hover,
-.arc.locked:hover {
+.arc.highlighted:hover path,
+.arc.locked:hover path {
   stroke-width: 10px;
 }
 
@@ -12254,8 +12261,8 @@ textPath {
 .ribbon.locked.manuscript,
 .swatch.highlighted.manuscript,
 .swatch.locked.manuscript {
-  fill: #0b82a0;
-  stroke: #0b82a0;
+  fill: #fbe651;
+  stroke: #fbe651;
 }
 .ring-el.highlighted.loanword, .ring-el.locked.loanword,
 .ribbon.highlighted.loanword,
@@ -12294,8 +12301,8 @@ textPath {
 .ribbon.locked.other,
 .swatch.highlighted.other,
 .swatch.locked.other {
-  fill: #fbe651;
-  stroke: #fbe651;
+  fill: #0b82a0;
+  stroke: #0b82a0;
 }
 
 .swatch {

@@ -90,30 +90,7 @@ Promise.all([
         .radius(RADIUS)
       )
       .each(function(d, i) {
-        className = null
-        if (d.type === "F") {
-          className = "feeding"
-        } else if (d.type === "CF") {
-          className = "counterfeeding"
-        } else if (d.type === "B") {
-          className = "bleeding"
-        } else if (d.type === "CB") {
-          className = "counterbleeding"
-        } else if (d.type === "M") {
-          className = "manuscript"
-        } else if (d.type === "LW") {
-          className = "loanword"
-        } else if (d.type === "N") {
-          className = "naturalness"
-        } else if (d.type === "S") {
-          className = "simplicity"
-        } else if (d.type === "P") {
-          className = "plausibility"
-        } else {
-          className = "other"
-        }
-
-        d3.select(this).classed(className, true)
+        d3.select(this).classed(getTypeName(d.type), true)
       })
 
   // Labels displayed outside ring
