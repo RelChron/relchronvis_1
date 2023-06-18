@@ -517,7 +517,6 @@ Promise.all([
             + "translate(0, 6)";
         })
 
-
       // Redraw arcs based on new scale
       arcs
         .attr("d", function (relation) {

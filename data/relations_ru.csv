@@ -1,195 +1,194 @@
 ﻿source,target,type,confident,description
-1,2,F,TRUE,"Feeding: a palatal consonant arising from the Third Palatalization triggered umlaut, e.g. PSl. *su̠l˙nika > *su̠l˙nitˊa > *su̠l˙nitˊe > Ru. so̠ncə"
-1,2,CF,TRUE,"Counterfeeding: a high front vowel resulting from umlaut did not trigger the Third Palatalization, e.g. PSl. *juga > *jiga > Ru. i̠gə"
-1,9,F,TRUE,Feeding: PSl. *wi̠xa > *wi̠śa > *wi̠sʼe > Ru fʼsʼo̠
-1,13,F,TRUE,Feeding: PSl. *awi̠kā˙ > *awi̠tˊā˙ > *awicʼā̠˙ > Ru. ʌfca̠; PSl *kuningu > *kunińdˊu > *kunińdzʼi > Ru. knʼa̠sʼ
-1,23,LW,TRUE,"Loanword: The loanwords Fi. arnitsa 'thick linen' (cf. ORu or(ь)nica), Fi. katitsa 'fishing weir' (cf. Gen. Sg. ursl. *kati̠kā), and Estn. narits 'European mink' (cf. PSl. *na̠rī˙kā˙) reflect a stage posterior to the Third Palatalization but prior to the change of PSl *a to *o"
-2,3,F,TRUE,Feeding and Bleeding: PSl *ja̠jxu > *je̠jxu > *jī̠xu > Ru i̠x
-2,3,B,TRUE,Feeding and Bleeding: PSl *ja̠jxu > *je̠jxu > *jī̠xu > Ru i̠x
-2,4,F,TRUE,Feeding: PSl. *brā̠˙tijā˙ > *brā̠˙tijē˙ > *brā̠˙tijā˙ > Ru. bra̠tʼjɪ
-2,9,CB,TRUE,Counterbleeding: PSl. *wi̠xa > *wi̠śa > *wi̠śe > *wi̠sʼe > Ru. fʼsʼo̠
-2,17,B,FALSE,Bleeding: PSl. *sjū̠˙jā˙ > *sjī̠˙jē˙ > Ru. ṡe̠jə (or did umlaut affect *ȳ here?)
-2,24,CF,FALSE,Counterfeeding: Otherwise the initial vocalism in Ru. я̠блоко could be explained only if Depalatalization (§ 4) is dated after j-prothesis which seems to be contradicted by PSl. *ē̠˙stēj > Ru. je̠sʼtʼ 
-3,6,F,TRUE,Feeding: PSl. *zejmā̠˙ > *zẹ̄mā̠˙ > *zīmā̠˙ > Ru. zʼima̠
-3,7,F,TRUE,Feeding: PSl. *kajnā̠˙ > *kēnā̠˙ > *tˊēnā̠˙ > Ru. cəna̠; PSl. *kwajtu > *kwētu > *tˊwētu > Ru. cvʼe̠t; PSl. *gwa̠jzdā˙ > *gwē̠zdā˙ > *dˊwē̠zdā˙ > Ru. zʼvʼɪzda̠
-3,8,B,TRUE,Bleeding: PSl. *čja̠w˙jete > *čjọ̠̄˙jete > Ru. ču̠jɪtʼɪ and not PSl. *čja̠w˙jete > *čje̠w˙jete > **čje̠w˙ljete > **čjọ̠̄˙ljete > Ru. **ču̠ljʼɪtʼɪ
-3,26,F,TRUE,"Feeding: PSl, *sē̠˙weru > *sě̠̄˙weru > Ru. sʼe̠vʼɪr; PSl. *stajnā̠˙ > *stēnā̠˙ > *stě̄nā̠˙ > Ru. sʼtʼɪna̠"
-3,27,LW,FALSE,Loanword: Lat. Ma̠ximus > rom.*Ma̠jsẹmu > Sl. *Ma̠jsьmъ > Čak. *Ma̠jsan which did not undergo Monophthongization (§ 3) but was affected by the change *i > *ь (§ 27)
-3,28,F,TRUE,Feeding: PSl. *u wu̠nāj > *wu wuně̠̄ > *wъ wъně̠ > Ru. vʌvnʼe̠
-3,31,F,TRUE,Feeding: PSl. *stajnā̠˙ > *stě̄na̠ > *stʼě̄na̠ > Ru. sʼtʼɪna̠; PSl. *ta̠jxu > *tě̄xъ̠ > *tʼě̄xъ̠ > Ru. tʼe̠x
-3,36,LW,FALSE,Loanword: the loanword Latv. ļùoti (cf. PSl *lja̠wtu) could reflect a stage posterior to Monophthongization (§ 3) but prior to Ivšić's Law (§ 36)
-3,38,F,TRUE,Feeding: PSl. *ba̠w˙rjā˙ > *ba̠w˙rjē˙ > *bọ̠̄˙rjē˙ > Ru. bu̠rʼɪ
-4,7,CF,TRUE,Counterfeeding: PSl. *kajnā̠˙ > *kēnā̠˙ > *tˊēnā̠˙ > Ru. cəna̠ and not PSl. *kajnā̠˙ > *kēnā̠˙ > *tˊēnā̠˙ > **tˊānā̠˙ > Ru. **cʌna̠
-4,9,CB,FALSE,"Counterbleeding: Had the change *ś > *sʼ (§ 9) occurred before the Depalatalization (§ 4), it would have bled depalatalization"
-4,15,B,TRUE,Bleeding: PSl. *me̠ljān > *meljā̠n > *melja̠n > Ru mʼɪlʼu̠; PSl *zejmān > *zīman > Ru. zʼi̠mu
-4,24,CF,FALSE,"Counterfeeding: PSl. *ē̠˙stēj > Ru. je̠sʼtʼ, and not *ē̠˙stēj > **jē̠˙stēj > **jā̠˙stēj > Ru. **ja̠sʼtʼ"
-4,28,F,TRUE,Feeding: PSl. *wa̠ljā˙ > *wa̠ljē˙ > *wa̠ljā˙ > *wolˊjā̠ > *wolˊja̠ > Ru. vo̠lʼɪ
-4,65,CB,TRUE,"Counterbleeding: PSl. *džē̠˙li > *džā̠˙li > Ru. ża̠lʼ, and not PSl. *džē̠˙li > **dže̠˙li > Ru. **że̠lʼ"
-5,7,LW,TRUE,Loanword: the Croatian toponym O̠.ciń (< Sl *Ulkī̠˙nju < Rom. *Ọlkẹ̠̄nʼu < Lat. Olci̠nium) was borrowed posterior to the operation of w-prothesis (§ 5) but prior to the Second Palatalization (§ 7)
-5,17,CB,FALSE,Counterbleeding: it is phonetically less plausible that w developed before *ȳ
-5,55,F,FALSE,Feeding: Because it is phonetically more plausible that the prothetic consonant was homorganic with the preceding vowel
-6,26,CF,FALSE,Counterfeeding: otherwise one would expect a merger of *ě̄ and *ẹ̄ resulting from Monophthongization (§ 3)
-7,9,F,TRUE,Feeding: The results of the Second regressive palatalization (§ 7) of PSl. *x to *ś where affected by the change *ś > sʼ
-7,13,F,TRUE,Feeding: PSl. *kajnā̠˙ > tˊēnā̠˙ > *cʼēnā̠˙ > Ru. cəna̠; PSl. *kwajtu > *tˊwētu > *cʼwētu > Ru. cvʼe̠t; PSl *gwa̠jzdā˙ > *dˊwē̠zdā˙ > *dzʼwēzdā̠˙ > Ru. zʼvʼɪzda̠
-7,35,LW,FALSE,"Loanword: Lat. *Quirī̠nus > Rom. *Kẹrī̠nu > Sl. *Kirī̠nu > Čak. Ka̠rin missed the Second Palatalization, but was affected by Ivšić's  first law (§ 35)"
-8,18,F,FALSE,Feeding: PSl. *bjawstē̠j > *bljọ̄stī̠ > *blˊjọ̄stī̠ > Ru. blʼustʼi̠
-8,29,CB,TRUE,Counterbleeding: PSl. *zemjā̠˙ > *zemlˊja̠ > *zemlˊa̠ > Ru. zʼɪmlʼa̠
-8,30,F,TRUE,Feeding: PSl. *zemju̠ > *zemlji̠ > *zemlˊь̠ > *zemьlˊь̠ > Ru. zʼɪmʼe̠lʼ; PSl. *kā̠˙pju > *kā̠˙plji > *kā̠˙plˊь > *kā̠˙pьlˊь Ru. ka̠pʼɪlʼ
-8,38,LW,TRUE,Loanword: Fi. luota (cf. PSl. *bja̠w˙da) reflects a stage posterior to l-epenthesis (§ 8) but prior to the change *ọ̄ > *ū 
-8,48,CF,TRUE,Counterfeeding: no lateral was inserted in cases such as PSl. *karbi̠jā˙ > *korobь1ja̠ > *korobja̠ > Ru. kərʌbja̠ 
-10,12,CF,FALSE,"Counterfeeding and Counterbleeding: Unstressed word-initial liquid diphthongs which have the feature ""acute"" develop in the same way as stressed word-initial liquid diphthongs, i.e.  cf. Ukr. ратa̠й. Had the acute already been lost in unstressed syllables at the time when liquid metathesis took place, we would expect metathesis without lengthening, cf. *a̠R˙C- > *rā̠˙C-, not *a̠R˙C- > *a̠RC- > *ra̠C-. "
-10,12,CB,FALSE,"Counterfeeding and Counterbleeding: Unstressed word-initial liquid diphthongs which have the feature ""acute"" develop in the same way as stressed word-initial liquid diphthongs, i.e.  cf. Ukr. ратa̠й. Had the acute already been lost in unstressed syllables at the time when liquid metathesis took place, we would expect metathesis without lengthening, cf. *a̠R˙C- > *rā̠˙C-, not *a̠R˙C- > *a̠RC- > *ra̠C-. "
-10,19,B,FALSE,Bleeding: PSl. *elbedā̠˙ > *lebedā̠˙ > Ru lʼɪbʼɪda̠ and not *elbedā̠˙ > *albedā̠˙ etc.
-10,23,LW,FALSE,"Loanword: Because the place name Ru. Olьnica, which was borrowed from Baltic (cf. OPr Alna, Alne), was affected by the change of a to o (§ 23) but not by liquid metathesis (§ 10)"
-10,24,CF,FALSE,Counterfeeding: PSl. *elbedā̠˙ > *lebedā̠˙ > Ru. lʼɪbʼɪda̠ and not *elbedā̠˙ > *jelbedā̠˙ etc.
-10,31,F,FALSE,Feeding: PSl. *elbedā̠˙ > *lebeda̠ > *lʼebʼeda̠ > Ru. lʼɪbʼɪda̠
-10,36,CF,FALSE,Counterfeeding: PSl. *a̠rwinuju > *rowʼь̠1nъ2jь1 > *ro̠wʼь1nъ2jь1 > Ru. ro̠vnəj not *a̠rwinuju > *arwʼь̠1nъ2jь1 > *a̠rwʼь1nъ2jь1 > *rā̠wʼь1nъ2jь1 etc.
-10,45,LW,FALSE,Loanword: because Oru. Olьgъ and Olьga where borrowed from ON Helgi and Helga after the Liquid metathesis (§ 10) had taken place but before word-initial *je- changed to *o occurred
-10,48,LW,TRUE,Loanword: because a jer was inserted into ORu Olьgъ and Olьga (cf. ON Helgi and Helga) to simplify the foreign word-initial liquid diphthong
-10,48,M,TRUE,"Manuscript: while liquid metathesis occured before the first written records were compiled, the loss of weak jers (§ 48) took place only in the 12th century"
-10,52,LW,TRUE,Loanword: because a jer was inserted into ORu Olьgъ and Olьga (cf. ON Helgi and Helga) to simplify the foreign word-initial liquid diphthong
+1,2,F,TRUE,"Feeding: Palatal consonants resulting from the Third Palatalization (§ 1) triggered umlaut (§ 2), e.g. PSl. *su̠l˙nika > *su̠l˙nitˊa > *su̠l˙nitˊe > Ru. so̠ncə. Hence the Third Palatalization must be older than umlaut."
+1,2,CF,TRUE,"Counterfeeding: High front vowels resulting from umlaut (§ 2) did not trigger the Third Palatalization (§ 1), e.g. PSl. *juga > *jiga > Ru. i̠gə and not *juga > *jiga > *jidˊa etc."
+1,9,F,TRUE,"Feeding: The Third Palatalization (§ 1) created inputs for the change of *ś to *sʼ (§ 9), cf. PSl. *wi̠xa > *wi̠śa > *wi̠sʼe > Ru fʼsʼo̠."
+1,13,F,TRUE,"Feeding: The Third Palatalization (§ 1) created inputs for the Assibilation of *t' and *d' to *c' and  *dz', respectively, cf. PSl. *awi̠kā˙ > *awi̠tˊā˙ > *awicʼā̠˙ > Ru. ʌfca̠; PSl *kuningu > *kunińdˊu > *kunińdzʼi > Ru. knʼa̠sʼ."
+1,23,LW,TRUE,"Loanword: The loanwords Fi. arnitsa 'thick linen' (cf. ORu or(ь)nica), Fi. katitsa 'fishing weir' (cf. gen. sg. ursl. *kati̠kā), and Estn. narits 'European mink' (cf. PSl. *na̠rī˙kā˙) reflect a stage posterior to the Third Palatalization (§ 1) but prior to the change of PSl *a to *o (§ 23)"
+2,3,F,TRUE,"Feeding: Umlaut (§ 2) of *aj to *ej created inputs for the monophthongization of *ej to *ī (§ 3), cf. PSl *ja̠jxu > *je̠jxu > *jī̠xu > Ru i̠x."
+2,3,B,TRUE,"Bleeding: Umlaut (§ 2) of *aj to *ej withdrew inputs from the monophthongization of *aj to *ē (§ 3), cf. PSl *ja̠jxu > *je̠jxu > *jī̠xu > Ru i̠x."
+2,4,F,TRUE,"Feeding: Umlaut (§ 2) created inputs for the depalatalization of *ē to *ā (§ 4), cf. PSl. *brā̠˙tijā˙ > *brā̠˙tijē˙ > *brā̠˙tijā˙ > Ru. bra̠tʼjɪ."
+2,9,CB,FALSE,"Counterbleeding: Assuming that Umlaut (§ 2) occurred only after palatal consonants, the change of *ś to *sʼ (§ 9) would have withdrawn imputs from Umlaut (§ 2), had the former occurred before the latter. Hence PSl. *wi̠xa > *wi̠śa > *wi̠śe > *wi̠sʼe > Ru. fʼsʼo̠ would show that Umlaut (§ 2) occurred before the change of *ś to *sʼ (§ 9)."
+2,17,B,FALSE,"Bleeding: Umlaut (§ 2) of *ū to *ī withdrew inputs from the change of *ū to *ȳ (§ 17), cf.  PSl. *sjū̠˙jā˙ > *sjī̠˙jē˙ > Ru. ṡe̠jə (or did umlaut affect *ȳ?)."
+2,24,CF,FALSE,"Counterfeeding: Had j-Prothesis (§ 24) occurred before Umlaut (§ 2), the former change would have created inputs for the latter. That it had not is shown by the lack of umlaut in Ru. я̠блоко  'apple'. Otherwise the initial vocalism in Ru. я̠блоко < PSl. *ā̠˙bluka could be explained only if Depalatalization (§ 4) is dated after j-prothesis which seems to be contradicted by PSl. *ē̠˙stēj > Ru. je̠sʼtʼ."
+3,6,F,TRUE,"Feeding: The monophthongization of *ej to *ẹ̄ (§ 3) created inputs for the change of *ẹ̄ to *ī (§ 6), cf. PSl. *zejmā̠˙ > *zẹ̄mā̠˙ > *zīmā̠˙ > Ru. zʼima̠."
+3,7,F,TRUE,"Feeding: The monophthongization (§ 3) created inputs for the Second Palatalization (§ 7), cf. PSl. *kajnā̠˙ > *kēnā̠˙ > *tˊēnā̠˙ > Ru. cəna̠; PSl. *kwajtu > *kwētu > *tˊwētu > Ru. cvʼe̠t; PSl. *gwa̠jzdā˙ > *gwē̠zdā˙ > *dˊwē̠zdā˙ > Ru. zʼvʼɪzda̠."
+3,8,B,TRUE,"Bleeding: The monophthongization of *aw, *āw, *ew, *ēw to *ọ̄ (§ 3) withdrew inputs from l-epenthesis (§ 8), cf. PSl. *čja̠w˙jete > *čjọ̠̄˙jete > Ru. ču̠jɪtʼɪ and not PSl. *čja̠w˙jete > *čje̠w˙jete > **čje̠w˙ljete > **čjọ̠̄˙ljete > Ru. **ču̠ljʼɪtʼɪ"
+3,26,F,TRUE,"Feeding: The monophthongization of *aj, *āj to *ē (§ 3) created inputs for *ē to *ě̄ (§ 26), cf. PSl, *sē̠˙weru > *sě̠̄˙weru > Ru. sʼe̠vʼɪr; PSl. *stajnā̠˙ > *stēnā̠˙ > *stě̄nā̠˙ > Ru. sʼtʼɪna̠."
+3,27,LW,FALSE,Loanword: The toponym Lat. Ma̠ximus > rom.*Ma̠jsẹmu > Sl. *Ma̠jsьmъ > Čak. Ma̠jsan was borrowed after the Monophthongization (§ 3) but before the change of *i to *ь (§ 27).
+3,28,F,TRUE,"Feeding: The monophthongization of *aj, *āj to *ě̄ (§ 28) created inputs for the shortening of word-final long vowels (§ 28), cf. PSl. *u wu̠nāj > *wu wuně̠̄ > *wъ wъně̠ > Ru. vʌvnʼe̠."
+3,31,F,TRUE,"Feeding: The monophthongation of *aj, *āj to *ē (§ 3) created inputs for the rize of secondary palatalization before front vowels (§ 31), cf. PSl. *stajnā̠˙ > *stě̄na̠ > *stʼě̄na̠ > Ru. sʼtʼɪna̠; PSl. *ta̠jxu > *tě̄xъ̠ > *tʼě̄xъ̠ > Ru. tʼe̠x."
+3,36,LW,FALSE,Loanword: The loanword Latv. ļùoti (cf. PSl *lja̠wtu) reflects a stage posterior to Monophthongization (§ 3) but prior to Ivšić's Law (§ 36).
+3,38,F,TRUE,"Feeding: The monophthongization of *aw, *āw, *ew, *ēw to *ọ̄ (§ 3) created inputs for the change of *ọ̄ to *ū (§ 8) PSl. *ba̠w˙rjā˙ > *ba̠w˙rjē˙ > *bọ̠̄˙rjē˙ > Ru. bu̠rʼɪ."
+4,7,CF,TRUE,"Counterfeeding: Had the Second Palatalization (§ 7) occurred before the Depalatalization (§ 4), the former change would have created inputs for the latter, cf. PSl. *kajnā̠˙ > *kēnā̠˙ > *tˊēnā̠˙ > Ru. cəna̠ and not PSl. *kajnā̠˙ > *kēnā̠˙ > *tˊēnā̠˙ > **tˊānā̠˙ > Ru. **cʌna̠."
+4,9,CB,FALSE,"Counterbleeding: Had the change *ś > *sʼ (§ 9) occurred before the Depalatalization (§ 4), the former change would have withdrawn inputs from the latter."
+4,15,B,TRUE,"Bleeding: The Depalatalization (§ 4) withdrew inputs from the shortening of word-final *ēn to *en, cf. PSl. *me̠ljān > *me̠ljēn > *meljā̠n > *melja̠n > Ru mʼɪlʼu̠; PSl *zejmān > *zejmēn > *zejmān > *zīman > Ru. zʼi̠mu."
+4,24,CF,FALSE,"Counterfeeding: Had the j-Prothesis occurred before the Depalatalization (§ 4), the former change would have created inputs for the latter, cf. PSl. *ē̠˙stēj > Ru. je̠sʼtʼ, and not *ē̠˙stēj > **jē̠˙stēj > **jā̠˙stēj > Ru. **ja̠sʼtʼ."
+4,28,F,TRUE,"Feeding: The Depalatalization (§ 4) created inputs for the shortening of word-final long vowels (§ 28), cf. PSl. *wa̠ljā˙ > *wa̠ljē˙ > *wa̠ljā˙ > *wolˊjā̠ > *wolˊja̠ > Ru. vo̠lʼɪ."
+4,65,CB,TRUE,"Counterbleeding: Had the shortening of long vowels (§ 65) occurred before the Depalatalization (§ 4), the former change would have withdrawn inputs from the latter, cf. PSl. *džē̠˙li > *džā̠˙li > Ru. ża̠lʼ, and not PSl. *džē̠˙li > **dže̠˙li > Ru. **że̠lʼ."
+5,7,LW,TRUE,Loanword: The Croatian toponym O̠.ciń (< Sl *Ulkī̠˙nju < Rom. *Ọlkẹ̠̄nʼu < Lat. Olci̠nium) was borrowed posterior to the operation of w-prothesis (§ 5) but prior to the Second Palatalization (§ 7).
+5,17,CB,FALSE,"Counterbleeding: It is phonetically less plausible that w developed before *ȳ. Had the change of *ū to *ȳ (§ 17) occurred before w-Prothesis (§ 5), the former change would have withdrawn inputs from the latter (§ 5)."
+5,55,F,FALSE,"Feeding: It is phonetically more plausible that the prothetic consonant resulting from w-Prothesis (§ 5) was homorganic with the preceding vowel and hence, occurred before the change of *w to *v (§ 55)."
+6,26,CF,FALSE,"Counterfeeding: Had the change of *ē to *ě̄ (§ 26) occurred before the change of *ẹ̄ to *ī (§ 6), the former change would have created intputs for the latter since it is likely that *ě̄ presented a closed e-vowel. "
+7,9,F,TRUE,Feeding: The Second Palatalization (§ 7) of PSl. *x to *ś created inputs for the change of *ś to sʼ (§ 9).
+7,13,F,TRUE,"Feeding: The Second Palatalization (§ 7) created inputs for the assibilation of *t' to *c' and of *d' to *dz', cf. PSl. *kajnā̠˙ > tˊēnā̠˙ > *cʼēnā̠˙ > Ru. cəna̠; PSl. *kwajtu > *tˊwētu > *cʼwētu > Ru. cvʼe̠t; PSl *gwa̠jzdā˙ > *dˊwē̠zdā˙ > *dzʼwēzdā̠˙ > Ru. zʼvʼɪzda̠"
+7,35,LW,FALSE,"Loanword: The toponym Lat. *Quirī̠nus > Rom. *Kẹrī̠nu > Sl. *Kirī̠nu > Čak. Ka̠rin was borrowed into Croation only after the operation of the Second Palatalization(§ 7), but before Ivšić's  first law (§ 35)."
+8,18,F,FALSE,"Feeding: l-Epenthesis (§ 8) created inputs for the jotation of *lj to *lˊ (§ 18), cf. PSl. *bjawstē̠j > *bljọ̄stī̠ > *blˊjọ̄stī̠ > Ru. blʼustʼi̠."
+8,29,CB,TRUE,"Counterbleeding: Had the loss of postconsonantal *j (§ 29) occurred before l-Epenthesis (§ 8), the former change would have withdrawn inputs from the latter, cf. PSl. *zemjā̠˙ > *zemlˊja̠ > *zemlˊa̠ > Ru. zʼɪmlʼa̠ and not *zemjā̠˙ > **zemā̠˙ etc."
+8,30,F,TRUE,"Feeding: l-Epenthesis (§ 8) created inputs for jer-Epenthesis (§ 30), cf. PSl. *zemju̠ > *zemlji̠ > *zemlˊь̠ > *zemьlˊь̠ > Ru. zʼɪmʼe̠lʼ; PSl. *kā̠˙pju > *kā̠˙plji > *kā̠˙plˊь > *kā̠˙pьlˊь Ru. ka̠pʼɪlʼ."
+8,38,LW,TRUE,"Loanword: The loanword Fi. luota (cf. PSl. *bja̠w˙da) reflects a stage posterior to l-Epenthesis (§ 8), but prior to the change of *ọ̄ to *ū (§ 38)."
+8,48,CF,TRUE,"Counterfeeding: Had the loss of weak jers (§ 48) occurred before the l-Epenthesis, the former change would have created inputs for the latter, cf. PSl. *karbi̠jā˙ > *korobь1ja̠ > *korobja̠ > Ru. kərʌbja̠."
+10,12,CF,FALSE,"Counterfeeding: Unstressed word-initial liquid diphthongs which had the feature ""acute"" developed in the same way as stressed word-initial liquid diphthongs, i.e.  cf. Ukr. ратa̠й. Had Meillet's metatony (§ 12) eliminated the acute in unstressed syllables before liquid metathesis (§ 10), the former change would have created input for the latter, cf. cf. *a̠R˙C- > *rā̠˙C- and not *a̠R˙C- > *a̠RC- > *ra̠C-. "
+10,12,CB,FALSE,"Counterbleeding: Unstressed word-initial liquid diphthongs which have the feature ""acute"" develop in the same way as stressed word-initial liquid diphthongs, i.e.  cf. Ukr. ратa̠й. Had Meillet's metatony (§ 12) eliminated the acute in unstressed syllables before liquid metathesis (§ 10), the former change would have withdrawn inputs from the latter, cf. *a̠R˙C- > *rā̠˙C-, not *a̠R˙C- > *a̠RC- > *ra̠C-. "
+10,19,B,FALSE,"Bleeding: The liquid metathesis (§ 10) withdrew inputs from the change of *CelC to *CalC and of *CilC to *CulC, cf. PSl. *elbedā̠˙ > *lebedā̠˙ > Ru lʼɪbʼɪda̠ and not *elbedā̠˙ > **albedā̠˙ etc."
+10,23,LW,FALSE,"Loanword: 'The toponym Ru. Olьnica was borrowed from Baltic (cf. OPr. Alna, Alne) posterior the liquid metathesis (§ 10), but prior to the change of *a to *o (§ 23)."
+10,24,CB,FALSE,"Counterfeeding: Had the j-Prothesis (§ 24) occurred before the liquid metathesis (§ 10), the former change would have withdrawn inputs for the latter, cf. PSl. *elbedā̠˙ > *lebedā̠˙ > Ru. lʼɪbʼɪda̠ and not *elbedā̠˙ > **jelbedā̠˙ etc."
+10,31,F,FALSE,"Feeding: The liquid metathesis (§ 10) created inputs for the rise of secondary palatalization (§ 31), cf. PSl. *elbedā̠˙ > *lebeda̠ > *lʼebʼeda̠ > Ru. lʼɪbʼɪda̠."
+10,36,CF,FALSE,"Counterfeeding: Had Ivšić's second law (§ 36) occurred before the liquid metathesis (§ 10), the former change would have created inputs for the latter, cf. PSl. *a̠rwinuju > *rowʼь̠1nъ2jь1 > *ro̠wʼь1nъ2jь1 > Ru. ro̠vnəj not *a̠rwinuju > *arwʼь̠1nъ2jь1 > *a̠rwʼь1nъ2jь1 > *rā̠wʼь1nъ2jь1 etc."
+10,45,LW,FALSE,"Loanword: The personal names ORu. Olьgъ and Olьga where borrowed from ONord. Helgi and Helga posterior to the Liquid metathesis (§ 10), but prior to the change of word-initial *je- to *o (§ 45)."
+10,48,LW,TRUE,Loanword: The fact that a jer was inserted after the word-initial sequences of non-high-vowel and liquid in the borrowed personal names ORu Olьgъ and Olьga (cf. ON Helgi and Helga) showed that the corresponding sequences where not present in the language anymore and that the liquid metathesis (§ 10) had already taken place. 
+10,48,M,TRUE,"Manuscript: While the liquid metathesis (§ 10) occurred before the first written records were compiled, the loss of weak jers (§ 48) took place only in the 12th century."
+10,52,LW,TRUE,"Loanword: The fact that the word-initial sequences of non-high vowel and liquid was simplified by insertion of a jer in the personal names ORu. Olьgъ and Olьga (cf. ON Helgi and Helga) shows that these sequences, at the time of the borrowing, were not a part of the language anymore. Hence, liquid metathesis (§ 10) must have occurred prior to the change of *ь to *e and of *ъ to *o (§ 52)."
 10,52,M,TRUE,"Manuscript: while liquid metathesis occured before the change *ъ > *o, *ь > *e (§ 52), took place only in the 12th century"
-11,12,B,FALSE,"Bleeding: had Meillet's metatony (§ 12) occurred before Dybo's law (§ 11) it would have erased post-accentuated acute in words inflecting according to AP b; when the accent was then shifted onto deacutized syllable by Dybo's law (§ 11) we would then expect it to feed Ivšić's first law (§ 35); since this law did not apply (cf. Cr. dial. Prčaj/Ozrinići dat/loc/ins.pl ženȁma), the acute must still have been present when Dybo's law (§ 11) and it must hence have operated prior to Meillet's metatony (§ 12)."
-11,16,LW,TRUE,"Loanword: Lat. lactū̠ca > Rom. *laχtū̠ka  > Sl. *laxtū̠kā˙ > *lotȳ̠kā˙ > Čak. lo̠tika missed Dybo's law (§ 11), but was affected by the change kt > t (§ 16)"
-11,17,LW,TRUE,"Loanword: Lat. lactū̠ca > Rom. *laχtū̠ka  > Sl. *laxtū̠kā˙ > *lotȳ̠kā˙ > Čak. lo̠tika missed Dybo's law (§ 11), but was affected by Delabialization ū > ȳ (§ 16)"
-11,22,F,FALSE,Feeding: if in PSl. *a̠gardu > *aga̠rdu > *agara̠du > Ru. ʌgʌro̠d the prefix was originally accented as supposed here to account for the constant accentuatio on the non-acute root syllable
-11,23,LW,FALSE,"Loanword: Rom. *taβe̠rna was not affected by Dybo's law (§ 11), but took part in the change a > o , cf. Čak. tovē̠·rna"
-11,26,LW,FALSE,"Loanword: Latv. grȩ̀ks was borrowed after Dybo's law (§ 11), but before the change ē > ě̄ (cf. Ru грe̠х)"
-11,27,LW,FALSE,"Loanword: Lat. Ma̠ximus > rom.*Ma̠jsẹmu > sl. *Ma̠jsьmъ > Čak. *Ma̠jsan missed Dybo's law (§ 11), but was affected by the change *i > *ь, *u > *ъ"
-11,29,F,TRUE,Feeding: because Kortlandt's compensatory lenghtening (§ 27) afected syllables which recived their accent only as a result of Dybo's law (§ 11)
-11,35,F,TRUE,Feeding: PSl. *pe̠jsjemu > *pʼīšē̠mъ1 > *pʼī̠šēmъ1 > Ru. pʼi̠ṡəm; Bleeding: PSl. *kamā̠ru > *kamāru̠ > Ru. kʌma̠r
-11,35,B,TRUE,Feeding: PSl. *pe̠jsjemu > *pʼīšē̠mъ1 > *pʼī̠šēmъ1 > Ru. pʼi̠ṡəm; Bleeding: PSl. *kamā̠ru > *kamāru̠ > Ru. kʌma̠r
-11,36,F,TRUE,Feeding: PSl. *sta̠lu > *stolъ̠1 > *sto̠lъ1 > Ru. sto̠l; Bleeding: PSl. *gawmi̠na > *gọ̄mina̠ > Ru. gumno̠
-11,36,B,TRUE,Feeding: PSl. *sta̠lu > *stolъ̠1 > *sto̠lъ1 > Ru. sto̠l; Bleeding: PSl. *gawmi̠na > *gọ̄mina̠ > Ru. gumno̠
-11,37,CF,FALSE,Counterfeeding: otherwise one would expect an accent shift from newly deacuted syllables by Dybo's law (§ 11)
-11,38,LW,TRUE,"Loanword: when Latv. ļùoti was borrowed from Slavic (cf. PSl. *lja̠wtu) Dybo's law (§ 11) had already operated while ọ̄, which was subsequently changed to uo in Latvian, was still present"
-11,44,F,TRUE,Feeding: PSl. *me̠lka > *moloko̠ > *molokô̠ > Ru. məlʌko̠
-11,53,CF,FALSE,Counterfeeding: otherwise one would expect an accent shift from newly accented syllables by Dybo's law (§ 11)
-12,53,CB,TRUE,Counterbleeding: otherwise the acute would not have been eliminated in cases such as *gal˙wān > kr. glā̠vu 
-13,14,CF,TRUE,Counterfeeding: the second segment in the sequence *kˊtˊ was not affected by the change *kt zu *kˊtˊ
-13,18,CF,TRUE,"Counterfeeding: *tˊ, *dˊ introduced by Jotation (§ 18) were not affected by assibilation (§ 13) any more"
-13,21,B,TRUE,"Bleeding: *tˊ, *dˊ  which had been introduced by the Third or Progressive palatalization (§ 1) or Second Palatalization (§ 7) did not undergo the change *tˊ > *č, *dˊ > *dž (§ 21) becasue they had already been assibilated prior to this change"
-13,23,LW,FALSE,"Loanword: Finn. arnitsa ‘thick rough linen (?)ʼ  (Cf. ORu. or(ь)nica), Finn. katitsa ‘fishing weirʼ (cf. Ru. котéць), Estn. narits ‘minkʼ (PSl. *na̠rī˙kā˙) have been borrowed only after the Third or Progressive palatalization (§ 1), but before the change *a > *o (§ 23)"
-13,24,LW,FALSE,"Loanword: the Styrian place name Aflenz (cf. Cr. Ja̠blanica) was borrowed into Old Bavarian after assibilation (§ 13), but prior to j-prothesis (§ 24)"
-13,46,F,TRUE,Feeding: *dzʼ introduced by assibilation (§ 13) was affected by the change *dzʼ > *zʼ (§ 46)
-13,49,F,TRUE,"Bleeding: *tˊ, *dˊ had already change to non-palatal consonants when the assimilation (§ 49) operated"
-14,16,N,FALSE,"Naturalness: the reverse order would require to restrict the change *kt > *t to the position before back vowels and consonants, which is not a natural condition"
-15,24,B,FALSE,"Bleeding: PSl. words with an initial diphthong *ān- by j-prothesis (§ 15), hence they had already been shortened when the latter occurred"
-16,20,F,FALSE,Feeding: PSl. *plektlu > *pletlu > *plelu > Ru. plʼo̠l and not *plektlu > *pleklu > *plekъlъ > Ru. **plʼo̠kəl
-16,21,F,FALSE,Feeding: PSl. *pekti > *pekˊtˊi > *petˊi > *peči > Ru. pʼe̠č
-16,48,CF,TRUE,Counterfeeding: PSl. *kuta > *kъ1to > *kto > Ru. kto̠ and not **to̠
-17,23,LW,TRUE,"Loanword: cf. Tagazino (CSl. *taga sȳnu) (Placitum of Puchenau, 827) with preserved PSl. *a but reflex of the change *ū > *ȳ (§ 17) "
-17,28,F,TRUE,"Feeding: PSl. *ū had already change to *ȳ when shortening occurred: *-ū > *-ȳ > Ru -y, not *-ū > **-u etc."
-17,38,CF,TRUE,Counterfeeding: *ū resulting from the change *ọ̄ > *ū (§ 38) was not affected by the change *-ū > *-ȳ (§ 17)
-18,21,F,TRUE,"Feeding: Jotation (§ 18) created inputs for the change *tˊ, *dˊ > č, dž (§ 28)"
-18,22,LW,TRUE,Loanword: Finn. värtsi 'sack' was borrowed from Slavic (cf. PSl. *we̠rtjā˙) before the rise of pleophony (§ 22) but after Jotation (§ 18)
-18,29,CB,TRUE,Counterbleeding: in the reversed order the loss of *j (§ 29) would have bleeded Jotation (§ 18) 
-18,48,CF,TRUE,"Counterfeeding: PSl. *brā̠˙tijā˙ > *brā̠tʼь1ja > *brā̠tʼja > Ru. bra̠tʼjɪ, and not **bra̠ča"
-19,22,F,FALSE,"Feeding: CelC > CalC > CalaC, not CelC > CeleC"
-19,22,LW,FALSE,"Loanword: Lith. šálmas 'helmet' was borrowed from Slavic (cf. PSl. *še̠l˙mu) after the change CelC > CalC (§ 19), but before the rise of pleophony (§ 22)"
-19,23,F,FALSE,Feeding: CelC > CalC > CalaC > ColoC
-19,23,LW,FALSE,"Loanword: Lith. šálmas 'helmet' was borrowed from Slavic (cf. PSl. *še̠l˙mu) after the change CelC > CalC (§ 19), but before the change *a > *o (§ 23)"
-19,31,B,TRUE,Bleeding: PSl. *me̠l˙tēj > *ma̠l˙tī > *molo̠tʼi > Ru. mʌlo̠tʼ in contrast to PSl. *me̠ljān > *melˊǫ̠ > *mʼelˊǫ̠ > Ru. mʼɪlʼu̠
-20,23,LW,TRUE,"Loanword: Lat. capi̠tulum > Rom. *kapẹ̠̄tl- > Sl. *kapī̠tl- > OCr. kopitl- was borrowed before the change *a > *o, but after the change *tl > *l (§ 20)"
-20,30,B,TRUE,Bleeding: word final sequences *tl were eliminated before they could be split by jer-epenthesis (§ 30) 
-20,48,CF,TRUE,Counterfeeding: PSl. *sedu̠la > *sʼedъ1lô̠ > *sʼedlô̠ > Ru. sʼɪdlo̠ and not **sʼɪlo̠
-20,70,LW,FALSE,"Loanword: the Old East Slavic personal name Glěbъ was borrowed from ONo. *Guđleifr before the change *dl > *l (§ 20), but still had the vowel ě "
-21,22,LW,FALSE,"Loanword: Finn. värtsi 'sack' was borrowed from Slavic (cf. PSl. *we̠rtjā˙) before the rise of pleophony (§ 22) but after the change tˊ > č, dˊ > dž (§ 21)"
-21,26,LW,FALSE,"Loanword: if the change *ē > *ě̄ (§ 26) was accompanied by a change *e > *ẹ, the loanword Finn. pätsi 'oven' (cf. PSl. *pekti) shows that it occured only after *tˊ > *č, *dˊ > *dž (§ 21)"
-21,29,LW,FALSE,"Loanword: when Finn. värtsi 'sack' was borrowed from Slavic (cf. PSl. *we̠rtjā˙), the change *tˊ > *č, *dˊ > *dž (§ 21) had already taken place while the rise of pleophony (§ 22) had not; the latter change, on the other hand, must have occurred before the change *a > *o (§ 23) which preceded the shortening of word final vowels (§ 28); since compensatory lengthening (§ 29) must have followed the shortening, the change *tˊ > *č, *dˊ > *dž (§ 21) can be dated before the former change "
-21,39,F,TRUE,"Feeding: the change *tˊ > *č, *dˊ > *dž (§ 21) created inputs for the change *dž > *ž (§ 39)"
-21,69,F,TRUE,"Feeding: the change *tˊ > *č, *dˊ > *dž (§ 21) created inputs for the change *šč > *šš, *ždž > *žž (§ 69)"
-22,23,LW,TRUE,Loanword: Finn. vaalasti ‘volost (administrative subdivision)ʼ was borrowed from Slavic (cf. PSl. *walsti) after the rise of pleophony (§ 22) but before the change a > o (§ 23)
-22,26,LW,FALSE,"Loanword: if the change *ē > *ě̄ (§ 29) was accompanied by a change *e > *ẹ, the loanword Wot. pärämmä shows that it occured only after the rise of pleophony (§ 22)"
-22,31,F,TRUE,Feeding: CerC > CereC > CʼerʼeC not CerC > CʼerC > CʼereC
-22,48,CF,TRUE,Counterfeeding: cf. PSl. *garikā̠˙ > *gorьkā̠˙ > *gorʼka̠ > Ru. gʌrʼka̠ 'bitter' where we would expect to find a pleophonic sequence if the loss of weak jers (§ 48) had preceded the rise of pleophony (§ 22)
-22,48,M,TRUE,Manuscript: the rise of pleophony (§ 22) is reflected in the earliest Slavic texts while the loss of weak jers (§ 48) had not yet taken place at this stage
-22,52,CF,TRUE,"Counterfeeding: cf. *pulku > *pъ2lkъ1 > *pъ2lk > Ru. po̠lk 'regiment' where we would expect to find a pleophonic sequence if the change *ь > *e, *ъ > *o (§ 52) had preceded the rise of pleophony (§ 22)"
-22,52,M,TRUE,"Manuscript: the rise of pleophony (§ 22) is reflected in the earliest Slavic texts while the the change  had not change *ь > *e, *ъ > *o (§ 52) yet taken place at this stage"
-22,59,F,TRUE,Feeding: cf. PSl. *dinimi > *dʼnʼe̠mʼ > *dʼnʼe̠m > Ru. dʼnʼo̠m
-23,24,B,FALSE,"Bleeding: unlike word initial *ā, word initial *a did not receive a prothetic *j because it had already change to *o (§ 23) when j-prothesis (§ 24) occurred"
-23,25,P,TRUE,Plausibility: the roundness of the back nasal vowel in a majority of the Slavic languages can be explained most plausibly if it is assumed that the change *a > *o (§ 23) preceded the rise of the nasal vowels (§ 25): *an > *on > *ǭ
-23,26,LW,FALSE,"Loanword: while the change *a > *o is not reflected in the toponym Lat. māce̠ria > Rom. *makē̠rʼa > Sl. *makē̠rjā˙ > *makě̠̄rjā˙ > Cr. (Ikav.) Makī̠rina (suffixed), the change *ē > *ě̄ (§ 26) is"
-23,27,LW,FALSE,"Loanword: while the change *a > *o is not reflected in the toponym Lat. Ma̠ximus > Rom.*Ma̠jsẹmu > Sl. *Ma̠jsьmъ > Cr. (Čak.) *Ma̠jsan, the change *i > *ь, *u > *ъ (§ 27) is"
-23,28,CF,TRUE,Counterfeeding: short *a resulting from the shortening of word final long vowels (§ 28) did not undergo the change *a > *o (§ 23)
-23,44,F,TRUE,Feeding: the change *a > *o created inputs für the change *o > *ô
-23,48,M,TRUE,Manuscript: the change *a > *o is already attested in the first written records while the loss of the weak jers (§ 48) is not
-23,65,CF,TRUE,Counterfeeding: short *a resulting from the shortening of long vowels (§ 65) did not undergo the change *a > *o (§ 23)
-24,33,F,TRUE,Feeding: j-prothesis (§ 24) created inputs for the change of word initial *jь- to *i- (§ 33)
-25,28,F,TRUE,Feeding: the rise of nasal vowels (§ 25) created long vowels that where subsequently affected by word-final shortening (§ 28)
-25,30,B,TRUE,Bleeding: PSl. *uzimlu > *wuzimlu > *wuzę̄lu > Ru. vzʼal 'take' and not PSl. *uzimlu > *wuzimlu > *wъzьmlъ > **wъzьmьlъ > Ru. **vo̠zʼmel
-25,33,B,TRUE,"Bleeding: cf. PSl. *inzū̠˙ku > *jinzȳ̠˙ku > *ję̄zȳ̠˙ku > *jazy̠kъ1 > Ru. jəzy̠k 'tongue, language' where *j is retained in word initial position"
-25,53,LW,FALSE,Loanword: Latv. svȩ̀ts (cf. PSl. *swentu) was borrowed after the rise of nasal vowels (§ 25) but before the rise of stress in unaccentuated word forms (§ 53)
-25,59,CF,TRUE,Counterfeeding: PSl. *ze̠n˙ti > *zʼę̠̄˙tʼь > *zʼā̠˙tʼь > Ru. zʼa̠tʼ and not PSl. *ze̠n˙ti > **zo̠n˙ti > **zǭ̠˙tʼь > **zū̠˙tʼь > Ru. **zu̠tʼ
-25,59,CB,TRUE,Counterbleeding: PSl. *ze̠n˙ti > *zʼę̠̄˙tʼь > *zʼā̠˙tʼь > Ru. zʼa̠tʼ and not PSl. *ze̠n˙ti > **zo̠n˙ti > **zǭ̠˙tʼь > **zū̠˙tʼь > Ru. **zu̠tʼ
-26,28,CB,TRUE,Counterbleeding: otherwise word-final *ē would not have developed to *ě̄ (§ 26) 
-26,59,B,TRUE,"Bleeding: in this way, it can be explained why *ē was not affected by vowel backing"
-26,65,CB,TRUE,Counterbleeding: otherwise *ē would not have developed to *ě̄ (§ 26) 
-27,28,CF,TRUE,Counterfeeding: short *i which had been introduced by word-final shortening (§ 28) was not affected by the change *i > *ь (§ 27) anymore
-27,33,CF,TRUE,Counterfeeding: word-initial sequences *jь- resulting from j-prothesis (§ 24) were affected by the change *jь- > *i- (§ 33)
-27,65,CF,TRUE,"Counterfeeding: otherwise the shortening of *ī and *ū would have created inputs for the change *i > *ь, *u > *ъ (§ 27) "
-28,29,F,TRUE,Feeding: acute long vowels lost their tonal properties in the course of shortening (§ 28) and became non-acute short vowels; these were then lengthened to non-acute long vowels as a result of comensatory lengthening (§ 29)
-28,48,CB,FALSE,"Counterbleeding: while shortening of long vowels in Croatian did not affect monosyllabic words, the vowel in Cr. snȁ, which became a monosyllabic word only as a result of the loss of weak jers (§ 48), is short"
-29,35,F,TRUE,Feeding: compensatory lengthening (§ 29) created word-final non-acute long vowels which were subsequently affected by Ivšić's first law (§ 35)
-29,48,CF,TRUE,"Counterfeeding: yod in Cj sequences resulting from the loss of weak jers (§ 48) were not affected by loss (§ 29) anymore, e.g. PSl. *brā̠˙tijā˙ > *brā̠tʼь1ja > *brā̠tʼja > Ru. bra̠tʼjɪ 'brothers; originally: brotherhood'"
-30,31,F,TRUE,"Feeding: front jers inserted as a result of jer-epenthesis (§ 30) triggered palatalization of a preceding consonant (§ 31), e.g. PSl. *wē̠˙tru > *wě̠̄˙tьrъ > *wʼě̠̄˙tʼьrъ > Ru. vʼe̠tʼɪr 'wind'"
-30,36,F,TRUE,"Feeding: Ivšić's second law (§ 36) shifted the accent onto jers introduced by jer-epenthesis (§ 30), e.g. PSl. *a̠stru > *ostrъ̠ > *ostь2rъ̠1 > *ostь̠2rъ1 > Ru. ʌsʼtʼo̠r 'sharp'"
-30,52,F,TRUE,"Feeding: jers introduced by jer-epenthesis (§ 30) were affected by the change *ь > *e, *ъ > *o (§ 52)"
-31,32,CB,TRUE,Counterbleeding: PSl. *ze̠n˙ti > *zʼę̠̄˙tʼь > *zʼā̠˙tʼь > Ru. zʼa̠tʼ and not PSl. *ze̠n˙ti > *zę̠̄˙tь > **zā̠˙tь > **zā̠˙tʼь > Ru. **za̠tʼ
-31,45,F,FALSE,Feeding: palatalization of the following consonant was a conditioning facter of the change *je- > *o- (§ 45)
-31,48,CB,TRUE,Counterbleeding: PSl. *dini > *dьnь > *dʼь2nʼь1 > *dʼь2nʼ > Ru. dʼe̠nʼ and not PSl. *dini > *dьnь > *dь2nь1 > **dь2n > **dʼь2n > Ru. **dʼe̠n
-31,59,CB,TRUE,Counterbleeding: PSl. *ze̠n˙ti > *zʼę̠̄˙tʼь > *zʼā̠˙tʼь > Ru. zʼa̠tʼ and not PSl. *ze̠n˙ti > **zo̠n˙ti > **zǭ̠˙tʼь > **zū̠˙tʼь > Ru. **zu̠tʼ
-31,66,F,TRUE,Feeding: palatalization of the following dental was a conditioning factor of the change *ě > *i (§ 66)
-31,67,F,TRUE,Feeding: vowel reduction (§ 67) proceeded differently after plain and palatalized consonants; hence palatalization (§ 31) must be older
-32,53,LW,FALSE,Loanword: if the loanword Latv. svȩ̀ts (cf. PSl. *swentu) reflects *a resulting from denasalization *ę > *a (§ 53)
-33,34,B,FALSE,Bleeding: PSl. *su igrā̠˙tēj > *sъ jьgrā̠˙tʼi > *sъ igrā̠˙tʼi > *sъ1 igrā̠˙tʼi > Ru. sygra̠tʼ and not PSl. *su igrā̠˙tēj > *sъ jьgrā̠˙tʼi > **sъ2 jь1grā̠˙tʼi > **sъ2 igrā̠˙tʼi > **so igrā̠˙tʼi > Ru. **sʌjgra̠tʼ or **sʌigra̠tʼ
-33,62,F,TRUE,"Feeding: the change *jь- > *i- (§ 33) produced inputs for the change *i > *y after hard consonants (§ 62), cf. PSl. *su igrā̠˙tēj > *sъ jьgrā̠˙tʼi > *sъ igrā̠˙tʼi > *sъ1 igrā̠˙tʼi > Ru. sygra̠tʼ"
-34,36,B,TRUE,"Bleeding: the accent was not retracted from strong jers, cf. PSl. *sla̠wdžibinuju > *slọ̄dži̠binuji > *slūžь̠2bʼь1nъ2jь1 > Ru. sluże̠bʼnəj with retention of the accent as opposed to PSl. *sla̠wdžibā˙ > *slọ̄džь̠1ba > *slọ̠̄džь1ba > Ru. slu̠żbə with accent retraction"
-34,40,CF,TRUE,"Counterfeeding: jers introduced by the change *īj > *ь2j, *ȳj > *ъ2j (§ 40), regardless of their position, were always strong; hence, they were not affected by the rise of a difference between strong and weak jers (§ 34) anymore"
-35,36,CF,TRUE,Counterfeeding: the accent was not retracted further to the left in PSl. *kamā̠ru > *komārъ̠1 > *komā̠rъ1 > Ru. kʌma̠r or PSl. *Pera̠wnu > *Pʼerọ̄nъ̠1 > *Pʼerọ̠̄nъ1 > Ru. Pʼɪru̠n
-35,44,F,TRUE,Feeding: *o which had received its accent as a result of Ivšić's first law (§ 35) changed to *ô
-36,44,F,TRUE,Feeding: *o which had received its accent as a result of Ivšić's second law (§ 36) changed to *ô
-38,39,LW,TRUE,"Loanword: iupanus written in Romance orthography (<i> = [dž]) reflects a stage when PSl. *džawpā̠nu had already undergone monophthongization (§ 3) and the change *ọ̄, *ọ > *ū, *u (§ 38), but when *dž had not yet change to *ž (§ 39)"
-38,48,M,TRUE,Manuscript: the change *ọ̄ > *ū is already attested in the first written records while the loss of the weak jers (§ 48) is not
-39,57,F,TRUE,"Feeding: the change *dž > *ž (§ 39) created inputs for the change *š > *ṡ, *ž > *ż (§ 57)"
-40,52,F,TRUE,"Feeding: the change *īj > *ь2j, *ȳj > *ъ2j (§ 40) created inputs for the change *ь > *e, *ъ > *o (§ 52)"
-41,43,F,TRUE,"Feeding: PSl. *zā ja̠w˙trā > *zā ū̠tra > *zā̠ wtra > Ru. za̠vtrə shows that *j must have been lost before *ī und *ū (§ 41) when stress was shifted from *i, *ī and *u, *ū (§ 43)"
-42,43,F,TRUE,"Feeding: the change *jī > *i, *wū > *u (§ 42) created inputs for the accent shif from *i, *ī and *u, *ū in the position immediately after a hiatus (§ 42)"
-42,62,F,FALSE,"Feeding: the change *jī, *ji > *i; *wū, *wu > *u (§ 42) created inputs for the change *i, *ī > *y, *ȳ after hard consonants, cf. PSl. *uz e̠jskā˙tēj > *wъz jīskā̠˙tī > *wъ1z jīskā̠tʼi > *wъ1z īskā̠tʼi > *vzīskā̠tʼ > *vzȳskā̠tʼ > russ. vzyska̠tʼ"
-43,44,F,TRUE,"Feeding: the accent shift from *i, *ī and *u, *ū in the position immediately following a hiatus (§ 43) created inputs for the change *o > *ô (§ 44)"
-44,52,CF,TRUE,"Counterfeeding: *o resulting from the change *ь > *e, *ъ > *o (§ 52) was not affected by the change *o > ô (§ 44) anymore"
-44,53,CF,TRUE,Counterfeeding: newly accented *o was not affected by the change *o > *ô (§ 44) anymore
-44,54,F,TRUE,Feeding: the change *o > *ô (§ 44) created inputs for w-prothesis before *ô (§ 54)
-44,59,CF,TRUE,Counterfeeding: *o resulting from the change *e > *o before hard consonants (§ 59) was not affected by the change *o > *ô (§ 44) anymore
-45,57,CB,TRUE,"Counterbleeding: at the time when the the change *je- > *o- (§ 45) occurred, *ž had not yet become a hard consonant (§ 57), cf. OESl. ožь 'hedghog'"
-47,59,B,TRUE,Bleeding: cf. *wi̠rxu > *wʼь̠2rxъ1 > *wʼь̠2rʼxъ1 > Ru. vʼe̠rx where *r was already soft when the change *e > o* before hard consonants (§ 59) occurred
-48,49,F,TRUE,Feeding: consonant clusters resulting from the loss of weak jers (§ 48) where affected by the regressive assimilation before palatal consonants (§ 49)
-48,50,F,TRUE,Feeding: consonant clusters resulting from the loss of weak jers (§ 48) where the target to simplification processes (§ 50)
-48,53,F,FALSE,"Feeding: jers which had been secondarily introduced to dissolve consonant clusters in word initial syllables, received an accent as a result of the accentuation of accentless word forms (§ 53), cf. *duskān >*dъ1sku > *dsku reintroduction of *ъ in do dissolve the consonant cluster dъ1sku > Ru. do̠sku and not Ru. *duskān > **dъ̠1sku > **dsku̠ > reintroduction of *ъ in do dissolve the consonant cluster > **dъ1sku̠ > russ. **dəsku̠"
-48,56,F,TRUE,Feeding: consonant clusters resulting from the loss of weak jers (§ 48) were affected by voicing assimilation (§ 56)
-48,58,F,TRUE,Feeding: *mʼ occuring in word-final position as a result of the loss of weak jers (§ 48) changed to *m (§ 58)
-48,61,F,TRUE,Feeding: consonant clusters resulting from the loss of weak jers (§ 48) were affected by palatalization assimilation (§ 61)
-48,62,F,TRUE,"Feeding: cf. PSl. *uz e̠jskā˙tēj > *wъz jīskā̠˙tī > *wъ1z jīskā̠tʼi > *wъ1z īskā̠tʼi > *vzīskā̠tʼ > *vzȳskā̠tʼ > Ru. vzyska̠tʼ where the loss of weak jers (§ 48) created the condition for the change *i, *ī > *y, *ȳ after hard consonants (§ 62)"
-48,67,F,FALSE,Feeding: weak jers did not play a role in the conditioning factors of vowel reduction (§ 67) which suggests that they had already been lost (§ 48) when the former change occurred
-48,68,F,TRUE,Feeding: unpalatalized *l occurred in word-final position only as a result of the loss of weak jers (§ 48) 
-49,51,CB,TRUE,"Counterbleeding: *lˊ, *ń resulting from assimilation before palatal consonants were affected by the change *lˊ, *ń > *lʼ, *nʼ (§ 51)"
-49,57,P,TRUE,"Plausibility: it is phonetically more plausible to assume that *š, *ž resulting from assimilation before palatal (§ 49) consonants were originally soft, cf. *su̠ljān > *sъ1lˊu̠ > *slˊu̠ > *šlˊu̠ > *šlʼu̠ > Ru. ṡlʼu̠"
-49,69,F,TRUE,"Feeding: *šč, *ždž introduced by assimilation before paltal consonants were affected by the change *šč > *šš, *ždž > *žž, cf. PSl. *sučenstija > *sъ1čāstʼь1je > *sčāstʼje > *šča̠stʼji > Ru. šša̠stʼjɪ"
-50,57,F,FALSE,Feeding: in PSl. *pa̠rzdinjuju > *porô̠ždžńь2j > *porô̠žńь2j > *porô̠žnʼej > *porô̠żnʼej > Ru. pʌro̠żnʼɪj the sequence *ždžń had to simplified to žń before *ž could change to *ż (§ 57)
-50,69,CF,TRUE,"Counterfeeding: geminates introduced by the change *šč > *šš, *ždž > *žž were not affected by the simplification of consonant sequences (§ 50)"
-52,59,F,TRUE,Feeding: the change ь > e (§ 52) created inputs for the change *e > *o before hard consonants
-53,67,F,FALSE,Feeding: syllables accented as a result of the accentuation of unaccented word forms (§ 53) were not affected by vowel reduction (§ 67)
-54,55,F,FALSE,Feeding: *w introduced as a result of w-prothesis (§ 54) was affected by the change *w > *v (§ 55)
-54,71,CB,TRUE,"Counterbleeding: had the change *ô > *o (§ 71) already taken place when w-prothesis (§ 54) operated before *ô, the latter would not have been realized"
-57,59,F,TRUE,"Feeding: the change *š > *ṡ, *ž > *ż (§ 57) created inputs for the change *e > *o before hard consonants (§ 59), cf. PSl. *malde̠džju > *molodʼe̠ṡ > *molodʼo̠ṡ > Ru. məlʌdʼo̠ṡ"
-57,62,F,TRUE,"Feeding: the change *š > *ṡ, *ž > *ż (§ 57) created inputs for the change *i, *ī > *y, *ȳ after hard consonants (§ 62)"
-58,59,F,TRUE,"Feeding: the change *mʼ > *m (§ 58) created inputs for the change *e > *o before hard consonants (§ 59), cf. PSl. *dinimi > *dʼnʼe̠mʼ > *dʼnʼe̠m > Ru. dʼnʼo̠m"
-59,60,CF,TRUE,Counterfeeding: the fact that the change *e > *o before hard consonants (§ 59) was not realized in examples such as PSl. *awi̠ku > *ovʼe̠cʼ > *ovʼe̠c > Ru. ʌvʼe̠c suggests that *cʼ was still soft when this change occurred
-59,61,CF,TRUE,Counterfeeding: PSl. *že̠niskuju > *že̠nʼskoj > *že̠nskoj > Ru. že̠nskəj and not PSl. *že̠niskuju > *že̠nʼskoj > *že̠nskoj > **žo̠nskoj > Ru.** žo̠nskəj
-59,70,CF,TRUE,Counterfeeding: *e resulting from the change *ě > *e (§ 70) was not affected by the change *e > *o before hard consonants (§ 59)
-60,61,F,TRUE,"Feeding: the change *cʼ > *c (§ 60) created inputs for the regressive assimilation of consonants (§ 61), cf. PSl. *awi̠kā˙ > *ofʼcʼa̠ > *ofʼca̠ > *ofca̠ > Ru. ʌfca̠"
-60,62,F,TRUE,"Feeding: the change *cʼ > *c (§ 60) created inputs for the change *i, *ī > *y, *ȳ (§ 62)"
-62,63,P,TRUE,Plausibility: otherwise the change *i > *y after hard consonants (§ 62) would have to be limited to all hard consonants but velars
-63,64,F,FALSE,"Feeding: the change *y, *ȳ > *i, *ī after velar consonants (§ 63) created inputs for the palatalization of *k, *g, *x before front vowels"
-63,65,LW,FALSE,"Loanword: the loanwords Finn. kiisseli and Latv. ķĩselis reflect a stage before the shortening of long vowels (§ 65), but after the change *y > *i after velar consonants (§ 63)"
-66,70,B,TRUE,
+11,12,B,FALSE,"Bleeding: By shifting the accent on a following syllable bearing accuteness, Dybo's law (§ 11) withdrew inputs from Meillet's metatony (§ 12)."
+11,16,LW,TRUE,"Loanword: The loanword Lat. lactū̠ca > Rom. *laχtū̠ka  > Sl. *laxtū̠kā˙ > *lotȳ̠kā˙ > Čak. lo̠tika was borrowed posterior to Dybo's law (§ 11), but prior to the change of *kt to *t (§ 16)."
+11,17,LW,TRUE,"Loanword: The loanword Lat. lactū̠ca > Rom. *laχtū̠ka  > Sl. *laxtū̠kā˙ > *lotȳ̠kā˙ > Čak. lo̠tika was borrowed posterior to Dybo's law (§ 11), but prior to the delabialization of *ū to *ȳ (§ 16)."
+11,22,F,FALSE,"Feeding: Dybo's law (§ 11) created inputs for the pleophony of accented tautosyllabic *a̠r to *ara̠ (§ 22) in word-medial position, cf. PSl. *a̠gardu > *aga̠rdu > *agara̠du > Ru. ʌgʌro̠d."
+11,23,LW,FALSE,"Loanword: The loanword Rom. *taβe̠rna > Čak. tovē̠·rna was borrowed posterior to Dybo's law (§ 11), but prior to the change of *a to *o (§ 23)."
+11,26,LW,FALSE,"Loanword: The loanword Latv. grȩ̀ks (cf. Ru грe̠х) was borrowed posterior to Dybo's law (§ 11), but prior to the change of *ē to *ě̄ (§ 26). "
+11,27,LW,FALSE,"Loanword: The loanword Lat. Ma̠ximus > rom.*Ma̠jsẹmu > sl. *Ma̠jsьmъ > Čak. *Ma̠jsan was borrowed posterior to Dybo's law (§ 11), but prior to the change of *i to *ь and of *u to *ъ (§ 27)."
+11,29,F,TRUE,Feeding: Dybo's law (§ 11) created inputs for Kortlandt's compensatory lenghtening (§ 27).
+11,35,F,TRUE,"Feeding: Dybo's law (§ 11) created inputs for Ivšić's first law (§ 36), cf. PSl. *pe̠jsjemu > *pʼīšē̠mъ1 > *pʼī̠šēmъ1 > Ru. pʼi̠ṡəm."
+11,35,B,TRUE,"Feeding: Dybo's law (§ 35) withdrew inputs from Ivšić's first law (§ 35), cf. PSl. *kamā̠ru > *kamāru̠ > Ru. kʌma̠r."
+11,36,F,TRUE,"Feeding: Dybo's law (§ 11) created inputs for Ivšić's second law (§ 36), cf. PSl. *sta̠lu > *stolъ̠1 > *sto̠lъ1 > Ru. sto̠l."
+11,36,B,TRUE,"Bleeding: Dybo's law (§ 11) withdrew inputs from Ivšić's second law (§ 36), cf. PSl. *gawmi̠na > *gọ̄mina̠ > Ru. gumno̠."
+11,37,CF,FALSE,"Counterfeeding: Had the loss of the acute tone (§ 37) occurred prior to Dybo's law (§ 11), the former change would have created inputs for the latter."
+11,38,LW,TRUE,"Loanword: The loanword Latv. ļùoti was borrowed from Slavic (cf. PSl. *lja̠wtu) when Dybo's law (§ 11) had already operated while ọ̄, which was subsequently changed to uo in Latvian, had not yet changed to *ọ̄ to *ū (§ 38)."
+11,44,F,TRUE,"Feeding: Dybos' law (§ 11) created inputs for the change of stressed *o to *ô (§ 44), cf. PSl. *me̠lka > *moloko̠ > *molokô̠ > Ru. məlʌko̠."
+11,53,CF,FALSE,"Counterfeeding: Had the rise of stress in unaccentuated accentual units (§ 53) occurred prior to Dybo's law (§ 11), the former change would have created inputs for the latter."
+12,53,CB,TRUE,"Counterbleeding: Had the rise of stress in unaccented accentual units (§ 53) occurred prior to Meillet's law (§ 12), the former change would have withdrawn inputs from the latter, cf. *gal˙wān > kr. glā̠vu where the acute is lost in the unaccented syllable."
+13,14,CF,TRUE,"Counterfeeding: Had the change of *kt to *kˊtˊ (§ 14) occurred before the assibiliation of *t' to *c' (§ 13), the former change would have created inputs for the latter."
+13,18,CF,TRUE,"Counterfeeding: Had the jotation of *tj to *tˊ and of *tj to *dˊ (§ 18) occurred before the assibilation of *t' to *c'  (§ 13), the former change would have created inputs for the latter."
+13,21,B,TRUE,"Bleeding: The assibiliation of *tˊ and *dˊ (§ 13) resulting from the Third and Second palatalizations (§§ 1, 7) withdrew inputs from the change of *tˊ to *č and of *dˊ to *dž (§ 21)."
+13,23,LW,FALSE,"Loanword: The loanwoards Finn. arnitsa ‘thick rough linen (?)ʼ  (cf. ORu. or(ь)nica), Finn. katitsa ‘fishing weirʼ (cf. Ru. kotéc'), Estn. narits ‘minkʼ (cf. PSl. *na̠rī˙kā˙) have been borrowed posterior to the Third or palatalization (§ 1), but prior to the change of *a to *o (§ 23)."
+13,24,LW,FALSE,"Loanword: The Styrian place name Aflenz (cf. Cr. Ja̠blanica) was borrowed into Old Bavarian posterior to Assibilation (§ 13), but prior to j-prothesis (§ 24)."
+13,46,F,TRUE,Feeding: The assibilation of *d' to *dzʼ (§ 13) created inputs for the change of *dzʼ to *zʼ (§ 46).
+13,49,F,TRUE,Bleeding: Assibilation (§ 13) withdrew inputs from the regressive assimilation before palatal consonants (§ 49).
+14,16,N,FALSE,Naturalness: The reverse order would require to restrict the change of *kt to *t (§ 16) to the position before back vowels and consonants which is unnatural.
+15,24,B,FALSE,Bleeding: The shortening of the word-initial diphthong *ān- (§ 15) withdrew inputs from j-prothesis before *ā- (§ 24).
+16,20,F,FALSE,"Feeding: The change of *kt to *t and of *k't' to *t' (§ 16) created inputs for the change of *tl, *dl to *l (§ 29), cf. PSl. *plektlu > *pletlu > *plelu > Ru. plʼo̠l and not *plektlu > *pleklu > *plekъlъ > Ru. **plʼo̠kəl."
+16,21,F,FALSE,"Feeding: The change of *kt to *t and of *k't' to *t' (§ 16) created inputs for the change of *t' to *č and of *d' to *dž (§ 21), PSl. *pekti > *pekˊtˊi > *petˊi > *peči > Ru. pʼe̠č."
+16,48,CF,TRUE,"Counterfeeding: Had the loss of weak jers (§ 48) occurred prior to the change of *kt to *t and of *k't' to *t' (§ 16), the former change would have created inputs for the latter, cf. PSl. *kuta > *kъ1to > *kto > Ru. kto̠ and not **to̠."
+17,23,LW,TRUE,"Loanword: The Slavic personal name Tagazino (CSl. *taga sȳnu) (Placitum of Puchenau, 827) was borrowed posterior to the change of *ū to *ȳ (§ 17) but  prior to the change of *a to *o (§ 23)."
+17,28,F,TRUE,"Feeding: The change of of *ū to *ȳ (§ 17) created inputs for the shortening of word-final long vowels (28), cf. *-ū > *-ȳ > Ru -y, not *-ū > **-u etc."
+17,38,CF,TRUE,"Counterfeeding: Had the change of *ọ̄ to *ū (§ 38) occurred before the change of *-ū to *-ȳ (§ 17), the former change would have created inputs for the latter."
+18,21,F,TRUE,Feeding: Jotation (§ 18) of the sequences *tj and *dj created inputs for the change of *tˊ to *č and of *dˊ to *dž (§ 28).
+18,22,LW,TRUE,"Loanword: Finn. värtsi 'sack' was borrowed from Slavic (cf. PSl. *we̠rtjā˙) after Jotation (§ 18), but before the rise of pleophony (§ 22)."
+18,29,CB,TRUE,"Counterbleeding: Had the loss of postconsonantal *j (§ 29) occurred before Jotation (§ 18), the former change would have withdrawn inputs from the latter."
+18,48,CF,TRUE,"Counterfeeding: Had the loss of weak jers (§ 48) occurred before Jotation (§ 18), the former change would have withdrawn changes from the latter, cf. PSl. *brā̠˙tijā˙ > *brā̠tʼь1ja > *brā̠tʼja > Ru. bra̠tʼjɪ and not **bra̠ča."
+19,22,F,FALSE,"Feeding: The change of *CelC to *CalC (§ 19) created inputs for the rise of pleophony (§ 22), cf. *CelC > *CalC > *CalaC and not *CelC > *CeleC."
+19,22,LW,FALSE,"Loanword: Lith. šálmas 'helmet' was borrowed from Slavic (cf. PSl. *še̠l˙mu) posterior to the change *CelC > *CalC (§ 19), but prior to the rise of pleophony (§ 22)."
+19,23,F,FALSE,"Feeding: The change of *CelC to *CalC (§ 19) created inputs for the change of *a to *o, cf. *CelC > *CalC > *CalaC > *ColoC."
+19,23,LW,FALSE,"Loanword: Lith. šálmas 'helmet' was borrowed from Slavic (cf. PSl. *še̠l˙mu) posterior to the change *CelC to *CalC (§ 19), but before the change of *a to *o (§ 23)."
+19,31,B,TRUE,"Bleeding: The change of *CelC to *CalC (§ 19) withdrew inputs from the rise of secondary palatalization before front vowels (§ 31), cf. PSl. *me̠l˙tēj > *ma̠l˙tī > *molo̠tʼi > Ru. mʌlo̠tʼ, but PSl. *me̠ljān > *melˊǫ̠ > *mʼelˊǫ̠ > Ru. mʼɪlʼu̠."
+20,23,LW,TRUE,"Loanword: Lat. capi̠tulum > Rom. *kapẹ̠̄tl- > Sl. *kapī̠tl- > OCr. kopitl- was borrowed posterior to the change of *tl to *l (§ 20), but prior to the change *a > *o (§ 23)."
+20,30,B,TRUE,"Bleeding: The change of *tl, *dl to *l (§ 20) withdrew inputs from jer-epenthesis (§ 30). "
+20,48,CF,TRUE,"Counterfeeding: Had the loss of weak jers (§ 48) occurred before the change of *tl, *dl to *l (§ 20), the former change would have created inputs for the latter, cf. PSl. *sedu̠la > *sʼedъ1lô̠ > *sʼedlô̠ > Ru. sʼɪdlo̠ and not **sʼɪlo̠."
+21,22,LW,FALSE,"Loanword: The loanword Finn. värtsi 'sack' was borrowed from Slavic (cf. PSl. *we̠rtjā˙) posterior to the change of *tˊ to *č and *dˊ to *dž (§ 21), but prior to the rise of pleophony (§ 22)."
+21,26,LW,FALSE,"Loanword: If the change *ē > *ě̄ (§ 26) was accompanied by a change *e > *ẹ, the loanword Finn. pätsi 'oven' (cf. PSl. *pekti) shows that it occured posterior to the change of *tˊ to *č (§ 21)."
+21,29,LW,FALSE,"Loanword: The loanword Finn. värtsi 'sack' was borrowed from Slavic (cf. PSl. *we̠rtjā˙) posterior to the change of *tˊ to *č (§ 21), but prior to the rise of pleophony (§ 22). The latter change, on the other hand, must have occurred before the change *a > *o (§ 23) which preceded the shortening of word final vowels (§ 28). Since compensatory lengthening (§ 29) must have followed the shortening, the change of *tˊto *č (§ 21) can be dated before the former change."
+21,39,F,TRUE,Feeding: The change of *tˊ to *č and of *dˊ to *dž (§ 21) created inputs for the change of *dž to *ž (§ 39).
+21,69,F,TRUE,Feeding: The change of *tˊ to *č and of *dˊ to *dž (§ 21) created inputs for the change of *šč to *šš and of *ždž to *žž (§ 69).
+22,23,LW,TRUE,"Loanword: The loanword Finn. vaalasti ‘volost (administrative subdivision)ʼ was borrowed from Slavic (cf. PSl. *walsti) posterior to the rise of pleophony (§ 22), but prior the change of a to o (§ 23)."
+22,26,LW,FALSE,"Loanword: If the change of *ē to *ě̄ (§ 29) was accompanied by a change of *e to *ẹ, the loanword Wot. pärämmä 'klafter' shows that it occured posterior to the rise of pleophony (§ 22)."
+22,31,F,TRUE,"Feeding: The rise of pleophony (§ 22) created inputs for the rise of secondary palatalization before front vowels (§ 31), cf. CerC > CereC > CʼerʼeC not CerC > CʼerC > CʼereC."
+22,48,CF,TRUE,"Counterfeeding: Had the loss of weak jers (§ 48) occurred before the rise of pleophony (§ 22), the former change would have created inputs for the latter, cf. PSl. *garikā̠˙ > *gorьkā̠˙ > *gorʼka̠ > Ru. gʌrʼka̠ 'bitter'."
+22,48,M,TRUE,Manuscript: The rise of pleophony (§ 22) is reflected in the earliest Slavic texts while the loss of weak jers (§ 48) had not yet taken place at this stage.
+22,52,CF,TRUE,"Counterfeeding: Had the change of *ь to *e and of *ъ to *o (§ 52) occurred prior to the rise of pleophony (§ 22), the former change would have created inputs for the latter, cf. *pulku > *pъ2lkъ1 > *pъ2lk > Ru. po̠lk 'regiment'."
+22,52,M,TRUE,Manuscript: The rise of pleophony (§ 22) is reflected in the earliest Slavic texts while the the change of *ь to *e and of *ъ to *o (§ 52) had not yet taken place at this stage.
+22,59,F,TRUE,"Feeding: The rise of pleophony (§ 22) created inputs for the change of *e to *o before hard consonants (§ 59), cf. PSl. *dinimi > *dʼnʼe̠mʼ > *dʼnʼe̠m > Ru. dʼnʼo̠m."
+23,24,B,FALSE,"Bleeding: Unlike word initial *ā, word initial *a did not receive a prothetic *j. This suggests that the change of *a to *o (§ 23) occurred prior to j-prothesis (§ 24). Thus the former change withdrew inputs from the latter."
+23,25,P,TRUE,"Plausibility: The roundness of the back nasal vowel, as is typical for a majority of the Slavic languages, can be explained plausibly by assuming that the change of *a to *o (§ 23) preceded the rise of the nasal vowels (§ 25), cf. *an > *on > *ǭ."
+23,26,LW,FALSE,"Loanword: The toponym Lat. māce̠ria > Rom. *makē̠rʼa > Sl. *makē̠rjā˙ > *makě̠̄rjā˙ > Cr. (Ikav.) Makī̠rina (suffixed) was borrowed posterior to the change of *a to *o (§ 23), but prior to the change of *ē to *ě̄ (§ 26)."
+23,27,LW,FALSE,"Loanword: The toponym Lat. Ma̠ximus > Rom.*Ma̠jsẹmu > Sl. *Ma̠jsьmъ > Cr. (Čak.) *Ma̠jsan was borrowed posterior to the change of *a to *o (§ 23), but prior to the change of *i to *ь and of *u to *ъ (§ 27)."
+23,28,CF,TRUE,"Counterfeeding: Had the shortening of word-final long vowels (§ 28) occurred prior to the change of *a to *o (§ 23), the former change would have created inputs for the latter."
+23,44,F,TRUE,Feeding: The change of *a to *o (§ 23) created inputs für the change of *o to *ô (§ 44).
+23,48,M,TRUE,Manuscript: The change of *a to *o (§ 23) is already attested in the first written records while the loss of the weak jers (§ 48) is not.
+23,65,CF,TRUE,"Counterfeeding: Had the shortening of long vowels (§ 65) occurred prior to the change of *a to *o (§ 23), the former change would have created inputs for the latter."
+24,33,F,TRUE,Feeding: j-Prothesis (§ 24) created inputs for the change of word initial *jь- to *i- (§ 33).
+25,28,F,TRUE,Feeding: The rise of nasal vowels (§ 25) created long vowels that where affected by word-final shortening (§ 28).
+25,30,B,TRUE,"Bleeding: The rise of nasal vowels (§ 25) withdrew inputs from jer-epenthesis (§ 30), cf. PSl. *uzimlu > *wuzimlu > *wuzę̄lu > Ru. vzʼal 'take' and not PSl. *uzimlu > *wuzimlu > *wъzьmlъ > **wъzьmьlъ > Ru. **vo̠zʼmel."
+25,33,B,TRUE,"Bleeding: The rise of nasal vowels (§ 25) withdrew inputs from the change of word-initial *jь- to *i- (§ 33), cf. PSl. *inzū̠˙ku > *jinzȳ̠˙ku > *ję̄zȳ̠˙ku > *jazy̠kъ1 > Ru. jəzy̠k and not PSl. *inzū̠˙ku > *ьnzȳ̠˙ku > *ę̄zȳ̠˙ku etc."
+25,53,LW,FALSE,"Loanword: The loanword Latv. svȩ̀ts 'holy' (cf. PSl. *swentu) was borrowed posterior to the rise of nasal vowels (§ 25), but prior to the rise of stress in unaccentuated word forms (§ 53)."
+25,59,CF,TRUE,"Counterfeeding: Had the change of *e to *o before hard consonants (§ 59) occurred before the rise of nasal vowels (§ 25), the former change would have created inputs for the latter, cf. PSl. *ze̠n˙ti > *zʼę̠̄˙tʼь > *zʼā̠˙tʼь > Ru. zʼa̠tʼ and not PSl. *ze̠n˙ti > **zo̠n˙ti > **zǭ̠˙tʼь > **zū̠˙tʼь > Ru. **zu̠tʼ."
+25,59,CB,TRUE,"Counterbleeding: Had the change of *e to *o before hard consonants (§ 59) occurred prior to the rise of nasal vowels (§ 25), the former change would have withdrawn inputs from the latter, cf. PSl. *ze̠n˙ti > *zʼę̠̄˙tʼь > *zʼā̠˙tʼь > Ru. zʼa̠tʼ and not PSl. *ze̠n˙ti > **zo̠n˙ti > **zǭ̠˙tʼь > **zū̠˙tʼь > Ru. **zu̠tʼ."
+26,28,CB,TRUE,"Counterbleeding: Had the shortening of word-final long vowels (§ 28) occurred prior to the change of *ē to *ě̄ (§ 26), the former change would have withdrawn inputs from the latter. "
+26,59,B,TRUE,Bleeding: The change of *ē  to *ě̄ (§ 26) withdrew inputs from the change of *e to *o before hard consonants (§ 59).
+26,65,CB,TRUE,"Counterbleeding: Had the shortening of long vowels (§ 65) occurred prior to the change of *ē to *ě̄ (§ 26), the former change would have withdrawn inputs from the latter. "
+27,28,CF,TRUE,"Counterfeeding: Had the shortening of word-final long vowels (§ 28) occurred prior to the change of *i to *ь and of *u to *ъ (§ 27), the former change would have created inputs for the latter."
+27,33,CF,TRUE,"Counterfeeding: Had the change of *jь- to *i- (§ 33) occurred before the change of *i to *ь and of *u to *ъ (§ 27), the former change would have created inputs for the latter."
+27,65,CF,TRUE,"Counterfeeding: Had the shortening of long vowels (§ 65) occurred before the change of *i to *ь and of *u to *ъ (§ 27), the former change would have created inputs for the latter."
+28,29,F,TRUE,Feeding: The shortening of word-final long vowels (§ 28) created inputs for Loss of post-consonantal *j and Kortlandt's compensatory lengthening (§ 29).
+28,48,CB,FALSE,"Counterbleeding: Had the loss of weak jers (§ 48) occurred before the shortening of word-final long vowels (§ 28), the former change would have withdrawn inputs from the latter. While shortening of long vowels in Croatian did not affect monosyllabic words, the vowel in Cr. snȁ, which became a monosyllabic word only as a result of the loss of weak jers (§ 48), is short."
+29,35,F,TRUE,Feeding: Compensatory lengthening (§ 29) created word-final non-acute long vowels which were subsequently affected by Ivšić's first law (§ 35).
+29,48,CF,TRUE,"Counterfeeding: Had the loss of weak yers (§ 48) occurred before the loss of postconsonantal yod (§ 29), the former change would have created inputs for the latter, cf. PSl. *brā̠˙tijā˙ > *brā̠tʼь1ja > *brā̠tʼja > Ru. bra̠tʼjɪ. and not **bra̠tčɪ."
+30,31,F,TRUE,"Feeding: Jer-epenthesis (§ 30) created inputs for the rise of secondary palatalization before front vowels (§ 31), cf. PSl. *wē̠˙tru > *wě̠̄˙tьrъ > *wʼě̠̄˙tʼьrъ > Ru. vʼe̠tʼɪr."
+30,36,F,TRUE,"Feeding: Jer-epenthesis (§ 30) created inputs for Ivšić's second law (§ 36), cf. PSl. *a̠stru > *ostrъ̠ > *ostь2rъ̠1 > *ostь̠2rъ1 > Ru. ʌsʼtʼo̠r."
+30,52,F,TRUE,Feeding: Jer-epenthesis (§ 30) created inputs for the change of *ь to *e and *ъ to *o (§ 52).
+31,32,CB,TRUE,"Counterbleeding: Had the denasalization of *ę, *ę̄ to *a, *ā (§ 31) occurred prior to the rise of secondary palatalization before front vowels (§ 30), the former change would have withdrawn inputs from the latter, cf. PSl. *ze̠n˙ti > *zʼę̠̄˙tʼь > *zʼā̠˙tʼь > Ru. zʼa̠tʼ and not PSl. *ze̠n˙ti > *zę̠̄˙tь > **zā̠˙tь > **zā̠˙tʼь > Ru. **za̠tʼ."
+31,45,F,FALSE,Feeding: The rise of secondary palatalization before front vowels (§ 31) created inputs for the change of word-initial *je- to *o- (§ 45) by softening consonants following this sequence.
+31,48,CB,TRUE,"Counterbleeding: Had the loss of weak jers (§ 48) occurred prior tho the rise of secondary palatalization before front vowels (§ 31), the former change would have withdrawn inputs from the latter, cf. PSl. *dini > *dьnь > *dʼь2nʼь1 > *dʼь2nʼ > Ru. dʼe̠nʼ and not PSl. *dini > *dьnь > *dь2nь1 > **dь2n > **dʼь2n > Ru. **dʼe̠n."
+31,59,CB,TRUE,"Counterbleeding: Had the change of *e to *o before hard consonants (§ 59) occurred prior to the rise of secondary palatalization before front vowels (§ 31), the former change would have withdrawn inputs from the latter, cf. PSl. *ze̠n˙ti > *zʼę̠̄˙tʼь > *zʼā̠˙tʼь > Ru. zʼa̠tʼ and not PSl. *ze̠n˙ti > **zo̠n˙ti > **zǭ̠˙tʼь > **zū̠˙tʼь > Ru. **zu̠tʼ."
+31,66,F,TRUE,Feeding: The rise of secondary palatalization before front vowels (§ 31) creted inputs for the change of *ě to *i (§ 66).
+31,67,F,TRUE,Feeding: The rise of secondary palatalization before front vowels (§ 31) creted inputs for vowel reduction (§ 67).
+32,53,LW,FALSE,"Loanword: The loanword Latv. svȩ̀ts 'holy' (cf. PSl. *swentu) reflects a stabe posterior to the denasalization of *ę to *a (§ 32), but prior to the rise of stress in unaccentuated accentual units (§ 53)."
+33,34,B,FALSE,"Bleeding: The change of word-initial *jь- to *i- (§ 33) withdrew inputs from the rise of a difference between strong and weak jers (§ 34), cf. PSl. *su igrā̠˙tēj > *sъ jьgrā̠˙tʼi > *sъ igrā̠˙tʼi > *sъ1 igrā̠˙tʼi > Ru. sygra̠tʼ and not PSl. *su igrā̠˙tēj > *sъ jьgrā̠˙tʼi > **sъ2 jь1grā̠˙tʼi > **sъ2 igrā̠˙tʼi > **so igrā̠˙tʼi > Ru. **sʌjgra̠tʼ or **sʌigra̠tʼ."
+33,62,F,TRUE,"Feeding: The change of *jь- to *i- (§ 33) created inputs for the change of *i to *y after hard consonants (§ 62), cf. PSl. *su igrā̠˙tēj > *sъ jьgrā̠˙tʼi > *sъ igrā̠˙tʼi > *sъ1 igrā̠˙tʼi > Ru. sygra̠tʼ."
+34,36,B,TRUE,"Bleeding: The rise of a difference between strong and weak jers (§ 34) withdrew inputs from Ivšić's second law (§ 36), cf. PSl. *sla̠wdžibinuju > *slọ̄dži̠binuji > *slūžь̠2bʼь1nъ2jь1 > Ru. sluże̠bʼnəj with retention of the accent as opposed to PSl. *sla̠wdžibā˙ > *slọ̄džь̠1ba > *slọ̠̄džь1ba > Ru. slu̠żbə with accent retraction."
+34,40,CF,TRUE,"Counterfeeding: Had the change of *īj to *ь2j and of *ūj to *ъ2j  (§ 40) occurred before the rise of a difference between strong and weak jers (§ 34), the former change would have created inputs for the latter."
+35,36,CF,TRUE,"Counterfeeding: Had Ivšić's second law (§ 36) occurred before Ivšić's first law (§ 35), the former change would have created inputs for thelatter, cf. PSl. *kamā̠ru > *komārъ̠1 > *komā̠rъ1 > Ru. kʌma̠r or PSl. *Pera̠wnu > *Pʼerọ̄nъ̠1 > *Pʼerọ̠̄nъ1 > Ru. Pʼɪru̠n."
+35,44,F,TRUE,Feeding: Ivšić's first law (§ 35) created inputs for the change of *o to *ô (§ 44).
+36,44,F,TRUE,Feeding: Ivšić's second law (§ 36) created inputs for the change of stressed *o to *ô (§ 44).
+38,39,LW,TRUE,"Loanword: The loanword iupanus, written in Romance orthography (<i> = [dž]), reflects a stage when PSl. *džawpā̠nu had already undergone monophthongization (§ 3) and the change of *ọ̄, *ọ to *ū, *u (§ 38), but when *dž had not yet change to *ž (§ 39)."
+38,48,M,TRUE,Manuscript: Tthe change of *ọ̄ to *ū (§ 38) is already attested in the first written records while the loss of the weak jers (§ 48) is not.
+39,57,F,TRUE,Feeding: The change of *dž to *ž (§ 39) created inputs for the change of *ž to *ż (§ 57).
+40,52,F,TRUE,Feeding: The change of *īj to *ь2j and of *ȳj to *ъ2j (§ 40) created inputs for the change of *ь to *e and of *ъ to*o (§ 52).
+41,43,F,TRUE,"Feeding: The loss of word-initial *j- before *ī and *ū (§ 41) created inputs for the shift of stress from post-hiatal *i, *ī and *u, *ū to an immediately preceding syllable (§ 43), cf. PSl. *zā ja̠w˙trā > *zā ū̠tra > *zā̠ wtra > Ru. za̠vtrə."
+42,43,F,TRUE,"Feeding: The change of *jī to *i and of *wū to *u (§ 42) created inputs for the shift of stress from post-hiatal *i, *ī and *u, *ū to an immediately preceding syllable (§ 43)."
+42,62,F,FALSE,"Feeding: The change of *jī, *ji to *i and of *wū, *wu to *u (§ 42) created inputs for the change of *i, *ī to *y, *ȳ after hard consonants (§ 62), cf. PSl. *uz e̠jskā˙tēj > *wъz jīskā̠˙tī > *wъ1z jīskā̠tʼi > *wъ1z īskā̠tʼi > *vzīskā̠tʼ > *vzȳskā̠tʼ > russ. vzyska̠tʼ."
+43,44,F,TRUE,"Feeding: The shift of stress from post-hiatal *i, *ī and *u, *ū to an immediately preceding syllable (§ 43) created inputs for the change of stressed *o to *ô (§ 44)."
+44,52,CF,TRUE,"Counterfeeding: Had the change of *o to ô (§ 44) occurred prior to the the change of *ъ to *o (§ 52), the former change would have created inputs for the latter."
+44,53,CF,TRUE,"Counterfeeding: Had the rise of stress in unaccentuated accentual units (§ 53) occurred before the change of *o to *ô (§ 44), the former change would have created inputs for the latter."
+44,54,F,TRUE,Feeding: The change of *o to *ô (§ 44) created inputs for the w-prothesis before word-initial *ô (§ 54).
+44,59,CF,TRUE,"Counterfeeding: Had the change of *e to *o before hard consonants (§ 59) occurred prior to the change of *o to *ô (§ 44), the former change would have created inputs for the latter."
+45,57,CB,TRUE,"Counterbleeding: Had the change of *ž to *ż (§ 57) occurred prior to the change of *je- to *o- (§ 45), the former change would have created inputs for the latter, cf. OESl. ožь 'hedghog'."
+47,59,B,TRUE,"Bleeding: The rise of secondary alatalization of *r in tautosyllabic position before *ь immediately followed by velars, labials, or palatalized dentals (§ 47) withdrew inputs from the change of *e to *o before hard consonants (§ 59), cf. *wi̠rxu > *wʼь̠2rxъ1 > *wʼь̠2rʼxъ1 > Ru. vʼe̠rx."
+48,49,F,TRUE,Feeding: The loss of weak jers (§ 48) created inputs for the regressive assimilation before palatal consonants (§ 49).
+48,50,F,TRUE,Feeding: The loss of weak jers (§ 48) created inputs for the simplification of consonant clusters (§ 50).
+48,53,F,FALSE,"Feeding: The loss of weak jers (§ 48) created inputs for the rise of stress in unaccentuated accentual units (§ 53), cf. *duskān >*dъ1sku > *dsku reintroduction of *ъ in do dissolve the consonant cluster dъ1sku > Ru. do̠sku and not Ru. *duskān > **dъ̠1sku > **dsku̠ > reintroduction of *ъ in do dissolve the consonant cluster > **dъ1sku̠ > russ. **dəsku̠."
+48,56,F,TRUE,Feeding: The loss of weak jers (§ 48) created inputs for the regressive voice assimilation in consonant sequences and word-final devoicing (§ 56).
+48,58,F,TRUE,Feeding: The loss of weak jers (§ 48) created inputs for the depalatalization of word-final *m' to *m (§ 58).
+48,61,F,TRUE,Feeding: The loss of weak jers (§ 48) created inputs for the regressive secondary palatalization assimilation (§ 61).
+48,62,F,TRUE,"Feeding: The loss of weak jers (§ 48) created inputs for the change of *i, *ī to *y, *ȳ after hard consonants (§ 62), cf. PSl. *uz e̠jskā˙tēj > *wъz jīskā̠˙tī > *wъ1z jīskā̠tʼi > *wъ1z īskā̠tʼi > *vzīskā̠tʼ > *vzȳskā̠tʼ > Ru. vzyska̠tʼ."
+48,67,F,FALSE,Feeding: The loss of weak yers (§ 48) created inputs for vowel reduction (§ 67).
+48,68,F,TRUE,Feeding: The loss of weak jers (§  48) created inputs for the loss of non-palatalized *l in word-final position (§ 48).
+49,51,CB,TRUE,"Counterbleeding: Had the change of palatal *l', *n' to palatalized *l', *n' (§ 51) occurred prior to the regressive assimilation before palatal consonants (§ 49), the former change would have withdrawn inputs from the latter."
+49,57,P,TRUE,"Plausibility: It is phonetically more plausible to assume that *š, *ž resulting from assimilation before palatal  consonants (§ 49) were originally soft which suggests that the hardening of *š to *ṡ͘, and of *ž to *ż (§ 57) occurred at later stage, cf. *su̠ljān > *sъ1lˊu̠ > *slˊu̠ > *šlˊu̠ > *šlʼu̠ > Ru. ṡlʼu̠."
+49,69,F,TRUE,"Feeding: The regressive assimilation before palatal consonants (§ 49) created inputs for the change of *šč to *šš and of *ždž to *žž  (§ 69), cf. PSl. *sučenstija > *sъ1čāstʼь1je > *sčāstʼje > *šča̠stʼji > Ru. šša̠stʼjɪ."
+50,57,F,FALSE,"Feeding: The simplification of consonant clusters (§ 50) created inputs for the hardening of *š to *ṡ͘, and of *ž to *ż (§ 57), cf. PSl. *pa̠rzdinjuju > *porô̠ždžńь2j > *porô̠žńь2j > *porô̠žnʼej > *porô̠żnʼej > Ru. pʌro̠żnʼɪj where the sequence *ždžń had to be simplified to žń before *ž could change to *ż."
+50,69,CF,TRUE,"Counterfeeding: Had the change of *šč to *šš and of *ždž to *žž (§ 69) occurred before the simplification of consonant clusters (§ 50), the former change would have withdrawn inputs for the latter."
+52,59,F,TRUE,Feeding: The change of ь to e (§ 52) created inputs for the change of *e to *o before hard consonants (§ 59).
+53,67,F,FALSE,Feeding: The rise of stress in unaccentuated accentual units (§ 53) created inputs for vowel reduction (§ 67).
+54,55,F,FALSE,Feeding: The w-prothesis before *ô (§ 54) created inputs for the change of *w to *v (§ 55).
+54,71,CB,TRUE,"Counterbleeding: Had the change of *ô to *o (§ 71) occurred prior to the w-prothesis (§ 54), the former change would have withdrawn inputs from the latter."
+57,59,F,TRUE,"Feeding: The change of *š to *ṡ and of *ž to *ż (§ 57) created inputs for the change of *e to *o before hard consonants (§ 59), cf. PSl. *malde̠džju > *molodʼe̠ṡ > *molodʼo̠ṡ > Ru. məlʌdʼo̠ṡ."
+57,62,F,TRUE,"Feeding: The change of *š to *ṡ and of *ž to *ż (§ 57) created inputs for the change of *i, *ī to *y, *ȳ after hard consonants (§ 62)."
+58,59,F,TRUE,"Feeding: The depalatalization of word-final *m' to *m (§ 58) created inputs for the change of *e to *o before hard consonants (§ 59), cf. PSl. *dinimi > *dʼnʼe̠mʼ > *dʼnʼe̠m > Ru. dʼnʼo̠m."
+59,60,CF,TRUE,"Counterfeeding: Had the hardening of *c' to *c (§ 69) occurred prior to the change of *e to *o before hard consonants (§ 59), the former change would have created inputs for the latter, cf. PSl. *awi̠ku > *ovʼe̠cʼ > *ovʼe̠c > Ru. ʌvʼe̠c suggests where *cʼ was still soft when the change of *e to *o before hard consonants (§ 59)."
+59,61,CF,TRUE,"Counterfeeding: Had the regressive secondary palatalization assimilation (§ 61) occrred prior to the change of *e to *o before hard consonants, the former change would have created inputs for the latter, cf.  PSl. *že̠niskuju > *že̠nʼskoj > *že̠nskoj > Ru. že̠nskəj and not PSl. *že̠niskuju > *že̠nʼskoj > *že̠nskoj > **žo̠nskoj > Ru.** žo̠nskəj."
+59,70,CF,TRUE,"Counterfeeding: Had the change of *ě to *e (§ 70) occurred prior to the change of *e to *o before hard consonants (§ 59), the former change would have created inputs for the latter."
+60,61,F,TRUE,"Feeding: The change of *cʼ to *c (§ 60) created inputs for the regressive secondary palatalization assimilation (§ 61), cf. PSl. *awi̠kā˙ > *ofʼcʼa̠ > *ofʼca̠ > *ofca̠ > Ru. ʌfca̠."
+60,62,F,TRUE,"Feeding: The change of *cʼ to *c (§ 60) created inputs for the change of *i, *ī to *y, *ȳ (§ 62)."
+62,63,P,TRUE,"Plausibility: The reversed order (i.e., § 63 before § 62) would require to limit the change of *i to *y after hard consonants (§ 62) to all hard consonants but velars which seems implausible."
+63,64,F,FALSE,"Feeding: The change of *y, *ȳ to *i, *ī after velar consonants (§ 63) created inputs for the palatalization of *k, *g, *x before front vowels (§ 64)."
+63,65,LW,FALSE,"Loanword: The loanwords Finn. kiisseli and Latv. ķĩselis `both: kind of jelly' (cf. Ru. kisel' `kind of jelly') reflect a stage before the shortening of long vowels (§ 65), but after the change of *y to *i after velar consonants (§ 63)."
+66,70,B,TRUE,Bleeding: The change of *ě to *i before palatalized dentals followed by a stressed front vowel or *a withdrew inputs from the change of *ě to *e (§ 70).
