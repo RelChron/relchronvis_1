@@ -51,12 +51,20 @@ $feeding: $uzh-blue-100;
 $counterfeeding: $uzh-blue-60;
 $bleeding: $uzh-red-100;
 $counterbleeding: $uzh-red-60;
-$loanword: $uzh-bottle-green-100;
 $manuscript: $uzh-turquoise-100;
-$simplicity: $uzh-limetree-green-100;
-$plausibility: $uzh-limetree-green-60;
+// $loanword: $uzh-bottle-green-100;
+// $simplicity: $uzh-limetree-green-100;
+// $plausibility: $uzh-limetree-green-60;
+// $naturalness:  $uzh-yellow-80;
+// $other: $black;
+
+// Alternative: use same color for three rare categories
+$loanword: $uzh-limetree-green-100;
+$simplicity: $uzh-yellow-80;
+$plausibility: $uzh-yellow-80;
 $naturalness:  $uzh-yellow-80;
-$other: $black;
+$other: $uzh-yellow-80;
+
 
 @import "../bootstrap/scss/bootstrap";
 

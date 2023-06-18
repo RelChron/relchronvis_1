@@ -12096,19 +12096,19 @@ circle.highlighted, circle.locked {
   stroke: #0b82a0;
 }
 .arc.highlighted.loanword, .arc.locked.loanword {
-  stroke: #2a7f62;
+  stroke: #91c34a;
 }
 .arc.highlighted.naturalness, .arc.locked.naturalness {
   stroke: #fbe651;
 }
 .arc.highlighted.simplicity, .arc.locked.simplicity {
-  stroke: #91c34a;
+  stroke: #fbe651;
 }
 .arc.highlighted.plausibility, .arc.locked.plausibility {
-  stroke: #bfdf94;
+  stroke: #fbe651;
 }
 .arc.highlighted.other, .arc.locked.other {
-  stroke: #080708;
+  stroke: #fbe651;
 }
 
 .arc.highlighted:hover,
@@ -12262,8 +12262,8 @@ textPath {
 .ribbon.locked.loanword,
 .swatch.highlighted.loanword,
 .swatch.locked.loanword {
-  fill: #2a7f62;
-  stroke: #2a7f62;
+  fill: #91c34a;
+  stroke: #91c34a;
 }
 .ring-el.highlighted.naturalness, .ring-el.locked.naturalness,
 .ribbon.highlighted.naturalness,
@@ -12278,24 +12278,24 @@ textPath {
 .ribbon.locked.simplicity,
 .swatch.highlighted.simplicity,
 .swatch.locked.simplicity {
-  fill: #91c34a;
-  stroke: #91c34a;
+  fill: #fbe651;
+  stroke: #fbe651;
 }
 .ring-el.highlighted.plausibility, .ring-el.locked.plausibility,
 .ribbon.highlighted.plausibility,
 .ribbon.locked.plausibility,
 .swatch.highlighted.plausibility,
 .swatch.locked.plausibility {
-  fill: #bfdf94;
-  stroke: #bfdf94;
+  fill: #fbe651;
+  stroke: #fbe651;
 }
 .ring-el.highlighted.other, .ring-el.locked.other,
 .ribbon.highlighted.other,
 .ribbon.locked.other,
 .swatch.highlighted.other,
 .swatch.locked.other {
-  fill: #080708;
-  stroke: #080708;
+  fill: #fbe651;
+  stroke: #fbe651;
 }
 
 .swatch {

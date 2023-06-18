@@ -154,11 +154,15 @@ Promise.all([
         .html(data => data[newestVariety])
 
   // LEGEND BOX (LB)
+  // const LEGEND_ITEMS = ["Feeding", "Counterfeeding", "Bleeding", 
+  //                    "Counterbleeding", "Manuscript", "Loanword", 
+  //                    "Simplicity", "Plausibility", "Naturalness"]
+
   const LEGEND_ITEMS = ["Feeding", "Counterfeeding", "Bleeding", 
                      "Counterbleeding", "Manuscript", "Loanword", 
-                     "Simplicity", "Plausibility", "Naturalness"]
+                     "Other"]
 
-  const LB_HEIGHT = 150
+  const LB_HEIGHT = 15 + (15 * LEGEND_ITEMS.length)
   const LB_WIDTH = 135
   const LB_MARGIN_LEFT = 10
   const LB_MARGIN_BOTTOM = 10
