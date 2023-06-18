@@ -91,7 +91,6 @@ Promise.all([
 	arcs
 		.append("path")
 		.classed("arc", true)
-			// .attr("id", (d, i) => "arc-" + i)
 			.attr("d", function (relation) {
 				start = xScale(relation.source)
 				end = xScale(relation.target)
@@ -127,25 +126,6 @@ Promise.all([
 					.classed(className1, true)
 					.classed("comb-part-2", true)
 		})
-
-  // // Second, append arcs that have to be combined
-  // arcs
-  //   .filter(relation => relation.combined)
-  //   .append("g")
-  //   .classed("arc combined", true)
-  //     .append("path")
-  //       // .attr("id", (d, i) => "arc-" + i)
-  //       .attr("d", function (relation) {
-  //         start = xScale(relation.source)
-  //         end = xScale(relation.target)
-  //         return ["M", start, GRAPH_BOTTOM_Y,
-  //           "A",
-  //           (start - end)/2, ",",
-  //           (start - end)/2, 0, 0, ",",
-  //           start < end ? 1 : 0, end, ",", GRAPH_BOTTOM_Y]
-  //           .join(' ')
-  //       })
-  //     .classed("arc", true)
 
   arcs
     .filter(arc => arc.confident === false)
@@ -390,8 +370,14 @@ Promise.all([
 
     if (relCardIsOpen) {return}
     
-    let header = `${m_arc.source} before ${m_arc.target} ` 
-    header += `because of ${m_arc.type}`
+    let header = `${m_arc.source} before ${m_arc.target} `
+    // Type may be more than one
+    if (Array.isArray(m_arc.type)) {
+      header += `because of ${m_arc.type[0]} / ${m_arc.type[1]}`
+    } else {
+      header += `because of ${m_arc.type}`
+    }
+    
     
     // Select source or target change, depending on arc direction
     // -1 because the array is 0-indexed, but IDs are 1-indexed

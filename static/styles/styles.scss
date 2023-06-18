@@ -120,15 +120,22 @@ circle {
     stroke: $uzh-grey-80;
     fill: none;
     stroke-dasharray: none;
-    &.dashed path {
-        stroke-dasharray: 5, 2;
-    }
     &.comb-part-1 {
         stroke-dasharray: 20, 20;
     }
     &.comb-part-2 {
         stroke-dasharray: 20, 20;
         stroke-dashoffset: 20;
+    }
+    &.dashed path {
+        stroke-dasharray: 5, 2;
+        &.comb-part-1,
+        &.comb-part-2 {
+            stroke-dasharray: 5, 2, 5, 2, 5, 2, 5, 30;
+        }
+        &.comb-part-2 {
+            stroke-dashoffset: 28;
+        }
     }
     &.highlighted path,
     &.locked path {
@@ -180,24 +187,6 @@ circle {
     &.locked {
         fill: $black;
     }
-}
-
-
-/* Arc Labels */
-textPath {
-    fill: black;
-    text-anchor: middle; 
-    visibility: hidden;
-    cursor: pointer;
-}
-
-textPath.highlighted,
-textPath.locked {
-    visibility: visible;
-}
-
-#arc-labels {
-    transform: translateY(-5px);
 }
 
 

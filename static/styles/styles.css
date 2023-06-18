@@ -12074,15 +12074,21 @@ circle.highlighted, circle.locked {
   fill: none;
   stroke-dasharray: none;
 }
-.arc.dashed path {
-  stroke-dasharray: 5, 2;
-}
 .arc.comb-part-1 {
   stroke-dasharray: 20, 20;
 }
 .arc.comb-part-2 {
   stroke-dasharray: 20, 20;
   stroke-dashoffset: 20;
+}
+.arc.dashed path {
+  stroke-dasharray: 5, 2;
+}
+.arc.dashed path.comb-part-1, .arc.dashed path.comb-part-2 {
+  stroke-dasharray: 5, 2, 5, 2, 5, 2, 5, 30;
+}
+.arc.dashed path.comb-part-2 {
+  stroke-dashoffset: 28;
 }
 .arc.highlighted path, .arc.locked path {
   stroke-width: 4;
@@ -12130,23 +12136,6 @@ circle.highlighted, circle.locked {
 }
 .node-label.highlighted, .node-label.locked {
   fill: #080708;
-}
-
-/* Arc Labels */
-textPath {
-  fill: black;
-  text-anchor: middle;
-  visibility: hidden;
-  cursor: pointer;
-}
-
-textPath.highlighted,
-textPath.locked {
-  visibility: visible;
-}
-
-#arc-labels {
-  transform: translateY(-5px);
 }
 
 /* Tooltip on Node Mouseover */
