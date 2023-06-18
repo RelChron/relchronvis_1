@@ -7,8 +7,9 @@ const SVG_HEIGHT = document.getElementById("arc-diagram")
     .getBoundingClientRect().height
 
 const CIRCLE_RADIUS = 6
-const MARGIN = {TOP: CIRCLE_RADIUS, RIGHT: CIRCLE_RADIUS + 10, BOTTOM: 0,
-  LEFT: CIRCLE_RADIUS + 10}
+// There's some extra margin to account for text with "p"s or "q"s
+const MARGIN = {TOP: 0, RIGHT: CIRCLE_RADIUS + 5, BOTTOM: 0,
+  LEFT: CIRCLE_RADIUS + 5}
 
 const INNER_HEIGHT = SVG_HEIGHT - MARGIN.TOP - MARGIN.BOTTOM
 const GRAPH_BOTTOM_Y = INNER_HEIGHT * 7 / 10
@@ -182,8 +183,8 @@ Promise.all([
 
   const LB_HEIGHT = 15 + (15 * LEGEND_ITEMS.length)
   const LB_WIDTH = 135
-  const LB_X = -16
-  const LB_Y = 35
+  const LB_X = -CIRCLE_RADIUS - 5
+  const LB_Y = 40
 
   let legend = svg
     .append("g")
