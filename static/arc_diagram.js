@@ -546,6 +546,7 @@ Promise.all([
 
       // Redraw arcs based on new scale
       arcs
+        .selectAll("path")
         .attr("d", function (relation) {
           // Get previous arc y radius, it stays constant
           const d_string = d3.select(this).attr("d")
