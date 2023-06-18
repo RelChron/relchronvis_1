@@ -12112,13 +12112,13 @@ circle.highlighted, circle.locked {
   stroke: #91c34a;
 }
 .arc.highlighted path.naturalness, .arc.locked path.naturalness {
-  stroke: #fbe651;
+  stroke: #0b82a0;
 }
 .arc.highlighted path.simplicity, .arc.locked path.simplicity {
-  stroke: #fbe651;
+  stroke: #0b82a0;
 }
 .arc.highlighted path.plausibility, .arc.locked path.plausibility {
-  stroke: #fbe651;
+  stroke: #0b82a0;
 }
 .arc.highlighted path.other, .arc.locked path.other {
   stroke: #0b82a0;
@@ -12266,24 +12266,24 @@ textPath {
 .ribbon.locked.naturalness,
 .swatch.highlighted.naturalness,
 .swatch.locked.naturalness {
-  fill: #fbe651;
-  stroke: #fbe651;
+  fill: #0b82a0;
+  stroke: #0b82a0;
 }
 .ring-el.highlighted.simplicity, .ring-el.locked.simplicity,
 .ribbon.highlighted.simplicity,
 .ribbon.locked.simplicity,
 .swatch.highlighted.simplicity,
 .swatch.locked.simplicity {
-  fill: #fbe651;
-  stroke: #fbe651;
+  fill: #0b82a0;
+  stroke: #0b82a0;
 }
 .ring-el.highlighted.plausibility, .ring-el.locked.plausibility,
 .ribbon.highlighted.plausibility,
 .ribbon.locked.plausibility,
 .swatch.highlighted.plausibility,
 .swatch.locked.plausibility {
-  fill: #fbe651;
-  stroke: #fbe651;
+  fill: #0b82a0;
+  stroke: #0b82a0;
 }
 .ring-el.highlighted.other, .ring-el.locked.other,
 .ribbon.highlighted.other,
