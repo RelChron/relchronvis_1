@@ -28,6 +28,7 @@ const svg = d3.select("#arc-diagram")
 
 const diagram = svg.append("g")
   .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")")
+  .attr("id", "main-grouping-el")
 
 // EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
@@ -65,7 +66,6 @@ Promise.all([
       relation.type = [lastRelation.type, relation.type]
       relation.description = [lastRelation.description[0], relation.description]
       relation.combined = true
-      console.log(relation)
       processedRelations.pop()
       processedRelations.push(relation)
     } else {
@@ -75,9 +75,6 @@ Promise.all([
     }
     lastRelation = structuredClone(relation)
   }
-
-  console.log("Here's the processed relations")
-  console.log(processedRelations)
 
   let arcs = diagram
     .append("g")
@@ -562,30 +559,23 @@ Promise.all([
   svg.call(zoom)
     // Prevent default double click zoom
     .on("dblclick.zoom", null)
-})
 
-// PNG DOWNLOAD FROM SVG
-// Built on http://bl.ocks.org/Rokotyan/0556f8facbaf344507cdc45dc3622177
-d3.select("#download-btn")
+  // PNG DOWNLOAD FROM SVG
+  // Built on http://bl.ocks.org/Rokotyan/0556f8facbaf344507cdc45dc3622177
+  d3.select("#download-btn")
   .on("click", () => {
     let scalingFactor = 2
-    // Step 1. Make names full length and adjust svg size
-    let longest_sc_name = 0
-    nodeLabels = d3.selectAll(".node-label")
-      .each(function(sc) {
-        let element = d3.select(this)
-        element.text(`${sc.id}  ${sc.name}`)
-        let elHeight = element.node().getBBox().height
-        if (elHeight > longest_sc_name) {
-          longest_sc_name = elHeight
-        }
-      })
+    // Step 1. Adjust svg size according to longest label
+    // Resets size currently
+    diagram
+      .call(zoom.transform, d3.zoomIdentity)
+    gRect = document.getElementById("main-grouping-el").getBoundingClientRect()
+    gHeight = gRect.bottom
+    gWidth = gRect.width
 
     // Adjust svg height for full names
-    let full_height = SVG_HEIGHT + longest_sc_name
-    svg.attr("height", full_height)
-    // svg.attr("height", svg.attr("height") * 2)
-    // svg.attr("width", svg.attr("width") * 2)
+    svg.attr("height", gHeight)
+    svg.attr("width", gWidth)
 
     // Step 2. Extract external CSS styles
     // From https://stackoverflow.com/a/31949487
@@ -610,9 +600,6 @@ d3.select("#download-btn")
     styledSVG = svg.node().cloneNode(deep=true)
     styledSVG.insertBefore(defs, styledSVG.firstChild)
 
-    // Reset the svg on the actual page
-    svg.attr("height", SVG_HEIGHT)
-
     // Step 3. Create SVG string
     let svgString = new XMLSerializer().serializeToString(styledSVG)
     // Fix root link without namespace, then fix Safari NS namespace
@@ -622,7 +609,7 @@ d3.select("#download-btn")
     let canvas = document.createElement("canvas")
     let context = canvas.getContext("2d")
     canvas.width = svg.attr("width") * scalingFactor
-    canvas.height = full_height * scalingFactor
+    canvas.height = gHeight * scalingFactor
 
     // Step 4. Create data url from SVG string
     // unescape() is deprecated but decodeURIComponent causes an "invalid
@@ -633,9 +620,9 @@ d3.select("#download-btn")
     image.onload = function() {
       // Step 5. Draw image from url to canvas
       context.clearRect(0, 0, svg.attr("width") * scalingFactor, 
-        full_height * scalingFactor)
+        gHeight * scalingFactor)
       context.drawImage(image, 0, 0, svg.attr("width") * scalingFactor, 
-        full_height * scalingFactor)
+        gHeight * scalingFactor)
       // Step 6. Download canvas
       // Polyfill from https://github.com/blueimp/JavaScript-Canvas-to-Blob
       canvas.toBlob(function(blob) {
@@ -644,6 +631,9 @@ d3.select("#download-btn")
       })
     }
   })
+})
+
+
 
 let labelsVisible = true
 
