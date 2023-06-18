@@ -182,7 +182,7 @@ Promise.all([
 
   const LB_HEIGHT = 15 + (15 * LEGEND_ITEMS.length)
   const LB_WIDTH = 135
-  const LB_X = -10
+  const LB_X = -16
   const LB_Y = 35
 
   let legend = svg
@@ -196,7 +196,7 @@ Promise.all([
       .attr("y", LB_Y)
       .attr("width", LB_WIDTH)
       .attr("height", LB_HEIGHT)
-      .attr("rx", 10)
+      .attr("rx", 8)
 
   let legendList = legend
     .selectAll()

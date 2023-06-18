@@ -164,12 +164,10 @@ Promise.all([
 
   const LB_HEIGHT = 15 + (15 * LEGEND_ITEMS.length)
   const LB_WIDTH = 135
-  const LB_MARGIN_LEFT = 10
   const LB_MARGIN_BOTTOM = 10
-  const LB_X = -(SVG_WIDTH / 2) + LB_MARGIN_LEFT
+  const LB_X = -(SVG_WIDTH / 2)
   const LB_Y = SVG_HEIGHT / 2 - LB_MARGIN_BOTTOM - LB_HEIGHT
 
-  // let legend = diagram
   let legend = svg
     .append("g")
     .attr("transform", `translate(${translateX},${translateY})`)
@@ -181,7 +179,7 @@ Promise.all([
       .attr("y", LB_Y)
       .attr("width", LB_WIDTH)
       .attr("height", LB_HEIGHT)
-      .attr("rx", 10)
+      .attr("rx", 8)
 
   let legendList = legend
     .selectAll()
