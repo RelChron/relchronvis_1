@@ -213,7 +213,6 @@ Promise.all([
       .attr("y", (d,i) => LB_Y + 1 + (i + 1) * 15)
       .text(d => d)
       .attr("text-anchor", "left")
-      .style("alignment-baseline", "middle")
 
   let legendSwatches = legend
     .selectAll()
@@ -555,6 +554,7 @@ Promise.all([
       
       nodeTooltip.classed("invisible", true)
     })
+
   svg.call(zoom)
     // Prevent default double click zoom
     .on("dblclick.zoom", null)

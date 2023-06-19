@@ -12315,4 +12315,5 @@ text {
 .legend-text {
   font-size: small;
   margin-left: 5px;
+  transform: translateY(4px);
 }/*# sourceMappingURL=styles.css.map */
