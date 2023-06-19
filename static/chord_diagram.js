@@ -24,6 +24,7 @@ const svg = d3.select("#chord-diagram")
 
 const diagram = svg.append("g")
   .attr("transform", `translate(${translateX},${translateY})`)
+  .attr("id", "main-grouping-el")
 
 Promise.all([
   d3.json(`/sc_data?lang=${language}`),
@@ -548,70 +549,96 @@ Promise.all([
       })
 
     diagram.call(drag)
+
+  // PNG DOWNLOAD FROM SVG
+  // Built on http://bl.ocks.org/Rokotyan/0556f8facbaf344507cdc45dc3622177
+  d3.select("#download-btn")
+    .on("click", () => {
+      // Scaling for higher resolution
+      let scalingFactor = 2
+      // Padding around size of <g>, because we center the circle, which means
+      // some labels get cut off, because they're likely not symmetrically long
+      let DL_IMG_PADDING = 600
+
+      // Step 1. Adjust svg size according to longest label
+      gRect = document.getElementById("main-grouping-el").getBoundingClientRect()
+      gHeight = gRect.height + DL_IMG_PADDING
+      gWidth = gRect.width + DL_IMG_PADDING
+      svg
+        .attr("height", gHeight)
+        .attr("width", gWidth)
+
+      // "Drag" the diagram to the right spot for drawing
+      translateX = gWidth / 2
+      translateY = gHeight / 2
+      diagram.attr("transform", `translate(${translateX},${translateY})`)
+
+      // Step 2. Extract external CSS styles
+      // From https://stackoverflow.com/a/31949487
+      // let styleDefs = "svg {background-color: white; transform: scale(2);}"
+      let styleDefs = "svg {background-color: white}"
+      let sheets = document.styleSheets
+      for (const sheet of sheets) {
+        let rules = sheet.cssRules
+        for (const rule of rules) {
+          if (rule.style) {
+            styleDefs += rule.cssText
+          }
+        }
+      }
+
+      let styleEl = document.createElement('style')
+      styleEl.setAttribute('type', 'text/css')
+      styleEl.innerHTML = styleDefs;
+
+      let defs = document.createElement('defs')
+      defs.appendChild(styleEl)
+      styledSVG = svg.node().cloneNode(deep=true)
+      styledSVG.insertBefore(defs, styledSVG.firstChild)
+
+      // Step 3. Create SVG string
+      let svgString = new XMLSerializer().serializeToString(styledSVG)
+      // Fix root link without namespace, then fix Safari NS namespace
+      svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink=')
+      svgString = svgString.replace(/NS\d+:href/g, 'xlink:href')
+
+      let canvas = document.createElement("canvas")
+      let context = canvas.getContext("2d")
+      canvas.width = gWidth * scalingFactor
+      canvas.height = gHeight * scalingFactor
+
+      // Step 4. Create data url from SVG string
+      // unescape() is deprecated but decodeURIComponent causes an "invalid
+      // string" error in btoa() which is not trivial to fix.
+      let image = new Image()
+      image.src = 'data:image/svg+xml;base64,' 
+        + btoa(unescape(encodeURIComponent(svgString)))
+      image.onload = function() {
+        // Step 5. Draw image from url to canvas
+        // context.clearRect(0, 0, gWidth * scalingFactor, 
+        //   gHeight * scalingFactor)
+        context.drawImage(image, 0, 0, gWidth * scalingFactor, 
+          gHeight * scalingFactor)
+        // Step 6. Download canvas
+        // Polyfill from https://github.com/blueimp/JavaScript-Canvas-to-Blob
+        canvas.toBlob(function(blob) {
+          // Function from https://github.com/eligrey/FileSaver.js/
+          saveAs(blob, 'Relative Chronology.png')
+        })
+      }
+      // Step 7. Reset SVG size and diagram position
+      svg
+        .attr("height", SVG_HEIGHT)
+        .attr("width", SVG_WIDTH)
+
+      translateX = SVG_WIDTH / 2
+      translateY = SVG_HEIGHT / 2
+      diagram
+        .attr("transform", `translate(${translateX},${translateY})`)
+    })
 })
 
 d3.select("#drawer-btn")
   .on("click", () => {
     offcanvasDrawerObj.show()
   })
-
-// PNG DOWNLOAD FROM SVG
-// Built on http://bl.ocks.org/Rokotyan/0556f8facbaf344507cdc45dc3622177
-d3.select("#download-btn")
-.on("click", () => {
-  let scalingFactor = 2
-
-  // Step 1. Extract external CSS styles
-  // From https://stackoverflow.com/a/31949487
-  let styleDefs = "svg {background-color: white}"
-  let sheets = document.styleSheets
-  for (const sheet of sheets) {
-    let rules = sheet.cssRules
-    for (const rule of rules) {
-      if (rule.style) {
-        styleDefs += rule.cssText
-      }
-    }
-  }
-
-  let styleEl = document.createElement('style')
-  styleEl.setAttribute('type', 'text/css')
-  styleEl.innerHTML = styleDefs;
-
-  let defs = document.createElement('defs')
-  defs.appendChild(styleEl)
-  styledSVG = svg.node().cloneNode(deep=true)
-  styledSVG.insertBefore(defs, styledSVG.firstChild)
-
-  // Step 2. Create SVG string
-  let svgString = new XMLSerializer().serializeToString(styledSVG)
-  // Fix root link without namespace, then fix Safari NS namespace
-  svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink=')
-  svgString = svgString.replace(/NS\d+:href/g, 'xlink:href')
-
-  let canvas = document.createElement("canvas")
-  let context = canvas.getContext("2d")
-  canvas.width = svg.attr("width") * scalingFactor
-  canvas.height = svg.attr("height") * scalingFactor
-
-  // Step 3. Create data url from SVG string
-  // unescape() is deprecated but decodeURIComponent causes an "invalid
-  // string" error in btoa() which is not trivial to fix.
-  let image = new Image()
-  image.src = 'data:image/svg+xml;base64,' 
-    + btoa(unescape(encodeURIComponent(svgString)))
-  image.onload = function() {
-    // Step 4. Draw image from url to canvas
-    context.clearRect(0, 0, svg.attr("width") * scalingFactor, 
-      svg.attr("height") * scalingFactor)
-    context.drawImage(image, 0, 0, svg.attr("width") * scalingFactor, 
-      svg.attr("height") * scalingFactor)
-    // Step 5. Download canvas
-    // Polyfill from https://github.com/blueimp/JavaScript-Canvas-to-Blob
-    canvas.toBlob(function(blob) {
-      // Function from https://github.com/eligrey/FileSaver.js/
-      saveAs(blob, 'Relative Chronology.png')
-    })
-  }
-})
-
