@@ -566,16 +566,14 @@ Promise.all([
   .on("click", () => {
     let scalingFactor = 2
     // Step 1. Adjust svg size according to longest label
-    // Resets size currently
-    diagram
-      .call(zoom.transform, d3.zoomIdentity)
+    // Reset size
+    diagram.call(zoom.transform, d3.zoomIdentity)
     gRect = document.getElementById("main-grouping-el").getBoundingClientRect()
     gHeight = gRect.bottom
-    gWidth = gRect.width
-
-    // Adjust svg height for full names
-    svg.attr("height", gHeight)
-    svg.attr("width", gWidth)
+    gWidth = gRect.width + MARGIN.RIGHT
+    svg
+      .attr("height", gHeight)
+      .attr("width", gWidth)
 
     // Step 2. Extract external CSS styles
     // From https://stackoverflow.com/a/31949487
@@ -608,7 +606,7 @@ Promise.all([
 
     let canvas = document.createElement("canvas")
     let context = canvas.getContext("2d")
-    canvas.width = svg.attr("width") * scalingFactor
+    canvas.width = gWidth * scalingFactor
     canvas.height = gHeight * scalingFactor
 
     // Step 4. Create data url from SVG string
@@ -630,10 +628,12 @@ Promise.all([
         saveAs(blob, 'Relative Chronology.png')
       })
     }
+    // Step 7. Reset SVG size
+    svg
+      .attr("height", SVG_HEIGHT)
+      .attr("width", SVG_WIDTH)
   })
 })
-
-
 
 let labelsVisible = true
 
