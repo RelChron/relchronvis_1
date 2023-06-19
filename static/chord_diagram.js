@@ -634,8 +634,6 @@ Promise.all([
         .attr("height", SVG_HEIGHT)
         .attr("width", SVG_WIDTH)
 
-      // translateX = SVG_WIDTH / 2
-      // translateY = SVG_HEIGHT / 2
       diagram.attr("transform", oldTranslate)
       translateX = oldTranslateX
       translateY = oldTranslateY
