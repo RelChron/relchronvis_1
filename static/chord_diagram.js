@@ -569,6 +569,9 @@ Promise.all([
         .attr("width", gWidth)
 
       // "Drag" the diagram to the right spot for drawing
+      const oldTranslate = diagram.attr("transform")
+      const oldTranslateX = translateX
+      const oldTranslateY = translateY
       translateX = gWidth / 2
       translateY = gHeight / 2
       diagram.attr("transform", `translate(${translateX},${translateY})`)
@@ -631,10 +634,11 @@ Promise.all([
         .attr("height", SVG_HEIGHT)
         .attr("width", SVG_WIDTH)
 
-      translateX = SVG_WIDTH / 2
-      translateY = SVG_HEIGHT / 2
-      diagram
-        .attr("transform", `translate(${translateX},${translateY})`)
+      // translateX = SVG_WIDTH / 2
+      // translateY = SVG_HEIGHT / 2
+      diagram.attr("transform", oldTranslate)
+      translateX = oldTranslateX
+      translateY = oldTranslateY
     })
 })
 
