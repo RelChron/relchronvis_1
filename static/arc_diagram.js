@@ -719,6 +719,10 @@ d3.select("#apply-btn")
       arcs.filter(".dashed").classed("invisible", true)
     }
     
+    // Reset example chronlogy
+    d3.selectAll("example").classed("open", false)
+    d3.select("#example-chronology").html("")
+    d3.select("#chron-close-btn").classed("invisible", true)
   })
 
 d3.select("#reset-btn")
@@ -740,5 +744,10 @@ d3.select("#reset-btn")
     d3.selectAll(".card").classed("d-none", true)
     d3.select("#explainer-text").classed("d-none", false)
     d3.selectAll(".bg-danger").classed("d-none", false)
+
+    // Reset example chronlogy
+    d3.selectAll("example").classed("open", false)
+    d3.select("#example-chronology").html("")
+    d3.select("#chron-close-btn").classed("invisible", true)
   })
   
