@@ -230,6 +230,10 @@ Promise.all([
     let mArcs = arcs
       // If function returns false, element is removed
       .filter(arc => arc.source === m_node.id || arc.target === m_node.id)
+      // Disregard connections that are invisible (through filtering)
+      .filter(function(arc) {
+        return !d3.select(this).attr("class").includes("invisible")
+      })
       .classed("highlighted", true)
 
     let mArcsData = mArcs.data()
