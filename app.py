@@ -180,11 +180,14 @@ def upload_files():
         rel_file = request.files["rel"]
         examples_file = request.files["examples"]
 
-        sc_file_path = os.path.join(app.config['UPLOAD_FOLDER'], "scs.csv")
+        sc_file_path = os.path.join(
+            BASE_DIR, app.config['UPLOAD_FOLDER'], "scs.csv")
         sc_file.save(sc_file_path)
-        rel_file_path = os.path.join(app.config['UPLOAD_FOLDER'], "rels.csv")
+        rel_file_path = os.path.join(
+            BASE_DIR, app.config['UPLOAD_FOLDER'], "rels.csv")
         rel_file.save(rel_file_path)
-        ex_file_path = os.path.join(app.config['UPLOAD_FOLDER'], "exs.csv")
+        ex_file_path = os.path.join(
+            BASE_DIR, app.config['UPLOAD_FOLDER'], "exs.csv")
         examples_file.save(ex_file_path)
 
         scs, matrix = json_dump_csv_sound_changes(sc_file_path, rel_file_path)
