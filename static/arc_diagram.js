@@ -29,7 +29,7 @@ const diagram = svg.append("g")
   .attr("transform", "translate(" + MARGIN.LEFT + "," + MARGIN.TOP + ")")
   .attr("id", "main-grouping-el")
 
-// EVERYTHING ELSE GOES IN THIS BRACKET WHICH LOADS DATA
+// EVERYTHING GOES IN THIS BRACKET WHICH LOADS DATA
 // D3JS basics help: https://youtu.be/TOJ9yjvlapY, https://www.d3indepth.com
 // Loading two files: https://stackoverflow.com/questions/70629019
 Promise.all([
@@ -187,11 +187,6 @@ Promise.all([
   
 
   let nodeTooltip = d3.select("#node-tooltip")
-
-  // LEGEND BOX (LB)
-  // const LEGEND_ITEMS = ["Feeding", "Counterfeeding", "Bleeding", 
-  //                    "Counterbleeding", "Manuscript", "Loanword", 
-  //                    "Simplicity", "Plausibility", "Naturalness"]
 
   const LEGEND_ITEMS = ["Feeding", "Counterfeeding", "Bleeding", 
                      "Counterbleeding", "Manuscript", "Loanword", 
@@ -389,7 +384,6 @@ Promise.all([
     } else {
       header += `because of ${m_arc.type}`
     }
-    
     
     // Select source or target change, depending on arc direction
     // -1 because the array is 0-indexed, but IDs are 1-indexed

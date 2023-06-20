@@ -139,11 +139,6 @@ Promise.all([
         .attr("class", "card-text")
         .html(data => data[newestVariety])
 
-  // LEGEND BOX (LB)
-  // const LEGEND_ITEMS = ["Feeding", "Counterfeeding", "Bleeding", 
-  //                    "Counterbleeding", "Manuscript", "Loanword", 
-  //                    "Simplicity", "Plausibility", "Naturalness"]
-
   const LEGEND_ITEMS = ["Feeding", "Counterfeeding", "Bleeding", 
                      "Counterbleeding", "Manuscript", "Loanword", 
                      "Other"]

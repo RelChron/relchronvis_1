@@ -46,20 +46,12 @@ $input-bg: $uzh-grey-20;
 $danger: $uzh-red-80;
 $black: #080708;
 
-// Ribbons
+// Color scheme (use same color for three rare categories)
 $feeding: $uzh-blue-100;
 $counterfeeding: $uzh-blue-60;
 $bleeding: $uzh-red-100;
 $counterbleeding: $uzh-red-60;
 $manuscript: $uzh-yellow-80;
-
-// $loanword: $uzh-bottle-green-100;
-// $simplicity: $uzh-limetree-green-100;
-// $plausibility: $uzh-limetree-green-60;
-// $naturalness:  $uzh-yellow-80;
-// $other: $black;
-
-// Alternative: use same color for three rare categories
 $loanword: $uzh-limetree-green-100;
 $simplicity: $uzh-turquoise-100;
 $plausibility: $uzh-turquoise-100;
@@ -238,10 +230,6 @@ circle {
     margin: 8px;
 }
 
-.stress {
-    text-decoration: underline;
-}
-
 
 /* These declarations easily fix svg export with missing styles */
 text {
@@ -316,7 +304,6 @@ text {
     stroke-width: 10px;
 }
 
-// Labels
 .ring-label {
     fill: $uzh-grey-80;
     cursor: pointer;
