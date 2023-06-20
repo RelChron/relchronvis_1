@@ -2,4 +2,7 @@
 *.icloud
 __pycache__
 launch.json
-uploads/*
+# uploads/*
+exs.csv
+rels.csv
+scs.csv
