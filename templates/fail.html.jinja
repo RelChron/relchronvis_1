@@ -6,7 +6,9 @@
         <h2>Error{% if errors|length > 1 %}s{% endif %}</h2>
         {% if errors is defined %}
             {% for error in errors %}
-                <p>{{ error }}</p>
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
             {% endfor %}
         {% endif %}
         <a class="btn btn-primary px-4 gap-3" href="/upload">Back to Custom Data Upload</a>
