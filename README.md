@@ -5,8 +5,8 @@ This web app visualizes relative chronology models. It allows users to inspect i
 | Term | Explanation |
 | ---  | --- |
 | Sound Change (SC) | Changes that a language has gone through. In the case of the Russian data, N = 71. Sound changes are dated relatively to each other, and each SC is represented by a filled circle in the arc diagram. Each SC has an ID, name and description. They are loaded from `sound_changes.csv`. |
-| Relation | Relations between SCs, e.g. "3 before 8". Each SC has a set of relations to other SCs, which are represented by arcs in the arc diagram. Relations have a type and confidence. They are loaded from `relations.csv`. |
-| Relation type | An abbreviation describing the process by which a relation was established, e.g. "B", which stands for "Bleeding". These are loaded from `relations.csv` and show in the labels above arcs in the arc diagram. |
+| Relation | Relations between SCs, e.g. "3 before 8". Each SC has a set of relations to other SCs, which are represented by arcs in the arc diagram. Apart from their associated two sound changes, relations have a type, confidence and description. They are loaded from `relations.csv`. |
+| Relation type | An abbreviation describing the process by which a relation was established, e.g. "B", which stands for "Bleeding". These are loaded from `relations.csv` and determinde the color of an arc or ribbon. |
 | Relation confidence | If a dating of a relation is uncertain, in the arc diagram, the corresponding arc will be displayed with a dotted line, and it can be filtered out. |
 | Example | The example lexemes show up in a drawer element on the right side of the app after a SC has been selected. They are loaded from `examples.csv`, which contains data about each form of the lexeme after particular SCs. The website only displays examples that have undergone the selected SC. |
 
@@ -19,18 +19,18 @@ The table examples include the reference row (A/B/C/D/...) and column (1/2/3/4/.
 Download a template for SC data [here](https://relchron.eu.pythonanywhere.com/sc_template) (right-click > "Download Linked File" / "Save Link As...").
 You can modify this file with your own data. Below is a model of what it looks like when you open it in Excel. This would already be a valid file to pass into the web app.
 
-|   | A | B | C | D  |
-|---|---|---|---|--- |
-| 1 | id | name | description |   |
-| 2 | 1 | Name of SC 1 | Description of SC 1 |   |
-| 3 | 2 | Name of SC 2 | Description of SC 2 |   |
-| 4 | 3 | Name of SC 3 | Description of SC 3 |   |
-| 5 | 4 | Name of SC 4 | Description of SC 4 |   |
+|   | A | B | C |
+|---|---|---|---|
+| 1 | id | name | description |
+| 2 | 1 | Name of SC 1 | Description of SC 1 |
+| 3 | 2 | Name of SC 2 | Description of SC 2 |
+| 4 | 3 | Name of SC 3 | Description of SC 3 |
+| 5 | 4 | Name of SC 4 | Description of SC 4 |
 
 Layout
  - Every row is an SC. For each one, Add an id, a name (col B) and a description (col C). The description is optional.
  - **Do not change anything** in row 1.
- - **Do not enter anything** into any other columns in the sheet.
+ - **Do not enter anything** into any other columns in the sheet after D.
 
 Here's how to modify the file with your own data:
  1. Open it in MS Excel.
@@ -53,13 +53,13 @@ You can modify this file with your own data. Below is a model of what it looks l
 
 Layout
  - Each row contains one reason for a particular dating.
- - **Do not change anything** in row 1.
- - **Do not enter anything** into any other columns in the sheet.
  - Columns A and B contain the IDs of the SCs which are dated in relation to each other. The earlier SC always goes into column A.
  - Column C contains the relation type. This is one of a few predetermined abbreviations (see below). The abbreviation determines the coloring in the diagram, and which text is displayed as additional information.
  - Column D contains the confidence about the dating. It can be set to TRUE or FALSE. The latter will make the arc diagram display that relation arc as a dashed line, and will enable the user to filter this relation out with the appropriate filter. Row 5 contains an unconfident relation.
  - Column E contains the reason for the dating. Usually consists of a single sentence.
  - As in row 2 and 3, it's possible that there are multiple or alternative relation types for the same two sound changes.
+ - **Do not change anything** in row 1.
+ - **Do not enter anything** into any other columns in the sheet.
 
 Here's how to modify the file with your own data:
  1. Open it with MS Excel.
@@ -93,12 +93,12 @@ Again, you can modify this file with your own data. Below is a model of what it 
 | 6 | Last form of example 5 | First form of example 5 | Example 5 after SC 1 | Example 5 after SC 2 |
 
 Layout
- - **Do not change anything** in row 1.
  - Each row after row 1 contains all the forms for one example lexeme.
  - Column A is the most recent form of each example. In this case, it's present-day Russian ("Ru." for short).
  - Column B is the earliest form of each example. In this case, that is proto-slavic ("PSl." for short).
  - Each column after B is numbered with a SC ID in row 1.
  - If the lexeme changes after a SC, it appears in the cell under that SC.
+ - **Do not change anything** in row 1.
 
 
 Here's how to modify the file with your own data:
