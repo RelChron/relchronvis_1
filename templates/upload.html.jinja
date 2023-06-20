@@ -1,0 +1,29 @@
+{% extends "layout.html.jinja" %}
+{% block body %}
+<div class="container mt-5 row">
+    <div class="col-4"></div>
+    <div class="col-3 position-absolute top-50 start-50 translate-middle">
+        <h2>Upload custom data files</h2>
+        <p>
+            Upload custom data files to be displayed in the web app. Please refer to the documentation for the format of the csv files.
+        </p>
+        <form method=post enctype="multipart/form-data">
+            <div class="my-5">
+                <label for="sc-data-input" class="form-label">Sound Changes Data File (.csv)</label>
+                <input class="form-control" type="file" name="sc" id="sc-data-input">
+            </div>
+            <div class="my-5">
+                <label for="rel-input" class="form-label">Relations Data File (.csv)</label>
+                <input class="form-control" type="file" name="rel" id="rel-input">
+            </div>
+            <div class="my-5">
+                <label for="examples-input" class="form-label">Examples Data File (.csv)</label>
+                <input class="form-control" type="file" name="examples" id="examples-input">
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Upload and go to arc diagram</button>
+        </form>
+
+    </div>
+    <div class="col-4"></div>
+</div>
+{% endblock %}

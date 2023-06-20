@@ -30,7 +30,23 @@ Promise.all([
   d3.json(`/sc_data?lang=${language}`),
   d3.json(`/matrix?lang=${language}`),
   d3.json(`/examples?lang=${language}`),
-]).then(function([sc_data, matrix, example_data]) {
+]).then(function([req_sc_data, req_matrix, req_example_data]) {
+  // Check for custom data and load it
+  let sc_data = null
+  let matrix = null
+  let example_data = null
+  if (language === "custom") {
+    sc_data = JSON.parse(localStorage.getItem("custom_sc_data"))
+    matrix = JSON.parse(localStorage.getItem("custom_matrix"))
+    example_data = JSON.parse(localStorage.getItem("custom_example_data"))
+    oldestVariety = localStorage.getItem("custom_old_var")
+    newestVariety = localStorage.getItem("custom_new_var")
+  } else {
+    sc_data = req_sc_data
+    matrix = req_matrix
+    example_data = req_example_data
+  }
+
   // Catch errors
   for (const returnedData of [sc_data, example_data, matrix]) {
     if (returnedData.hasOwnProperty("error")) {
@@ -61,14 +77,6 @@ Promise.all([
     chords[i].description = sc_data.relations[i].description
     chords[i].confident = sc_data.relations[i].confident
   }
-
-  // Debug
-  console.log("Here's the chords object with length", chords.length)
-  console.log(chords)
-  console.log("Here's the chords.groups object")
-  console.log(chords.groups)
-  console.log("Here's the sc_data.relations object with length", sc_data.relations.length)
-  console.log(sc_data.relations)
 
   let ringElements = diagram
     .selectAll()

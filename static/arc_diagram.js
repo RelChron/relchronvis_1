@@ -35,7 +35,20 @@ const diagram = svg.append("g")
 Promise.all([
   d3.json(`/sc_data?lang=${language}`),
   d3.json(`/examples?lang=${language}`),
-]).then(function([sc_data, example_data]) {
+]).then(function([req_sc_data, req_example_data]) {
+  // Check for custom data and load it
+  let sc_data = null
+  let example_data = null
+  if (language === "custom") {
+    sc_data = JSON.parse(localStorage.getItem("custom_sc_data"))
+    example_data = JSON.parse(localStorage.getItem("custom_example_data"))
+    oldestVariety = localStorage.getItem("custom_old_var")
+    newestVariety = localStorage.getItem("custom_new_var")
+  } else {
+    sc_data = req_sc_data
+    example_data = req_example_data
+  }
+
   // Catch errors
   for (const returnedData of [sc_data, example_data]) {
     if (returnedData.hasOwnProperty("error")) {

@@ -2,3 +2,4 @@
 *.icloud
 __pycache__
 launch.json
+uploads/*

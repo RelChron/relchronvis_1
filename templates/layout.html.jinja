@@ -13,12 +13,25 @@
     {# Data is defined on diagram pages #}
     {% if data is defined %}
         {# Give the js the variables it needs for diagram drawing #}
-        <script type="text/javascript" defer>
-            const oldestVariety = {{ data["oldest_variety"]|tojson }}
-            const newestVariety = {{ data["newest_variety"]|tojson }}
+        <script type="text/javascript">
+            let oldestVariety = {{ data["oldest_variety"]|tojson }}
+            let newestVariety = {{ data["newest_variety"]|tojson }}
             const language = {{ data["language"]|tojson }}
             const serverResponse = {{ data|tojson }}
+            const newCustomData = {{ data["new_custom_data"]|tojson }}
+
+            if (newCustomData) {
+                localStorage.setItem("custom_sc_data", 
+                    JSON.stringify({{ data["sc_data_dump"] }}))
+                localStorage.setItem("custom_matrix", 
+                    JSON.stringify({{ data["matrix"] }}))
+                localStorage.setItem("custom_example_data", 
+                    JSON.stringify({{ data["examples"] }}))
+                localStorage.setItem("custom_old_var", oldestVariety)
+                localStorage.setItem("custom_new_var", newestVariety)
+            }
         </script>
+        
 
         {# Load D3js #}
         <script src="static/d3.v7.min.js" defer></script>

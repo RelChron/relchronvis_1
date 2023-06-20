@@ -1,5 +1,6 @@
 # Import data from csv, serve pages and data requests
-from flask import Flask, render_template, send_file, request
+from flask import Flask, render_template, send_file, request, jsonify, flash, redirect, url_for
+from werkzeug.utils import secure_filename
 from collections import Counter
 from typing import OrderedDict
 from pathlib import Path
@@ -8,15 +9,18 @@ import json, csv, os
 # This should run only when deployed. Running this script directly changes 
 # the working directory.
 BASE_DIR = Path(os.getcwd()) / "relchron_1"
+ALLOWED_EXTENSIONS = {"txt", "csv"}
+UPLOAD_FOLDER = "uploads"
 
 app = Flask(__name__)
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 @app.route("/")
 def landing():
     return render_template("landing.html.jinja")
 
 @app.route("/arc_diagram", methods=["GET"])
-def arc_diagram():
+def arc_diagram(custom_data=None):
     language = request.args.get("lang")
     data = {"diagram_type": "arc_diagram"}
     if language == "Russian":
@@ -29,6 +33,7 @@ def arc_diagram():
 
         data["oldest_variety"] = oldest_variety
         data["newest_variety"] = newest_variety
+        data["new_custom_data"] = False
     elif language == "Croatian":
         data["language"] = "Croatian"
         try:
@@ -39,6 +44,21 @@ def arc_diagram():
 
         data["oldest_variety"] = oldest_variety
         data["newest_variety"] = newest_variety
+        data["new_custom_data"] = False
+    elif custom_data:
+        data["language"] = "custom"
+        data["new_custom_data"] = True
+        data["oldest_variety"]  = custom_data["oldest_var"]
+        data["newest_variety"]  = custom_data["newest_var"]
+        data["sc_data_dump"] = custom_data["sc_data"]
+        data["matrix"] = custom_data["matrix"]
+        data["examples"] = custom_data["examples"]
+    # Fires only when requested via link
+    elif language == "custom":
+        data["language"] = "custom"
+        data["new_custom_data"] = False
+        data["oldest_variety"] = ""
+        data["newest_variety"] = ""
     else:
         data["error"] = ("Error parsing language for arc diagram", "")
 
@@ -58,6 +78,7 @@ def chord_diagram():
 
         data["oldest_variety"] = oldest_variety
         data["newest_variety"] = newest_variety
+        data["new_custom_data"] = False
     elif language == "Croatian":
         data["language"] = "Croatian"
         try:
@@ -68,6 +89,13 @@ def chord_diagram():
 
         data["oldest_variety"] = oldest_variety
         data["newest_variety"] = newest_variety
+        data["new_custom_data"] = False
+    # Fires only when requested via link
+    elif language == "custom":
+        data["language"] = "custom"
+        data["new_custom_data"] = False
+        data["oldest_variety"] = ""
+        data["newest_variety"] = ""
     else:
         data["error"] = ("Error parsing language for chord diagram", "")
 
@@ -88,6 +116,10 @@ def give_sc_data():
         else:
             return {"error": ("Error getting Croatian sound change data",
                     "File 'data/data_hr.json' does not exist")}
+    elif language == "custom":
+        return jsonify("custom")
+    else:
+        return {"error": "Error getting sound change and relation data"}
 
 @app.route('/examples', methods=["GET"])
 def give_example_data():
@@ -104,6 +136,8 @@ def give_example_data():
         else:
             return {"error": ("Error getting Croatian example data",
                     "File 'data/examples_hr.json' does not exist")}
+    elif language == "custom":
+        return jsonify("custom")
     else:
         return {"error": "Error getting example data"}
 
@@ -122,6 +156,8 @@ def give_matrix_data():
         else:
             return {"error": ("Error getting Croatian matrix data",
                     "File 'data/matrix_hr.json' does not exist")}
+    elif language == "custom":
+        return jsonify("custom")
     else:
         return {"error": "Error getting matrix data"}
 
@@ -137,10 +173,41 @@ def give_ex_template():
 def give_rel_template():
     return send_file("data/relations_ru.csv")
 
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_files():
+    if request.method == 'POST':
+        sc_file = request.files["sc"]
+        rel_file = request.files["rel"]
+        examples_file = request.files["examples"]
+
+        sc_file_path = os.path.join(app.config['UPLOAD_FOLDER'], "scs.csv")
+        sc_file.save(sc_file_path)
+        rel_file_path = os.path.join(app.config['UPLOAD_FOLDER'], "rels.csv")
+        rel_file.save(rel_file_path)
+        ex_file_path = os.path.join(app.config['UPLOAD_FOLDER'], "exs.csv")
+        examples_file.save(ex_file_path)
+
+        scs, matrix = json_dump_csv_sound_changes(sc_file_path, rel_file_path)
+        examples = json_dump_csv_examples(ex_file_path)
+
+        oldest_variety, newest_variety = get_abbr(ex_file_path)
+
+        uploaded_data = {
+            "sc_data": scs,
+            "matrix": matrix,
+            "examples": examples,
+            "oldest_var": oldest_variety,
+            "newest_var": newest_variety
+        }
+
+        if sc_file and rel_file and examples_file:
+            return arc_diagram(custom_data=uploaded_data)
+        
+    elif request.method == "GET":
+        return render_template("upload.html.jinja")
+
 def import_csv_sound_changes(sc_infile_path, relations_infile_path, 
-                             outfile_path, matrix_outfile_path, 
-                             n_of_sound_changes):
-    # with open(sc_infile_path, encoding="utf-8-sig") as sc_infile:
+                             outfile_path, matrix_outfile_path):
     with (open(sc_infile_path, encoding="utf-8-sig") as sc_infile,
           open(relations_infile_path, encoding="utf-8-sig") as rel_infile):
         out_dict = OrderedDict({
@@ -205,6 +272,67 @@ def import_csv_sound_changes(sc_infile_path, relations_infile_path,
     with open(matrix_outfile_path, mode="w+", encoding="utf-8") as outfile:
         outfile.write(json.dumps(matrix))
 
+def json_dump_csv_sound_changes(sc_infile_path, relations_infile_path):
+    with (open(sc_infile_path, encoding="utf-8-sig") as sc_infile,
+          open(relations_infile_path, encoding="utf-8-sig") as rel_infile):
+        out_dict = OrderedDict({
+            "changes": list(csv.DictReader(sc_infile, dialect="excel")), 
+            "relations": list(csv.DictReader(rel_infile, dialect="excel"))
+        })
+
+        # Convert some strings to ints and booleans
+        for sc in out_dict["changes"]:
+            sc["id"] = int(sc["id"])
+
+        for relation in out_dict["relations"]:
+            relation["source"] = int(relation["source"])
+            relation["target"] = int(relation["target"])
+            if relation["confident"] == "TRUE":
+                relation["confident"] = True
+            elif relation["confident"] == "FALSE":
+                relation["confident"] = False
+
+    # Save matrix needed for chord diagram
+    matrix = []
+    # For each sound change...
+    for sc in out_dict["changes"]:
+        matrix_row = []
+        connected_ids = set()
+        # Make default dict that sets everything to 0 probably
+        multi_connected_ids = Counter()
+
+        # ...check relations and get all connections...
+        for relation in out_dict["relations"]:
+            if relation["source"] == sc["id"]:
+                # If we're looking at a double relation
+                if relation["target"] in connected_ids:
+                    # Add +1 to multi_connected_ids entry (add an extra count 
+                    # if at 0, because the smallest "multi connection" is 2)
+                    if multi_connected_ids[relation["target"]] == 0:
+                        multi_connected_ids[relation["target"]] += 1
+                    multi_connected_ids[relation["target"]] += 1
+                connected_ids.add(relation["target"])
+
+            if relation["target"] == sc["id"]:
+                if relation["source"] in connected_ids:
+                    if multi_connected_ids[relation["source"]] == 0:
+                        multi_connected_ids[relation["source"]] += 1
+                    multi_connected_ids[relation["source"]] += 1
+                connected_ids.add(relation["source"])
+
+        # ...and add ints in the corresponding place in the matrix row.
+        for i in range(1, len(out_dict["changes"]) + 1):
+            if i in multi_connected_ids:
+                matrix_row.append(multi_connected_ids[i])
+            elif i in connected_ids:
+                matrix_row.append(1)
+            else:
+                matrix_row.append(0)
+
+        matrix.append(matrix_row)
+    
+    return (json.dumps(out_dict), json.dumps(matrix))
+    
 def import_csv_examples(infile_path, outfile_path):
     out_list = []
     # "utf-8-sig" removes the BOM at the beginning of file (added by Excel). 
@@ -222,6 +350,22 @@ def import_csv_examples(infile_path, outfile_path):
     with open(outfile_path, mode="w+", encoding="utf-8") as outfile:
         outfile.write(json.dumps(out_list))
 
+def json_dump_csv_examples(infile_path):
+    out_list = []
+    # "utf-8-sig" removes the BOM at the beginning of file (added by Excel). 
+    # Unsure if this will cause problems with files that don't have a BOM. 
+    with open(infile_path, encoding="utf-8-sig") as infile:
+        # Default reader takes field names from first row 
+        csv_reader = csv.DictReader(infile, dialect="excel")
+        for row in csv_reader:
+            example = OrderedDict()
+            for field in row:
+                if row[field] != "":
+                    example[field] = row[field]
+            out_list.append(example)
+    
+    return json.dumps(out_list)
+
 def get_abbr(examples_file_path):
     absolute_path = BASE_DIR / examples_file_path
     with absolute_path.open(encoding="utf-8-sig", newline="") as infile:
@@ -231,6 +375,9 @@ def get_abbr(examples_file_path):
     
     return oldest_variety, newest_variety
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 if __name__ == "__main__":
     # When running directly (not the case on pythonanywhere), cwd == base dir
@@ -239,15 +386,13 @@ if __name__ == "__main__":
         sc_infile_path = "data/sound_changes_hr.csv", 
         relations_infile_path = "data/relations_hr.csv", 
         outfile_path = "data/data_hr.json", 
-        matrix_outfile_path = "data/matrix_hr.json",
-        n_of_sound_changes = 71
+        matrix_outfile_path = "data/matrix_hr.json"
     )
     import_csv_sound_changes(
         sc_infile_path = "data/sound_changes_ru.csv", 
         relations_infile_path = "data/relations_ru.csv", 
         outfile_path = "data/data_ru.json", 
-        matrix_outfile_path = "data/matrix_ru.json",
-        n_of_sound_changes = 71
+        matrix_outfile_path = "data/matrix_ru.json"
     )
     import_csv_examples(
         infile_path = "data/examples_hr.csv",
