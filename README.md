@@ -1,5 +1,5 @@
-# A Relative Chronology of Sound Changes in Russian
-This web app visualizes a relative chronology of sound changes that have occurred in the Russian language from Proto-Slavic to the present day. It allows users to inspect individual changes and their relative datings and view examples. Try it out [here](https://relchron.eu.pythonanywhere.com).
+# Relative Chronology Visualization
+This web app visualizes relative chronology models. It allows users to inspect individual sound changes of a language and their relative datings and view examples. Try the web app [here](https://relchron.eu.pythonanywhere.com). Currently, the data comprises sound changes from the Croatian and Russian language, taken from REF1 and REF2. However, the data is easily customizable and does not necessarily have to be limited to linguistics.
 
 ## Terminology
 | Term | Explanation |
