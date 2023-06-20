@@ -115,5 +115,5 @@ After you have created your own custom  `.csv` files, you can upload them at htt
 
 
 ## References
- - Holzer, Georg (2007). Historische Grammatik des Kroatischen. Einleitung und Lautgeschichte der Standardsprache. Schriften u ̈ber Sprachen und Texte; 9. Frankfurt am Main et al.: Peter Lang.
+ - Holzer, Georg (2007). Historische Grammatik des Kroatischen. Einleitung und Lautgeschichte der Standardsprache. Schriften über Sprachen und Texte; 9. Frankfurt am Main et al.: Peter Lang.
  - Wandl, Florian (2011). Diachrone Lautlehre des Russischen. Ein Modell des Lautwandels und seiner relativen Chronologie.
