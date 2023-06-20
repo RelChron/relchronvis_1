@@ -1,5 +1,5 @@
 # Relative Chronology Visualization
-This web app visualizes relative chronology models. It allows users to inspect individual sound changes of a language and their relative datings and view examples. Try the web app [here](https://relchron.eu.pythonanywhere.com). Currently, the data comprises sound changes from the Croatian and Russian language, taken from REF1 and REF2. However, the data is easily customizable and does not necessarily have to be limited to linguistics. The rest of this document explains how to format your custom data and how to upload it to the web app.
+This web app visualizes relative chronology models. It allows users to inspect individual sound changes of a language and their relative datings and view examples. Try the web app [here](https://relchron.eu.pythonanywhere.com). Currently, the data comprises sound changes from the Croatian and Russian language, taken from Holzer (2007) and Wandl (2011). However, the data is easily customizable and does not necessarily have to be limited to linguistics. The rest of this document explains how to format your custom data and how to upload it to the web app.
 
 ## Terminology
 | Term | Explanation |
@@ -112,3 +112,8 @@ Note that the web app will extract abbreviations for the earliest and last form 
 
 ## Upload
 After you have created your own custom  `.csv` files, you can upload them at https://relchron.eu.pythonanywhere.com/upload. Make sure to attach each file to the correct button and press the blue button at the bottom of the page. The web app should now show the arc diagram with your custom data and full functionality. You can switch to the chord diagram to see your custom data as well. The data will persist within the same browser even if you close it, and you should still see your custom data when visiting https://relchron.eu.pythonanywhere.com/arc_diagram?lang=custom or https://relchron.eu.pythonanywhere.com/chord_diagram?lang=custom again later. If you want to change the custom data, simply go to https://relchron.eu.pythonanywhere.com/upload again.
+
+
+## References
+Holzer, Georg (2007). Historische Grammatik des Kroatischen. Einleitung und Lautgeschichte der Standardsprache. Schriften u ̈ber Sprachen und Texte; 9. Frankfurt am Main et al.: Peter Lang.
+Wandl, Florian (2011). Diachrone Lautlehre des Russischen. Ein Modell des Lautwandels und seiner relativen Chronologie.
