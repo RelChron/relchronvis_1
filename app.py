@@ -101,7 +101,7 @@ def chord_diagram():
 
     return render_template("chord_diagram.html.jinja", data=data)
 
-@app.route('/sc_data', methods=["GET"])
+@app.route("/sc_data", methods=["GET"])
 def give_sc_data():
     language = request.args.get("lang")
     if language == "Russian":
@@ -121,7 +121,7 @@ def give_sc_data():
     else:
         return {"error": "Error getting sound change and relation data"}
 
-@app.route('/examples', methods=["GET"])
+@app.route("/examples", methods=["GET"])
 def give_example_data():
     language = request.args.get("lang")
     if language == "Russian":
@@ -161,27 +161,37 @@ def give_matrix_data():
     else:
         return {"error": "Error getting matrix data"}
 
-@app.route('/sc_template', methods=["GET"])
+@app.route("/sc_template", methods=["GET"])
 def give_sc_template():
     return send_file("data/sound_changes_ru.csv")
 
-@app.route('/ex_template', methods=["GET"])
+@app.route("/ex_template", methods=["GET"])
 def give_ex_template():
     return send_file("data/examples_ru.csv")
 
-@app.route('/rel_template', methods=["GET"])
+@app.route("/rel_template", methods=["GET"])
 def give_rel_template():
     return send_file("data/relations_ru.csv")
 
-@app.route('/upload', methods=['GET', 'POST'])
+@app.route("/upload", methods=["GET", "POST"])
 def upload_files():
-    if request.method == 'POST':
+    errors = []
+    if request.method == "GET":
+        return render_template("upload.html.jinja")
+    elif request.method == 'POST':
         sc_file = request.files["sc"]
         rel_file = request.files["rel"]
         examples_file = request.files["examples"]
 
+        if sc_file.filename == "":
+            errors.append("No sound change file attached.")
+        if rel_file.filename == "":
+            errors.append("No relations file attached.")
+        if examples_file.filename == "":
+            errors.append("No examples file attached.")
+
         sc_file_path = os.path.join(
-            BASE_DIR, app.config['UPLOAD_FOLDER'], "scs.csv")
+        BASE_DIR, app.config['UPLOAD_FOLDER'], "scs.csv")
         sc_file.save(sc_file_path)
         rel_file_path = os.path.join(
             BASE_DIR, app.config['UPLOAD_FOLDER'], "rels.csv")
@@ -190,24 +200,32 @@ def upload_files():
             BASE_DIR, app.config['UPLOAD_FOLDER'], "exs.csv")
         examples_file.save(ex_file_path)
 
-        scs, matrix = json_dump_csv_sound_changes(sc_file_path, rel_file_path)
-        examples = json_dump_csv_examples(ex_file_path)
-
-        oldest_variety, newest_variety = get_abbr(ex_file_path)
-
-        uploaded_data = {
-            "sc_data": scs,
-            "matrix": matrix,
-            "examples": examples,
-            "oldest_var": oldest_variety,
-            "newest_var": newest_variety
-        }
-
         if sc_file and rel_file and examples_file:
-            return arc_diagram(custom_data=uploaded_data)
+            try:
+                scs, matrix = json_dump_csv_sound_changes(sc_file_path, rel_file_path)
+            except:
+                errors.append("Sound change file or relations file could not be processed. Please check that you attached the correct file in the correct location and make sure they are formatted exactly to specification.")
+
+            try:
+                examples = json_dump_csv_examples(ex_file_path)
+                oldest_variety, newest_variety = get_abbr(ex_file_path)
+            except:
+                errors.append("Examples file could not be processed. Please check that you attached the correct file in the correct location and make sure it's formatted exactly to specification.")
+
+            try:
+                uploaded_data = {
+                    "sc_data": scs,
+                    "matrix": matrix,
+                    "examples": examples,
+                    "oldest_var": oldest_variety,
+                    "newest_var": newest_variety
+                }
+                return arc_diagram(custom_data=uploaded_data)
+            except:
+                pass
         
-    elif request.method == "GET":
-        return render_template("upload.html.jinja")
+        if errors:
+            return render_template("fail.html.jinja", errors=errors)
 
 def import_csv_sound_changes(sc_infile_path, relations_infile_path, 
                              outfile_path, matrix_outfile_path):

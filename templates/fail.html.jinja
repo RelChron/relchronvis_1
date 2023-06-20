@@ -1,0 +1,17 @@
+{% extends "layout.html.jinja" %}
+{% block body %}
+<div class="container mt-5 row">
+    <div class="col-4"></div>
+    <div class="col-3 position-absolute top-50 start-50 translate-middle">
+        <h2>Error{% if errors|length > 1 %}s{% endif %}</h2>
+        {% if errors is defined %}
+            {% for error in errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        <a class="btn btn-primary px-4 gap-3" href="/upload">Back to Custom Data Upload</a>
+        <a class="btn btn-primary px-4 gap-3" href="/">Back to Home</a>
+    </div>
+    <div class="col-4"></div>
+</div>
+{% endblock %}
