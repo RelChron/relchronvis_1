@@ -449,10 +449,6 @@ Promise.all([
         // oldestVariety (and newest) is passed into html script tag by flask
         .html(`${oldestVariety} ${mExample[oldestVariety]} `)
 
-      if (Object.keys(mExample)[0] === idToBold) {
-        boldLastThree = true
-      }
-
       for (const sc_id in mExample) {
         // Skip strings (converting string with Number() will result in NaN)
         if (isNaN(Number(sc_id))) {continue}
@@ -468,7 +464,6 @@ Promise.all([
           .attr("class", "chronology-el")
           .html(` ${mExample[sc_id]} `)
 
-          // Simplify by changing how bolding works for element 0
           if (sc_id === idToBold) {
             boldLastThree = true
           }
