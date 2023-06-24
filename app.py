@@ -181,13 +181,13 @@ def upload_files():
         sc_file = request.files["sc"]
         rel_file = request.files["rel"]
         examples_file = request.files["examples"]
+        examples = ""
+        oldest_variety, newest_variety = "", ""
 
         if sc_file.filename == "":
             errors.append("No sound change file attached.")
         if rel_file.filename == "":
             errors.append("No relations file attached.")
-        if examples_file.filename == "":
-            errors.append("No examples file attached.")
 
         sc_file_path = os.path.join(
         BASE_DIR, app.config['UPLOAD_FOLDER'], "scs.csv")
@@ -199,18 +199,18 @@ def upload_files():
             BASE_DIR, app.config['UPLOAD_FOLDER'], "exs.csv")
         examples_file.save(ex_file_path)
 
-        if sc_file and rel_file and examples_file:
+        if sc_file and rel_file:
             try:
                 scs, matrix = json_dump_csv_sound_changes(sc_file_path, rel_file_path)
             except:
                 errors.append("Sound change file or relations file could not be processed. Please check that you attached the correct file in the correct location and make sure they are formatted exactly to specification.")
 
-            try:
-                examples = json_dump_csv_examples(ex_file_path)
-                oldest_variety, newest_variety = get_abbr(ex_file_path)
-            except:
-                errors.append("Examples file could not be processed. Please check that you attached the correct file in the correct location and make sure it's formatted exactly to specification.")
-
+            if examples_file:
+                try:
+                    examples = json_dump_csv_examples(ex_file_path)
+                    oldest_variety, newest_variety = get_abbr(ex_file_path)
+                except:
+                    errors.append("Examples file could not be processed. Please check that you attached the correct file in the correct location and make sure it's formatted exactly to specification.")
             try:
                 uploaded_data = {
                     "sc_data": scs,
