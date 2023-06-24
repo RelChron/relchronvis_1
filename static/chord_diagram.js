@@ -38,7 +38,18 @@ Promise.all([
   if (language === "custom") {
     sc_data = JSON.parse(localStorage.getItem("custom_sc_data"))
     matrix = JSON.parse(localStorage.getItem("custom_matrix"))
-    example_data = JSON.parse(localStorage.getItem("custom_example_data"))
+    let exampleDataDefined = localStorage.getItem("custom_example_data") !== "undefined"
+    if (exampleDataDefined) {
+      example_data = JSON.parse(localStorage.getItem("custom_example_data"))
+    } else {
+      example_data = []
+      d3.select("#explainer-text").remove()
+      d3.select(".offcanvas-body")
+        .append("div")
+        .attr("role", "alert")
+        .classed("alert alert-danger", true)
+        .text("It seems like you did not upload custom examples data.")
+    }
     oldestVariety = localStorage.getItem("custom_old_var")
     newestVariety = localStorage.getItem("custom_new_var")
   } else {
