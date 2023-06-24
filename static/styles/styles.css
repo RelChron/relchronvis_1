@@ -12091,7 +12091,7 @@ circle.highlighted, circle.locked {
   stroke-dashoffset: 28;
 }
 .arc.highlighted path, .arc.locked path {
-  stroke-width: 4;
+  stroke-width: 4px;
 }
 .arc.highlighted path.feeding, .arc.locked path.feeding {
   stroke: #0028a5;
@@ -12122,6 +12122,9 @@ circle.highlighted, circle.locked {
 }
 .arc.highlighted path.other, .arc.locked path.other {
   stroke: #0b82a0;
+}
+.arc.thin path {
+  stroke-width: 2px;
 }
 
 .arc.highlighted:hover path,

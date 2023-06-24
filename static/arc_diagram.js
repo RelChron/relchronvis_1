@@ -570,7 +570,17 @@ Promise.all([
   d3.select("#download-btn")
   .on("click", () => {
     let scalingFactor = 2
-    // Step 1. Adjust svg size according to longest label
+    // Step 1. Prepare svg and get dimensions
+    // Color all arcs if nothing frozen
+    lockedElements = d3.selectAll(".locked")
+    let noLockedEls = false
+    if (lockedElements.size() === 0) {
+      noLockedEls = true
+      for (const selection of [nodes, nodeLabels, arcs]) {
+        selection.classed("locked", true)
+      }
+      arcs.classed("thin", true)
+    }
     // Reset size
     diagram.call(zoom.transform, d3.zoomIdentity)
     gRect = document.getElementById("main-grouping-el").getBoundingClientRect()
@@ -633,7 +643,13 @@ Promise.all([
         saveAs(blob, 'Relative Chronology.png')
       })
     }
-    // Step 7. Reset SVG size
+    // Step 7. Reset colors and SVG size
+    if (noLockedEls) {
+      for (const selection of [nodes, nodeLabels, arcs]) {
+        selection.classed("locked", false)
+      }
+      arcs.classed("thin", false)
+    }
     svg
       .attr("height", SVG_HEIGHT)
       .attr("width", SVG_WIDTH)
