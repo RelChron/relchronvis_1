@@ -206,7 +206,7 @@ Promise.all([
   const LB_HEIGHT = 15 + (15 * LEGEND_ITEMS.length)
   const LB_WIDTH = 135
   const LB_X = -CIRCLE_RADIUS - 5
-  const LB_Y = 40
+  const LB_Y = 42   // Magic number indeed
 
   let legend = svg
     .append("g")
