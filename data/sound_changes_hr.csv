@@ -1,73 +1,73 @@
 ﻿id,name,description
-1,Third or Progressive palatalization,"The velar obstruents *k, *g, *x changed to *tˊ, *dˊ, *ś if they were immediately preceded by *i, *ī, or *j, or by sequences consisting of *i and a nasal *n"
-2,Umlaut,"Back vowels were fronted after the palatal consonants *j, *tˊ,*dˊ, and *ś: *u > *i, *ū > *ī, *a > *e, *ā > *ē"
-3,Monophthongization,"Tautosyllabic sequences of vowel and *w or *j were monophthongized: *aw, *āw, *ew, *ēw > *ọ̄; *aj, *āj > *ē; *ej, *ēj > *ẹ̄ > *ī"
-4,Depalatalization,"*ē was backened to *ā after the palatal consonants *j, *č, *dž, *š, *tˊ, *dˊ, *ś"
-5,"w-prothesis before *u-, *ū-","Word-initial *u-, *ū- received a prothetic glide *w: *u-, *ū- > *wu-, *wū-"
-6,The change *w > *β,The bilabial glide *w changed to the bilabial fricative *β
-7,Socond regressive palatalization,"The velar obstruents *k, *g, *x changed to *tˊ, *dˊ, *ś if they were immediately followed by a front vowel resulting from monophthongization or by a sequence consisting of *w and a front vowel resulting from monophthongization"
-8,The first l-epenthesis,"A lateral *l was inserted between the labial consonants *p, *b, *m, *w and an immediately following glide *j"
-9,The change of *ś to *s',"Palatal *ś resulting from one of the two Common Slavic palatalizations (§§ 1, 8) changed to palatalized *s"
-10,The first liquid metathesis,"Tautosyllabic word-initial sequences *ar˙-, *al˙- bearing the acute tone changed to *rā˙, *lā˙"
-11,Meillet's metatony,The acute tone was dropped on unaccented syllables except for the first post-tonic syllable
-12,Dybo's law,The accent shifted one syllable to the right from non-acute syllables
-13,The change of *kt to *k't',The sequence *kt changed to *k't' unless it was immediately followed by a back vowel
-14,"The change of *kt, *xt to *t","The sequences *kt, *xt lost their velar component and changed to *t"
-15,Delabialization *ū > *ȳ,The long high back vowel *ū was delabialized to *ȳ
-16,Assibilation of *tˊ to *c and of *dˊ to *dz,"The palatals *tˊ and *dˊ, resulting from the Third and the Second palatalizations, assibilated to *c and *dz, respectively"
-17,Raising of *ō to *ū,"The long vowel *ō, resulting from the monophthongization of *aw, *āw, *ew, *ēw, was raised to *ū"
-18,The change of *dž to *ž,"The affricate *dž, resulting from the pre-Proto-Slavic First palatalization, changed to *ž"
-19,"The change of *tl, *dl to *l","In sequences of dental plosives and laterals, the plosives were lost: *tl, *dl > *l"
-20,The second liquid metathesis,"Tautosyllabic sequences of non-high vowel + liquid that had not been affected by the first liquid metathesis (§ 10) were metathesized: *ar, *er, *al, *el > *rā, *rē, *lā, *lē"
-21,j-prothesis,"Word-initial vowels *ā, *e, *ē,  and *i received a prothetic glide *j"
-22,"Shortening of tautosyllabic sequences *ān, *ēn to *an, *en","Non-high long vowels were shortened before tautosyllabic *n: *ān, *ēn > *an, *en"
-23,The change of *a to *o,Short *a changed to *o
-24,The change of *ē to *ě̄,Long *ē changed to *ě̄ (Jat)
-25,The change of *i to *ь and of *u to *ъ,"The short high vowels *i and *u changed to the so-called jers *ь and *ъ, respectively"
-26,The first jer-epenthesis,"A jer (*ъ, *ь) was inserted into word-final sequences of consonant + sonorant + jer"
-27,The rise of syllabice liquids,"Tautosyllabic sequences *ъr, *ьr, *ъl, *ьl changed to long syllabic liquids *r̥̄, *l̥̄, and tautosyllabic sequences *rъ, *rь, *lъ *lь changed to short syllabic liquids r̥, *l̥ (in examples, the underscore ring ""˳"" is written only if it does not colide with other diacritics)"
-28,The rise of nasal vowels,"Tautosyllabic sequences of front vowel + nasal consonant changed to *ę̄ and tautosyllabic sequences of back vowel + nasal consonant change to *ǭ: *en, *eń, *em, *ьn, *ьń, *ьm > *ę̄; *on, *oń, *om, *ъn, *ъń, *ъm > *ǭ "
-29,Lengthening of short vowels in unaccented word forms,"In unaccented word forms, short vowels were lengthened before word-final syllables ending in a jer (*ъ, *ь)"
-30,Accentuation of unaccented word forms,"Unaccented word forms received an accent on their first syllable; if the word form was preceived by proclitics, the first syllable of the accentual unit received the accent; if the word form was followed by an enclitic, the enclitic received the accent regardless of whether it was preceded by proclitics"
-31,Shortening of word-final long vowels,Word-final long vowels were shortened
-32,Vowel contraction,"Two vowels which were separated from each other by the glide *j and had the same height or a height that differed by one degree (there were for degrees of vowel height at the relevant stage) merged into a long vowel; an acute tone on the first of the contracted syllables was lost; if the second of the contracted syllables was accented the resulting long vowel received a neo-acute tone which in the present study is marked by a mid-level dot ""·""; if three consecutive syllables are separated only by a glide *j only the last two were affected by contraction"
+1,Third or Progressive palatalization,"The velar obstruents *k, *g, *x changed to *tˊ, *dˊ, *ś if they were immediately preceded by *i, *ī, or *j, or by sequences consisting of *i and a nasal *n."
+2,Umlaut,"Back vowels were fronted after the palatal consonants *j, *tˊ,*dˊ, and *ś: *u > *i, *ū > *ī, *a > *e, *ā > *ē."
+3,Monophthongization,"Tautosyllabic sequences of vowel and *w or *j were monophthongized: *aw, *āw, *ew, *ēw > *ọ̄; *aj, *āj > *ē; *ej, *ēj > *ẹ̄ > *ī."
+4,Depalatalization,"*ē was backened to *ā after the palatal consonants *j, *č, *dž, *š, *tˊ, *dˊ, *ś."
+5,"w-prothesis before *u-, *ū-","Word-initial *u-, *ū- received a prothetic glide *w: *u-, *ū- > *wu-, *wū-."
+6,The change *w > *β,The bilabial glide *w changed to the bilabial fricative *β.
+7,Socond regressive palatalization,"The velar obstruents *k, *g, *x changed to *tˊ, *dˊ, *ś if they were immediately followed by a front vowel resulting from monophthongization or by a sequence consisting of *w and a front vowel resulting from monophthongization."
+8,The first l-epenthesis,"A lateral *l was inserted between the labial consonants *p, *b, *m, *w and an immediately following glide *j."
+9,The change of *ś to *s',"Palatal *ś resulting from one of the two Common Slavic palatalizations (§§ 1, 8) changed to palatalized *s."
+10,The first liquid metathesis,"Tautosyllabic word-initial sequences *ar˙-, *al˙- bearing the acute tone changed to *rā˙, *lā˙."
+11,Meillet's metatony,The acute tone was dropped on unaccented syllables except for the first post-tonic syllable.
+12,Dybo's law,The accent shifted one syllable to the right from non-acute syllables.
+13,The change of *kt to *k't',The sequence *kt changed to *k't' unless it was immediately followed by a back vowel.
+14,"The change of *kt, *xt to *t","The sequences *kt, *xt lost their velar component and changed to *t."
+15,Delabialization *ū > *ȳ,The long high back vowel *ū was delabialized to *ȳ.
+16,Assibilation of *tˊ to *c and of *dˊ to *dz,"The palatals *tˊ and *dˊ, resulting from the Third and the Second palatalizations, assibilated to *c and *dz, respectively."
+17,Raising of *ō to *ū,"The long vowel *ō, resulting from the monophthongization of *aw, *āw, *ew, *ēw, was raised to *ū."
+18,The change of *dž to *ž,"The affricate *dž, resulting from the pre-Proto-Slavic First palatalization, changed to *ž."
+19,"The change of *tl, *dl to *l","In sequences of dental plosives and laterals, the plosives were lost: *tl, *dl > *l."
+20,The second liquid metathesis,"Tautosyllabic sequences of non-high vowel + liquid that had not been affected by the first liquid metathesis (§ 10) were metathesized: *ar, *er, *al, *el > *rā, *rē, *lā, *lē."
+21,j-prothesis,"Word-initial vowels *ā, *e, *ē,  and *i received a prothetic glide *j."
+22,"Shortening of tautosyllabic sequences *ān, *ēn to *an, *en","Non-high long vowels were shortened before tautosyllabic *n: *ān, *ēn > *an, *en."
+23,The change of *a to *o,Short *a changed to *o.
+24,The change of *ē to *ě̄,Long *ē changed to *ě̄ (Jat).
+25,The change of *i to *ь and of *u to *ъ,"The short high vowels *i and *u changed to the so-called jers *ь and *ъ, respectively."
+26,The first jer-epenthesis,"A jer (*ъ, *ь) was inserted into word-final sequences of consonant + sonorant + jer."
+27,The rise of syllabice liquids,"Tautosyllabic sequences *ъr, *ьr, *ъl, *ьl changed to long syllabic liquids *r̥̄, *l̥̄, and tautosyllabic sequences *rъ, *rь, *lъ *lь changed to short syllabic liquids r̥, *l̥ (in examples, the underscore ring ""˳"" is written only if it does not colide with other diacritics)."
+28,The rise of nasal vowels,"Tautosyllabic sequences of front vowel + nasal consonant changed to *ę̄ and tautosyllabic sequences of back vowel + nasal consonant change to *ǭ: *en, *eń, *em, *ьn, *ьń, *ьm > *ę̄; *on, *oń, *om, *ъn, *ъń, *ъm > *ǭ ."
+29,Lengthening of short vowels in unaccented word forms,"In unaccented word forms, short vowels were lengthened before word-final syllables ending in a jer (*ъ, *ь)."
+30,Accentuation of unaccented word forms,"Unaccented word forms received an accent on their first syllable; if the word form was preceived by proclitics, the first syllable of the accentual unit received the accent; if the word form was followed by an enclitic, the enclitic received the accent regardless of whether it was preceded by proclitics."
+31,Shortening of word-final long vowels,Word-final long vowels were shortened.
+32,Vowel contraction,"Two vowels which were separated from each other by the glide *j and had the same height or a height that differed by one degree (there were for degrees of vowel height at the relevant stage) merged into a long vowel; an acute tone on the first of the contracted syllables was lost; if the second of the contracted syllables was accented the resulting long vowel received a neo-acute tone which in the present study is marked by a mid-level dot ""·""; if three consecutive syllables are separated only by a glide *j only the last two were affected by contraction."
 33,The first jotation and Kortlandt's compensatory lengthening,"The sequences *tj, *dj, *sj, *zj, *rj, *lj, *nj, *čj, and *žj were ""jotated"" to *tʹ, *dʹ, *š, *ž, *rʼ, *lʹ, *ń, *č, and *ž; if a *Cj sequence was preceded by *s or *z, the latter were affected by jotation as well; as a result of the loss of the glide *j, a short following syllable was lengthened; this lengthening was later on undone by several analogical processes but left an indirect trace in the accent shift according to Ivšić's first law (§ 36)
-t, n, č i Ž"
-34,"The change of *ḱtˊ, *x́tˊ to *tˊ","The sequences *ḱtˊ, *x́tˊ, resulting from the change of *kt, *xt to *ḱtˊ, *x́tˊ (§ 13), were simplified to *tˊ"
-35,The change of *dz > *z,"The affricate *dz, resulting from the change *dʹ > *dz (§ 16), changed to the fricative *z"
-36,Ivšić's first law,"The accent shifted from a long syllable not bearing the acute or neoacute tone by one syllable to the left; if the newly accented syllable was long, it received a neoacute tone"
-37,Ivšić's second law,"The accent shifted from a jer (*ъ, *ь) by one syllable to the left; if the newly accented syllable was long, it received a neoacute tone"
-38,The change of *ȳ to *ī,The unrounded back vowel *ȳ was fronted to *ī
-39,The change of *ъ to *ь,"The back jers *ъ, *ъ̄  merged with the front jers *ь, *ь̄"
-40,The change of word-initial *jь- to *i-,Word-initial *jь- changed to *i-; the resulting high front vowel was always short
-41,Kapović's two-mora law,"Pretonic long vowels were shortened if they were followed by two or more morae (jers = half a mora, short vowels = one mora, long vowels = two morae)"
-42,Kapović's four-syllables law,"In words consisting of four or more syllables that bore the accent on the first syllable, long vowels in the second syllable were shortened"
-43,The loss of the acute tone,"Long vowels bearing the acute tone were shortened; in the course of the shortening, the acute tone was lost"
-44,Three-syllables law,"Apart from vowels bearing the neoacute tone, long vowels were shortened in words with three or more syllables which did not have a jer (*ъ, ь*) in the paenultima "
-45,The change of *žr to *ždr,A voiced dental plosive was inserted into the sequence *žr: *žr > *ždr
-46,The second jer-epenthesis,A jer was inserted into sequences of consonant + sonorant + jer that had arisen after the first jer-epenthesis (§ 26) as a result of sound change or analogical change
-47,The change of *štˊ to *št and of *ždˊ to *žd,"The sequences *štʹ, ždʹ changed to *št, žd"
-48,Denasalization,"The two nasal vowels were denasalized: *ę, *ę̄ > *e, *ē; *ǫ, *ǭ > *u, *ū"
-49,The loss of weak jers,"When counting consecutive syllables containing jers, *ь was lost in odd syllable (so-called weak position); if a weak jer was stressed, the accent shifted to the immediately following syllable "
-50,Metathesis of word-initial sonorant-fricative sequences,Word-initial sequences consisting of sonorant + fricative were metathesized
-51,Assimilation in consonant clusters,"In consonant clusters resulting from the loss of weak jers (§ 49), several assimilations with regard to the place and manner of articulation occurred"
-52,Simplification of consonant clusters,Complex consonant clusters resulting from the loss of weak jers (§ 49) were simplified
-53,The change of word-initial *t to *k before oral non-velar plosives,The voiceless dental plosive *t changed to its velar counterpart *k before oral non-velar plosives
-54,The change of *β to *u before consonants and in word-final position,The bilabial fricative *β changed to *u before consonants and in word-final position
-55,The change of *ь to *a and of *ь̄ to *ā,"Jers which had not been lost as a result of the loss of weak jers (§ 49) changed to *a: *ь, *ь̄ > *a, *ā"
-56,Lengthening of *e and *o before word-final *n and *r,The vowels *e and *o were lengthened before word-final *-n and *-r 
-57,"The change of tautosyllabic *ě̄l, *ěl to *īl, *il","Jat *ě, *ě̄ was raised to *i, *ī before a tautosyllabic lateral *l: *ěl, *ě̄l > *il, *īl "
-58,The chage of *ěj to *ij,Jat *ě was raised to *i before the glide *j: *ěj > *ij
-59,The second l-epenthesis,"A lateral *l was inserted into sequences consisting of a labial consonant *p, *b, *m, *v and the glide *j that had arisen as a result of the loss of weak jers (§ 49): *pj, *bj, *mj, *vj > *plj, *blj, *mlj, *vlj"
-60,The change of *ě̄ to *ɩē and of *ě to *ɩe (or *e),"Jat *ě, *ě̄  diphthongized to *ɩe, *ɩē unless it was preceded by *j or a sequence of consonant + *r in which case it changed to *e"
-61,The change of *r’ to *r,"Palatalized *r’, resulting from jotation (§ 33) was depalatalized to *r"
-62,The change of syllabic *l̥ to *u and of syllabic *l̥̄ to *ū,"The syllabic laterals *l̥, *l̥̄ changed to *u, *ū"
-63,The change of *čr to *cr and of *čr̄ to *cr̄,"Before rhotics (syllabic or non-syllabic), *č changed to *c: *čr > *cr; *čr̥ > *cr̥; *čr̥̄ > *cr̥̄"
-64,The change of syllable-final *l to *o,Syllable-final *l changed to *o
-65,The second jotation,"As a result of the loss of weak jers (§ 43) and the second l-epenthesis (§ 59), new sequences of dental consonant + j arose; these sequences the target to a second jotation: *tj > *tʹ, *tʹj > *tʹ, *dj > *dʹ, *dʹj > *dʹ, *stj > *štʹ, *zdj > *zdʹ, *lj > *jʹ, *slj > *šlʹ, *nj > *ń, *lɩe > *lʹe,  *nɩe > *ńe; *jt > *tʹ, *jd > *dʹ"
-66,The change of *ɩe to *je,Non-syllabic *ɩ in the diphthong *ɩe changed to *j
-67,Lengthening of vowels before sonorant-consonant sequences and before word-final *j,Vowels were lengthened before syllable-final sonorants and *j
-68,The loss of the neo-acute tone,The neo-acute tone merged with the falling tone
-69,The Neoštokavian accent shift,"The accent was shifted by one syllalbe to the left; newly accented syllables received a rising tone which, in this study, is marked by a dot on the line (V̄., V.)"
-70,The change of *β to *v,The bilabial fricative *β changed to the labiodental *v
-71,"The change of *tˊ to *ć, *dˊ to *đ","The palatal plosives *tˊ, *dˊ, resulting from the second Jotation, changed to the affricates *ć, *đ"
+t, n, č i Ž."
+34,"The change of *ḱtˊ, *x́tˊ to *tˊ","The sequences *ḱtˊ, *x́tˊ, resulting from the change of *kt, *xt to *ḱtˊ, *x́tˊ (§ 13), were simplified to *tˊ."
+35,The change of *dz > *z,"The affricate *dz, resulting from the change *dʹ > *dz (§ 16), changed to the fricative *z."
+36,Ivšić's first law,"The accent shifted from a long syllable not bearing the acute or neoacute tone by one syllable to the left; if the newly accented syllable was long, it received a neoacute tone."
+37,Ivšić's second law,"The accent shifted from a jer (*ъ, *ь) by one syllable to the left; if the newly accented syllable was long, it received a neoacute tone."
+38,The change of *ȳ to *ī,The unrounded back vowel *ȳ was fronted to *ī.
+39,The change of *ъ to *ь,"The back jers *ъ, *ъ̄  merged with the front jers *ь, *ь̄."
+40,The change of word-initial *jь- to *i-,Word-initial *jь- changed to *i-; the resulting high front vowel was always short.
+41,Kapović's two-mora law,"Pretonic long vowels were shortened if they were followed by two or more morae (jers = half a mora, short vowels = one mora, long vowels = two morae)."
+42,Kapović's four-syllables law,"In words consisting of four or more syllables that bore the accent on the first syllable, long vowels in the second syllable were shortened."
+43,The loss of the acute tone,"Long vowels bearing the acute tone were shortened; in the course of the shortening, the acute tone was lost."
+44,Three-syllables law,"Apart from vowels bearing the neoacute tone, long vowels were shortened in words with three or more syllables which did not have a jer (*ъ, ь*) in the paenultima."
+45,The change of *žr to *ždr,A voiced dental plosive was inserted into the sequence *žr: *žr > *ždr.
+46,The second jer-epenthesis,A jer was inserted into sequences of consonant + sonorant + jer that had arisen after the first jer-epenthesis (§ 26) as a result of sound change or analogical change.
+47,The change of *štˊ to *št and of *ždˊ to *žd,"The sequences *štʹ, ždʹ changed to *št, žd."
+48,Denasalization,"The two nasal vowels were denasalized: *ę, *ę̄ > *e, *ē; *ǫ, *ǭ > *u, *ū."
+49,The loss of weak jers,"When counting consecutive syllables containing jers, *ь was lost in odd syllable (so-called weak position); if a weak jer was stressed, the accent shifted to the immediately following syllable."
+50,Metathesis of word-initial sonorant-fricative sequences,Word-initial sequences consisting of sonorant + fricative were metathesized.
+51,Assimilation in consonant clusters,"In consonant clusters resulting from the loss of weak jers (§ 49), several assimilations with regard to the place and manner of articulation occurred."
+52,Simplification of consonant clusters,Complex consonant clusters resulting from the loss of weak jers (§ 49) were simplified.
+53,The change of word-initial *t to *k before oral non-velar plosives,The voiceless dental plosive *t changed to its velar counterpart *k before oral non-velar plosives.
+54,The change of *β to *u before consonants and in word-final position,The bilabial fricative *β changed to *u before consonants and in word-final position.
+55,The change of *ь to *a and of *ь̄ to *ā,"Jers which had not been lost as a result of the loss of weak jers (§ 49) changed to *a: *ь, *ь̄ > *a, *ā."
+56,Lengthening of *e and *o before word-final *n and *r,The vowels *e and *o were lengthened before word-final *-n and *-r.
+57,"The change of tautosyllabic *ě̄l, *ěl to *īl, *il","Jat *ě, *ě̄ was raised to *i, *ī before a tautosyllabic lateral *l: *ěl, *ě̄l > *il, *īl."
+58,The chage of *ěj to *ij,Jat *ě was raised to *i before the glide *j: *ěj > *ij.
+59,The second l-epenthesis,"A lateral *l was inserted into sequences consisting of a labial consonant *p, *b, *m, *v and the glide *j that had arisen as a result of the loss of weak jers (§ 49): *pj, *bj, *mj, *vj > *plj, *blj, *mlj, *vlj."
+60,The change of *ě̄ to *ɩē and of *ě to *ɩe (or *e),"Jat *ě, *ě̄  diphthongized to *ɩe, *ɩē unless it was preceded by *j or a sequence of consonant + *r in which case it changed to *e."
+61,The change of *r’ to *r,"Palatalized *r’, resulting from jotation (§ 33) was depalatalized to *r."
+62,The change of syllabic *l̥ to *u and of syllabic *l̥̄ to *ū,"The syllabic laterals *l̥, *l̥̄ changed to *u, *ū."
+63,The change of *čr to *cr and of *čr̄ to *cr̄,"Before rhotics (syllabic or non-syllabic), *č changed to *c: *čr > *cr; *čr̥ > *cr̥; *čr̥̄ > *cr̥̄."
+64,The change of syllable-final *l to *o,Syllable-final *l changed to *o.
+65,The second jotation,"As a result of the loss of weak jers (§ 43) and the second l-epenthesis (§ 59), new sequences of dental consonant + j arose; these sequences the target to a second jotation: *tj > *tʹ, *tʹj > *tʹ, *dj > *dʹ, *dʹj > *dʹ, *stj > *štʹ, *zdj > *zdʹ, *lj > *jʹ, *slj > *šlʹ, *nj > *ń, *lɩe > *lʹe,  *nɩe > *ńe; *jt > *tʹ, *jd > *dʹ."
+66,The change of *ɩe to *je,Non-syllabic *ɩ in the diphthong *ɩe changed to *j.
+67,Lengthening of vowels before sonorant-consonant sequences and before word-final *j,Vowels were lengthened before syllable-final sonorants and *j.
+68,The loss of the neo-acute tone,The neo-acute tone merged with the falling tone.
+69,The Neoštokavian accent shift,"The accent was shifted by one syllalbe to the left; newly accented syllables received a rising tone which, in this study, is marked by a dot on the line (V̄., V.)."
+70,The change of *β to *v,The bilabial fricative *β changed to the labiodental *v.
+71,"The change of *tˊ to *ć, *dˊ to *đ","The palatal plosives *tˊ, *dˊ, resulting from the second Jotation, changed to the affricates *ć, *đ."
