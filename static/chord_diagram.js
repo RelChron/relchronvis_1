@@ -151,7 +151,7 @@ Promise.all([
         .html(data => data[newestVariety])
 
   const LEGEND_ITEMS = ["Feeding", "Counterfeeding", "Bleeding", 
-                     "Counterbleeding", "Manuscript", "Loanword", 
+                     "Counterbleeding", "Attestation", "Loanword", 
                      "Other"]
 
   const LB_HEIGHT = 15 + (15 * LEGEND_ITEMS.length)

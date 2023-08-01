@@ -51,7 +51,7 @@ $feeding: $uzh-blue-100;
 $counterfeeding: $uzh-blue-60;
 $bleeding: $uzh-red-100;
 $counterbleeding: $uzh-red-60;
-$manuscript: $uzh-yellow-80;
+$attestation: $uzh-yellow-80;
 $loanword: $uzh-limetree-green-100;
 $simplicity: $uzh-turquoise-100;
 $plausibility: $uzh-turquoise-100;
@@ -144,8 +144,8 @@ circle {
         &.counterbleeding {
             stroke: $counterbleeding;
         }
-        &.manuscript {
-            stroke: $manuscript;
+        &.attestation {
+            stroke: $attestation;
         }
         &.loanword {
             stroke: $loanword;
@@ -270,9 +270,9 @@ text {
             fill: $counterbleeding;
             stroke: $counterbleeding;
         }
-        &.manuscript {
-            fill: $manuscript;
-            stroke: $manuscript;
+        &.attestation {
+            fill: $attestation;
+            stroke: $attestation;
         }
         &.loanword {
             fill: $loanword;

@@ -73,7 +73,7 @@ Possible relation types:
  - B (Bleeding)
  - CB (Counterbleeding)
  - LW (Loanword)
- - M (Manuscript)
+ - A (Attestation)
  - N (Naturalness)
  - P (Plausibility)
  - S (Simplicity)

@@ -105,8 +105,8 @@ function getTypeName(code) {
     typeName = "bleeding"
   } else if (code === "CB") {
     typeName = "counterbleeding"
-  } else if (code === "M") {
-    typeName = "manuscript"
+  } else if (code === "A") {
+    typeName = "attestation"
   } else if (code === "LW") {
     typeName = "loanword"
   } else if (code === "N") {

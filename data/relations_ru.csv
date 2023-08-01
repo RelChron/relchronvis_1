@@ -46,9 +46,9 @@
 10,36,CF,FALSE,"Counterfeeding: Had Ivšić's second law (§ 36) occurred before the liquid metathesis (§ 10), the former change would have created inputs for the latter, cf. PSl. *a̠rwinuju > *rowʼь̠1nъ2jь1 > *ro̠wʼь1nъ2jь1 > Ru. ro̠vnəj not *a̠rwinuju > *arwʼь̠1nъ2jь1 > *a̠rwʼь1nъ2jь1 > *rā̠wʼь1nъ2jь1 etc."
 10,45,LW,FALSE,"Loanword: The personal names ORu. Olьgъ and Olьga where borrowed from ONord. Helgi and Helga posterior to the Liquid metathesis (§ 10), but prior to the change of word-initial *je- to *o (§ 45)."
 10,48,LW,TRUE,Loanword: The fact that a jer was inserted after the word-initial sequences of non-high-vowel and liquid in the borrowed personal names ORu Olьgъ and Olьga (cf. ON Helgi and Helga) showed that the corresponding sequences where not present in the language anymore and that the liquid metathesis (§ 10) had already taken place. 
-10,48,M,TRUE,"Manuscript: While the liquid metathesis (§ 10) occurred before the first written records were compiled, the loss of weak jers (§ 48) took place only in the 12th century."
+10,48,A,TRUE,"Attestation: While the liquid metathesis (§ 10) occurred before the first written records were compiled, the loss of weak jers (§ 48) took place only in the 12th century."
 10,52,LW,TRUE,"Loanword: The fact that the word-initial sequences of non-high vowel and liquid was simplified by insertion of a jer in the personal names ORu. Olьgъ and Olьga (cf. ON Helgi and Helga) shows that these sequences, at the time of the borrowing, were not a part of the language anymore. Hence, liquid metathesis (§ 10) must have occurred prior to the change of *ь to *e and of *ъ to *o (§ 52)."
-10,52,M,TRUE,"Manuscript: while liquid metathesis occured before the change *ъ > *o, *ь > *e (§ 52), took place only in the 12th century."
+10,52,A,TRUE,"Attestation: while liquid metathesis occured before the change *ъ > *o, *ь > *e (§ 52), took place only in the 12th century."
 11,12,B,FALSE,"Bleeding: By shifting the accent on a following syllable bearing accuteness, Dybo's law (§ 11) withdrew inputs from Meillet's metatony (§ 12)."
 11,16,LW,TRUE,"Loanword: The loanword Lat. lactū̠ca > Rom. *laχtū̠ka  > Sl. *laxtū̠kā˙ > *lotȳ̠kā˙ > Čak. lo̠tika was borrowed posterior to Dybo's law (§ 11), but prior to the change of *kt to *t (§ 16)."
 11,17,LW,TRUE,"Loanword: The loanword Lat. lactū̠ca > Rom. *laχtū̠ka  > Sl. *laxtū̠kā˙ > *lotȳ̠kā˙ > Čak. lo̠tika was borrowed posterior to Dybo's law (§ 11), but prior to the delabialization of *ū to *ȳ (§ 16)."
@@ -102,9 +102,9 @@
 22,26,LW,FALSE,"Loanword: If the change of *ē to *ě̄ (§ 29) was accompanied by a change of *e to *ẹ, the loanword Wot. pärämmä 'klafter' shows that it occured posterior to the rise of pleophony (§ 22)."
 22,31,F,TRUE,"Feeding: The rise of pleophony (§ 22) created inputs for the rise of secondary palatalization before front vowels (§ 31), cf. CerC > CereC > CʼerʼeC not CerC > CʼerC > CʼereC."
 22,48,CF,TRUE,"Counterfeeding: Had the loss of weak jers (§ 48) occurred before the rise of pleophony (§ 22), the former change would have created inputs for the latter, cf. PSl. *garikā̠˙ > *gorьkā̠˙ > *gorʼka̠ > Ru. gʌrʼka̠ 'bitter'."
-22,48,M,TRUE,Manuscript: The rise of pleophony (§ 22) is reflected in the earliest Slavic texts while the loss of weak jers (§ 48) had not yet taken place at this stage.
+22,48,A,TRUE,Attestation: The rise of pleophony (§ 22) is reflected in the earliest Slavic texts while the loss of weak jers (§ 48) had not yet taken place at this stage.
 22,52,CF,TRUE,"Counterfeeding: Had the change of *ь to *e and of *ъ to *o (§ 52) occurred prior to the rise of pleophony (§ 22), the former change would have created inputs for the latter, cf. *pulku > *pъ2lkъ1 > *pъ2lk > Ru. po̠lk 'regiment'."
-22,52,M,TRUE,Manuscript: The rise of pleophony (§ 22) is reflected in the earliest Slavic texts while the the change of *ь to *e and of *ъ to *o (§ 52) had not yet taken place at this stage.
+22,52,A,TRUE,Attestation: The rise of pleophony (§ 22) is reflected in the earliest Slavic texts while the the change of *ь to *e and of *ъ to *o (§ 52) had not yet taken place at this stage.
 22,59,F,TRUE,"Feeding: The rise of pleophony (§ 22) created inputs for the change of *e to *o before hard consonants (§ 59), cf. PSl. *dinimi > *dʼnʼe̠mʼ > *dʼnʼe̠m > Ru. dʼnʼo̠m."
 23,24,B,FALSE,"Bleeding: Unlike word initial *ā, word initial *a did not receive a prothetic *j. This suggests that the change of *a to *o (§ 23) occurred prior to j-prothesis (§ 24). Thus the former change withdrew inputs from the latter."
 23,25,P,TRUE,"Plausibility: The roundness of the back nasal vowel, as is typical for a majority of the Slavic languages, can be explained plausibly by assuming that the change of *a to *o (§ 23) preceded the rise of the nasal vowels (§ 25), cf. *an > *on > *ǭ."
@@ -112,7 +112,7 @@
 23,27,LW,FALSE,"Loanword: The toponym Lat. Ma̠ximus > Rom.*Ma̠jsẹmu > Sl. *Ma̠jsьmъ > Cr. (Čak.) *Ma̠jsan was borrowed posterior to the change of *a to *o (§ 23), but prior to the change of *i to *ь and of *u to *ъ (§ 27)."
 23,28,CF,TRUE,"Counterfeeding: Had the shortening of word-final long vowels (§ 28) occurred prior to the change of *a to *o (§ 23), the former change would have created inputs for the latter."
 23,44,F,TRUE,Feeding: The change of *a to *o (§ 23) created inputs für the change of *o to *ô (§ 44).
-23,48,M,TRUE,Manuscript: The change of *a to *o (§ 23) is already attested in the first written records while the loss of the weak jers (§ 48) is not.
+23,48,A,TRUE,Attestation: The change of *a to *o (§ 23) is already attested in the first written records while the loss of the weak jers (§ 48) is not.
 23,65,CF,TRUE,"Counterfeeding: Had the shortening of long vowels (§ 65) occurred prior to the change of *a to *o (§ 23), the former change would have created inputs for the latter."
 24,33,F,TRUE,Feeding: j-Prothesis (§ 24) created inputs for the change of word initial *jь- to *i- (§ 33).
 25,28,F,TRUE,Feeding: The rise of nasal vowels (§ 25) created long vowels that where affected by word-final shortening (§ 28).
@@ -149,7 +149,7 @@
 35,44,F,TRUE,Feeding: Ivšić's first law (§ 35) created inputs for the change of *o to *ô (§ 44).
 36,44,F,TRUE,Feeding: Ivšić's second law (§ 36) created inputs for the change of stressed *o to *ô (§ 44).
 38,39,LW,TRUE,"Loanword: The loanword iupanus, written in Romance orthography (<i> = [dž]), reflects a stage when PSl. *džawpā̠nu had already undergone monophthongization (§ 3) and the change of *ọ̄, *ọ to *ū, *u (§ 38), but when *dž had not yet change to *ž (§ 39)."
-38,48,M,TRUE,Manuscript: Tthe change of *ọ̄ to *ū (§ 38) is already attested in the first written records while the loss of the weak jers (§ 48) is not.
+38,48,A,TRUE,Attestation: The change of *ọ̄ to *ū (§ 38) is already attested in the first written records while the loss of the weak jers (§ 48) is not.
 39,57,F,TRUE,Feeding: The change of *dž to *ž (§ 39) created inputs for the change of *ž to *ż (§ 57).
 40,52,F,TRUE,Feeding: The change of *īj to *ь2j and of *ȳj to *ъ2j (§ 40) created inputs for the change of *ь to *e and of *ъ to*o (§ 52).
 41,43,F,TRUE,"Feeding: The loss of word-initial *j- before *ī and *ū (§ 41) created inputs for the shift of stress from post-hiatal *i, *ī and *u, *ū to an immediately preceding syllable (§ 43), cf. PSl. *zā ja̠w˙trā > *zā ū̠tra > *zā̠ wtra > Ru. za̠vtrə."

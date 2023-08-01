@@ -81,7 +81,7 @@
 17,41,F,TRUE,Feeding: The change of *ō to *ū (§ 17) created inputs for the Kapovićs two-mora law (§ 41).
 17,43,F,TRUE,Feeding: The change of *ō to *ū (§ 17) created inputs for the shortening accompanying the loss of the acute tone (§ 43).
 17,44,F,TRUE,Feeding: The change of *ō to *ū (§ 17) created inputs for the Three-syllable law (§ 44).
-17,49,M,TRUE,"Manuscript: The change of *ō to *ū (§ 17) is already reflected in the oldest Slavic records while the loss of weak jers (§ 49), depending on the area, was still operating or had not yet began."
+17,49,A,TRUE,"Attestation: The change of *ō to *ū (§ 17) is already reflected in the oldest Slavic records while the loss of weak jers (§ 49), depending on the area, was still operating or had not yet began."
 17,56,CF,TRUE,"Counterfeeding: Had the lengthening of *e to *ē and of *o to *ō (§ 56) occurred prior to the change of *ō to *ū (§ 17), the former change would have created inputs for the latter."
 17,64,F,TRUE,Feeding: The change of *ō to *ū (§ 17) created inputs for the shortening accompanying the vocalization of syllable final *l (§ 64).
 19,20,CF,TRUE,"Counterfeeding: Had the second liquid metathesis (§ 20) occurred prior to the change of *tl, *dl to *l (§ 19), the former change would have created inputs for the latter."
@@ -100,7 +100,7 @@
 20,44,F,TRUE,Feeding: The second liquid metathesis (§ 20) created inputs for the Three-syllable law (§ 44).
 20,45,F,TRUE,Feeding: The second liquid metathesis (§ 20) created inputs for the change of *žr to *ždr (§ 45).
 20,49,CF,TRUE,"Counterfeeding: Had the loss of weak jers (§ 49) occurred prior to the second liquid metathesis (§ 20), the former change would have created inputs for the latter whenever a jer was lost in sequences such as *CerъC."
-20,49,M,TRUE,"Manuscript: The earliest Slavic records reflect a stage at which the second liquid metathesis (§ 20) had already taken place while the loss of weak years, depending on the area, was either still operating or had not yet begun."
+20,49,A,TRUE,"Attestation: The earliest Slavic records reflect a stage at which the second liquid metathesis (§ 20) had already taken place while the loss of weak years, depending on the area, was either still operating or had not yet begun."
 20,63,F,TRUE,Feeding: The second liquid metathesis (§ 20) created inputs for the change of *čr > *cr (§ 63).
 20,64,F,TRUE,Feeding: The second liquid metathesis (§ 20) created inputs for the shortening accompanying the vocalization of syllable final *l to *o (§ 64).
 20,64,B,TRUE,Bleeding: The second liquid metathesis (§ 20) withdrew inputs from the vocalization of syllable-final *l to *o (§ 64).
@@ -114,7 +114,7 @@
 23,41,CF,TRUE,"Counterfeeding: Had Kapović's two-mora law (§ 41) occurred prior to the change of *a to *o (§ 23), the former change would have created inputs for the latter."
 23,42,CF,TRUE,"Counterfeeding: Had Kapović's four-syllable law (§ 42) occurred prior to the change of *a to *o (§ 23), the former change would have created inputs for the latter."
 23,43,CF,TRUE,"Counterfeeding: Had the loss of the the acute tone (§ 43) occurred prior to the change of *a to *o (§ 23), the shortening accompanying the former change would have created inputs for the latter."
-23,49,M,TRUE,"Manuscript: The earliest records reflect a stage at which the change of *a to *o (§ 23) had already occurred while the loss of weak jer (§ 49), depending on the area, was still operating at the time or had not yet begun."
+23,49,A,TRUE,"Attestation: The earliest records reflect a stage at which the change of *a to *o (§ 23) had already occurred while the loss of weak jer (§ 49), depending on the area, was still operating at the time or had not yet begun."
 23,55,CF,TRUE,"Counterfeeding: Had the change of *ь to *a and *ь̄ to *ā (§ 55) occurred prior to the change of *a to *o (§ 23), the former change would have created inputs for the latter."
 23,67,F,TRUE,Feeding: The change of *a to *o (§ 23) created inputs for the lengthening of short vowels before sequences of sonorant + consonant and before word-final *-j (§ 67).
 24,29,CF,TRUE,"Counterfeeding: Had the lengthening of short vowels in unaccented word forms (§ 29) occurred prior to the change of *ē > *ě̄ (§ 24), the former change would have created inputs for the latter."
@@ -176,7 +176,7 @@
 33,46,CB,TRUE,"Counterbleeding: Had the second jer-epenthesis (§ 46) occurred prior to Jotation (§ 33), the former change would have withdrawn inputs from the latter."
 33,47,F,TRUE,Feeding: The first jotation (§ 33) created inputs for the change of *štʹ to *št and of *ždʹ to *žd (§ 47).
 33,49,CF,TRUE,"Counterfeeding: Had the loss of weak jers (§ 49) occurred prior to Jotation (§ 33), the former change would have created inputs for the latter by introducing new sequences of consonant + *j."
-33,49,M,TRUE,"Manuscript: The first jotation (§ 33) is already reflected in the earliest Slavic records while the loss of weak jers (§ 49), depending on the area, was still operating of had not yet begun."
+33,49,A,TRUE,"Attestation: The first jotation (§ 33) is already reflected in the earliest Slavic records while the loss of weak jers (§ 49), depending on the area, was still operating of had not yet begun."
 33,61,F,TRUE,Feeding: The first jotation (§ 33) created inputs for the change of *rʼ to *r (§ 61).
 33,67,B,TRUE,Bleeding: The first jotation (§ 33) withdrew inputs from the lengthening of short vowels before sequences of sonorant + consonant (§ 67).
 33,71,F,TRUE,Feeding: The first jotation (§ 33) created inputs for the change of *tʹ to *ć and of *dʹ to đ* (§ 71).
