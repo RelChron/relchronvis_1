@@ -12262,4 +12262,9 @@ text {
   font-size: small;
   margin-left: 5px;
   transform: translateY(4px);
+}
+
+/* References on landing page */
+.reference {
+  color: #a3adb7;
 }/*# sourceMappingURL=styles.css.map */
