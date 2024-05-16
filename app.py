@@ -390,7 +390,7 @@ def get_abbr(examples_file_path):
     absolute_path = BASE_DIR / examples_file_path
     with absolute_path.open(encoding="utf-8-sig", newline="") as infile:
         first_row = next(csv.reader(infile, dialect="excel"))
-        oldest_variety = first_row[1]
+        oldest_variety = first_row[2]
         newest_variety = first_row[0]
     
     return oldest_variety, newest_variety
