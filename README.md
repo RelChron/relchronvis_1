@@ -83,19 +83,20 @@ Possible relation types:
 Download a template for example data [here](https://relchron.eu.pythonanywhere.com/ex_template) (right-click > "Download Linked File" / "Save Link As...").
 Again, you can modify this file with your own data. Below is a model of what it looks like when you open it in Excel. This would already be a valid file to pass into the web app.
 
-|   | A | B | C | D |
-|---|---|---|---|---|
-| 1 | Ru. | PSl. | 1 | 2 |
-| 2 | Last form of example 1 | First form of example 1 | Example 1 after SC 1 | Example 1 after SC 2 |
-| 3 | Last form of example 2 | First form of example 2 | Example 2 after SC 1 | Example 2 after SC 2 |
-| 4 | Last form of example 3 | First form of example 3 | Example 3 after SC 1 | Example 3 after SC 2 |
-| 5 | Last form of example 4 | First form of example 4 | Example 4 after SC 1 | Example 4 after SC 2 |
-| 6 | Last form of example 5 | First form of example 5 | Example 5 after SC 1 | Example 5 after SC 2 |
+|   | A | B | C | D | E |
+|---|---|---|---|---|---|
+| 1 | Ru. | Phonetic | PSl. | 1 | 2 |
+| 2 | Last form of example 1 | Phonetic transcription | First form of example 1 | Example 1 after SC 1 | Example 1 after SC 2 |
+| 3 | Last form of example 2 | Phonetic transcription | First form of example 2 | Example 2 after SC 1 | Example 2 after SC 2 |
+| 4 | Last form of example 3 | Phonetic transcription | First form of example 3 | Example 3 after SC 1 | Example 3 after SC 2 |
+| 5 | Last form of example 4 | Phonetic transcription | First form of example 4 | Example 4 after SC 1 | Example 4 after SC 2 |
+| 6 | Last form of example 5 | Phonetic transcription | First form of example 5 | Example 5 after SC 1 | Example 5 after SC 2 |
 
 Layout
  - Each row after row 1 contains all the forms for one example lexeme.
  - Column A is the most recent form of each example. In this case, it's present-day Russian ("Ru." for short).
- - Column B is the earliest form of each example. In this case, that is proto-slavic ("PSl." for short).
+ - Column B is a phonetic transcription of column A.
+ - Column C is the earliest form of each example. In this case, that is proto-slavic ("PSl." for short).
  - Each column after B is numbered with a SC ID in row 1.
  - If the lexeme changes after a SC, it appears in the cell under that SC.
  - **Do not change anything** in row 1.
