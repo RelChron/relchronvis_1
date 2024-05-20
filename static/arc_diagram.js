@@ -464,9 +464,18 @@ Promise.all([
       // oldestVariety (and newest) is passed into html script tag by flask
       .html(`${oldestVariety} ${m_example[oldestVariety]} `)
 
+    let lenCounter = 0;
+    let exCounter = 0;
+
+    for (const sc_id in m_example) {
+      if (isNaN(Number(sc_id))) {continue}
+      lenCounter++;
+    }
+
     for (const sc_id in m_example) {
       // Skip strings (converting string with Number() will result in NaN)
       if (isNaN(Number(sc_id))) {continue}
+      exCounter++;
 
       box.append("span")
         .attr("class", "chronology-el")
@@ -475,33 +484,32 @@ Promise.all([
           .append("sub")
             .html(sc_id)
 
-      box.append("span")
-        .attr("class", "chronology-el")
-        .html(` ${m_example[sc_id]} `)
+      // If last element, add extra info to text
+      if (exCounter === lenCounter) {
+        box.append("span")
+          .attr("class", "chronology-el")
+          .html(` ${newestVariety} ${m_example[sc_id]} / ${m_example[newestVariety]}`)
+      } else {
+        box.append("span")
+          .attr("class", "chronology-el")
+          .html(` ${m_example[sc_id]} `)
+      }
 
-        if (sc_id === idToBold) {
-          boldLastThree = true
-        }
+      if (sc_id === idToBold) {
+        boldLastThree = true
+      }
 
-        if (boldLastThree === true) {
-          cElements = d3.selectAll(".chronology-el")
-          nOfElements = cElements.size()
+      if (boldLastThree === true) {
+        cElements = d3.selectAll(".chronology-el")
+        nOfElements = cElements.size()
 
-          cElements
-            .filter((d, i) => i >= nOfElements - 3)
-            .classed("fw-bold", "true")
+        cElements
+          .filter((d, i) => i >= nOfElements - 3)
+          .classed("fw-bold", "true")
 
-          boldLastThree = false
-        }
+        boldLastThree = false
+      }
     }
-
-    box.append("span")
-      .attr("class", "chronology-el")
-      .html(">")
-
-    box.append("span")
-      .attr("class", "chronology-el")
-      .html(`${newestVariety} ${m_example[newestVariety]}`)
 
     offcanvasDrawerObj.hide()
     d3.select(this).classed("open", true)
